@@ -1,8 +1,14 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 const schoolarShipSchema = mongoose.Schema({
-    name: String,
-    description: String,
+    name: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String, 
+        required: true
+    },
     Price: Number,
     career: String,
     educationDegree: String,

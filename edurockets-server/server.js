@@ -8,8 +8,12 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000
 
+app.use(express.json({ extended: false }));
+
 // Using Routes
-app.use('/', require('./src/routes/index.route.js'));
+app.use('/users', require('./src/routes/users.route.js'));
+// app.use('/auth', require('./src/routes/auth.route.js'));
+
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
