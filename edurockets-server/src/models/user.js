@@ -8,7 +8,6 @@ const userSchema = mongoose.Schema({
     email: {
         type: String,
         required: true,
-        index: true,
         unique: true,
         match: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
     },
@@ -21,14 +20,7 @@ const userSchema = mongoose.Schema({
         require: true
     },
     country: String,
-    city: String,
-    archives : [{
-        type: String
-    }],
-    schoolarships:[{
-        uid: String,
-        state: String
-    }]
+    city: String
 });
 
-exports.model = mongoose.model('users', userSchema);
+module.exports = mongoose.model('users', userSchema);
