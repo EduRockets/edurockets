@@ -1,0 +1,21 @@
+.NavBar {
+  background-color: blue;
+  color: white;
+
+  position: fixed;
+  align-items: center;
+
+  width: 100vw;
+
+}
+
+.logoContainer {
+  background-color: red;
+}
+
+.NavBarContainer {
+  display: flex;
+} 
+
+/*  
+*/

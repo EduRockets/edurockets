@@ -15,12 +15,6 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  birthday: {
-    type: Date,
-    require: true,
-  },
-  country: String,
-  city: String,
 });
 
 module.exports = mongoose.model("users", userSchema);

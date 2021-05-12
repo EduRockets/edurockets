@@ -13,15 +13,17 @@ router.post(
     check("name", "Name is empty").not().isEmpty(),
     check("email", "Email is not valid").isEmail(),
     check("password", "Password has to be 6 or more characters").isLength({
-      min: 8,
+      min: 6,
     }),
   ],
   async (req, res) => {
     const errors = validationResult(req);
+
     if (!errors.isEmpty()) {
+      console.log(req.body);
       return res.status(500).json({ errors: errors.array() });
     }
-    const { name, email, password, birthday, country, city } = req.body;
+    const { name, email, password } = req.body;
     try {
       const salt = await bcrypt.genSalt(10);
       const encryptingPass = await bcrypt.hash(password, salt);
@@ -30,9 +32,6 @@ router.post(
           name,
           email,
           password: encryptingPass,
-          birthday,
-          country,
-          city,
         })
         .then((doc) => {
           const payload = {
