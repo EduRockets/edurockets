@@ -1,0 +1,37 @@
+.Footer {
+
+  background-color: #1d1645;
+  color: #F4F3F8;
+
+}
+
+
+.Isotipo {
+  width: 30%;
+}
+
+
+.Divider {
+  background-color: #F4F3F8;
+  height: 2px;
+
+  margin: 20px;
+}
+
+.TermFooter {
+  color: #F4F3F8;
+  font-size: 18px;
+  
+  margin-left: 20px;
+  text-decoration: none;
+
+  transition: 0.2s;
+}
+
+.TermFooter:hover {
+  color: #F81735;
+}
+
+.SocialIconsFooter {
+  justify-content: space-between;
+}
