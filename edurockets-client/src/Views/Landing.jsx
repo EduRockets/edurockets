@@ -44,7 +44,7 @@ const Landing = () => {
         </Container>
       </Container>
 
-      <Container>
+      <Container id="SecondSectionLanding">
         <Row>
           <Col>
             <p className="MisionTitleLanding">
@@ -326,17 +326,23 @@ const Landing = () => {
             <Col sm="12" lg="6" />
             <Col sm="12" lg="6">
               <Row>
-                <Col>¿Estas listo para el despegue?</Col>
+                <Col>
+                  <i className="LandingRocketTitle">
+                    ¿Listo para <br /> el despegue?
+                  </i>
+                </Col>
               </Row>
               <Row>
                 <Col>
-                  <Button>Listo para alcanzar mis sueños</Button>
+                  <Button className="LandingRocketButton">Listo para alcanzar mis sueños</Button>
                 </Col>
               </Row>
             </Col>
           </Row>
         </Container>
       </Container>
+
+      <div className="DivSeventhWave" />
     </StandardLayout>
   );
 };
