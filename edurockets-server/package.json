@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix ../edurockets-client && npm run build --prefix ../edurockets-client"
   },
   "keywords": [],
   "author": "",

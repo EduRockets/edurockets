@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("../edurockets-client/build"));
   app.get("*", (req, res) => {
     res.sendFile(
-      path.resolve(_dirname, "../edurockets-server", "build", "index.html")
+      path.resolve(_dirname, "edurockets-server", "build", "index.html")
     );
   });
 }
@@ -15,8 +15,9 @@ if (process.env.NODE_ENV === "production") {
 const PORT = process.env.PORT || 5000;
 
 // Connecting to DB using Mongoose
+
 mongoose
-  .connect(process.env.DB_URI, {
+  .connect(process.env.DB_URI || 'mongodb+srv://varela:2408@cluster0.ne0yk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
