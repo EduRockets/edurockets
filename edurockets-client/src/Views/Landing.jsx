@@ -15,6 +15,7 @@ const Landing = () => {
         <Container>
           <Row>
             <div className="DivWave" />
+
             <Col sm="12" lg="6">
               <Row>
                 <Col>
@@ -85,7 +86,7 @@ const Landing = () => {
           <Row>
             <Col lg="6" />
             <Col sm="12" lg="6">
-              -
+              <img src="/Images/subrayado1.svg" alt="-" />
             </Col>
           </Row>
           <Row style={{ alignItems: 'center' }}>
@@ -174,10 +175,10 @@ const Landing = () => {
           <Col lg="6" />
         </Row>
         <Row>
-          <Col lg="6" />
           <Col sm="12" lg="6">
-            -
+            <img src="/Images/subrayado2.svg" alt="-" />
           </Col>
+          <Col lg="6" />
         </Row>
         <Row>
           <Col sm="12">
@@ -294,10 +295,13 @@ const Landing = () => {
         <div className="DivWave DivFourthWave Bottom-Auto" />
         <Container>
           <Row>
-            <Col sm="12" lg="6">
-              Un profesional en Canadá tiene un ingreso promedio de <br />
-              más de 50,000 USD anuales, 400% superior al promedio <br />
-              en Latinoamerica
+            <Col sm="12" lg="6" style={{ display: 'flex' }}>
+              <Row>
+                <Col className="SabiasQueTitle">¿Sabías que?</Col>
+              </Row>
+              <Row>
+                <Col></Col>
+              </Row>
             </Col>
             <Col sm="12" lg="6">
               <img id="imageWave" src="/Images/SabiasQue.png" alt="Sabías que" />
@@ -305,14 +309,14 @@ const Landing = () => {
           </Row>
         </Container>
       </Container>
-      <div className="DivFifthWave" />
 
+      <div className="DivFifthWave" />
       <Container id="SixthSectionLanding" fluid>
         <Container>
           <Row>
             <Col>
               <div className="LandingImageVideo">
-                <img className="VideoLanding" src="/Images/Raul.png" alt="video" />
+                <img className="LandingVideo" src="/Images/Raul.png" alt="video" />
               </div>
             </Col>
           </Row>

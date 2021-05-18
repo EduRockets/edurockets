@@ -15,10 +15,10 @@ const Footer = () => (
     <Container className="Footer" fluid>
       <Container>
         <Row className="align-items-center">
-          <Col>
+          <Col lg="2">
             <img className="Isotipo" src="/Images/Isotipo.png" alt="edurockets" />
           </Col>
-          <Col>
+          <Col lg="2">
             <Row>
               <Col>
                 <Link className="TermFooter">Acerca de</Link>
@@ -40,7 +40,7 @@ const Footer = () => (
               </Col>
             </Row>
           </Col>
-          <Col>
+          <Col lg="2">
             <Row>
               <Col>
                 <Link className="TermFooter">Impacto</Link>
@@ -62,7 +62,7 @@ const Footer = () => (
               </Col>
             </Row>
           </Col>
-          <Col>
+          <Col lg="2">
             <Row>
               <Col>
                 <Link className="TermFooter">Comunidad de apoyo</Link>
@@ -84,7 +84,8 @@ const Footer = () => (
               </Col>
             </Row>
           </Col>
-          <Col>Banderas</Col>
+          <Col lg="2" />
+          <Col lg="2">Banderas</Col>
         </Row>
 
         <Row>

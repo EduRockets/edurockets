@@ -12,6 +12,7 @@
 
 #SecondSectionLanding {
   padding-top: 100px
+
 }
 
 #ThirdSectionLanding{
@@ -68,7 +69,6 @@
   bottom: 0;
   left: 0;
 }
-
 .DivSecondWave {
   background-image: url('../Assets/Images/second-wave.svg');
 }
@@ -110,6 +110,7 @@
 }
 
 #imageWave {
+  width: 100%;
   position: relative;
   z-index: 200;
 }
@@ -161,6 +162,7 @@
 
 .LandingImageVideo {
   display: flex;
+  text-align: center;
   justify-content: center;
 }
 
@@ -168,6 +170,10 @@
   width: 50%;
   margin: auto;
   display: block;
+}
+
+.LandingVideo {
+  width: 100%;
 }
 
 .LandingTitleThirdSection {
@@ -281,4 +287,15 @@
   background-color: #F81735;
 
   border-color: #F81735;
+}
+
+.SabiasQueTitle {
+  color: #F4F3F8;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.SabiasQueText {
+  color: #090446;
+  font-size: 12px;
 }
