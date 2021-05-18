@@ -8,8 +8,6 @@ import '../Styles/StandardLayout.css';
 const StandardLayout = (props) => {
   const { children } = props;
 
-  console.log('pendejada xd');
-
   return (
     <>
       <NavBar />

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const auth = require("../middlewares/auth.middlewares.js");
+const auth = require("../middlewares/checkauth.middleware.js");
 
 router.get("/", auth, (req, res) => res.send("holowo"));
 

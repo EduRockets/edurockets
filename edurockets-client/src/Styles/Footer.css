@@ -1,0 +1,46 @@
+.Footer {
+  background-color: #1d1645;
+  color: #F4F3F8;
+
+  font-size: 14px;
+}
+
+.Isotipo {
+  width: 50%;
+  text-align: center;
+}
+
+
+.Divider {
+  background-color: #F4F3F8;
+  height: 2px;
+
+  margin: 20px;
+}
+
+.DownSectionContainer {
+  padding-bottom: 20px;
+  align-items: center;
+}
+
+.TermFooter {
+  color: #F4F3F8;
+  
+  margin-left: 20px;
+  text-decoration: none;
+
+  transition: 0.2s;
+}
+
+.TermFooter:hover {
+  color: #F81735;
+}
+
+.SocialIconsContainer {
+  text-align: end;
+}
+
+.SocialIconFooter {
+  font-size: 20px;
+  margin-right: 10px;
+}
