@@ -3,6 +3,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("../edurockets-client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(
+      path.resolve(_dirname, "../edurockets-server", "build", "index.html")
+    );
+  });
+}
+
 const PORT = process.env.PORT || 5000;
 
 // Connecting to DB using Mongoose
