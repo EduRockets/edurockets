@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { Col, Row, Navbar, NavbarBrand, Button } from 'reactstrap';
 
@@ -6,13 +6,22 @@ import '../Styles/NavBar.css';
 
 const NavBar = () => {
   const history = useHistory();
+
+  const [solid, setSolid] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY >= window.innerHeight * 0.75) setSolid(true);
+      else setSolid(false);
+    });
+  }, []);
 
   const toggle = () => setIsOpen(!isOpen);
 
   return (
     <>
-      <div className="NavBar">
+      <div className={`NavBar${solid ? ' NavBarSolid' : ''}`}>
         <Row className="NavBarContainer">
           <Col lg="3" className="NavBarlogoContainer">
             <img style={{ height: '50px' }} src="/Images/Logo.png" alt="logo" />

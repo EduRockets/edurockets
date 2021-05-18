@@ -8,6 +8,12 @@
   padding: 20px;
 
   z-index: 99999999;
+
+  transition: 0.4s;
+}
+
+.NavBarSolid {
+  background-color: #100935;
 }
 
 .NavBarContainer {
