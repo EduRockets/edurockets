@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 // Importing models
 const user = require("../models/user");
+const secret = process.env.JWT_SECRET_TOKEN || "secreto";
 
 router.post(
   "/signup",
@@ -38,21 +39,16 @@ router.post(
               id: doc.id,
             },
           };
-          jwt.sign(
-            payload,
-            process.env.JWT_SECRET_TOKEN,
-            { expiresIn: 36000 },
-            (err, token) => {
-              if (err) {
-                res.status(500).json({
-                  success: false,
-                  msg: err.message,
-                  stack: err.stack,
-                });
-              }
-              res.json({ token });
+          jwt.sign(payload, secret, { expiresIn: 36000 }, (err, token) => {
+            if (err) {
+              res.status(500).json({
+                success: false,
+                msg: err.message,
+                stack: err.stack,
+              });
             }
-          );
+            res.json({ token });
+          });
         })
         .catch((err) => {
           res.status(500).json({
@@ -89,21 +85,16 @@ router.post(
                 id: doc.id,
               },
             };
-            jwt.sign(
-              payload,
-              process.env.JWT_SECRET_TOKEN,
-              { expiresIn: 36000 },
-              (err, token) => {
-                if (err) {
-                  res.status(500).json({
-                    success: false,
-                    msg: err.message,
-                    stack: err.stack,
-                  });
-                }
-                res.json({ token });
+            jwt.sign(payload, secret, { expiresIn: 36000 }, (err, token) => {
+              if (err) {
+                res.status(500).json({
+                  success: false,
+                  msg: err.message,
+                  stack: err.stack,
+                });
               }
-            );
+              res.json({ token });
+            });
           } else {
             res.status(500).json({
               success: false,
