@@ -204,7 +204,7 @@ const Landing = () => {
                 alt="beneficio 2"
               />
               <div style={{ margin: '0 20px' }}>
-                Uso de inteligencia artificial para <br />
+                Uso de <b>inteligencia artificial</b> para <br />
                 recomendarte los mejores programas <br /> universitarios.
               </div>
               <img className="LandingNumberBenefitContainer" src="/Images/2.png" alt="numero 2" />
@@ -216,7 +216,7 @@ const Landing = () => {
             <div className="LandingBenefitContainer">
               <img className="LandingNumberBenefitContainer" src="/Images/3.png" alt="numero 3" />
               <div style={{ margin: '0 20px' }}>
-                Nuestros especialistas te ayudan a crear
+                <b>Nuestros especialistas</b> te ayudan a crear
                 <br /> una aplicación ganadora.
               </div>
               <img
@@ -236,7 +236,8 @@ const Landing = () => {
                 alt="beneficio 4"
               />
               <div style={{ margin: '0 20px' }}>
-                Aplica simultaneamente a las mejores <br /> universidades.
+                Aplica simultaneamente a las
+                <br /> <b>mejores</b> universidades.
               </div>
               <img className="LandingNumberBenefitContainer" src="/Images/4.png" alt="numero 4" />
             </div>
@@ -247,7 +248,7 @@ const Landing = () => {
             <div className="LandingBenefitContainer">
               <img className="LandingNumberBenefitContainer" src="/Images/5.png" alt="numero 5" />
               <div style={{ margin: '0 20px' }}>
-                Accede a descuentos especiales en <br /> nuestra red universitaria.
+                Accede a <b>descuentos especiales</b> en <br /> nuestra red universitaria.
               </div>
               <img
                 className="LandingImageBenefitContainer"
@@ -266,8 +267,8 @@ const Landing = () => {
                 alt="beneficio 6"
               />
               <div style={{ margin: '0 20px' }}>
-                Te asesoramos en temas migratorios para que <br /> tengas un viaje seguro y sin
-                estrés tu nueva <br /> vida.
+                <b>Te asesoramos</b> en temas migratorios para que <br /> tengas un viaje seguro y
+                sin estrés tu nueva <br /> vida.
               </div>
               <img className="LandingNumberBenefitContainer" src="/Images/6.png" alt="numero 6" />
             </div>
@@ -278,7 +279,7 @@ const Landing = () => {
             <div className="LandingBenefitContainer">
               <img className="LandingNumberBenefitContainer" src="/Images/7.png" alt="numero 7" />
               <div style={{ margin: '0 20px' }}>
-                ¿Necesitas financiamiento?
+                <b>¿Necesitas financiamiento?</b>
                 <br /> Te conectamos de manera directa con <br /> nuestros partners.
               </div>
               <img
@@ -294,13 +295,23 @@ const Landing = () => {
       <Container id="FifthSectionLanding" fluid>
         <div className="DivWave DivFourthWave Bottom-Auto" />
         <Container>
-          <Row>
-            <Col sm="12" lg="6" style={{ display: 'flex' }}>
+          <Row className="align-items-center">
+            <Col lg="2" />
+            <Col sm="12" lg="4">
               <Row>
-                <Col className="SabiasQueTitle">¿Sabías que?</Col>
+                <Col className="SabiasQueTitle">¿Sabías qué?</Col>
               </Row>
               <Row>
-                <Col></Col>
+                <Col className="SabiasQueTextBox">
+                  Un profesional en Canada tiene un ingreso <br />
+                  promedio de más de{' '}
+                  <b className="SabiasQueText">
+                    {' '}
+                    50.000 USD anuales, <br />
+                    400% superior{' '}
+                  </b>{' '}
+                  al promedio de Latinoamerica.{' '}
+                </Col>
               </Row>
             </Col>
             <Col sm="12" lg="6">

@@ -94,14 +94,14 @@ const Footer = () => (
           </Col>
         </Row>
 
-        <Row className="align-items-center">
+        <Row className="DownSectionContainer">
           <Col lg="6">
             <Link className="TermFooter">© 2021 Edu Rockets</Link>
             <Link className="TermFooter">Términos de uso</Link>
             <Link className="TermFooter">Política de Seguridad</Link>
           </Col>
           <Col lg="3" />
-          <Col lg="3">
+          <Col lg="3" className="SocialIconsContainer">
             <Icon className="SocialIconFooter" icon={facebookIcon} />
             <Icon className="SocialIconFooter" icon={instagramIcon} />
             <Icon className="SocialIconFooter" icon={whatsappIcon} />

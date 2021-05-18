@@ -214,6 +214,7 @@
   margin: 20px 0;
 
   font-size: 20px;
+  font-weight: bold;
 
   text-align: left;
   letter-spacing: 0px;
@@ -291,11 +292,20 @@
 
 .SabiasQueTitle {
   color: #F4F3F8;
-  font-size: 18px;
+  font-size: 32px;
   font-weight: bolder;
 }
 
 .SabiasQueText {
+  color: #F81735;
+  font-style: italic;
+}
+
+.SabiasQueTextBox {
+  background-image: url('../Assets/Images/TextBox.svg');
+  background-position: center;
+  background-size: cover;
+
   color: #090446;
-  font-size: 12px;
+  font-weight:600;
 }

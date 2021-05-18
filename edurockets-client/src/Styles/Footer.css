@@ -1,5 +1,4 @@
 .Footer {
-
   background-color: #1d1645;
   color: #F4F3F8;
 
@@ -19,6 +18,11 @@
   margin: 20px;
 }
 
+.DownSectionContainer {
+  padding-bottom: 20px;
+  align-items: center;
+}
+
 .TermFooter {
   color: #F4F3F8;
   
@@ -30,6 +34,10 @@
 
 .TermFooter:hover {
   color: #F81735;
+}
+
+.SocialIconsContainer {
+  text-align: end;
 }
 
 .SocialIconFooter {
