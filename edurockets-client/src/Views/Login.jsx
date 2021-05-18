@@ -47,13 +47,7 @@ const Login = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Button
-            onClick={() => {
-              console.log(formData);
-            }}
-          >
-            Iniciar sesión
-          </Button>
+          <Button onClick={() => {}}>Iniciar sesión</Button>
         </FormGroup>
       </Form>
     </>

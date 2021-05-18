@@ -5,10 +5,6 @@ import StandardLayout from '../Layouts/StandardLayout';
 import '../Styles/Landing.css';
 
 const Landing = () => {
-  useEffect(() => {
-    console.log('uwu');
-  }, []);
-
   return (
     <StandardLayout>
       <Container id="FirstSectionLanding" fluid>
@@ -29,12 +25,7 @@ const Landing = () => {
               </Row>
               <Row>
                 <Col>
-                  <Button
-                    className="LandingFirstButton"
-                    onClick={() => {
-                      console.log('awa');
-                    }}
-                  >
+                  <Button className="LandingFirstButton" onClick={() => {}}>
                     Listo para alcanzar mis sueños
                   </Button>
                 </Col>
