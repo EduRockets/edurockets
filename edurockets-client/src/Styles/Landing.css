@@ -306,6 +306,8 @@
   background-position: center;
   background-size: cover;
 
+  padding: 20px;
+
   color: #090446;
   font-weight:600;
 }
