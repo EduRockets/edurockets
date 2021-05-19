@@ -85,7 +85,7 @@ router.post(
                 id: doc.id,
               },
             };
-            jwt.sign(payload, secret, { expiresIn: 36000 }, (err, token) => {
+            jwt.sign(payload, secret, { expiresIn: 300 }, (err, token) => {
               if (err) {
                 res.status(500).json({
                   success: false,
