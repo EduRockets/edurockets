@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 mongoose
   .connect(
     process.env.DB_URI ||
-      "mongodb+srv://varela:2408@cluster0.ne0yk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+      "mongodb+srv://edurocket:2408@cluster0.agga8.mongodb.net/dev?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

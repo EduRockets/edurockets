@@ -35,7 +35,7 @@ const NavBar = () => {
             <Button
               className="NavBarButton"
               onClick={() => {
-                history.push('/login');
+                history.push('/underConstruction');
               }}
             >
               Iniciar Sesión
