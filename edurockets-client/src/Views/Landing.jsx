@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Jumbotron, Col, Row, Container, Button, Input } from 'reactstrap';
+import { useHistory } from 'react-router-dom';
+import { Col, Row, Container, Button } from 'reactstrap';
 import StandardLayout from '../Layouts/StandardLayout';
 
 import '../Styles/Landing.css';
 
 const Landing = () => {
+  const history = useHistory();
+
+  const redirect = () => {
+    history.push('/underConstruction');
+  };
+
   return (
     <StandardLayout>
       <Container id="FirstSectionLanding" fluid>
@@ -25,7 +32,12 @@ const Landing = () => {
               </Row>
               <Row>
                 <Col>
-                  <Button className="LandingFirstButton" onClick={() => {}}>
+                  <Button
+                    className="LandingFirstButton"
+                    onClick={() => {
+                      redirect();
+                    }}
+                  >
                     Listo para alcanzar mis sueños
                   </Button>
                 </Col>
@@ -111,7 +123,12 @@ const Landing = () => {
               </Row>
               <Row>
                 <Col>
-                  <Button className="LandingSecondButton" onClick="#">
+                  <Button
+                    className="LandingSecondButton"
+                    onClick={() => {
+                      redirect();
+                    }}
+                  >
                     Listo para Alcanzar mis sueños
                   </Button>
                 </Col>
@@ -140,7 +157,12 @@ const Landing = () => {
               </Row>
               <Row>
                 <Col>
-                  <Button className="LandingSecondButton" onClick="#">
+                  <Button
+                    className="LandingSecondButton"
+                    onClick={() => {
+                      redirect();
+                    }}
+                  >
                     Listo para Alcanzar mis sueños
                   </Button>
                 </Col>
@@ -340,7 +362,14 @@ const Landing = () => {
               </Row>
               <Row>
                 <Col>
-                  <Button className="LandingRocketButton">Listo para alcanzar mis sueños</Button>
+                  <Button
+                    className="LandingRocketButton"
+                    onClick={() => {
+                      redirect();
+                    }}
+                  >
+                    Listo para alcanzar mis sueños
+                  </Button>
                 </Col>
               </Row>
             </Col>

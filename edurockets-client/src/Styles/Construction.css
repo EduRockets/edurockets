@@ -1,0 +1,56 @@
+.Construction {
+  background-color: #D5E2FE;
+  background-size: contain;
+  background-position: bottom;
+
+  width: 100%;
+  
+  padding-top: 117px;
+}
+
+.Title {
+  color: #1F1646;
+ 
+  font-weight: bold;
+  font-size: 36px; 
+  text-align: center;
+
+  margin: 10px;
+}
+
+.SubTitle {
+  color: #2F2A7A;
+ 
+  font-size: 22px; 
+  font-weight: 600;
+  text-align: center;
+
+  margin: 10px;
+}
+
+.ButtonContainer {
+  text-align: center;
+}
+
+.Button {
+  color: white;
+  
+  background-color: #f71735;
+
+  border-color: #f71735;
+  border-radius: 4px solid;
+
+  font-weight: 600;
+
+  margin: 10px;
+
+  transition: 0.4s;
+}
+
+.Button:hover {
+  background-color: #0000;
+  
+  color: #f71735;
+
+  border-color: #f71735;
+}
