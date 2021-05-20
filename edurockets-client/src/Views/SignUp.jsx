@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-import { Button, Form, FormGroup, Label, Input, Container, Alert } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
+
+import StandardLayout from '../Layouts/StandardLayout';
+import CardSignUp from '../Components/CardSignUp';
+
+import '../Styles/SignUp.css';
 
 const SignUp = () => {
   const history = useHistory();
@@ -67,46 +72,34 @@ const SignUp = () => {
   };
 
   return (
-    <>
-      <Container>
-        <Form>
-          <FormGroup>
-            <Label>Name</Label>
-            <Input name="name" id="name" onChange={(event) => changeValue(event.currentTarget)} />
-          </FormGroup>
-          <FormGroup>
-            <Label>Email</Label>
-            <Input
-              type="email"
-              name="email"
-              id="email"
-              onChange={(event) => changeValue(event.currentTarget)}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label>Password</Label>
-            <Input
-              type="password"
-              name="password"
-              id="password"
-              onChange={(event) => changeValue(event.currentTarget)}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label>Confirm Password</Label>
-            <Input
-              type="password"
-              name="confirmPassword"
-              id="confirmPassword"
-              onChange={(event) => changeValue(event.currentTarget)}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Button onClick={signup}>Crear usuario</Button>
-          </FormGroup>
-        </Form>
+    <StandardLayout>
+      <Container className="SignUp" fluid>
+        <Container className="SignUpContainer">
+          <Row>
+            <Col>
+              <div className="SignUpTitle">¿En qué podemos ayudarte?</div>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm="12" lg="6" className="position-relative">
+              <CardSignUp
+                src="/Images/Estudiante.png"
+                title="Un despegue rápido que te lleve a las estrellas"
+                text="Estás por graduarte del colegio y listo para convertirte en quien deseas ser."
+              />
+            </Col>
+
+            <Col sm="12" lg="6">
+              <CardSignUp
+                src="/Images/Profesional.png"
+                title="Volar más alto y más rápido"
+                text="Eres un profesional en busca de las mejores oportunidades laborales y académicas."
+              />
+            </Col>
+          </Row>
+        </Container>
       </Container>
-    </>
+    </StandardLayout>
   );
 };
 
