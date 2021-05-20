@@ -5,12 +5,13 @@ import SignUp from './Views/SignUp';
 import Login from './Views/Login';
 import Landing from './Views/Landing';
 import Construction from './Views/Construction';
-import Profile from './Views/Profile';
-
+import HomePage from './Views/HomePage';
 import ProtectedRoute from './Components/ProtectedRoute';
 
+import UserContext from './Providers/UserContext';
+
 const App = () => {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(null);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -20,11 +21,12 @@ const App = () => {
   return (
     <Router>
       <Route exact path="/underConstruction" component={Construction} />
-      <ProtectedRoute exact path="/profile" user={user} component={Profile} />
-      <Route exact path="/signup" component={SignUp} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/" component={Landing} />
-      <ProtectedRoute isAuth={user} component={Profile} />
+      <UserContext.Provider value={user}>
+        <ProtectedRoute exact path="/homepage" user={user} component={HomePage} />
+        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/" component={Landing} />
+      </UserContext.Provider>
     </Router>
   );
 };

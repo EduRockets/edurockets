@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Profile = () => {
+const HomePage = () => {
   return <div>Ruta protegida</div>;
 };
 
-export default Profile;
+export default HomePage;
