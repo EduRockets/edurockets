@@ -1,0 +1,62 @@
+.Card { 
+
+  border-width: 0px;
+  border-radius: 16px;
+  box-shadow: -10px 10px 20px 1px #E0E0E0;
+
+  margin: 20px;
+
+  text-align: center;
+}
+
+.CardImageContainer {
+  margin: 30px
+}
+
+.CardImage {
+  
+    text-align: center;
+    display: block;
+    
+    justify-content: center;
+    align-items: center;
+
+    margin: auto;
+
+    width: 50%;
+}
+
+.CardTitle {
+
+  color: #090446;
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+.CardText {
+  font-size: 16px;
+  font-weight: 600;
+
+}
+
+.CardButton {
+  background-color: #0000;
+
+  font-size: 16px;
+  font-weight: bold;
+  color: #F81735;
+
+  padding: 10px 30px;
+
+  border-radius: 1px solid;
+  border-color: #F81735;
+
+  transition: 0.4s;
+}
+
+.CardButton:hover {
+  background-color: #F81735;
+
+  border-color: #F81735;
+}
