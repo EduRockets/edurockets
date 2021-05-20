@@ -1,15 +1,29 @@
-import React, { useState } from 'react';
-
-import { Button, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Button, Form, FormGroup, Label, Input, Alert, Container } from 'reactstrap';
 
 const Login = () => {
+  const history = useHistory();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    if (localStorage.getItem('authToken')) {
+      history.push('/');
+    }
+  }, [history]);
 
   const formData = {
     email: email,
     password: password,
   };
+
+  const login = () => {
+    try {
+    } catch (error) {}
+  };
+
   const changeValue = (event) => {
     const emptyVal = event.value === '';
     switch (event.name) {
@@ -26,7 +40,7 @@ const Login = () => {
   };
 
   return (
-    <>
+    <Container>
       <Form>
         <FormGroup>
           <Label>Email</Label>
@@ -47,10 +61,10 @@ const Login = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Button onClick={() => {}}>Iniciar sesión</Button>
+          <Button onClick={login}>Iniciar sesión</Button>
         </FormGroup>
       </Form>
-    </>
+    </Container>
   );
 };
 

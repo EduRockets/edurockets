@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import { Container, Row, Col, Button } from 'reactstrap';
@@ -9,9 +10,12 @@ import CardSignUp from '../Components/CardSignUp';
 import '../Styles/SignUp.css';
 
 const SignUp = () => {
+  const history = useHistory();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const formData = {
     name: name,
@@ -33,27 +37,38 @@ const SignUp = () => {
         setPassword(event.value);
 
         break;
+      case 'confirmPassword':
+        setConfirmPassword(event.value);
+
+        break;
       default:
     }
   };
 
   const signup = async () => {
-    /*try {
+    try {
       const config = {
         headers: {
           'content-type': 'application/json',
         },
       };
-      const newUser = {
-        name,
-        email,
-        password,
-      };
-      const res = await axios.post('/auth/signup', JSON.stringify(newUser), config);
-      console.log(res.data);
+      if (password !== confirmPassword) {
+        setPassword('');
+        setConfirmPassword('');
+      } else {
+        const newUser = {
+          name,
+          email,
+          password,
+        };
+        const res = await axios.post('/auth/signup', JSON.stringify(newUser), config);
+        localStorage.setItem('authToken', res.data.token);
+
+        history.push('/');
+      }
     } catch (err) {
       console.log(err.response.data);
-    }*/
+    }
   };
 
   return (
