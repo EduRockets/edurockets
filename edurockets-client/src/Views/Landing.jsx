@@ -35,7 +35,7 @@ const Landing = () => {
                   <Button
                     className="LandingFirstButton"
                     onClick={() => {
-                      redirect();
+                      history.push('/signUp');
                     }}
                   >
                     Listo para alcanzar mis sueños

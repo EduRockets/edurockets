@@ -1,0 +1,23 @@
+.SignUp  {
+  background-image: url('../Assets/Images/SignUp-Background.svg');
+  background-position: bottom;
+  background-size: cover;
+
+  width: 100%;
+}
+
+
+.SignUpContainer {
+  padding: 110px 0;
+}
+
+.SignUpTitle {
+  color: #F81735;
+  
+  font-size: 46px;
+  font-weight: bold;
+
+  text-align: center;
+
+  margin-bottom: 60px;
+}

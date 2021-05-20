@@ -21,6 +21,10 @@
   text-align: center;
 } 
 
+.NavBarImage {
+  height: '50px'
+}
+
 .NavBarItems{
   text-align: right;
   margin: 0 15px;
