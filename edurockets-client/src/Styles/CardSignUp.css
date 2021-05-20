@@ -2,15 +2,14 @@
 
   border-width: 0px;
   border-radius: 16px;
-  box-shadow: -10px 10px 20px 1px #E0E0E0;
+  box-shadow: -10px 10px 20px 1px #E0E0E0;  
 
-  margin: 20px;
+  width: 80%; /* Can be in percentage also. */
+  height: auto;
+  margin: 0 auto;
+  padding: 30px ;
 
   text-align: center;
-}
-
-.CardImageContainer {
-  margin: 30px
 }
 
 .CardImage {
@@ -23,7 +22,7 @@
 
     margin: auto;
 
-    width: 50%;
+    width: 60%;
 }
 
 .CardTitle {

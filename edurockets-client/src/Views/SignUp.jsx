@@ -66,7 +66,7 @@ const SignUp = () => {
             </Col>
           </Row>
           <Row>
-            <Col sm="12" lg="6">
+            <Col sm="12" lg="6" className="position-relative">
               <CardSignUp
                 src="/Images/Estudiante.png"
                 title="Un despegue rápido que te lleve a las estrellas"
