@@ -3,12 +3,15 @@
 
   height: 100vh;
 
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
 }
 
 .LoginContainer {
   background-color: #ECE9F2;
   background-size: cover;
-
 }
 
 .LoginLeftContainer {
@@ -24,6 +27,13 @@
   text-align: center;
 
   padding: 80px 50px;
+}
+
+.LoginLabel {
+  font-size: 14px;
+  font-weight: bold; 
+
+  float: left ;
 }
 
 .LoginTitle {
@@ -52,7 +62,7 @@
   border-width: 0px;
  
   color: #999999;
-  font-size: 16px;
+  font-size: 14px;
 
   height: 40px;
   

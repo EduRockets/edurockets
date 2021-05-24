@@ -1,0 +1,33 @@
+.FormHolder {
+  background-color: #1F1646;
+
+  height: 100vh;
+} 
+
+.FormHolderContainer {
+  display: flex;
+
+  height: 100%;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.FormHolderWelcome {
+  color: #EBEBED;
+
+  font-size: 64px;
+}
+
+.FormHolderDivider {
+  background-color: #EBEBED;
+
+  margin: 20px 0;
+  
+  height: 3px;
+  width: 100px;
+}
+
+.FormHolderDescrpiton {
+  color: #EBEBED;
+}

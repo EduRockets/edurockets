@@ -1,0 +1,47 @@
+.SignUpForm {
+  background-color: #FDFDFD;
+    
+  padding: 60px;
+
+  box-shadow: -2px -2px 14px 8px rgba(0, 0, 0, 0.2);
+}
+
+.SignUpInputLabel {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.SignUpInput {
+  background-color: #EBEBED;
+
+  border: 0px solid;
+  border-radius: 25px;
+
+  margin-bottom: 20px;
+}
+
+.SignUpDropdown {
+  background-color: #EBEBED;
+}
+
+.SignUpButtonContainer {
+  display: flex;
+  
+  margin: 20px;
+}
+
+.SignUpButton {
+  flex: 2;
+
+  background-color: #69488E;
+
+  border: 0px solid;
+  border-radius: 25px;
+
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.SignUpButtonSpacer {
+  flex: 1;
+}

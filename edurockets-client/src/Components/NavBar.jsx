@@ -53,6 +53,35 @@ const NavBar = () => {
   );
 };
 
+export const NavBarLogin = () => {
+  const history = useHistory();
+
+  return (
+    <>
+      <div className="NavBar">
+        <Row className="NavBarContainer">
+          <Col lg="3" className="NavBarlogoContainer">
+            <Link to="/">
+              <img style={{ height: '50px' }} src="/Images/Logo.png" alt="logo" />
+            </Link>
+          </Col>
+          <Col className="NavBarItems"></Col>
+          <Col lg="3">
+            <Button
+              className="NavBarButton"
+              onClick={() => {
+                history.push('/signup');
+              }}
+            >
+              Crear Cuenta
+            </Button>
+          </Col>
+        </Row>
+      </div>
+    </>
+  );
+};
+
 export default NavBar;
 
 /*

@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import { Col, Row, Container, Button, Input, Alert } from 'reactstrap';
+import { Col, Row, Container, Button, Input, Alert, Label } from 'reactstrap';
 
 import { Icon } from '@iconify/react';
+
 import emailIcon from '@iconify-icons/carbon/email';
+
 import googleIcon from '@iconify-icons/logos/google-icon';
 import facebookIcon from '@iconify-icons/logos/facebook';
 
-import EmptyLayout from '../Layouts/EmptyLayout';
-
 import { validateEmail, validatePassword } from '../Helpers/Tools';
+
+import EmptyLayout from '../Layouts/EmptyLayout';
+import { NavBarLogin } from '../Components/NavBar';
 
 import '../Styles/Login.css';
 
@@ -69,6 +72,7 @@ const Login = () => {
 
   return (
     <EmptyLayout>
+      <NavBarLogin />
       <Container className="Login" fluid>
         <Container className="LoginContainer">
           <Row>
@@ -83,20 +87,24 @@ const Login = () => {
               <div className="LoginInputsContainer">
                 <Row className="LoginInputContainer">
                   <Col>
-                    <Input
-                      className="LoginInput"
-                      placeholder="Correo electrónico"
-                      name="email"
-                      id="email"
-                      value={email}
-                      valid={validEmail}
-                      invalid={invalidEmail}
-                      onChange={(event) => changeValue(event.currentTarget)}
-                    />
+                    <Label className="LoginLabel">Correo electrónico</Label>
+                    <div className="input-group mb-3">
+                      <Input
+                        className="LoginInput"
+                        placeholder="juanperez@edurockets.com"
+                        name="email"
+                        id="email"
+                        value={email}
+                        valid={validEmail}
+                        invalid={invalidEmail}
+                        onChange={(event) => changeValue(event.currentTarget)}
+                      />
+                    </div>
                   </Col>
                 </Row>
                 <Row className="LoginInputContainer">
                   <Col>
+                    <Label className="LoginLabel">Contraseña</Label>
                     <Input
                       className="LoginInput"
                       placeholder="Contraseña"
