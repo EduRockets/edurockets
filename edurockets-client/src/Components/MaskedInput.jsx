@@ -16,9 +16,9 @@ const MaskedInput = (props) => {
       placeholder={placeholder}
       valid={valid}
       invalid={invalid}
-      render={(ref, prs) => <Input className={className} innerRef={ref} {...props} />}
+      render={(ref, prs) => <Input className={className} innerRef={ref} {...prs} />}
     />
   );
 };
 
-export default MaskedFormInput;
+export default MaskedInput;

@@ -6,5 +6,5 @@ export const validateEmail = (email) => {
 };
 
 export const validatePassword = (password) => {
-  return /(?=.{8,})/.test(password);
+  return /(?=.{7,})/.test(password);
 };

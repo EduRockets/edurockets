@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { Col, Row, Container, Button, Input, Alert } from 'reactstrap';
 
-import EmptyLayout from '../Layouts/EmptyLayout';
-
-import { Icon, InlineIcon } from '@iconify/react';
+import { Icon } from '@iconify/react';
 import emailIcon from '@iconify-icons/carbon/email';
 import googleIcon from '@iconify-icons/logos/google-icon';
 import facebookIcon from '@iconify-icons/logos/facebook';
+
+import EmptyLayout from '../Layouts/EmptyLayout';
 
 import { validateEmail, validatePassword } from '../Helpers/Tools';
 
@@ -18,6 +18,12 @@ const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // States para validación\
+  const [validEmail, setValidEmail] = useState(null);
+  const [invalidEmail, setInvalidEmail] = useState(null);
+  const [validPassword, setValidPassword] = useState(null);
+  const [invalidPassword, setInvalidPassword] = useState(null);
 
   useEffect(() => {
     if (localStorage.getItem('authToken')) {
@@ -36,15 +42,26 @@ const Login = () => {
   };
 
   const changeValue = (event) => {
-    const emptyVal = event.value === '';
     switch (event.name) {
       case 'email':
         setEmail(event.value);
-
+        if (validateEmail(email)) {
+          setValidEmail(true);
+          setInvalidEmail(false);
+        } else {
+          setValidEmail(false);
+          setInvalidEmail(true);
+        }
         break;
       case 'password':
         setPassword(event.value);
-
+        if (validatePassword(password)) {
+          setValidPassword(true);
+          setInvalidPassword(false);
+        } else {
+          setValidPassword(false);
+          setInvalidPassword(true);
+        }
         break;
       default:
     }
@@ -67,20 +84,29 @@ const Login = () => {
                 <Row className="LoginInputContainer">
                   <Col>
                     <Input
-                      name="email"
-                      id="email"
                       className="LoginInput"
                       placeholder="Correo electrónico"
+                      name="email"
+                      id="email"
+                      value={email}
+                      valid={validEmail}
+                      invalid={invalidEmail}
+                      onChange={(event) => changeValue(event.currentTarget)}
                     />
                   </Col>
                 </Row>
                 <Row className="LoginInputContainer">
                   <Col>
                     <Input
-                      name="password"
-                      id="password"
                       className="LoginInput"
                       placeholder="Contraseña"
+                      name="password"
+                      id="password"
+                      type="password"
+                      value={password}
+                      valid={validPassword}
+                      invalid={invalidPassword}
+                      onChange={(event) => changeValue(event.currentTarget)}
                     />
                   </Col>
                 </Row>
