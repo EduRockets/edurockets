@@ -7,20 +7,21 @@ const Checked = () => {};
 
 const CheckBox = ({ value, label }) => {
   const [checked, setChecked] = useState();
+
   const toggleChange = () => {
     setChecked(!checked);
   };
+
   return (
-    <div className="CheckBoxContainer">
+    <div className="CheckBoxContainer" onClick={toggleChange}>
       <div className="CheckBox">
         <Input
           type="checkbox"
           clasname="CheckBoxChecked"
-          defaultChecked={checked}
-          onChange={toggleChange}
+          checked={checked}
+          onClick={toggleChange}
         />
       </div>
-      <div className="CheckBoxSpacer" />
       <div className="CheckBoxLabel">{label}</div>
     </div>
   );

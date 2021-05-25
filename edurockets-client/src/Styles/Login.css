@@ -58,14 +58,13 @@
 .LoginInput {
   background-color:#EBEBED;
 
-  border-radius: 20px;
+  border-radius: 25px;
   border-width: 0px;
  
   color: #999999;
   font-size: 14px;
 
   height: 40px;
-  
 }
 
 .OlvidastePassword {

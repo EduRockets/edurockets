@@ -4,13 +4,32 @@
   display: flex;
 
   align-items: center;
-  justify-content: center;
   
   padding: 8px;
   margin: 10px 0;
 
   border: 0px solid;
   border-radius: 25px;
+
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  background-color: #EBEBED;
+  border-radius: 100% !important;
+
+  border-color: #69488E;
+  border-width: 2px;
+
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #69488E;
+  border-radius: 100%;
+
+  border-color: #69488E;
+  cursor: pointer;
 }
 
 .CheckBoxChecked {
@@ -18,15 +37,10 @@
 }
 
 .CheckBox {
-  flex: auto;
-}
-
-.CheckBoxSpacer{
-  flex: 1;
+  margin-right: 20px;
 }
 
 .CheckBoxLabel {
-  flex: auto;
 
   font-size: 12px;
   font-weight: bold;

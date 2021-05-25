@@ -14,8 +14,8 @@ import {
 
 import CheckBox from '../../Components/CheckBox';
 
-import './Styles/SignUpForm.css';
 import 'react-datepicker/dist/react-datepicker.css';
+import './Styles/SignUpForm.css';
 
 const StudentSignForm = (props) => {
   const { paso, setPaso } = props;
@@ -23,31 +23,21 @@ const StudentSignForm = (props) => {
   const [step, setStep] = useState(0);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  // Campos
+  // Form States
   const [birthday, setBirthday] = useState(null);
-  const [degree, setDegree] = useState('');
+  const [degree, setDegree] = useState(null);
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
-  const changeValue = (event) => {
-    switch (event.name) {
-      case 'degree':
-        setDegree(event.value);
-        break;
-      default:
-    }
-  };
-  // States para fomrs
-
   const nextStep = () => {
     setStep((oldStep) => (oldStep < 1 ? oldStep + 1 : oldStep));
-    setPaso(step + 1);
+    setPaso((oldStep) => (oldStep < 1 ? oldStep + 1 : oldStep));
 
     console.log('Formholder: ', paso, 'Form: ', step);
   };
   const prevStep = () => {
     setStep((oldStep) => (oldStep > 0 ? oldStep - 1 : oldStep));
-    setPaso(step - 1);
+    setPaso((oldStep) => (oldStep > 0 ? oldStep - 1 : oldStep));
 
     console.log('Formholder: ', paso, 'Form: ', step);
   };
@@ -60,23 +50,23 @@ const StudentSignForm = (props) => {
             <Row>
               <Col>
                 <Label className="SignUpInputLabel">Nombres</Label>
-                <Input className="SignUpInput" placeholder="Raúl" />
+                <Input className="SignUpInput" />
               </Col>
             </Row>
             <Row>
               <Col>
                 <Label className="SignUpInputLabel">Apellidos</Label>
-                <Input className="SignUpInput" placeholder="López" />
+                <Input className="SignUpInput" />
               </Col>
             </Row>
             <Row>
               <Col>
                 <Label className="SignUpInputLabel">País</Label>
-                <Input className="SignUpInput" placeholder="País" />
+                <Input className="SignUpInput" />
               </Col>
               <Col>
                 <Label className="SignUpInputLabel">Ciudad</Label>
-                <Input className="SignUpInput" placeholder="Ciudad" />
+                <Input className="SignUpInput" />
               </Col>
             </Row>
             <Row>
@@ -94,7 +84,7 @@ const StudentSignForm = (props) => {
             <Row>
               <Col>
                 <Label className="SignUpInputLabel">Escuela donde estudias</Label>
-                <Input className="SignUpInput" placeholder="Instituto" />
+                <Input className="SignUpInput" />
               </Col>
             </Row>
           </div>
@@ -112,14 +102,22 @@ const StudentSignForm = (props) => {
                     className="SignUpDropdown"
                     caret
                   >
-                    Escoge un grado
+                    {degree ? degree : 'selecciona un grado académico'}
                   </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem>Titulo o egresado de colegio</DropdownItem>
-                    <DropdownItem>Tecnico especializado</DropdownItem>
-                    <DropdownItem>Licenciatura o ingeniería</DropdownItem>
-                    <DropdownItem>Maestría/Postgrado</DropdownItem>
-                    <DropdownItem>Doctorado</DropdownItem>
+                  <DropdownMenu className="SignUpDropdownText">
+                    <DropdownItem onClick={() => setDegree('Titulo o egresado de colegio')}>
+                      Titulo o egresado de colegio
+                    </DropdownItem>
+                    <DropdownItem onClick={() => setDegree('Tecnico especializado')}>
+                      Tecnico especializado
+                    </DropdownItem>
+                    <DropdownItem onClick={() => setDegree('Licenciatura o ingeniería')}>
+                      Licenciatura o ingeniería
+                    </DropdownItem>
+                    <DropdownItem onClick={() => setDegree('Maestría/Postgrado')}>
+                      Maestría/Postgrado
+                    </DropdownItem>
+                    <DropdownItem onClick={() => setDegree('Doctorado')}>Doctorado</DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
               </Col>
@@ -172,13 +170,25 @@ const StudentSignForm = (props) => {
     <div className="SignUpForm">
       {renderByStep()}
       <div className="SignUpButtonContainer">
-        <Button className="SignUpButton" onClick={prevStep}>
-          Antes
-        </Button>
-        <div className="SignUpButtonSpacer" />
-        <Button className="SignUpButton" onClick={nextStep}>
-          Siguiente
-        </Button>
+        {step == 0 ? (
+          <>
+            <div className="SignUpButtonSpacer" />
+            <Button className="SignUpButton" onClick={nextStep}>
+              Siguiente
+            </Button>
+            <div className="SignUpButtonSpacer" />
+          </>
+        ) : (
+          <>
+            <Button className="SignUpButton" onClick={prevStep}>
+              Antes
+            </Button>
+            <div className="SignUpButtonSpacer" />
+            <Button className="SignUpButtonCreateAccount" onClick={''}>
+              Crear cuenta
+            </Button>
+          </>
+        )}
       </div>
     </div>
   );
