@@ -20,8 +20,23 @@
   margin-bottom: 20px;
 }
 
+.SignUpDatePicker {
+  background-color: #EBEBED;
+
+  border: 0px solid;
+  border-radius: 25px;
+
+  padding: 5px 10px;
+  margin-bottom: 20px;
+
+  color: gray;
+}
+
 .SignUpDropdown {
   background-color: #EBEBED;
+
+  border: 0px solid;
+  border-radius: 25px;
 }
 
 .SignUpButtonContainer {

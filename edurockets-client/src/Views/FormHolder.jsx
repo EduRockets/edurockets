@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
 import EmptyLayout from '../Layouts/EmptyLayout';
 
 import '../Styles/FormHolder.css';
 
-const FormHolder = ({ form }) => {
+const FormHolder = ({ Form }) => {
+  const [paso, setPaso] = useState(0);
+
   return (
     <EmptyLayout>
-      <Container className="FormHolder" fluid>
+      <Container className={`FormHolder${paso > 0 ? ' FormHolderStep2' : ''}`} fluid>
         <Container className="FormHolderContainer">
           <Row>
-            <Col lg="4">
+            <Col lg="4" className="FormHolderText">
               <Row className="FormHolderWelcome">
                 <Col>¡Te damos la bienvenida!</Col>
               </Row>
@@ -25,9 +27,9 @@ const FormHolder = ({ form }) => {
                 </Col>
               </Row>
             </Col>
-            <Col lg="2" />
+            <Col />
             <Col lg="6" className="FormHolderForm">
-              {form()}
+              <Form setPaso={setPaso} paso={paso} />
             </Col>
           </Row>
         </Container>

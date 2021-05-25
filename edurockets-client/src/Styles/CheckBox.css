@@ -1,0 +1,33 @@
+.CheckBoxContainer {
+  background-color: #EBEBED;
+  
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  
+  padding: 8px;
+  margin: 10px 0;
+
+  border: 0px solid;
+  border-radius: 25px;
+}
+
+.CheckBoxChecked {
+  border-radius: 25px;
+}
+
+.CheckBox {
+  flex: auto;
+}
+
+.CheckBoxSpacer{
+  flex: 1;
+}
+
+.CheckBoxLabel {
+  flex: auto;
+
+  font-size: 12px;
+  font-weight: bold;
+}

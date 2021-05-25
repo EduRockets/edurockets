@@ -1,8 +1,18 @@
 .FormHolder {
-  background-color: #1F1646;
+  background-image: url('../Assets/Images/CreateUser-Background1.svg');
+  background-size: cover;
+  background-position: bottom;
 
   height: 100vh;
+
+  transition: 0.4s;
 } 
+
+.FormHolderStep2 {
+  background-image: url('../Assets/Images/CreateUser-Background2.svg');
+  background-size: cover;
+  background-position: bottom;
+}
 
 .FormHolderContainer {
   display: flex;
@@ -11,6 +21,10 @@
 
   align-items: center;
   justify-content: center;
+}
+
+.FormHolderText {
+  
 }
 
 .FormHolderWelcome {

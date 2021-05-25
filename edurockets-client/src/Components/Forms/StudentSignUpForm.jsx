@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import DatePicker from 'react-datepicker';
 import {
   Button,
   Row,
@@ -12,10 +12,19 @@ import {
   Label,
 } from 'reactstrap';
 
+import CheckBox from '../../Components/CheckBox';
+
 import './Styles/SignUpForm.css';
-const StudentSignForm = () => {
+import 'react-datepicker/dist/react-datepicker.css';
+
+const StudentSignForm = (props) => {
+  const { paso, setPaso } = props;
+
   const [step, setStep] = useState(0);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  // Campos
+  const [birthday, setBirthday] = useState(null);
   const [degree, setDegree] = useState('');
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
@@ -30,8 +39,18 @@ const StudentSignForm = () => {
   };
   // States para fomrs
 
-  const nextStep = () => setStep((oldStep) => (oldStep < 1 ? oldStep + 1 : oldStep));
-  const prevStep = () => setStep((oldStep) => (oldStep > 0 ? oldStep - 1 : oldStep));
+  const nextStep = () => {
+    setStep((oldStep) => (oldStep < 1 ? oldStep + 1 : oldStep));
+    setPaso(step + 1);
+
+    console.log('Formholder: ', paso, 'Form: ', step);
+  };
+  const prevStep = () => {
+    setStep((oldStep) => (oldStep > 0 ? oldStep - 1 : oldStep));
+    setPaso(step - 1);
+
+    console.log('Formholder: ', paso, 'Form: ', step);
+  };
 
   const renderByStep = () => {
     switch (step) {
@@ -63,7 +82,13 @@ const StudentSignForm = () => {
             <Row>
               <Col>
                 <Label className="SignUpInputLabel">Fecha de nacimiento</Label>
-                <Input className="SignUpInput" placeholder="dd/mm/yy" />
+                <div>
+                  <DatePicker
+                    className="SignUpDatePicker"
+                    selected={birthday}
+                    onChange={(date) => setBirthday(date)}
+                  />
+                </div>
               </Col>
             </Row>
             <Row>
@@ -84,7 +109,7 @@ const StudentSignForm = () => {
                   <DropdownToggle
                     name="degree"
                     onChange={(event) => changeValue(event.currentTarget)}
-                    className="SignUpInput"
+                    className="SignUpDropdown"
                     caret
                   >
                     Escoge un grado
@@ -99,11 +124,17 @@ const StudentSignForm = () => {
                 </Dropdown>
               </Col>
             </Row>
+
             <Row>
               <Col>
                 <Label className="SignUpInputLabel">
                   Selecciona los países de tu interés para estudiar un programa universitario
                 </Label>
+                <Row>
+                  <Col>
+                    <Input className="SignUpInput" />
+                  </Col>
+                </Row>
               </Col>
             </Row>
 
@@ -114,48 +145,18 @@ const StudentSignForm = () => {
                 </Label>
                 <Row>
                   <Col>
-                    <div>
-                      <Input type="checkbox" />
-                      <Label>Artes, Diseño y Arquitectura</Label>
-                    </div>
-                    <div>
-                      <Input type="checkbox" />
-                      <Label>Ciencias Sociales</Label>
-                    </div>
-                    <div>
-                      <Input type="checkbox" />
-                      <Label>Negocios, Administración y Economía</Label>
-                    </div>
-                    <div>
-                      <Input type="checkbox" />
-                      <Label>Salud y Medicina</Label>
-                    </div>
-                    <div>
-                      <Input type="checkbox" />
-                      <Label>Ingeniería y Tecnología</Label>
-                    </div>
+                    <CheckBox label="Artes, Diseño y Arquitectura" />
+                    <CheckBox label="Ciencias Sociales" />
+                    <CheckBox label="Negocios, Administración y Economía" />
+                    <CheckBox label="Salud y Medicina" />
+                    <CheckBox label="Ingeniería y Tecnología" />
                   </Col>
                   <Col>
-                    <div>
-                      <Input type="checkbox" />
-                      <Label>Ciencias Naturales y Matemáticas</Label>
-                    </div>
-                    <div>
-                      <Input type="checkbox" />
-                      <Label>Ciencias Computacionales</Label>
-                    </div>
-                    <div>
-                      <Input type="checkbox" />
-                      <Label>Derechos y Diplomacia</Label>
-                    </div>
-                    <div>
-                      <Input type="checkbox" />
-                      <Label>Agricultura y Alimentos</Label>
-                    </div>
-                    <div>
-                      <Input type="checkbox" />
-                      <Label>Turismo y Experiencias</Label>
-                    </div>
+                    <CheckBox label="Ciencias Naturales y Matemáticas" />
+                    <CheckBox label="Ciencias Computacionales" />
+                    <CheckBox label="Derechos y Diplomacia" />
+                    <CheckBox label="Agricultura y Alimentos" />
+                    <CheckBox label="Turismo y Experiencias" />
                   </Col>
                 </Row>
               </Col>

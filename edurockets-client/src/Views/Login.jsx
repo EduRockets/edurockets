@@ -4,8 +4,8 @@ import { Col, Row, Container, Button, Input, Alert, Label } from 'reactstrap';
 
 import { Icon } from '@iconify/react';
 
+import lockedIcon from '@iconify-icons/carbon/locked';
 import emailIcon from '@iconify-icons/carbon/email';
-
 import googleIcon from '@iconify-icons/logos/google-icon';
 import facebookIcon from '@iconify-icons/logos/facebook';
 

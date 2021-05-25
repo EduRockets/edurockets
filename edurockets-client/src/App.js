@@ -30,7 +30,7 @@ const App = () => {
         {/*Fomrs*/}
 
         <Route path="/signup/student">
-          <FormHolder form={StudentSignUpForm} />
+          <FormHolder Form={StudentSignUpForm} />
         </Route>
 
         <Route path="/professional/student"></Route>
