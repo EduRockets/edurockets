@@ -127,12 +127,12 @@ const Login = () => {
               </Row>
               <Row>
                 <Col>
-                  <Button className="IniciarSesionButton">Iniciar sesión</Button>
+                  <Button className="LoginButton">Iniciar sesión</Button>
                 </Col>
               </Row>
               <Row>
                 <Col>
-                  <Button className="IniciarSesionOtroButton">
+                  <Button className="LoginSocialButton">
                     <Icon icon={googleIcon} />
                     Con Google
                   </Button>
@@ -140,7 +140,7 @@ const Login = () => {
               </Row>
               <Row>
                 <Col>
-                  <Button className="IniciarSesionOtroButton">
+                  <Button className="LoginSocialButton">
                     <Icon icon={facebookIcon} /> Con Facebook
                   </Button>
                 </Col>

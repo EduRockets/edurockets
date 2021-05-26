@@ -18,7 +18,6 @@ const Landing = () => {
         <Container>
           <Row>
             <div className="DivWave" />
-
             <Col sm="12" lg="6">
               <Row>
                 <Col>
@@ -115,7 +114,7 @@ const Landing = () => {
               </Row>
               <Row>
                 <Col>
-                  <i style={{ fontSize: '20px' }}>
+                  <i style={{ fontSize: '1rem' }}>
                     Estás por graduarte del colegio <br /> y listo para convertirte en <br /> quien
                     deseas ser.
                   </i>
@@ -149,7 +148,7 @@ const Landing = () => {
               </Row>
               <Row>
                 <Col>
-                  <i style={{ fontSize: '20px' }}>
+                  <i style={{ fontSize: '1rem' }}>
                     Eres un profesional que busca <br /> de mejores oportunidades <br /> laborales y
                     académicas.
                   </i>

@@ -18,7 +18,7 @@ const Footer = () => (
           <Col lg="2">
             <img className="Isotipo" src="/Images/Isotipo.png" alt="edurockets" />
           </Col>
-          <Col lg="2">
+          <Col lg="3" className="TextContainer">
             <Row>
               <Col>
                 <Link className="TermFooter">Acerca de</Link>
@@ -40,7 +40,7 @@ const Footer = () => (
               </Col>
             </Row>
           </Col>
-          <Col lg="2">
+          <Col lg="3" className="TextContainer">
             <Row>
               <Col>
                 <Link className="TermFooter">Impacto</Link>
@@ -62,7 +62,7 @@ const Footer = () => (
               </Col>
             </Row>
           </Col>
-          <Col lg="2">
+          <Col lg="3" className="TextContainer">
             <Row>
               <Col>
                 <Link className="TermFooter">Comunidad de apoyo</Link>
@@ -84,8 +84,9 @@ const Footer = () => (
               </Col>
             </Row>
           </Col>
-          <Col lg="2" />
-          <Col lg="2">Banderas</Col>
+          <Col lg="1" className="TextContainer">
+            ...
+          </Col>
         </Row>
 
         <Row>
@@ -101,7 +102,7 @@ const Footer = () => (
             <Link className="TermFooter">Política de Seguridad</Link>
           </Col>
           <Col lg="3" />
-          <Col lg="3" className="SocialIconsContainer">
+          <Col lg="3">
             <Icon className="SocialIconFooter" icon={facebookIcon} />
             <Icon className="SocialIconFooter" icon={instagramIcon} />
             <Icon className="SocialIconFooter" icon={whatsappIcon} />

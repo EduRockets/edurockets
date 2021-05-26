@@ -17,7 +17,7 @@ import CheckBox from '../../Components/CheckBox';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Styles/SignUpForm.css';
 
-const StudentSignForm = (props) => {
+const StudentSignUpForm = (props) => {
   const { paso, setPaso } = props;
 
   const [step, setStep] = useState(0);
@@ -102,7 +102,7 @@ const StudentSignForm = (props) => {
                     className="SignUpDropdown"
                     caret
                   >
-                    {degree ? degree : 'selecciona un grado académico'}
+                    {degree ? degree : 'Selecciona un grado académico'}
                   </DropdownToggle>
                   <DropdownMenu className="SignUpDropdownText">
                     <DropdownItem onClick={() => setDegree('Titulo o egresado de colegio')}>
@@ -181,7 +181,7 @@ const StudentSignForm = (props) => {
         ) : (
           <>
             <Button className="SignUpButton" onClick={prevStep}>
-              Antes
+              Anterior
             </Button>
             <div className="SignUpButtonSpacer" />
             <Button className="SignUpButtonCreateAccount" onClick={''}>
@@ -194,4 +194,4 @@ const StudentSignForm = (props) => {
   );
 };
 
-export default StudentSignForm;
+export default StudentSignUpForm;

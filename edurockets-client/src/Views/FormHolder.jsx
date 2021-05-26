@@ -10,7 +10,12 @@ const FormHolder = ({ Form }) => {
 
   return (
     <EmptyLayout>
-      <Container className={`FormHolder${paso > 0 ? ' FormHolderStep2' : ''}`} fluid>
+      <Container
+        className={`FormHolder${
+          paso == 1 ? ' FormHolderStep2' : paso == 2 ? ' FormHolderStep3' : ''
+        }`}
+        fluid
+      >
         <Container className="FormHolderContainer">
           <Row>
             <Col lg="4" className="FormHolderText">

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation, Link } from 'react-router-dom';
-import { Col, Row, Navbar, NavbarBrand, Button } from 'reactstrap';
-
-import DivButton from '../Components/DivButton';
+import { Col, Row, Button } from 'reactstrap';
 
 import '../Styles/NavBar.css';
 
@@ -27,17 +25,26 @@ const NavBar = () => {
     <>
       <div className={`NavBar${solid ? ' NavBarSolid' : ''}`}>
         <Row className="NavBarContainer">
-          <Col lg="3" className="NavBarlogoContainer">
+          <Col lg="3">
             <Link to="/">
-              <img style={{ height: '50px' }} src="/Images/Logo.png" alt="logo" />
+              <img className="NavBarImage" src="/Images/Logo.png" alt="logo" />
             </Link>
           </Col>
-          <Col className="NavBarItems">
-            <Link className="NavBarItem">Inversión</Link>
-            <Link className="NavBarItem">Información de paises</Link>
-            <Link className="NavBarItem">Preguntas frecuentes</Link>
+          <Col lg="1" />
+          <Col lg="5">
+            <Row>
+              <Col>
+                <Link className="NavBarItem">Inversión</Link>
+              </Col>
+              <Col>
+                <Link className="NavBarItem">Información de paises</Link>
+              </Col>
+              <Col>
+                <Link className="NavBarItem">Preguntas frecuentes</Link>
+              </Col>
+            </Row>
           </Col>
-          <Col lg="3">
+          <Col>
             <Button
               className="NavBarButton"
               onClick={() => {

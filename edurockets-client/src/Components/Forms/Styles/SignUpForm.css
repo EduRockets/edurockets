@@ -17,6 +17,7 @@
   border-radius: 25px;
   border: 0px solid;
 
+  color: #999999;
   font-size: 14px;
 
   margin-bottom: 20px;
@@ -34,17 +35,22 @@
   color: gray;
 }
 
+/*Dropdown button*/
 .SignUpDropdown {
   background-color: #EBEBED;
 
   border: 0px solid;
   border-radius: 25px;
 
-  font-size: 12px;
-
   color: #000;
-
+  font-size: 12px;
+  
   margin-bottom: 20px;
+}
+
+.SignUpDropdown:hover {
+  background-color: #dfdfdf;
+  color: #000;
 }
 
 .SignUpDropdownText{
@@ -89,6 +95,7 @@
 
   background-color: #240b41;
   
+
   border-radius: 25px;
   border: 1px solid;
 
@@ -101,6 +108,14 @@
   background-color: #F81735;
   
   border: 1px solid;
+}
+
+.SignUpButtonCreateAccount:focus {
+  background-color: #240b41;
+  
+  border: 1px solid;
+
+  box-shadow: none;
 }
 
 .SignUpButtonSpacer {

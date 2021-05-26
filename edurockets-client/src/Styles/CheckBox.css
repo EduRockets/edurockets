@@ -26,9 +26,10 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
   background-color: #69488E;
-  border-radius: 100%;
 
+  border-radius: 100%;
   border-color: #69488E;
+  
   cursor: pointer;
 }
 
@@ -43,5 +44,4 @@ input[type="checkbox"]:checked {
 .CheckBoxLabel {
 
   font-size: 12px;
-  font-weight: bold;
 }

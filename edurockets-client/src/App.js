@@ -12,8 +12,8 @@ import ProtectedRoute from './Components/ProtectedRoute';
 import UserContext from './Providers/UserContext';
 
 // Forms
-
 import StudentSignUpForm from './Components/Forms/StudentSignUpForm';
+import ProfessionalSignUpForm from './Components/Forms/ProfessionalSignUpForm';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -33,7 +33,9 @@ const App = () => {
           <FormHolder Form={StudentSignUpForm} />
         </Route>
 
-        <Route path="/professional/student"></Route>
+        <Route path="/signup/professional">
+          <FormHolder Form={ProfessionalSignUpForm} />
+        </Route>
 
         <ProtectedRoute exact path="/homepage" user={user} component={HomePage} />
         <Route exact path="/signup" component={SignUp} />

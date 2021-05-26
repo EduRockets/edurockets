@@ -2,15 +2,20 @@
   background-color: #1d1645;
   color: #F4F3F8;
 
-  font-size: 14px;
+  font-size: 1rem;
   padding: 20px 0;
+
+  text-align: center;
+  justify-content: center;
 }
 
 .Isotipo {
   width: 50%;
-  text-align: center;
 }
 
+.TextContainer {
+  text-align: left;
+}
 
 .Divider {
   background-color: #F4F3F8;
@@ -34,10 +39,6 @@
 
 .TermFooter:hover {
   color: #F81735;
-}
-
-.SocialIconsContainer {
-  text-align: end;
 }
 
 .SocialIconFooter {
