@@ -1,13 +1,12 @@
 .SignUpForm {
   background-color: #FDFDFD;
     
-  padding: 60px;
+  padding: 4rem;
 
   box-shadow: -2px -2px 14px 8px rgba(0, 0, 0, 0.2);
 }
 
 .SignUpInputLabel {
-  font-size: 14px;
   font-weight: bold;
 }
 
@@ -18,9 +17,9 @@
   border: 0px solid;
 
   color: #999999;
-  font-size: 14px;
+  font-size: 1rem;
 
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .SignUpDatePicker {
@@ -29,8 +28,8 @@
   border: 0px solid;
   border-radius: 25px;
 
-  padding: 5px 10px;
-  margin-bottom: 20px;
+  padding: 0.313rem 0.625rem;
+  margin-bottom: 1.25rem;
 
   color: gray;
 }
@@ -43,9 +42,8 @@
   border-radius: 25px;
 
   color: #000;
-  font-size: 12px;
   
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .SignUpDropdown:hover {
@@ -53,16 +51,11 @@
   color: #000;
 }
 
-.SignUpDropdownText{
-  font-size: 12px;
-}
-
-
 /*Buttons*/
 .SignUpButtonContainer {
   display: flex;
   
-  margin: 20px;
+  margin: 1.25rem;
 }
 
 .SignUpButton {
@@ -73,7 +66,6 @@
   border-radius: 25px;
   border: none;
 
-  font-size: 12px;
   font-weight: bold;
 }
 
@@ -95,11 +87,9 @@
 
   background-color: #240b41;
   
-
   border-radius: 25px;
   border: 1px solid;
 
-  font-size: 12px;
   font-weight: bold;
   color: #FDFDFD;
 }

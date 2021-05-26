@@ -248,7 +248,7 @@ const Landing = () => {
                 alt="beneficio 4"
               />
               <div style={{ margin: '0 20px' }}>
-                Aplica simultaneamente a las
+                Aplica simultáneamente a las
                 <br /> <b>mejores</b> universidades.
               </div>
               <img className="LandingNumberBenefitContainer" src="/Images/4.png" alt="numero 4" />
@@ -322,7 +322,7 @@ const Landing = () => {
                     50.000 USD anuales, <br />
                     400% superior{' '}
                   </b>{' '}
-                  al promedio de Latinoamerica.{' '}
+                  al promedio de Latinoamérica.{' '}
                 </Col>
               </Row>
             </Col>

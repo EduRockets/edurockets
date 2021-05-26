@@ -97,7 +97,7 @@ const Footer = () => (
 
         <Row className="DownSectionContainer">
           <Col lg="6">
-            <Link className="TermFooter">© 2021 Edu Rockets</Link>
+            <Link className="TermFooter">© 2021 EduRockets</Link>
             <Link className="TermFooter">Términos de uso</Link>
             <Link className="TermFooter">Política de Seguridad</Link>
           </Col>

@@ -2,22 +2,21 @@
   background-image: url('../Assets/Images/SignUp-Background.svg');
   background-position: bottom;
   background-size: cover;
-
-  width: 100%;
+  
+  align-items: center;
+  justify-content: center;
 }
 
-
 .SignUpContainer {
-  padding: 110px 0;
+  padding: 6.25rem 0;
 }
 
 .SignUpTitle {
   color: #F81735;
   
-  font-size: 46px;
+  font-size: 2.375rem;
   font-weight: bold;
-
   text-align: center;
 
-  margin-bottom: 60px;
+  margin: 1.25rem;
 }

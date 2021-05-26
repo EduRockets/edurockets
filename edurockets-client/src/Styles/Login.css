@@ -13,7 +13,7 @@
   background-color: #ECE9F2;
   background-size: cover;
 
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .LoginLeftContainer {
@@ -32,14 +32,14 @@
 }
 
 .LoginLabel {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold; 
 
   float: left ;
 }
 
 .LoginTitle {
-  font-size: 34px;
+  font-size: 32px;
   font-weight: bold;
   color: #1F1646;
 }
@@ -64,12 +64,11 @@
   border-width: 0px;
  
   color: #999999;
-  font-size: 14px;
-
+  font-size: 16px;
 }
 
 .OlvidastePassword {
-  font-size: 12px;
+  font-size: 14px;
   text-decoration: none; 
 }
 
@@ -80,7 +79,7 @@
 
   border-radius: 40px;
 
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
 
   padding: auto 10px;
@@ -95,7 +94,7 @@
 
   align-items: center;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
 
   color: #1F1646;
 
@@ -103,7 +102,7 @@
   border-width: 0px;
 
   margin: 10px;
-  padding: 10px 20px;
+  padding: auto 10px;
 
   width: 75%;
 
@@ -115,7 +114,7 @@
 }
 
 .CrearCuentaContainer {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .CrearCuentaContainerLink {

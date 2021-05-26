@@ -18,7 +18,7 @@ const FormHolder = ({ Form }) => {
       >
         <Container className="FormHolderContainer">
           <Row>
-            <Col lg="4" className="FormHolderText">
+            <Col lg="4">
               <Row className="FormHolderWelcome">
                 <Col>¡Te damos la bienvenida!</Col>
               </Row>

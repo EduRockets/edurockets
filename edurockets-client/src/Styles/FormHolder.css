@@ -32,16 +32,16 @@
 .FormHolderWelcome {
   color: #EBEBED;
 
-  font-size: 64px;
+  font-size: 4rem;
 }
 
 .FormHolderDivider {
   background-color: #EBEBED;
 
-  margin: 20px 0;
+  margin: 1.25rem 0;
   
-  height: 3px;
-  width: 100px;
+  height: 0.188rem;
+  width: 6.25rem;
 }
 
 .FormHolderDescrpiton {

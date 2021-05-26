@@ -88,18 +88,16 @@ const Login = () => {
                 <Row className="LoginInputContainer">
                   <Col>
                     <Label className="LoginLabel">Correo electrónico</Label>
-                    <div className="input-group mb-3">
-                      <Input
-                        className="LoginInput"
-                        placeholder="juanperez@edurockets.com"
-                        name="email"
-                        id="email"
-                        value={email}
-                        valid={validEmail}
-                        invalid={invalidEmail}
-                        onChange={(event) => changeValue(event.currentTarget)}
-                      />
-                    </div>
+                    <Input
+                      className="LoginInput"
+                      placeholder="juanperez@edurockets.com"
+                      name="email"
+                      id="email"
+                      value={email}
+                      valid={validEmail}
+                      invalid={invalidEmail}
+                      onChange={(event) => changeValue(event.currentTarget)}
+                    />
                   </Col>
                 </Row>
                 <Row className="LoginInputContainer">
@@ -120,7 +118,7 @@ const Login = () => {
                 </Row>
               </div>
               <Row>
-                <Col>Recuerdame</Col>
+                <Col>Recuérdame</Col>
                 <Col>
                   <Link className="OlvidastePassword">¿Olvidaste tu contraseña?</Link>
                 </Col>
