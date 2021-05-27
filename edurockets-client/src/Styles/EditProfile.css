@@ -12,6 +12,8 @@
   background-position: bottom;
   background-size: cover;
 
+  height: 40vh;
+
   padding: 4.5rem;
 }
 
@@ -30,6 +32,7 @@
 
   font-weight: bold;
 
+  margin: 1.25rem;
   padding: 0.625rem 1.125rem;
 }
 
@@ -47,6 +50,7 @@
   font-size: 2rem;
   font-weight: 600;
 
+  margin-top: 4rem;
 }
 
 .EditProfileLabel {
@@ -71,7 +75,7 @@
 .EditProfileButtonContainer {
   display: flex;
   justify-content: space-around;
-  margin: 3.25rem;
+  margin: 4rem;
 }
 
 .EditPictureCancelButton {
@@ -110,4 +114,9 @@
 
   color: #69488E;
   border-color: #69488E;
+}
+
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }

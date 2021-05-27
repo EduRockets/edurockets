@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Avatar from 'react-avatar';
 
 import { Container, Row, Col, Button } from 'reactstrap';
 import EmptyLayout from '../Layouts/EmptyLayout';
 
-import { Icon } from '@iconify/react';
-import notificationIcon from '@iconify-icons/mi/notification';
-
 import SearchBar from '../Components/SearchBar';
 import CardSchoolarShip from '../Components/CardSchoolarShip';
+import DivButton from '../Components/DivButton';
+
+import notificationIcon from '../Assets/Icons/notification.svg';
 
 import '../Styles/Profile.css';
 
@@ -18,6 +18,16 @@ const Profile = () => {
 
   const [label, setLabel] = useState('Aplicaciones en curso');
   const [section, setSection] = useState();
+
+  const user = {
+    names: 'Jane',
+    lastNames: 'Doe',
+    birthday: '',
+    language: 'Español',
+    country: 'Honduras',
+    residenceCountry: 'USA',
+    phone: '+504 95447780',
+  };
 
   const aplications = [
     {
@@ -77,7 +87,7 @@ const Profile = () => {
       <Container className="Profile" fluid>
         <div className="ProfileBanner">
           <Container>
-            <Row className="ProfileActionsContainer">
+            <Row>
               <Col lg="10" />
               <Col>
                 <Button
@@ -89,20 +99,26 @@ const Profile = () => {
                   Editar
                 </Button>
               </Col>
-              <Col>
-                <Icon className="ProfileIcon" icon={notificationIcon} />
+              <Col className="ProfileIconContainer">
+                <DivButton
+                  action={() => {
+                    console.log('olo');
+                  }}
+                >
+                  <img className="ProfileIcon" alt="notification" src={notificationIcon} />
+                </DivButton>
               </Col>
             </Row>
             <Row>
-              <Col className="ProfileAvatarContainer">
+              <Col>
                 <Avatar size={150} round="100%" />
               </Col>
             </Row>
             <Row>
-              <Col className="ProfileName">Jane Doe</Col>
+              <Col className="ProfileName">{`${user.names}  ${user.lastNames}`}</Col>
             </Row>
             <Row>
-              <Col className="ProfileCountry">Honduras</Col>
+              <Col className="ProfileCountry">{user.country}</Col>
             </Row>
             <Row>
               <Col>
@@ -115,51 +131,61 @@ const Profile = () => {
         <Container>
           <div className="ProfileButtonsContainer">
             <div className="ProfileLabelAplication">{label}</div>
-            <div>
-              <Button
-                className="ProfileButtonAplication"
-                onClick={() => {
+            <div className="ProfileButtonAplicationContainer">
+              <DivButton
+                className={`ProfileButtonAplication${
+                  label === 'Aplicaciones en curso' ? ' Background' : ''
+                }`}
+                action={() => {
                   setLabel('Aplicaciones en curso');
                 }}
               >
                 Aplicaciones en curso
-              </Button>
-              <Button
-                className="ProfileButtonAplication"
-                onClick={() => {
+              </DivButton>
+              <DivButton
+                className={`ProfileButtonAplication${
+                  label === 'Aplicaciones guardadas' ? ' Background' : ''
+                }`}
+                action={() => {
                   setLabel('Aplicaciones guardadas');
                 }}
               >
                 Aplicaciones guardadas
-              </Button>
-              <Button
-                className="ProfileButtonAplication"
-                onClick={() => {
+              </DivButton>
+              <DivButton
+                className={`ProfileButtonAplication${
+                  label === 'Aplicaciones aceptadas' ? ' Background' : ''
+                }`}
+                action={() => {
                   setLabel('Aplicaciones aceptadas');
                 }}
               >
                 Aplicaciones aceptadas
-              </Button>
-              <Button
-                className="ProfileButtonAplication"
-                onClick={() => {
+              </DivButton>
+              <DivButton
+                className={`ProfileButtonAplication${
+                  label === 'Perfil de aptitudes e intereses' ? ' Background' : ''
+                }`}
+                action={() => {
                   setLabel('Perfil de aptitudes e intereses');
                 }}
               >
                 Perfil de aptitudes e intereses
-              </Button>
+              </DivButton>
             </div>
           </div>
 
-          {aplications.map((aplication) => {
-            <>
-              <CardSchoolarShip
-                title={aplication.name}
-                institute={aplication.institute}
-                status={aplication.status}
-              />
-            </>;
-          })}
+          <Row>
+            {aplications.map((aplication) => {
+              <Col>
+                <CardSchoolarShip
+                  title={aplication.name}
+                  institute={aplication.institute}
+                  status={aplication.status}
+                />
+              </Col>;
+            })}
+          </Row>
         </Container>
       </Container>
     </EmptyLayout>

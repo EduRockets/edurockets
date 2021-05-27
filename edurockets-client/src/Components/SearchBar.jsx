@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Col, Row, List } from 'reactstrap';
 
-import { Icon, InlineIcon } from '@iconify/react';
+import { Icon } from '@iconify/react';
 import searchIcon from '@iconify-icons/bi/search';
 
 import DivButton from '../Components/DivButton';
