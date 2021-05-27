@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Avatar from 'react-avatar';
 import { Container, Row, Col, Button, Label, Input } from 'reactstrap';
 import EmptyLayout from '../Layouts/EmptyLayout';
 
+import MaskedInput from '../Components/MaskedInput';
+
 import '../Styles/EditProfile.css';
 
 const EditProfile = () => {
+  const history = useHistory();
+
   const [name, setName] = useState();
   const [lastName, setLastName] = useState();
   const [birthday, setBirthday] = useState();
@@ -14,10 +19,31 @@ const EditProfile = () => {
   const [state, setState] = useState();
   const [phone, setPhone] = useState();
 
+  const user = {
+    names: 'Jane',
+    lastNames: 'Doe',
+    birthday: '',
+    language: 'Ingles',
+    country: 'Honduras',
+    residenceCountry: 'USA',
+    phone: '(504) 9544 7780',
+  };
+
+  const changeValue = (event) => {
+    const emptyValue = event.value === '';
+    switch (event.name) {
+      case phone:
+        setPhone(event.value);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <EmptyLayout>
-      <Container className="Profile" fluid>
-        <div className="ProfileBanner">
+      <Container className="EditProfile" fluid>
+        <div className="EditProfileBanner">
           <Container>
             <Row>
               <Col className="ProfileAvatarContainer">
@@ -42,13 +68,13 @@ const EditProfile = () => {
               <Row>
                 <Col>
                   <Label className="EditProfileLabel">Nombres</Label>
-                  <Input className="EditProfileInput" />
+                  <Input value={user.names} className="EditProfileInput" />
                 </Col>
               </Row>
               <Row>
                 <Col>
                   <Label className="EditProfileLabel">Apellidos</Label>
-                  <Input className="EditProfileInput" />
+                  <Input value={user.lastNames} className="EditProfileInput" />
                 </Col>
               </Row>
               <Row>
@@ -58,27 +84,68 @@ const EditProfile = () => {
                 </Col>
                 <Col>
                   <Label className="EditProfileLabel">Lengua materna</Label>
-                  <Input className="EditProfileInput" />
+                  <select value={user.language} className="EditProfileSelect">
+                    <option value="Español">Español</option>
+                    <option value="Ingles">Ingles</option>
+                    <option value="Portugués">Portugués</option>
+                  </select>
                 </Col>
               </Row>
               <Row>
                 <Col>
                   <Label className="EditProfileLabel">País de origen</Label>
-                  <Input className="EditProfileInput" />
+                  <select value={user.country} className="EditProfileSelect">
+                    <option value="Honduras">Honduras</option>
+                    <option value="Costa Rica">Costa Rica</option>
+                  </select>
                 </Col>
                 <Col>
                   <Label className="EditProfileLabel">País de residencia</Label>
-                  <Input className="EditProfileInput" />
+                  <select value={user.country} className="EditProfileSelect">
+                    <option value="Honduras">Honduras</option>
+                    <option value="Costa Rica">Costa Rica</option>
+                  </select>
                 </Col>
               </Row>
               <Row>
                 <Col>
                   <Label className="EditProfileLabel">Número de celular</Label>
-                  <Input className="EditProfileInput" />
+                  <Input className="EditProfileInput" placeholder={user.phone} />
+                  {/*<MaskedInput
+                    mask={[
+                      '(',
+                      /\d/,
+                      /\d/,
+                      /\d/,
+                      ')',
+                      ' ',
+                      /\d/,
+                      /\d/,
+                      /\d/,
+                      /\d/,
+                      ' ',
+                      /\d/,
+                      /\d/,
+                      /\d/,
+                      /\d/,
+                    ]}
+                    className="EditProfileInput"
+                    name="phone"
+                    id="phone"
+                    value={user.phone}
+                    onChange={(event) => changeValue(event.currentTarget)}
+                  />*/}
                 </Col>
               </Row>
               <div className="EditProfileButtonContainer">
-                <Button className="EditPictureCancelButton">Cancelar</Button>
+                <Button
+                  className="EditPictureCancelButton"
+                  onClick={() => {
+                    history.push('/profile');
+                  }}
+                >
+                  Cancelar
+                </Button>
                 <Button className="EditProfileSaveButton">Guardar cambios</Button>
               </div>
             </Col>

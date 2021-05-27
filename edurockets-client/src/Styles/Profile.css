@@ -3,12 +3,18 @@
   align-items: center;
 
   text-align: center;
+
+  padding: 0;
 }
 
 .ProfileBanner {
   background-image: url('../Assets/Images/Profile-Banner.png');
   background-position: bottom;
   background-size: cover;
+}
+
+.ProfileContainer {
+  padding: 1.5rem;
 }
 
 .ProfileButton {

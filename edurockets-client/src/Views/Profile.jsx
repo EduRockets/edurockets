@@ -82,12 +82,127 @@ const Profile = () => {
     },
   ];
 
+  const renderByState = () => {
+    switch (label) {
+      case 'Aplicaciones en curso':
+        return (
+          <Row>
+            <Col lg="4">
+              <CardSchoolarShip
+                title="Digital Marketing Management"
+                institute="UC Berkeley Global"
+                status="En curso"
+              />
+            </Col>
+            <Col lg="4">
+              <CardSchoolarShip
+                title="Digital Marketing Management"
+                institute="UC Berkeley Global"
+                status="En curso"
+              />
+            </Col>
+            <Col lg="4">
+              <CardSchoolarShip
+                title="Digital Marketing Management"
+                institute="UC Berkeley Global"
+                status="En curso"
+              />
+            </Col>
+            <Col lg="4">
+              <CardSchoolarShip
+                title="Digital Marketing Management"
+                institute="UC Berkeley Global"
+                status="En curso"
+              />
+            </Col>
+          </Row>
+        );
+
+      case 'Aplicaciones guardadas':
+        return (
+          <Row>
+            <Col lg="4">
+              <CardSchoolarShip
+                title="Digital Marketing Management"
+                institute="UC Berkeley Global"
+                status="En curso"
+              />
+            </Col>
+            <Col lg="4">
+              <CardSchoolarShip
+                title="Digital Marketing Management"
+                institute="UC Berkeley Global"
+                status="En curso"
+              />
+            </Col>
+            <Col lg="4">
+              <CardSchoolarShip
+                title="Digital Marketing Management"
+                institute="UC Berkeley Global"
+                status="En curso"
+              />
+            </Col>
+            <Col lg="4">
+              <CardSchoolarShip
+                title="Digital Marketing Management"
+                institute="UC Berkeley Global"
+                status="En curso"
+              />
+            </Col>
+            <Col lg="4">
+              <CardSchoolarShip
+                title="Digital Marketing Management"
+                institute="UC Berkeley Global"
+                status="En curso"
+              />
+            </Col>
+            <Col lg="4">
+              <CardSchoolarShip
+                title="Digital Marketing Management"
+                institute="UC Berkeley Global"
+                status="En curso"
+              />
+            </Col>
+            <Col lg="4">
+              <CardSchoolarShip
+                title="Digital Marketing Management"
+                institute="UC Berkeley Global"
+                status="En curso"
+              />
+            </Col>
+          </Row>
+        );
+
+      case 'Aplicaciones aceptadas':
+        return (
+          <Row>
+            <Col lg="4">
+              <CardSchoolarShip
+                title="Digital Marketing Management"
+                institute="UC Berkeley Global"
+                status="En curso"
+              />
+            </Col>
+            <Col lg="4">
+              <CardSchoolarShip
+                title="Digital Marketing Management"
+                institute="UC Berkeley Global"
+                status="En curso"
+              />
+            </Col>
+          </Row>
+        );
+      default:
+        break;
+    }
+  };
+
   return (
     <EmptyLayout>
       <Container className="Profile" fluid>
         <div className="ProfileBanner">
           <Container>
-            <Row>
+            <Row className="ProfileContainer">
               <Col lg="10" />
               <Col>
                 <Button
@@ -175,7 +290,7 @@ const Profile = () => {
             </div>
           </div>
 
-          <Row>
+          {/* <Row>
             {aplications.map((aplication) => {
               <Col>
                 <CardSchoolarShip
@@ -185,7 +300,8 @@ const Profile = () => {
                 />
               </Col>;
             })}
-          </Row>
+          </Row> */}
+          {renderByState()}
         </Container>
       </Container>
     </EmptyLayout>

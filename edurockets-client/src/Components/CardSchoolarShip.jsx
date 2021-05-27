@@ -12,7 +12,7 @@ const CardSchoolarShip = ({ title, institute, status }) => {
         <CardImg
           top
           width="100%"
-          src="https://i.pinimg.com/originals/f3/03/60/f303601a76f2f0e17c492ccd871be275.jpg"
+          src="https://images.theconversation.com/files/3911/original/princeton.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip"
           alt="Image"
         />
         <CardBody>
