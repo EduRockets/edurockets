@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SignUp from './Views/SignUp';
 import Login from './Views/Login';
 import Landing from './Views/Landing';
+import Profile from './Views/Profile';
+import EditProfile from './Views/EditProfile';
 import Construction from './Views/Construction';
 import HomePage from './Views/HomePage';
 import ProtectedRoute from './Components/ProtectedRoute';
@@ -25,6 +27,8 @@ const App = () => {
         <ProtectedRoute exact path="/homepage" user={user} component={HomePage} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/editprofile" component={EditProfile} />
         <Route exact path="/" component={Landing} />
       </UserContext.Provider>
     </Router>

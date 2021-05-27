@@ -1,0 +1,32 @@
+.CardSchoolarShip {
+
+  border-radius: 1.5rem;
+  border-width: 0px;
+
+  box-shadow: -5px -5px 10px 2px #E0E0E0; 
+  
+  
+  text-align: left;
+
+  padding: 1.25rem;
+  margin: 1.625rem;
+
+  transition: 0.2s;
+}
+
+.CardSchoolarShip:hover{
+  transform: scale(1.1);
+}
+
+.CardTitle {
+  font-size:1rem;
+}
+
+.CardSubTitle {
+  font-weight: bold;
+}
+
+.CardStatus {
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+}
