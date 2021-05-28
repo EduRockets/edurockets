@@ -1,0 +1,49 @@
+.FormHolder {
+  background-image: url('../Assets/Images/CreateUser-Background1.svg');
+  background-size: cover;
+  background-position: bottom;
+
+  height: 100vh;
+
+  transition: 0.4s;
+} 
+
+.FormHolderStep2 {
+  background-image: url('../Assets/Images/CreateUser-Background2.svg');
+  background-size: cover;
+  background-position: bottom;
+}
+
+.FormHolderStep3 {
+  background-image: url('../Assets/Images/CreateUser-Background3.svg');
+  background-size: cover;
+  background-position: bottom;
+}
+
+.FormHolderContainer {
+  display: flex;
+
+  height: 100%;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.FormHolderWelcome {
+  color: #EBEBED;
+
+  font-size: 4rem;
+}
+
+.FormHolderDivider {
+  background-color: #EBEBED;
+
+  margin: 1.25rem 0;
+  
+  height: 0.188rem;
+  width: 6.25rem;
+}
+
+.FormHolderDescrpiton {
+  color: #EBEBED;
+}

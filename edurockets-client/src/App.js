@@ -6,9 +6,14 @@ import Login from './Views/Login';
 import Landing from './Views/Landing';
 import Construction from './Views/Construction';
 import HomePage from './Views/HomePage';
+import FormHolder from './Views/FormHolder';
 import ProtectedRoute from './Components/ProtectedRoute';
 
 import UserContext from './Providers/UserContext';
+
+// Forms
+import StudentSignUpForm from './Components/Forms/StudentSignUpForm';
+import ProfessionalSignUpForm from './Components/Forms/ProfessionalSignUpForm';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -22,6 +27,16 @@ const App = () => {
     <Router>
       <Route exact path="/underConstruction" component={Construction} />
       <UserContext.Provider value={user}>
+        {/*Fomrs*/}
+
+        <Route path="/signup/student">
+          <FormHolder Form={StudentSignUpForm} />
+        </Route>
+
+        <Route path="/signup/professional">
+          <FormHolder Form={ProfessionalSignUpForm} />
+        </Route>
+
         <ProtectedRoute exact path="/homepage" user={user} component={HomePage} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={Login} />

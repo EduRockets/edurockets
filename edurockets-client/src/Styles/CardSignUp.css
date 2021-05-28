@@ -1,19 +1,17 @@
 .Card { 
-
   border-width: 0px;
   border-radius: 16px;
   box-shadow: -10px 10px 20px 1px #E0E0E0;  
 
-  width: 80%; /* Can be in percentage also. */
+  width: 80%;
   height: auto;
   margin: 0 auto;
-  padding: 30px ;
+  padding: 1.25rem ;
 
   text-align: center;
 }
 
 .CardImage {
-  
     text-align: center;
     display: block;
     
@@ -26,27 +24,25 @@
 }
 
 .CardTitle {
-
   color: #090446;
-  font-size: 20px;
+  font-size: 1.17em;
   font-weight: bold;
 
 }
 
 .CardText {
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 600;
-
 }
 
 .CardButton {
   background-color: #0000;
 
-  font-size: 16px;
+  font-size: 1em;
   font-weight: bold;
   color: #F81735;
 
-  padding: 10px 30px;
+  padding: 0.625rem 1.125rem;
 
   border-radius: 1px solid;
   border-color: #F81735;

@@ -18,7 +18,6 @@ const Landing = () => {
         <Container>
           <Row>
             <div className="DivWave" />
-
             <Col sm="12" lg="6">
               <Row>
                 <Col>
@@ -35,7 +34,7 @@ const Landing = () => {
                   <Button
                     className="LandingFirstButton"
                     onClick={() => {
-                      history.push('/signUp');
+                      history.push('/signup');
                     }}
                   >
                     Listo para alcanzar mis sueños
@@ -115,7 +114,7 @@ const Landing = () => {
               </Row>
               <Row>
                 <Col>
-                  <i style={{ fontSize: '20px' }}>
+                  <i style={{ fontSize: '1rem' }}>
                     Estás por graduarte del colegio <br /> y listo para convertirte en <br /> quien
                     deseas ser.
                   </i>
@@ -149,7 +148,7 @@ const Landing = () => {
               </Row>
               <Row>
                 <Col>
-                  <i style={{ fontSize: '20px' }}>
+                  <i style={{ fontSize: '1rem' }}>
                     Eres un profesional que busca <br /> de mejores oportunidades <br /> laborales y
                     académicas.
                   </i>
@@ -249,7 +248,7 @@ const Landing = () => {
                 alt="beneficio 4"
               />
               <div style={{ margin: '0 20px' }}>
-                Aplica simultaneamente a las
+                Aplica simultáneamente a las
                 <br /> <b>mejores</b> universidades.
               </div>
               <img className="LandingNumberBenefitContainer" src="/Images/4.png" alt="numero 4" />
@@ -323,7 +322,7 @@ const Landing = () => {
                     50.000 USD anuales, <br />
                     400% superior{' '}
                   </b>{' '}
-                  al promedio de Latinoamerica.{' '}
+                  al promedio de Latinoamérica.{' '}
                 </Col>
               </Row>
             </Col>
