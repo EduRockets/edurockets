@@ -8,6 +8,7 @@ import Profile from './Views/Profile';
 import EditProfile from './Views/EditProfile';
 import Construction from './Views/Construction';
 import HomePage from './Views/HomePage';
+import SearchPage from './Views/SearchPage';
 import FormHolder from './Views/FormHolder';
 import ProtectedRoute from './Components/ProtectedRoute';
 
@@ -39,7 +40,7 @@ const App = () => {
           <FormHolder Form={ProfessionalSignUpForm} />
         </Route>
 
-        <ProtectedRoute exact path="/homepage" user={user} component={HomePage} />
+        <ProtectedRoute exact path="/search" user={true} component={SearchPage} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/profile" component={Profile} />

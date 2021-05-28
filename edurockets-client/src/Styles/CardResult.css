@@ -1,0 +1,80 @@
+/* == MainContainer == */
+.CardResult {
+  border-radius: 20px;
+  
+  box-shadow: -1px -1px 8px 4px rgba(0, 0, 0, 0.1);
+
+  margin: 1.25rem
+}
+
+.CardResultContainer {
+  align-items: center;
+
+  padding: 1.25rem;
+}
+
+/* == Image == */
+.CardImage {
+  border-radius: 1rem;
+}
+
+
+/* == Descripción == */
+.CardTitle {
+  font-size: 1.17rem;
+  font-weight: bold;
+  color: #090446;
+
+  margin-bottom: 1rem;
+}
+
+.CardIconContainer {
+  justify-content: space-around;
+}
+
+.CardIcon {
+  width: 1rem;
+}
+
+.CardText {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #090446;
+
+  margin-bottom: 0.375rem;
+}
+
+
+/* == Divider == */
+.CardResultDivider {
+  background-color: #E3E3E5;
+
+  width: 2px;  
+  height: 75%;
+}
+
+
+/* == Buttons == */
+.CardButtonAplicar {
+  background-color: #090446;
+
+  font-weight: bold;
+  font-size: 0.8rem;
+  
+  border-radius: 0.625rem;
+
+  padding: auto 1.25rem ;
+}
+
+.CardButtonGuardar {
+  background-color: transparent;
+
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: #090446;
+
+  border: 2px solid;
+  border-color: #090446;
+  border-radius: 0.625rem;
+}
+

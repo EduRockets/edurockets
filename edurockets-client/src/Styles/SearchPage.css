@@ -1,0 +1,66 @@
+
+/* === First Button === */
+.SearchPageRobotContainer {
+  text-align: right;
+}
+
+/* === Filter === */
+.SearchPageFilterContainer {
+  border-radius: 0.25rem;
+  box-shadow: -1px -1px 8px 4px rgba(0, 0, 0, 0.1);
+
+  padding: 1.5rem;
+}
+
+.SearchPageFilterDivider {
+  background-color: #090446;
+  width: 100%;
+  height: 1px;
+
+  margin: 1rem 0;
+}
+
+.SearchPageFilterSelect {
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: #090446;
+
+  border-radius: 8px;
+  
+  padding: 0.25rem;
+
+  transition: 0.2s;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.SearchPageFilterIcon {
+  width: 0.75rem;
+  transition: 0.4s;
+}
+
+.SearchPageFilterItem {
+  font-size: 0.875rem;
+  color: #5E5E5E;
+
+  margin: 0.5rem;
+}
+
+.SearchPageFilterItem:hover {
+  color: #F81735;
+}
+
+/* === Button === */
+.SearchPageButtonContainer {
+  text-align: center;
+}
+
+.SearchPageButton {
+  background-color: #090446;
+
+  border-radius: 8px;
+
+  margin: 1rem;
+}
