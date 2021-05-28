@@ -1,0 +1,122 @@
+.Login {
+  background-color: #1F1646;
+
+  height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.LoginContainer {
+  background-color: #ECE9F2;
+  background-size: cover;
+
+  font-size: 16px;
+}
+
+.LoginLeftContainer {
+  background-image: url('../Assets/Images/Login-Background.svg');
+  background-size: cover;
+}
+
+.LoginRightContainer {
+  background-color: #FFFFFF;
+ 
+  box-shadow: -2px 0px 12px 8px rgba(0, 0, 0, 0.2);
+
+  text-align: center;
+
+  padding: 80px 50px;
+}
+
+.LoginLabel {
+  font-size: 16px;
+  font-weight: bold; 
+
+  float: left ;
+}
+
+.LoginTitle {
+  font-size: 32px;
+  font-weight: bold;
+  color: #1F1646;
+}
+
+.LoginSubTitle {
+  font-size: 14px;
+  color: #999999;
+}
+
+.LoginInputContainer {
+  margin: 20px;
+}
+
+.LoginInputsContainer {
+  margin: 40px 0 20px 0;
+}
+
+.LoginInput {
+  background-color:#EBEBED;
+
+  border-radius: 25px;
+  border-width: 0px;
+ 
+  color: #999999;
+  font-size: 16px;
+}
+
+.OlvidastePassword {
+  font-size: 14px;
+  text-decoration: none; 
+}
+
+.LoginButton {
+  background: linear-gradient(90deg, rgba(76,93,213,0.7952557732077206) 58%, rgba(105,72,142,0.8008580141040791) 100%);
+
+  align-items: center;
+
+  border-radius: 40px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  padding: auto 10px;
+  margin: 20px;
+
+  width: 75%;
+}
+
+.LoginSocialButton {
+  background-color: #FFFFFF;
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.2);
+
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+
+  color: #1F1646;
+
+  border-radius: 30px;
+  border-width: 0px;
+
+  margin: 10px;
+  padding: auto 10px;
+
+  width: 75%;
+
+  transition: 0.4s;
+}
+
+.LoginSocialButton:hover {
+  background-color: #1F1646;
+}
+
+.CrearCuentaContainer {
+  font-size: 14px;
+}
+
+.CrearCuentaContainerLink {
+  text-decoration: none;
+}

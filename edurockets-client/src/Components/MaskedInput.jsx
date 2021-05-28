@@ -4,6 +4,7 @@ import { default as MI } from 'react-text-mask';
 
 const MaskedInput = (props) => {
   const { mask, guide, name, id, onChange, value, placeholder, valid, invalid } = props;
+  
   return (
     <MI
       mask={mask}
