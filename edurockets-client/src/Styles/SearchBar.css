@@ -1,0 +1,71 @@
+.SearchBar {
+  
+}
+
+.SearchBarContainer {
+  background-color: #fdfdfd;
+
+  width: 100%;
+  height: 5rem;
+
+  border-radius: 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-around;
+
+  text-align: start;
+
+  margin: 1.25rem;
+
+  font-size: 0.875rem;
+}
+
+.SearchBarLabel {
+  font-weight: bold;
+  color: #1F1646;
+}
+
+.SearchBarButton, .Search {
+  border-radius: 2.25rem;
+  transition: 0.2s;
+}
+
+.SearchBarButton:hover {
+  transform: scale(1.1);
+}
+
+.Divider {
+  background-color: #e4e4e4;
+  width: 2px;
+  height: 60%;
+}
+
+/* ++++++++++++++ */
+
+.SearchBarPanelEnabled {
+  background-color: #fdfdfd;
+
+  
+  width: 100%;
+  height: 5rem;
+
+  border-radius: 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-around;
+
+  text-align: start;
+
+  margin: 1.25rem;
+
+  font-size: 0.875rem;
+}
+
+.SearchBarPanelDiseable {
+  display: none;
+}
+

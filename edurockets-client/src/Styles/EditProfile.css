@@ -1,0 +1,131 @@
+.EditProfile {
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  padding: 0;
+}
+
+.EditProfileBanner {
+  background-image: url('../Assets/Images/Profile-Banner.png');
+  background-position: bottom;
+  background-size: cover;
+
+  height: 40vh;
+
+  padding: 4.5rem;
+}
+
+.EditPictureButton {
+  background-color: #1d1645;
+
+  border-radius: 12px;
+  border: 2px solid;
+  border-color: #1d1645;
+
+  font-weight: bold;
+
+  margin: 1.25rem;
+  padding: 0.625rem 1.125rem;
+}
+
+.EditPictureButton:hover {
+  background-color: transparent;
+
+  color: #1d1645;
+
+  border: 2px solid;
+  border-color: #1d1645;
+}
+
+.EditProfileTitle {
+  color: #1d1645;
+  font-size: 2rem;
+  font-weight: 600;
+
+  margin-top: 4rem;
+}
+
+.EditProfileLabel {
+  font-size: 1rem;
+  font-weight: bold; 
+
+  float: left ;
+
+  margin-top: 2rem;
+}
+
+.EditProfileInput{
+  background-color:#EBEBED;
+
+  border-radius: 25px;
+  border-width: 0px;
+ 
+  color: #999999;
+  font-size: 1rem;
+}
+
+.EditProfileSelect {
+
+  background-color:#EBEBED;
+
+  border-radius: 25px;
+  border-width: 0px;
+ 
+  color: #999999;
+  font-size: 1rem;
+
+  width: 100%;
+  
+  padding: 0.5rem
+}
+
+.EditProfileButtonContainer {
+  display: flex;
+  justify-content: space-around;
+  margin: 4rem;
+}
+
+.EditPictureCancelButton {
+  background-color: #F81735;
+
+  border-radius: 12px;
+  border: 2px solid;
+  border-color: #F81735;
+
+  font-weight: bold;
+
+  padding: 0.625rem 1.125rem;
+}
+
+.EditPictureCancelButton:hover {
+  background-color: transparent;
+
+  color: #F81735;
+  border-color: #F81735;
+}
+
+.EditProfileSaveButton {
+  background-color: #69488E;
+
+  border-radius: 12px;
+  border: 2px solid;
+  border-color: #69488E;
+
+  font-weight: bold;
+
+  padding: 0.625rem 1.125rem;
+}
+
+.EditProfileSaveButton:hover {
+  background-color: transparent;
+
+  color: #69488E;
+  border-color: #69488E;
+}
+
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

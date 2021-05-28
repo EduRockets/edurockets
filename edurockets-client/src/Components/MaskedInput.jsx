@@ -1,10 +1,10 @@
 import React from 'react';
 import { Input } from 'reactstrap';
-import { deafult as MI } from 'react-text-mask';
+import { default as MI } from 'react-text-mask';
 
 const MaskedInput = (props) => {
-  const { mask, guide, name, id, onChange, value, placeholder, valid, invalid, className } = props;
-
+  const { mask, guide, name, id, onChange, value, placeholder, valid, invalid } = props;
+  
   return (
     <MI
       mask={mask}
@@ -16,7 +16,7 @@ const MaskedInput = (props) => {
       placeholder={placeholder}
       valid={valid}
       invalid={invalid}
-      render={(ref, prs) => <Input className={className} innerRef={ref} {...prs} />}
+      render={(ref, prps) => <Input innerRef={ref} {...prps} />}
     />
   );
 };

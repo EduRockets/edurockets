@@ -1,0 +1,111 @@
+.Profile {
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  padding: 0;
+}
+
+.ProfileBanner {
+  background-image: url('../Assets/Images/Profile-Banner.png');
+  background-position: bottom;
+  background-size: cover;
+}
+
+.ProfileContainer {
+  padding: 1.5rem;
+}
+
+.ProfileButton {
+  background-color: transparent;
+  color: #fdfdfd;
+
+  font-size: 0.75rem;
+
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #fdfdfd;
+
+  padding: 0.25em 1.25rem;
+}
+
+.ProfileButton:hover {
+  background-color: #fdfdfd;
+  color: #B4B8DB;
+
+  border-color: #fdfdfd;
+}
+
+.ProfileIconContainer {
+  display: flex;
+
+  align-items: center;
+}
+
+.ProfileIcon {
+  width: 1.5rem
+}
+
+.ProfileName {
+  font-size: 2rem;
+  color: #fdfdfd;
+}
+
+.ProfileCountry {
+  font-size: 1rem;
+  color: #fdfdfd;
+}
+
+
+ /* === Otra sección === */
+.ProfileButtonsContainer {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-around;
+
+  margin: 2rem;
+}
+
+.ProfileLabelAplication {
+  color: #1d1645;
+  font-weight: bold;
+  font-size: 1.25rem;
+
+  flex: 1;
+}
+
+.ProfileButtonAplicationContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.ProfileButtonAplication {
+  background-color: #fdfdfd;  
+
+  border: 1px solid;
+  border-radius: 20px;
+  border-color: #1d1645;
+
+  color: #1d1645;
+  font-size: 0.75rem;
+
+  padding: 0.5rem 1rem;
+  margin: 0 0.313rem;
+  
+  transition: 0.2s;
+}
+
+.Background {
+  background-color: #1d1645;
+
+  color: #fdfdfd;
+
+  border-color: #1d1645;
+}
+
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
