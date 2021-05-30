@@ -20,7 +20,7 @@ import corazonIcon from '../Assets/Icons/corazon.svg';
 
 import SchoolarshipImage from '../Assets/Temporal/SchoolarshipImage.png';
 
-import '../Styles/CardResult.css';
+import './Styles/CardResult.css';
 
 const CardResult = ({ name, location, hedge, modality, date }) => {
   const monthNames = [

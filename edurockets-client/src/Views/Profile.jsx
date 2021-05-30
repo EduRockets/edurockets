@@ -11,7 +11,7 @@ import DivButton from '../Components/DivButton';
 
 import notificationIcon from '../Assets/Icons/notification.svg';
 
-import '../Styles/Profile.css';
+import './Styles/Profile.css';
 
 const Profile = () => {
   const history = useHistory();

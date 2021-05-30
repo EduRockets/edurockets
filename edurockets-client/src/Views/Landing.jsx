@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Col, Row, Container, Button } from 'reactstrap';
 import StandardLayout from '../Layouts/StandardLayout';
 
-import '../Styles/Landing.css';
+import './Styles/Landing.css';
 
 const Landing = () => {
   const history = useHistory();

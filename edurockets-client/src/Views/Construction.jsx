@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import StandardLayout from '../Layouts/StandardLayout';
 
-import '../Styles/Construction.css';
+import './Styles/Construction.css';
 
 const Construction = () => {
   const history = useHistory();

@@ -8,7 +8,7 @@ import robotCIcon from '../Assets/Icons/robot.svg';
 import expandIcon from '../Assets/Icons/expand.svg';
 import compressIcon from '../Assets/Icons/compress.svg';
 
-import '../Styles/SearchPage.css';
+import './Styles/SearchPage.css';
 
 const SearchPage = () => {
   const [isOpenCountry, setIsOpenCountry] = useState(true);

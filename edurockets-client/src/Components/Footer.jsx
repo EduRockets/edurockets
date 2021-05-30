@@ -8,7 +8,7 @@ import whatsappIcon from '@iconify-icons/bi/whatsapp';
 
 import { Icon } from '@iconify/react';
 
-import '../Styles/Footer.css';
+import './Styles/Footer.css';
 
 const Footer = () => (
   <>

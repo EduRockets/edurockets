@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Input } from 'reactstrap';
 
-import '../Styles/CheckBox.css';
+import './Styles/CheckBox.css';
 
 const Checked = () => {};
 

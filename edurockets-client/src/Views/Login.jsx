@@ -14,7 +14,7 @@ import { validateEmail, validatePassword } from '../Helpers/Tools';
 import EmptyLayout from '../Layouts/EmptyLayout';
 import { NavBarLogin } from '../Components/NavBar';
 
-import '../Styles/Login.css';
+import './Styles/Login.css';
 
 const Login = () => {
   const history = useHistory();

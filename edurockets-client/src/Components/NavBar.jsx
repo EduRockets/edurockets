@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation, Link } from 'react-router-dom';
 import { Col, Row, Button } from 'reactstrap';
 
-import '../Styles/NavBar.css';
+import './Styles/NavBar.css';
 
 const NavBar = () => {
   const history = useHistory();
@@ -90,7 +90,3 @@ export const NavBarLogin = () => {
 };
 
 export default NavBar;
-
-/*
-          <a href="/signup">Crear cuenta</a>
-*/
