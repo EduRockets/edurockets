@@ -6,7 +6,7 @@ import searchIcon from '@iconify-icons/bi/search';
 
 import DivButton from '../Components/DivButton';
 
-import '../Styles/SearchBar.css';
+import './Styles/SearchBar.css';
 
 const SearchBar = () => {
   const [isOpen, setIsOpen] = useState(true);

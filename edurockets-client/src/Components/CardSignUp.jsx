@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Row, Card, CardImg, CardText, CardBody, CardTitle, Button } from 'reactstrap';
 
-import '../Styles/CardSignUp.css';
+import './Styles/CardSignUp.css';
 
 const CardSignUp = ({ src, title, text, href }) => {
   const history = useHistory();

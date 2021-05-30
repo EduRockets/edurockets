@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 
 import EmptyLayout from '../Layouts/EmptyLayout';
 
-import '../Styles/FormHolder.css';
+import './Styles/FormHolder.css';
 
 const FormHolder = ({ Form }) => {
   const [paso, setPaso] = useState(0);

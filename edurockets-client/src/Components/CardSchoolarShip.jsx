@@ -3,7 +3,7 @@ import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reac
 
 import DivButton from './DivButton';
 
-import '../Styles/CardSchoolarShip.css';
+import './Styles/CardSchoolarShip.css';
 
 const CardSchoolarShip = ({ title, institute, status }) => {
   return (

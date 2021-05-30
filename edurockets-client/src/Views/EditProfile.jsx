@@ -6,7 +6,7 @@ import EmptyLayout from '../Layouts/EmptyLayout';
 
 import MaskedInput from '../Components/MaskedInput';
 
-import '../Styles/EditProfile.css';
+import './Styles/EditProfile.css';
 
 const EditProfile = () => {
   const history = useHistory();

@@ -7,7 +7,7 @@ import { Container, Row, Col } from 'reactstrap';
 import StandardLayout from '../Layouts/StandardLayout';
 import CardSignUp from '../Components/CardSignUp';
 
-import '../Styles/SignUp.css';
+import './Styles/SignUp.css';
 
 const SignUp = () => {
   const history = useHistory();
