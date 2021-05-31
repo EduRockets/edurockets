@@ -1,0 +1,46 @@
+.SchoolarshipLabel {
+  padding-top: calc(60vh - 110px);
+}
+
+.SchoolarshipContainer {
+  color: #1d1645;
+  
+}
+
+.SchoolarshipTitle {
+  font-size: 2rem;
+  font-weight: bold;
+
+  margin-bottom: 4rem;
+}
+
+/* == Description == */
+.SchoolarshipInformationContainer {
+  text-align: center;
+}
+
+.SchoolarshipInfoContainer {
+  margin-bottom: 0.625rem;
+}
+
+.SchoolarshipIcon {
+  width: 1.25rem;
+}
+
+.SchoolarshipTime {
+  display: inline-block;
+
+  background-color: #7C9AC0;
+
+  border-radius: 1rem;
+
+  font-size: 0.75rem;
+  color: #E3E3E5;
+
+  padding: 0.25rem;
+}
+
+.SchoolarshipDescription {
+
+  margin-top: 4rem;
+}
