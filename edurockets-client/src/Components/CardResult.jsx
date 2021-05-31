@@ -17,8 +17,7 @@ import markerIcon from '../Assets/Icons/marker.svg';
 import clockIcon from '../Assets/Icons/clock.svg';
 import bookIcon from '../Assets/Icons/book.svg';
 import corazonIcon from '../Assets/Icons/corazon.svg';
-
-import SchoolarshipImage from '../Assets/Temporal/SchoolarshipImage.png';
+import calendarIcon from '../Assets/Icons/calendar.svg';
 
 import './Styles/CardResult.css';
 
@@ -55,7 +54,13 @@ const CardResult = ({ name, location, hedge, modality, date }) => {
     <div className="CardResult">
       <Row className="CardResultContainer">
         <Col>
-          <img className="CardImage" src={SchoolarshipImage} alt="Schoolarship image" />
+          <img
+            className="CardImage"
+            src={
+              'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Perimeter_Institute.jpg/1200px-Perimeter_Institute.jpg'
+            }
+            alt="Schoolarship image"
+          />
         </Col>
 
         <Col lg="5">
@@ -103,13 +108,30 @@ const CardResult = ({ name, location, hedge, modality, date }) => {
 
         <div className="CardResultDivider" />
 
-        <Col>
-          <Button
-            className="
+        <Col className="CardInformationContainer">
+          <Row>
+            <Col>
+              <div className="CardTime">Quedan 5 días</div>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <img className="CardIcon" alt="time" src={calendarIcon} /> 2 años
+            </Col>
+          </Row>
+          <Row>
+            <Col>00000 USD/año</Col>
+          </Row>
+          <Row>
+            <Col>
+              <Button
+                className="
          CardButtonGuardar"
-          >
-            Más información
-          </Button>
+              >
+                Más información
+              </Button>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </div>

@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation, Link } from 'react-router-dom';
 import { Col, Row, Button } from 'reactstrap';
 
+import DivButton from '../Components/DivButton';
+
+import misAplicacionesIcon from '../Assets/Icons/misAplicaciones.svg';
+import heartIcon from '../Assets/Icons/corazonWhite.svg';
+
 import './Styles/NavBar.css';
 
 const NavBar = () => {
@@ -82,6 +87,62 @@ export const NavBarLogin = () => {
             >
               Crear Cuenta
             </Button>
+          </Col>
+        </Row>
+      </div>
+    </>
+  );
+};
+
+export const NavBarSignIn = () => {
+  const history = useHistory();
+
+  return (
+    <>
+      <div className="NavBar NavBarSolid">
+        <Row className="NavBarContainer">
+          <Col lg="3" className="NavBarlogoContainer">
+            <Link to="/">
+              <img style={{ height: '50px' }} src="/Images/Logo.png" alt="logo" />
+            </Link>
+          </Col>
+          <Col />
+          <Col>
+            <Link className="NavBarItem">Programas y becas</Link>
+          </Col>
+          <Col>
+            <Link className="NavBarItem">Ayuda en mi decisión</Link>
+          </Col>
+          <Col>
+            <Row>
+              <Col>
+                <DivButton>
+                  <img src={misAplicacionesIcon} alt="mis aplicaciones" className="NavBarIcon" />
+                </DivButton>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Link className="NavBarIconText NavBarItem">Mis aplicaciones</Link>
+              </Col>
+            </Row>
+          </Col>
+          <Col>
+            <Row>
+              <Col>
+                <DivButton>
+                  <img src={heartIcon} alt="guardadas" className="NavBarIcon" />
+                </DivButton>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Link className="NavBarIconText NavBarItem">Guardadas</Link>
+              </Col>
+            </Row>
+          </Col>
+          <Col lg="3">
+            <DivButton className="NavBarAvatar">E</DivButton>
           </Col>
         </Row>
       </div>

@@ -17,7 +17,7 @@
 }
 
 .LoginLeftContainer {
-  background-image: url('../Assets/Images/Login-Background.svg');
+  background-image: url('../../Assets/Images/Login-Background.svg');
   background-size: cover;
 }
 

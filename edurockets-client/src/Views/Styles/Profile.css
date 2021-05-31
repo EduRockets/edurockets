@@ -8,7 +8,7 @@
 }
 
 .ProfileBanner {
-  background-image: url('../Assets/Images/Profile-Banner.png');
+  background-image: url('../../Assets/Images/Profile-Banner.png');
   background-position: bottom;
   background-size: cover;
 }

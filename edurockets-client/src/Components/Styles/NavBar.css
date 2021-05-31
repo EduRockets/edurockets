@@ -62,3 +62,20 @@
 
   border: 1px solid;
 }
+
+.NavBarIcon {
+  width: 2rem;
+  margin: 0.25rem;
+}
+
+.NavBarIconText {
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.NavBarAvatar {
+  background-color: #F81735;
+  border-radius: 100%;
+  width: 2rem;
+  height: 2rem;
+}

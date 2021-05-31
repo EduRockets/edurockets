@@ -16,6 +16,8 @@
 /* == Image == */
 .CardImage {
   border-radius: 1rem;
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -49,10 +51,31 @@
 .CardResultDivider {
   background-color: #E3E3E5;
 
-  width: 2px;  
-  height: 75%;
+  padding: 0;
+  
+  width: 1px;  
+  height: 12rem;
 }
 
+
+/* == Information Container == */
+.CardInformationContainer {
+  text-align: center;
+}
+
+/* == Timer == */
+.CardTime {
+  display: inline-block;
+
+  background-color: #7C9AC0;
+
+  border-radius: 1rem;
+
+  font-size: 0.75rem;
+  color: #E3E3E5;
+
+  padding: 0.25rem;
+}
 
 /* == Buttons == */
 .CardButtonAplicar {
