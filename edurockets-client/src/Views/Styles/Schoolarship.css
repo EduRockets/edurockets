@@ -1,17 +1,19 @@
 .SchoolarshipLabel {
-  padding-top: calc(60vh - 110px);
+  padding-top: calc(70vh - 110px);
+  
+  background-size: cover;
+  background-position: center;
 }
 
 .SchoolarshipContainer {
   color: #1d1645;
-  
 }
 
 .SchoolarshipTitle {
   font-size: 2rem;
   font-weight: bold;
 
-  margin-bottom: 4rem;
+  margin: 2rem 0 4rem 0;
 }
 
 /* == Description == */
@@ -21,6 +23,9 @@
 
 .SchoolarshipInfoContainer {
   margin-bottom: 0.625rem;
+
+  align-items: center;
+  justify-content: space-between;
 }
 
 .SchoolarshipIcon {

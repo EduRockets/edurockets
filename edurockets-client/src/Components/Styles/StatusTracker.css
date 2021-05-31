@@ -5,5 +5,58 @@
 
   padding: 2rem;
 
-  height: 24rem;
+}
+
+/* ======================= */
+.StatusTrackerContainer {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+
+.StatusTrackerTitle {
+  font-weight: bold;
+
+  margin-bottom: 1rem;
+}
+
+
+.StatusTrackerText {
+  color: #1d1645;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+}
+
+
+/* ======================= */
+.StatusTrackerIndicator {
+  width: 3rem;
+  height: 3rem;
+  
+  border-radius: 100%;
+
+  border: 1px solid;
+  border-color: #1d1645;
+  border-width: 3px;
+
+  margin: 0 auto;
+  position: relative;
+}
+
+
+.StatusTrackerIndicatorCheked {
+  background-color: #4CAF50;
+}
+
+
+.StatusTrackerDivider {
+  background-color: #1d1645;
+  width: 3px;
+  height: 2rem;
+  margin: 0 auto;
+  position: relative;
 }
