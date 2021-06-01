@@ -10,6 +10,10 @@ import calendarIcon from '../Assets/Icons/calendar.svg';
 import StatusTracker from '../Components/StatusTracker';
 import SignInLayout from '../Layouts/SignInLayout';
 
+import Map from '../Components/Map';
+
+import { mapKey } from '../Config/credentials';
+
 import './Styles/Schoolarship.css';
 
 const Schoolarship = () => {
@@ -27,8 +31,8 @@ const Schoolarship = () => {
     location: {
       country: 'Canada',
       state: 'Ottawa',
-      lng: '0',
-      lat: '0',
+      lng: '100000',
+      lat: '9956',
     },
     requirements: {},
   };
@@ -58,17 +62,19 @@ const Schoolarship = () => {
         style={{ backgroundImage: `url(${schoolarship.label})` }}
         fluid
       />
+
       <Container className="SchoolarshipContainer">
         <Row className="SchoolarshipTitle">{schoolarship.name}</Row>
 
         <Row>
           {/* Izquierda */}
-          <Col lg="8">
+          <Col xs="12" lg="8">
             <Row>
               <Col>
                 <Row>
                   <Col className="SchoolarshipInfoContainer">
                     <img className="SchoolarshipIcon" alt="location" src={markerIcon} />
+                    <div />
                     {` ${schoolarship.location.state}, ${schoolarship.location.country}`}
                   </Col>
                 </Row>
@@ -93,16 +99,15 @@ const Schoolarship = () => {
                   </Col>
                 </Row>
               </Col>
-
-              <Col className="SchoolarshipInformationContainer">
+              <Col className="SchoolarshipPriceContainer">
                 <Row>
                   <Col className="SchoolarshipInfoContainer">
-                    <div className="SchoolarshipTime">{`Quedan ${differenceDate.getDate()} días`}</div>
+                    <div className="SchoolarshipDueDate">{`Quedan ${differenceDate.getDate()} días`}</div>
                   </Col>
                 </Row>
                 <Row>
                   <Col className="SchoolarshipInfoContainer">
-                    <img className="CardIcon" alt="time" src={calendarIcon} />
+                    <img className="SchoolarshipIcon" alt="time" src={calendarIcon} />
                     {`${schoolarship.duration} años`}
                   </Col>
                 </Row>
@@ -116,6 +121,20 @@ const Schoolarship = () => {
               <Col>
                 <p className="SchoolarshipDescription">{schoolarship.description}</p>
               </Col>
+            </Row>
+
+            <Row>
+              <div className="SchoolarshipMapContainer">
+                <Map
+                  googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${mapKey}&callback=initMap`}
+                  loadingElement={<div style={{ height: `100%` }} />}
+                  containerElement={<div style={{ height: `100%` }} />}
+                  mapElement={<div style={{ height: `100%` }} />}
+                  nuevaDireccion={schoolarship.location}
+                  center={schoolarship.location}
+                  zoom={15}
+                />
+              </div>
             </Row>
           </Col>
           {/* Derecha */}

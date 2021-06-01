@@ -1,16 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
-import {
-  Button,
-  Row,
-  Col,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Input,
-  Label,
-} from 'reactstrap';
+import { Button, Row, Col, Input, Label } from 'reactstrap';
 
 import CheckBox from '../../Components/CheckBox';
 
@@ -19,15 +9,33 @@ import './Styles/SignUpForm.css';
 
 const StudentSignUpForm = (props) => {
   const { paso, setPaso } = props;
-
+  const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(0);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [countries, setCountries] = useState([]);
 
   // Form States
   const [birthday, setBirthday] = useState(null);
   const [degree, setDegree] = useState(null);
+  const [country, setCountry] = useState('');
 
-  const toggle = () => setDropdownOpen((prevState) => !prevState);
+  const uwu = ['uwu', 'owo'];
+
+  useEffect(() => {
+    fetch('https://restcountries.eu/rest/v2/all')
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          result.map((element) => {
+            countries.push(element.name);
+          });
+          console.log(countries);
+          setLoading(true);
+        },
+        (err) => {
+          console.error(err);
+        }
+      );
+  }, []);
 
   const nextStep = () => {
     setStep((oldStep) => (oldStep < 1 ? oldStep + 1 : oldStep));
@@ -49,29 +57,39 @@ const StudentSignUpForm = (props) => {
           <div>
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">Nombres</Label>
-                <Input className="SignUpInput" />
+                <Label className="SignUpFormInputLabel">Nombres</Label>
+                <Input className="SignUpFormInput" />
               </Col>
             </Row>
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">Apellidos</Label>
-                <Input className="SignUpInput" />
+                <Label className="SignUpFormInputLabel">Apellidos</Label>
+                <Input className="SignUpFormInput" />
               </Col>
             </Row>
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">País</Label>
-                <Input className="SignUpInput" />
+                <Label className="SignUpFormInputLabel">País</Label>
+                <Row>
+                  <Col>
+                    <select onChange={() => {}} className="SignUpSelect">
+                      <option value="Costa Rica">Costa Rica</option>
+                      <option value="Honduras">Honduras</option>
+                      <option value="Panamá">Panamá</option>
+                      <option value="Guatemala">Guatemala</option>
+                      <option value="El Salvador">El Salvador</option>
+                    </select>
+                  </Col>
+                </Row>
               </Col>
               <Col>
-                <Label className="SignUpInputLabel">Ciudad</Label>
-                <Input className="SignUpInput" />
+                <Label className="SignUpFormInputLabel">Ciudad</Label>
+                <Input className="SignUpFormInput" />
               </Col>
             </Row>
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">Fecha de nacimiento</Label>
+                <Label className="SignUpFormInputLabel">Fecha de nacimiento</Label>
                 <div>
                   <DatePicker
                     className="SignUpDatePicker"
@@ -83,8 +101,8 @@ const StudentSignUpForm = (props) => {
             </Row>
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">Escuela donde estudias</Label>
-                <Input className="SignUpInput" />
+                <Label className="SignUpFormInputLabel">Escuela donde estudias</Label>
+                <Input className="SignUpFormInput" />
               </Col>
             </Row>
           </div>
@@ -94,43 +112,29 @@ const StudentSignUpForm = (props) => {
           <div>
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">Grado que estás cursando</Label>
-                <Dropdown isOpen={dropdownOpen} toggle={toggle} title={` Drop ${degree} `}>
-                  <DropdownToggle
-                    name="degree"
-                    onChange={(event) => changeValue(event.currentTarget)}
-                    className="SignUpDropdown"
-                    caret
-                  >
-                    {degree ? degree : 'Selecciona un grado académico'}
-                  </DropdownToggle>
-                  <DropdownMenu className="SignUpDropdownText">
-                    <DropdownItem onClick={() => setDegree('Titulo o egresado de colegio')}>
-                      Titulo o egresado de colegio
-                    </DropdownItem>
-                    <DropdownItem onClick={() => setDegree('Tecnico especializado')}>
-                      Tecnico especializado
-                    </DropdownItem>
-                    <DropdownItem onClick={() => setDegree('Licenciatura o ingeniería')}>
-                      Licenciatura o ingeniería
-                    </DropdownItem>
-                    <DropdownItem onClick={() => setDegree('Maestría/Postgrado')}>
-                      Maestría/Postgrado
-                    </DropdownItem>
-                    <DropdownItem onClick={() => setDegree('Doctorado')}>Doctorado</DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
+                <Row>
+                  <Col>
+                    <Label className="SignUpFormInputLabel">Grado que estás cursando</Label>
+                  </Col>
+                </Row>
+                <select value={degree} className="SignUpSelect">
+                  <option value="Español">Titulo o egresado de colegio</option>
+                  <option value="Ingles">Técnico especializado</option>
+                  <option value="Portugués">Licenciatura o ingeniería</option>
+                  <option value="Portugués">Maestría/Postgrado</option>
+                  <option value="Portugués">Doctorado</option>
+                </select>
               </Col>
             </Row>
 
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">
+                <Label className="SignUpFormInputLabel">
                   Selecciona los países de tu interés para estudiar un programa universitario
                 </Label>
                 <Row>
                   <Col>
-                    <Input className="SignUpInput" />
+                    <Input className="SignUpFormInput" />
                   </Col>
                 </Row>
               </Col>
@@ -138,7 +142,7 @@ const StudentSignUpForm = (props) => {
 
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">
+                <Label className="SignUpFormInputLabel">
                   Selecciona las áreas de estudio que te interesen
                 </Label>
                 <Row>
@@ -168,23 +172,23 @@ const StudentSignUpForm = (props) => {
 
   return (
     <div className="SignUpForm">
-      {renderByStep()}
-      <div className="SignUpButtonContainer">
+      {loading ? renderByStep() : <> </>}
+      <div className="SignUpFormButtonContainer">
         {step == 0 ? (
           <>
             <div className="SignUpButtonSpacer" />
-            <Button className="SignUpButton" onClick={nextStep}>
+            <Button className="SignUpFormButton" onClick={nextStep}>
               Siguiente
             </Button>
             <div className="SignUpButtonSpacer" />
           </>
         ) : (
           <>
-            <Button className="SignUpButton" onClick={prevStep}>
+            <Button className="SignUpFormButton" onClick={prevStep}>
               Anterior
             </Button>
             <div className="SignUpButtonSpacer" />
-            <Button className="SignUpButtonCreateAccount" onClick={''}>
+            <Button className="SignUpFormButtonCreateAccount" onClick={''}>
               Crear cuenta
             </Button>
           </>

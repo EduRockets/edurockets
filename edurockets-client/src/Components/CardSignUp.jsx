@@ -1,17 +1,17 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { Row, Card, CardImg, CardText, CardBody, CardTitle, Button } from 'reactstrap';
 
 import './Styles/CardSignUp.css';
 
-const CardSignUp = ({ src, title, text, href }) => {
+const CardSignUp = ({ src, title, text, href, userType }) => {
   const history = useHistory();
 
   return (
     <div>
       <Card className="Card">
-        <Row className="CardImageContainer">
-          <CardImg className="CardImage" src={src} />
+        <Row>
+          <CardImg className="CardSignUpImage" src={src} />
         </Row>
         <CardBody>
           <CardTitle className="CardTitle">{title}</CardTitle>
@@ -21,9 +21,14 @@ const CardSignUp = ({ src, title, text, href }) => {
           </CardText>
           <Button
             className="CardButton"
-            onClick={() => {
-              history.push(href);
-            }}
+            onClick={() =>
+              history.push({
+                pathname: '/signup',
+                userType: {
+                  name: userType,
+                },
+              })
+            }
           >
             Entrar
           </Button>

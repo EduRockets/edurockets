@@ -12,6 +12,7 @@ import './Styles/Footer.css';
 
 const Footer = () => (
   <>
+    <div className="DivFooterWave" />
     <Container className="Footer" fluid>
       <Container>
         <Row className="align-items-center">
@@ -91,13 +92,13 @@ const Footer = () => (
 
         <Row>
           <Col>
-            <div className="Divider" />
+            <div className="FooterDivider" />
           </Col>
         </Row>
 
         <Row className="DownSectionContainer">
           <Col lg="6">
-            <Link className="TermFooter">© 2021 EduRockets</Link>
+            <Link className="TermFooter">©2021 EduRockets</Link>
             <Link className="TermFooter">Términos de uso</Link>
             <Link className="TermFooter">Política de Seguridad</Link>
           </Col>

@@ -1,19 +1,40 @@
-import React from 'react';
-import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import React, { useEffect } from 'react';
+import { GoogleMap, withScriptjs, withGoogleMap, Marker } from 'react-google-maps';
 
-const MapContainer = (props) => {
-  const { latLng } = props;
+const Map = ({
+  nuevaDireccion,
+  setNuevaDireccion,
+  center = { lat: 14.10576, lng: -87.204201 },
+  latLng,
+  setLatLng,
+  zoom = 13,
+}) => {
+  useEffect(() => {
+    if (setNuevaDireccion) {
+      setNuevaDireccion(nuevaDireccion);
+    }
+  }, [nuevaDireccion]);
+
+  const drawMarker = () => {
+    return nuevaDireccion ? (
+      <Marker position={{ lat: nuevaDireccion.lat, lng: nuevaDireccion.lng }} />
+    ) : null;
+  };
 
   return (
-    <Map
-      google={this.props.google}
-      zoom={12}
-      style={mapStyles}
-      initialCenter={{ lat: 47.444, lng: -122.176 }}
+    <GoogleMap
+      zoom={zoom}
+      center={center}
+      options={{ disableDefaultUI: true }}
+      onClick={(event) => {
+        if (setNuevaDireccion) {
+          setNuevaDireccion({ lat: event.latLng.lat(), lng: event.latLng.lng() });
+        }
+      }}
     >
-      <Marker position={{ lat: latLng.lat, lng: latLng.lng }} />
-    </Map>
+      {drawMarker()}
+    </GoogleMap>
   );
 };
 
-export default MapContainer;
+export default withScriptjs(withGoogleMap(Map));

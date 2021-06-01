@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
-import {
-  Button,
-  Row,
-  Col,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Input,
-  Label,
-} from 'reactstrap';
+import { Button, Row, Col, Input, Label } from 'reactstrap';
 
 import CheckBox from '../../Components/CheckBox';
 
 import 'react-datepicker/dist/react-datepicker.css';
+
 import './Styles/SignUpForm.css';
 
 const ProfessionalSignUpForm = (props) => {
@@ -52,29 +43,29 @@ const ProfessionalSignUpForm = (props) => {
           <div>
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">Nombres</Label>
-                <Input className="SignUpInput" />
+                <Label className="SignUpFormInputLabel">Nombres</Label>
+                <Input className="SignUpFormInput" />
               </Col>
             </Row>
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">Apellidos</Label>
-                <Input className="SignUpInput" />
+                <Label className="SignUpFormInputLabel">Apellidos</Label>
+                <Input className="SignUpFormInput" />
               </Col>
             </Row>
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">País</Label>
-                <Input className="SignUpInput" />
+                <Label className="SignUpFormInputLabel">País</Label>
+                <Input className="SignUpFormInput" />
               </Col>
               <Col>
-                <Label className="SignUpInputLabel">Ciudad</Label>
-                <Input className="SignUpInput" />
+                <Label className="SignUpFormInputLabel">Ciudad</Label>
+                <Input className="SignUpFormInput" />
               </Col>
             </Row>
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">Fecha de nacimiento</Label>
+                <Label className="SignUpFormInputLabel">Fecha de nacimiento</Label>
                 <div>
                   <DatePicker
                     className="SignUpDatePicker"
@@ -91,35 +82,27 @@ const ProfessionalSignUpForm = (props) => {
           <div>
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">
+                <Label className="SignUpFormInputLabel">
                   Último grado académico obtenido o en curso
                 </Label>
-                <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-                  <DropdownToggle className="SignUpDropdown" caret>
-                    {degree ? degree : 'Selecciona un grado académico'}
-                  </DropdownToggle>
-                  <DropdownMenu className="SignUpDropdownText">
-                    <DropdownItem onClick={() => setDegree('Titulo o egresado de colegio')}>
-                      Titulo o egresado de colegio
-                    </DropdownItem>
-                    <DropdownItem onClick={() => setDegree('Tecnico especializado')}>
-                      Tecnico especializado
-                    </DropdownItem>
-                    <DropdownItem onClick={() => setDegree('Licenciatura o ingeniería')}>
-                      Licenciatura o ingeniería
-                    </DropdownItem>
-                    <DropdownItem onClick={() => setDegree('Maestría/Postgrado')}>
-                      Maestría/Postgrado
-                    </DropdownItem>
-                    <DropdownItem onClick={() => setDegree('Doctorado')}>Doctorado</DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
+                <Row>
+                  <Col>
+                    <select onChange={() => {}} className="SignUpSelect">
+                      <option value="Titulo o egresado de colegio">
+                        Titulo o egresado de colegio
+                      </option>
+                      <option value="Técnico especializado">Técnico especializado</option>
+                      <option value="Licenciatura o ingeniería">Licenciatura o ingeniería</option>
+                      <option value="Maestría/Postgrado">Maestría/Postgrado</option>
+                    </select>
+                  </Col>
+                </Row>
               </Col>
             </Row>
 
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">
+                <Label className="SignUpFormInputLabel">
                   ¿Cual de las siguientes dos opciones son de tu interes?
                 </Label>
                 <CheckBox label="Obtener un título académico que me permita migrar y trabajar en el país seleccionado" />
@@ -129,30 +112,19 @@ const ProfessionalSignUpForm = (props) => {
 
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">
+                <Label className="SignUpFormInputLabel">
                   ¿Qué nivel de programa universitario te interesa?
                 </Label>
-                <Dropdown isOpen={dropDownLevel} toggle={toggleLevel}>
-                  <DropdownToggle className="SignUpDropdown" caret>
-                    {educationLevel
-                      ? educationLevel
-                      : 'Selecciona un nivel del programa universitario'}
-                  </DropdownToggle>
-                  <DropdownMenu className="SignUpDropdownText">
-                    <DropdownItem onClick={() => setEducationLevel('Técnico especializado')}>
-                      Técnico especializado
-                    </DropdownItem>
-                    <DropdownItem onClick={() => setEducationLevel('Licenciatura o ingeniería')}>
-                      Licenciatura o ingeniería
-                    </DropdownItem>
-                    <DropdownItem onClick={() => setEducationLevel('Maestría/Postgrado')}>
-                      Maestría/Postgrado
-                    </DropdownItem>
-                    <DropdownItem onClick={() => setEducationLevel('Doctorado')}>
-                      Doctorado
-                    </DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
+                <Row>
+                  <Col>
+                    <select onChange={() => {}} className="SignUpSelect">
+                      <option value="Técnico especializado">Técnico especializado</option>
+                      <option value="Licenciatura o ingeniería">Licenciatura o ingeniería</option>
+                      <option value="Maestría/Postgrado">Maestría/Postgrado</option>
+                      <option value="Doctorado">Doctorado</option>
+                    </select>
+                  </Col>
+                </Row>
               </Col>
             </Row>
           </div>
@@ -162,37 +134,16 @@ const ProfessionalSignUpForm = (props) => {
           <div>
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">
+                <Label className="SignUpFormInputLabel">
                   Selecciona la modalidad de estudio que se adapte mejor a ti
-                </Label>
-                <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-                  <DropdownToggle className="SignUpDropdown" caret>
-                    {modality ? modality : 'Selecciona un grado académico'}
-                  </DropdownToggle>
-                  <DropdownMenu className="SignUpDropdownText">
-                    <DropdownItem onClick={() => setModality('Titulo o egresado de colegio')}>
-                      Virtual
-                    </DropdownItem>
-                    <DropdownItem onClick={() => setModality('Tecnico especializado')}>
-                      Presencial
-                    </DropdownItem>
-                    <DropdownItem onClick={() => setModality('Licenciatura o ingeniería')}>
-                      Ambas
-                    </DropdownItem>
-                    <DropdownItem onClick={() => setModality('Doctorado')}>Doctorado</DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
-              </Col>
-            </Row>
-
-            <Row>
-              <Col>
-                <Label className="SignUpInputLabel">
-                  Selecciona los países de tu interés para estudiar un programa universitario
                 </Label>
                 <Row>
                   <Col>
-                    <Input className="SignUpInput" />
+                    <select onChange={() => {}} className="SignUpSelect">
+                      <option value="Virtual">Virtual</option>
+                      <option value="Presencial">Presencial</option>
+                      <option value="Ambas">Ambas</option>
+                    </select>
                   </Col>
                 </Row>
               </Col>
@@ -200,7 +151,20 @@ const ProfessionalSignUpForm = (props) => {
 
             <Row>
               <Col>
-                <Label className="SignUpInputLabel">
+                <Label className="SignUpFormInputLabel">
+                  Selecciona los países de tu interés para estudiar un programa universitario
+                </Label>
+                <Row>
+                  <Col>
+                    <Input className="SignUpFormInput" />
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <Label className="SignUpFormInputLabel">
                   Selecciona las áreas de estudio que te interesen
                 </Label>
                 <Row>
@@ -231,32 +195,32 @@ const ProfessionalSignUpForm = (props) => {
   return (
     <div className="SignUpForm">
       {renderByStep()}
-      <div className="SignUpButtonContainer">
+      <div className="SignUpFormButtonContainer">
         {step == 0 ? (
           <>
             <div className="SignUpButtonSpacer" />
-            <Button className="SignUpButton" onClick={nextStep}>
+            <Button className="SignUpFormButton" onClick={nextStep}>
               Siguiente
             </Button>
             <div className="SignUpButtonSpacer" />
           </>
         ) : step == 1 ? (
           <>
-            <Button className="SignUpButton" onClick={prevStep}>
+            <Button className="SignUpFormButton" onClick={prevStep}>
               Anterior
             </Button>
             <div className="SignUpButtonSpacer" />
-            <Button className="SignUpButton" onClick={nextStep}>
+            <Button className="SignUpFormButton" onClick={nextStep}>
               Siguiente
             </Button>
           </>
         ) : (
           <>
-            <Button className="SignUpButton" onClick={prevStep}>
+            <Button className="SignUpFormButton" onClick={prevStep}>
               Anterior
             </Button>
             <div className="SignUpButtonSpacer" />
-            <Button className="SignUpButtonCreateAccount" onClick={''}>
+            <Button className="SignUpFormButtonCreateAccount" onClick={''}>
               Crear cuenta
             </Button>
           </>

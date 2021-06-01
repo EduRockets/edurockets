@@ -65,6 +65,35 @@ const NavBar = () => {
   );
 };
 
+export const NavBarSignUp = () => {
+  const history = useHistory();
+
+  return (
+    <>
+      <div className="NavBar">
+        <Row className="NavBarContainer">
+          <Col lg="3" className="NavBarlogoContainer">
+            <Link to="/">
+              <img style={{ height: '50px' }} src="/Images/Logo.png" alt="logo" />
+            </Link>
+          </Col>
+          <Col className="NavBarItems"></Col>
+          <Col lg="3">
+            <Button
+              className="NavBarButton"
+              onClick={() => {
+                history.push('/login');
+              }}
+            >
+              Iniciar Sesión
+            </Button>
+          </Col>
+        </Row>
+      </div>
+    </>
+  );
+};
+
 export const NavBarLogin = () => {
   const history = useHistory();
 
@@ -82,7 +111,7 @@ export const NavBarLogin = () => {
             <Button
               className="NavBarButton"
               onClick={() => {
-                history.push('/signup');
+                history.push('/signupswitch');
               }}
             >
               Crear Cuenta
@@ -102,9 +131,7 @@ export const NavBarSignIn = () => {
       <div className="NavBar NavBarSolid">
         <Row className="NavBarContainer">
           <Col lg="3" className="NavBarlogoContainer">
-            <Link to="/">
-              <img style={{ height: '50px' }} src="/Images/Logo.png" alt="logo" />
-            </Link>
+            <img style={{ height: '50px' }} src="/Images/Logo.png" alt="logo" />
           </Col>
           <Col />
           <Col>
@@ -142,7 +169,7 @@ export const NavBarSignIn = () => {
             </Row>
           </Col>
           <Col lg="3">
-            <DivButton className="NavBarAvatar">E</DivButton>
+            <DivButton className="NavBarAvatar" />
           </Col>
         </Row>
       </div>

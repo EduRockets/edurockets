@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import SignUpSwitch from './Views/SignUpSwitch';
 import SignUp from './Views/SignUp';
 import Login from './Views/Login';
 import Landing from './Views/Landing';
@@ -42,6 +43,7 @@ const App = () => {
 
         <ProtectedRoute exact path="/schoolarship" user={true} component={Schoolarship} />
         <ProtectedRoute exact path="/search" user={true} component={SearchPage} />
+        <Route exact path="/signupswitch" component={SignUpSwitch} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/profile" component={Profile} />

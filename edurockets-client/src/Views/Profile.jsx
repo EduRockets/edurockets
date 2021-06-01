@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Avatar from 'react-avatar';
 
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Col, Button, Spinner } from 'reactstrap';
 import EmptyLayout from '../Layouts/EmptyLayout';
 
 import SearchBar from '../Components/SearchBar';
@@ -193,7 +193,11 @@ const Profile = () => {
           </Row>
         );
       default:
-        break;
+        return (
+          <div>
+            <Spinner color="primary" />
+          </div>
+        );
     }
   };
 

@@ -34,7 +34,7 @@ const Landing = () => {
                   <Button
                     className="LandingFirstButton"
                     onClick={() => {
-                      history.push('/signup');
+                      history.push('/signupswitch');
                     }}
                   >
                     Listo para alcanzar mis sueños
@@ -125,10 +125,10 @@ const Landing = () => {
                   <Button
                     className="LandingSecondButton"
                     onClick={() => {
-                      redirect();
+                      history.push('/signup/student');
                     }}
                   >
-                    Listo para Alcanzar mis sueños
+                    Listo para alcanzar mis sueños
                   </Button>
                 </Col>
               </Row>
@@ -159,10 +159,10 @@ const Landing = () => {
                   <Button
                     className="LandingSecondButton"
                     onClick={() => {
-                      redirect();
+                      history.push('/signup/professional');
                     }}
                   >
-                    Listo para Alcanzar mis sueños
+                    Listo para alcanzar mis sueños
                   </Button>
                 </Col>
               </Row>
@@ -376,7 +376,7 @@ const Landing = () => {
         </Container>
       </Container>
 
-      <div className="DivSeventhWave" />
+      {/*<div className="DivSeventhWave" />*/}
     </StandardLayout>
   );
 };
