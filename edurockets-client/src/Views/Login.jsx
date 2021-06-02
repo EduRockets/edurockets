@@ -23,8 +23,6 @@ const Login = () => {
   // States para validación\
   const [validEmail, setValidEmail] = useState(null);
   const [invalidEmail, setInvalidEmail] = useState(null);
-  const [validPassword, setValidPassword] = useState(null);
-  const [invalidPassword, setInvalidPassword] = useState(null);
 
   useEffect(() => {
     if (localStorage.getItem('authToken')) {
@@ -56,13 +54,6 @@ const Login = () => {
         break;
       case 'password':
         setPassword(event.value);
-        if (validatePassword(password)) {
-          setValidPassword(true);
-          setInvalidPassword(false);
-        } else {
-          setValidPassword(false);
-          setInvalidPassword(true);
-        }
         break;
       default:
     }
@@ -88,7 +79,7 @@ const Login = () => {
                     <Label className="LoginLabel">Correo electrónico</Label>
                     <Input
                       className="LoginInput"
-                      placeholder="juanperez@edurockets.com"
+                      placeholder="correo@edurockets.com"
                       name="email"
                       id="email"
                       value={email}
@@ -108,8 +99,6 @@ const Login = () => {
                       id="password"
                       type="password"
                       value={password}
-                      valid={validPassword}
-                      invalid={invalidPassword}
                       onChange={(event) => changeValue(event.currentTarget)}
                     />
                   </Col>

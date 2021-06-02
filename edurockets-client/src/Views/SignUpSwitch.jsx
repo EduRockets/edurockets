@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Container, Row, Col } from 'reactstrap';
 
 import StandardLayout from '../Layouts/StandardLayout';
-import CardSignUp from '../Components/CardSignUp';
+import { CardSignUpStudent, CardSignUpProfessional } from '../Components/CardSignUp';
 
 import './Styles/SignUpSwitch.css';
 
@@ -49,23 +49,11 @@ const SignUpSwitch = () => {
           </Row>
           <Row>
             <Col sm="12" lg="6">
-              <CardSignUp
-                src="/Images/Estudiante.png"
-                title="Un despegue rápido que te lleve a las estrellas"
-                text="Estás por graduarte del colegio y listo para convertirte en quien deseas ser."
-                userType="student"
-                href="/signup"
-              />
+              <CardSignUpStudent />
             </Col>
 
             <Col sm="12" lg="6">
-              <CardSignUp
-                src="/Images/Profesional.png"
-                title="Volar más alto y más rápido"
-                text="Eres un profesional en busca de las mejores oportunidades laborales y académicas."
-                userType="professional"
-                href="/signup"
-              />
+              <CardSignUpProfessional />
             </Col>
           </Row>
         </Container>

@@ -25,14 +25,16 @@
 
 .CardTitle {
   color: #090446;
-  font-size: 1.17em;
+  font-size: 1.17rem;
   font-weight: bold;
 
 }
 
-.CardText {
-  font-size: 1em;
+.CardSignUpText {
+  font-size: 1rem;
   font-weight: 600;
+
+  color: #090446;
 }
 
 .CardButton {

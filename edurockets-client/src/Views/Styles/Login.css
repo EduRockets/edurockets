@@ -32,7 +32,7 @@
 }
 
 .LoginLabel {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold; 
 
   float: left ;
@@ -64,7 +64,7 @@
   border-width: 0px;
  
   color: #999999;
-  font-size: 16px;
+  font-size: 0.875rem;
 }
 
 .LoginCheckboxContainer {
