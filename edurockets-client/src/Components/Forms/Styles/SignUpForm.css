@@ -17,7 +17,7 @@
   border: 0px solid;
 
   color: #999999;
-  font-size: 1rem;
+  font-size: 0.875rem;
 
   margin-bottom: 1.25rem;
 }
@@ -28,10 +28,11 @@
   border: 0px solid;
   border-radius: 25px;
 
+  color: gray;
+  font-size: 0.875rem;
+
   padding: 0.313rem 0.625rem;
   margin-bottom: 1.25rem;
-
-  color: gray;
 }
 
 /*SignUpSelect button*/
@@ -42,7 +43,8 @@
   border-radius: 25px;
 
   color: gray;
-  
+  font-size: 0.875rem;
+
   width: 100%;
 
   padding: 0.438rem 0.625rem;

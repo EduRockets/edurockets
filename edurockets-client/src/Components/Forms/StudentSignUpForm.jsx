@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Button, Row, Col, Input, Label, Spinner } from 'reactstrap';
 import DatePicker from 'react-datepicker';
-import { Button, Row, Col, Input, Label } from 'reactstrap';
 
 import CheckBox from '../../Components/CheckBox';
 
@@ -9,27 +9,41 @@ import './Styles/SignUpForm.css';
 
 const StudentSignUpForm = (props) => {
   const { paso, setPaso } = props;
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [step, setStep] = useState(0);
   const [countries, setCountries] = useState([]);
 
   // Form States
-  const [birthday, setBirthday] = useState(null);
-  const [degree, setDegree] = useState(null);
+  const [names, setNames] = useState('');
+  const [lastNames, setLastNames] = useState('');
   const [country, setCountry] = useState('');
+  const [state, setState] = useState('');
+  const [birthday, setBirthday] = useState(null);
+  const [school, setSchool] = useState('');
+  const [degree, setDegree] = useState(null);
+  const [favorites, setFavorites] = useState([]);
 
-  const uwu = ['uwu', 'owo'];
+  // Form States Validation
+  const [validNames, setValidNames] = useState(false);
+  const [invalidNames, setInvalidNames] = useState(false);
+  const [validLastNames, setValidLastNames] = useState(false);
+  const [invalidLastNames, setInvalidLastNames] = useState(false);
+  const [validSchool, setValidSchool] = useState(false);
+  const [invalidSchool, setInvalidSchool] = useState(false);
+  const [validState, setValidState] = useState(false);
+  const [invalidState, setInvalidState] = useState(false);
 
   useEffect(() => {
     fetch('https://restcountries.eu/rest/v2/all')
       .then((res) => res.json())
       .then(
         (result) => {
+          const arr = [];
           result.map((element) => {
-            countries.push(element.name);
+            arr.push(element.name);
+            setCountries(arr);
           });
-          console.log(countries);
-          setLoading(true);
+          setLoading(false);
         },
         (err) => {
           console.error(err);
@@ -40,14 +54,47 @@ const StudentSignUpForm = (props) => {
   const nextStep = () => {
     setStep((oldStep) => (oldStep < 1 ? oldStep + 1 : oldStep));
     setPaso((oldStep) => (oldStep < 1 ? oldStep + 1 : oldStep));
-
-    console.log('Formholder: ', paso, 'Form: ', step);
   };
   const prevStep = () => {
     setStep((oldStep) => (oldStep > 0 ? oldStep - 1 : oldStep));
     setPaso((oldStep) => (oldStep > 0 ? oldStep - 1 : oldStep));
+  };
 
-    console.log('Formholder: ', paso, 'Form: ', step);
+  const changeValue = (event) => {
+    const emptyVal = event.value === '';
+    switch (event.name) {
+      case 'names':
+        setNames(event.value);
+        setValidNames(!emptyVal);
+        setInvalidNames(emptyVal);
+        break;
+      case 'lastNames':
+        setLastNames(event.value);
+        setValidLastNames(!emptyVal);
+        setInvalidLastNames(emptyVal);
+        break;
+      case 'country':
+        setCountry(event.value);
+        break;
+      case 'state':
+        setState(event.value);
+        break;
+      case 'school':
+        setSchool(event.value);
+        setValidSchool(!emptyVal);
+        setInvalidSchool(emptyVal);
+        break;
+      case 'degree':
+        setDegree(event.value);
+        break;
+      case 'state':
+        setState(event.value);
+        setValidState(!emptyVal);
+        setInvalidState(emptyVal);
+        break;
+      default:
+        break;
+    }
   };
 
   const renderByStep = () => {
@@ -58,13 +105,31 @@ const StudentSignUpForm = (props) => {
             <Row>
               <Col>
                 <Label className="SignUpFormInputLabel">Nombres</Label>
-                <Input className="SignUpFormInput" />
+                <Input
+                  className="SignUpFormInput"
+                  placeholder="John"
+                  name="names"
+                  id="names"
+                  value={names}
+                  valid={validNames}
+                  invalid={invalidNames}
+                  onChange={(event) => changeValue(event.currentTarget)}
+                />
               </Col>
             </Row>
             <Row>
               <Col>
                 <Label className="SignUpFormInputLabel">Apellidos</Label>
-                <Input className="SignUpFormInput" />
+                <Input
+                  className="SignUpFormInput"
+                  placeholder="Doe"
+                  name="lastNames"
+                  id="lastNames"
+                  value={lastNames}
+                  valid={validLastNames}
+                  invalid={invalidLastNames}
+                  onChange={(event) => changeValue(event.currentTarget)}
+                />
               </Col>
             </Row>
             <Row>
@@ -72,19 +137,35 @@ const StudentSignUpForm = (props) => {
                 <Label className="SignUpFormInputLabel">País</Label>
                 <Row>
                   <Col>
-                    <select onChange={() => {}} className="SignUpSelect">
-                      <option value="Costa Rica">Costa Rica</option>
-                      <option value="Honduras">Honduras</option>
-                      <option value="Panamá">Panamá</option>
-                      <option value="Guatemala">Guatemala</option>
-                      <option value="El Salvador">El Salvador</option>
+                    <select
+                      className="SignUpSelect"
+                      name="country"
+                      id="country"
+                      value={country}
+                      onChange={(event) => changeValue(event.currentTarget)}
+                    >
+                      {countries.map((element) => {
+                        return (
+                          <option key={element.key} value={element}>
+                            {element}
+                          </option>
+                        );
+                      })}
                     </select>
                   </Col>
                 </Row>
               </Col>
               <Col>
-                <Label className="SignUpFormInputLabel">Ciudad</Label>
-                <Input className="SignUpFormInput" />
+                <Label className="SignUpFormInputLabel">Estado/Provincia</Label>
+                <Input
+                  className="SignUpFormInput"
+                  name="state"
+                  id="state"
+                  value={state}
+                  valid={validState}
+                  invalid={invalidState}
+                  onChange={(event) => changeValue(event.currentTarget)}
+                />
               </Col>
             </Row>
             <Row>
@@ -102,7 +183,16 @@ const StudentSignUpForm = (props) => {
             <Row>
               <Col>
                 <Label className="SignUpFormInputLabel">Escuela donde estudias</Label>
-                <Input className="SignUpFormInput" />
+                <Input
+                  className="SignUpFormInput"
+                  placeholder="Nombre del instituto académico"
+                  name="school"
+                  id="school"
+                  value={school}
+                  valid={validSchool}
+                  invalid={invalidSchool}
+                  onChange={(event) => changeValue(event.currentTarget)}
+                />
               </Col>
             </Row>
           </div>
@@ -117,12 +207,18 @@ const StudentSignUpForm = (props) => {
                     <Label className="SignUpFormInputLabel">Grado que estás cursando</Label>
                   </Col>
                 </Row>
-                <select value={degree} className="SignUpSelect">
-                  <option value="Español">Titulo o egresado de colegio</option>
-                  <option value="Ingles">Técnico especializado</option>
-                  <option value="Portugués">Licenciatura o ingeniería</option>
-                  <option value="Portugués">Maestría/Postgrado</option>
-                  <option value="Portugués">Doctorado</option>
+                <select
+                  className="SignUpSelect"
+                  name="degree"
+                  id="degree"
+                  value={degree}
+                  onChange={(event) => changeValue(event.currentTarget)}
+                >
+                  <option value="Titulo o egresado de colegio">Titulo o egresado de colegio</option>
+                  <option value="Técnico especializado">Técnico especializado</option>
+                  <option value="Licenciatura o ingeniería">Licenciatura o ingeniería</option>
+                  <option value="Maestría/Postgrado">Maestría/Postgrado</option>
+                  <option value="Doctorado">Doctorado</option>
                 </select>
               </Col>
             </Row>
@@ -172,28 +268,38 @@ const StudentSignUpForm = (props) => {
 
   return (
     <div className="SignUpForm">
-      {loading ? renderByStep() : <> </>}
-      <div className="SignUpFormButtonContainer">
-        {step == 0 ? (
-          <>
-            <div className="SignUpButtonSpacer" />
-            <Button className="SignUpFormButton" onClick={nextStep}>
-              Siguiente
-            </Button>
-            <div className="SignUpButtonSpacer" />
-          </>
-        ) : (
-          <>
-            <Button className="SignUpFormButton" onClick={prevStep}>
-              Anterior
-            </Button>
-            <div className="SignUpButtonSpacer" />
-            <Button className="SignUpFormButtonCreateAccount" onClick={''}>
-              Crear cuenta
-            </Button>
-          </>
-        )}
-      </div>
+      {!loading ? (
+        <>
+          {renderByStep()}
+          <div className="SignUpFormButtonContainer">
+            {step == 0 ? (
+              <>
+                <div className="SignUpButtonSpacer" />
+                <Button className="SignUpFormButton" onClick={nextStep}>
+                  Siguiente
+                </Button>
+                <div className="SignUpButtonSpacer" />
+              </>
+            ) : (
+              <>
+                <Button className="SignUpFormButton" onClick={prevStep}>
+                  Anterior
+                </Button>
+                <div className="SignUpButtonSpacer" />
+                <Button className="SignUpFormButtonCreateAccount" onClick={''}>
+                  Crear cuenta
+                </Button>
+              </>
+            )}
+          </div>
+        </>
+      ) : (
+        <Row>
+          <Col>
+            <Spinner />
+          </Col>
+        </Row>
+      )}
     </div>
   );
 };

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
-import { Button, Row, Col, Input, Label } from 'reactstrap';
+import { Button, Row, Col, Input, Label, Spinner } from 'reactstrap';
 
 import CheckBox from '../../Components/CheckBox';
 
@@ -10,30 +10,89 @@ import './Styles/SignUpForm.css';
 
 const ProfessionalSignUpForm = (props) => {
   const { paso, setPaso } = props;
-
+  const [loading, setLoading] = useState(true);
   const [step, setStep] = useState(0);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [dropDownLevel, setDropDownLevel] = useState(false);
-  // Form States
-  const [birthday, setBirthday] = useState(null);
-  const [modality, setModality] = useState(null);
-  const [degree, setDegree] = useState(null);
-  const [educationLevel, setEducationLevel] = useState(null);
+  const [countries, setCountries] = useState([]);
 
-  const toggle = () => setDropdownOpen((prevState) => !prevState);
-  const toggleLevel = () => setDropDownLevel((prevState) => !prevState);
+  // Form States
+  const [names, setNames] = useState('');
+  const [lastNames, setLastNames] = useState('');
+  const [country, setCountry] = useState('');
+  const [state, setState] = useState('');
+  const [birthday, setBirthday] = useState(null);
+  const [collegeDegree, setCollegeDegree] = useState(null);
+  const [degree, setDegree] = useState(null);
+  const [modality, setModality] = useState(null);
+  const [favorites, setFavorites] = useState([]);
+
+  // Form States Validation
+  const [validNames, setValidNames] = useState(false);
+  const [invalidNames, setInvalidNames] = useState(false);
+  const [validLastNames, setValidLastNames] = useState(false);
+  const [invalidLastNames, setInvalidLastNames] = useState(false);
+  const [validState, setValidState] = useState(false);
+  const [invalidState, setInvalidState] = useState(false);
+
+  useEffect(() => {
+    fetch('https://restcountries.eu/rest/v2/all')
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          const arr = [];
+          result.map((element) => {
+            arr.push(element.name);
+            setCountries(arr);
+          });
+          setLoading(false);
+        },
+        (err) => {
+          console.error(err);
+        }
+      );
+  }, []);
 
   const nextStep = () => {
     setStep((oldStep) => (oldStep < 2 ? oldStep + 1 : oldStep));
     setPaso((oldStep) => (oldStep < 2 ? oldStep + 1 : oldStep));
-
-    console.log('Formholder: ', paso, 'Form: ', step);
   };
   const prevStep = () => {
     setStep((oldStep) => (oldStep > 0 ? oldStep - 1 : oldStep));
     setPaso((oldStep) => (oldStep > 0 ? oldStep - 1 : oldStep));
+  };
 
-    console.log('Formholder: ', paso, 'Form: ', step);
+  const changeValue = (event) => {
+    const emptyVal = event.value === '';
+    switch (event.name) {
+      case 'names':
+        setNames(event.value);
+        setValidNames(!emptyVal);
+        setInvalidNames(emptyVal);
+        break;
+      case 'lastNames':
+        setLastNames(event.value);
+        setValidLastNames(!emptyVal);
+        setInvalidLastNames(emptyVal);
+        break;
+      case 'country':
+        setCountry(event.value);
+        break;
+      case 'state':
+        setState(event.value);
+        setValidState(!emptyVal);
+        setInvalidState(emptyVal);
+        break;
+      case 'collegeDegree':
+        setCollegeDegree(event.value);
+        break;
+      case 'degree':
+        setDegree(event.value);
+        break;
+      case 'modality':
+        setModality(event.value);
+        break;
+      default:
+        break;
+    }
   };
 
   const renderByStep = () => {
@@ -44,23 +103,67 @@ const ProfessionalSignUpForm = (props) => {
             <Row>
               <Col>
                 <Label className="SignUpFormInputLabel">Nombres</Label>
-                <Input className="SignUpFormInput" />
+                <Input
+                  className="SignUpFormInput"
+                  placeholder="John"
+                  name="names"
+                  id="names"
+                  value={names}
+                  valid={validNames}
+                  invalid={invalidNames}
+                  onChange={(event) => changeValue(event.currentTarget)}
+                />
               </Col>
             </Row>
             <Row>
               <Col>
                 <Label className="SignUpFormInputLabel">Apellidos</Label>
-                <Input className="SignUpFormInput" />
+                <Input
+                  className="SignUpFormInput"
+                  placeholder="Doe"
+                  name="lastNames"
+                  id="lastNames"
+                  value={lastNames}
+                  valid={validLastNames}
+                  invalid={invalidLastNames}
+                  onChange={(event) => changeValue(event.currentTarget)}
+                />
               </Col>
             </Row>
             <Row>
               <Col>
                 <Label className="SignUpFormInputLabel">País</Label>
-                <Input className="SignUpFormInput" />
+                <Row>
+                  <Col>
+                    <select
+                      className="SignUpSelect"
+                      name="country"
+                      id="country"
+                      value={country}
+                      onChange={(event) => changeValue(event.currentTarget)}
+                    >
+                      {countries.map((element) => {
+                        return (
+                          <option key={element.key} value={element}>
+                            {element}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </Col>
+                </Row>
               </Col>
               <Col>
-                <Label className="SignUpFormInputLabel">Ciudad</Label>
-                <Input className="SignUpFormInput" />
+                <Label className="SignUpFormInputLabel">Estado/Provincia</Label>
+                <Input
+                  className="SignUpFormInput"
+                  name="state"
+                  id="state"
+                  value={state}
+                  valid={validState}
+                  invalid={invalidState}
+                  onChange={(event) => changeValue(event.currentTarget)}
+                />
               </Col>
             </Row>
             <Row>
@@ -87,7 +190,13 @@ const ProfessionalSignUpForm = (props) => {
                 </Label>
                 <Row>
                   <Col>
-                    <select onChange={() => {}} className="SignUpSelect">
+                    <select
+                      className="SignUpSelect"
+                      name="collegeDegree"
+                      id="collegeDegree"
+                      value={collegeDegree}
+                      onChange={(event) => changeValue(event.currentTarget)}
+                    >
                       <option value="Titulo o egresado de colegio">
                         Titulo o egresado de colegio
                       </option>
@@ -117,7 +226,13 @@ const ProfessionalSignUpForm = (props) => {
                 </Label>
                 <Row>
                   <Col>
-                    <select onChange={() => {}} className="SignUpSelect">
+                    <select
+                      className="SignUpSelect"
+                      name="degree"
+                      id="degree"
+                      value={degree}
+                      onChange={(event) => changeValue(event.currentTarget)}
+                    >
                       <option value="Técnico especializado">Técnico especializado</option>
                       <option value="Licenciatura o ingeniería">Licenciatura o ingeniería</option>
                       <option value="Maestría/Postgrado">Maestría/Postgrado</option>
@@ -139,7 +254,13 @@ const ProfessionalSignUpForm = (props) => {
                 </Label>
                 <Row>
                   <Col>
-                    <select onChange={() => {}} className="SignUpSelect">
+                    <select
+                      className="SignUpSelect"
+                      name="modality"
+                      id="modality"
+                      value={modality}
+                      onChange={(event) => changeValue(event.currentTarget)}
+                    >
                       <option value="Virtual">Virtual</option>
                       <option value="Presencial">Presencial</option>
                       <option value="Ambas">Ambas</option>
@@ -194,38 +315,48 @@ const ProfessionalSignUpForm = (props) => {
 
   return (
     <div className="SignUpForm">
-      {renderByStep()}
-      <div className="SignUpFormButtonContainer">
-        {step == 0 ? (
-          <>
-            <div className="SignUpButtonSpacer" />
-            <Button className="SignUpFormButton" onClick={nextStep}>
-              Siguiente
-            </Button>
-            <div className="SignUpButtonSpacer" />
-          </>
-        ) : step == 1 ? (
-          <>
-            <Button className="SignUpFormButton" onClick={prevStep}>
-              Anterior
-            </Button>
-            <div className="SignUpButtonSpacer" />
-            <Button className="SignUpFormButton" onClick={nextStep}>
-              Siguiente
-            </Button>
-          </>
-        ) : (
-          <>
-            <Button className="SignUpFormButton" onClick={prevStep}>
-              Anterior
-            </Button>
-            <div className="SignUpButtonSpacer" />
-            <Button className="SignUpFormButtonCreateAccount" onClick={''}>
-              Crear cuenta
-            </Button>
-          </>
-        )}
-      </div>
+      {!loading ? (
+        <>
+          {renderByStep()}
+          <div className="SignUpFormButtonContainer">
+            {step == 0 ? (
+              <>
+                <div className="SignUpButtonSpacer" />
+                <Button className="SignUpFormButton" onClick={nextStep}>
+                  Siguiente
+                </Button>
+                <div className="SignUpButtonSpacer" />
+              </>
+            ) : step == 1 ? (
+              <>
+                <Button className="SignUpFormButton" onClick={prevStep}>
+                  Anterior
+                </Button>
+                <div className="SignUpButtonSpacer" />
+                <Button className="SignUpFormButton" onClick={nextStep}>
+                  Siguiente
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button className="SignUpFormButton" onClick={prevStep}>
+                  Anterior
+                </Button>
+                <div className="SignUpButtonSpacer" />
+                <Button className="SignUpFormButtonCreateAccount" onClick={''}>
+                  Crear cuenta
+                </Button>
+              </>
+            )}
+          </div>
+        </>
+      ) : (
+        <Row>
+          <Col>
+            <Spinner />
+          </Col>
+        </Row>
+      )}
     </div>
   );
 };

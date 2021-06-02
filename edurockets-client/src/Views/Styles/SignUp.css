@@ -34,7 +34,7 @@
 .SignUpStep0Container {
   transition: 0.4s;
 
-  padding: 6rem 0;
+  padding: 2rem 0 6rem 0;
 
 }
 
@@ -78,14 +78,33 @@
   border-width: 0px;
  
   color: #999999;
-  font-size: 16px;
+  font-size: 0.875rem;
 }
 
+.SignUpBackButton {
+  background-color: #1F1646;
+
+  border-radius: 40px;
+
+
+  font-size: 1rem;
+  font-weight: bold;
+
+  padding: auto 10px;
+  margin: 1rem;
+}
+
+.SignUpBackButton:hover {
+  background-color: #ffffff;
+  color: #1F1646;
+  
+  border: 1px solid;
+  border-color: #1F1646;
+  border-radius: 40px;
+}
 
 .SignUpButton {
   background: linear-gradient(90deg, rgba(76,93,213,0.7952557732077206) 58%, rgba(105,72,142,0.8008580141040791) 100%);
-
-  align-items: center;
 
   border-radius: 40px;
 
@@ -93,7 +112,7 @@
   font-weight: 700;
 
   padding: auto 10px;
-  margin: 20px;
+  margin: 1rem;
 
   width: 75%;
 }
@@ -111,7 +130,7 @@
   border-radius: 30px;
   border-width: 0px;
 
-  margin: 10px;
+  margin: 1rem;
   padding: auto 10px;
 
   width: 75%;
@@ -121,6 +140,12 @@
 
 .SignUpSocialButton:hover {
   background-color: #1F1646;
+}
+
+.SignUpSocialButtonIcon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 10px;
 }
 
 .SignUpCreateAccountContainer {

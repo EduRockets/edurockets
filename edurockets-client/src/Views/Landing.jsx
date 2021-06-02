@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Col, Row, Container, Button } from 'reactstrap';
+
+import studentImage from '../Assets/Images/student.png';
+import professionalImage from '../Assets/Images/professional.png';
+
 import StandardLayout from '../Layouts/StandardLayout';
 
 import './Styles/Landing.css';
@@ -93,11 +97,7 @@ const Landing = () => {
           </Row>
           <Row style={{ alignItems: 'center' }}>
             <Col sm="12" lg="6">
-              <img
-                className="LandingImageThirdSection"
-                src="/Images/Estudiante.png"
-                alt="estudiante"
-              />
+              <img className="LandingImageThirdSection" src={studentImage} alt="estudiante" />
             </Col>
             <Col sm="12" lg="6">
               <Row>
@@ -180,7 +180,7 @@ const Landing = () => {
             <Col sm="12" lg="6">
               <img
                 className="LandingImageThirdSection LandingSecondImageThirdSection"
-                src="/Images/Profesional.png"
+                src={professionalImage}
                 alt="profesional"
               />
             </Col>

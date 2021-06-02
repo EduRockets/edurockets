@@ -94,7 +94,7 @@ const Login = () => {
                     <Label className="LoginLabel">Contraseña</Label>
                     <Input
                       className="LoginInput"
-                      placeholder="Contraseña"
+                      placeholder="Debe contener al menos 8 carácteres"
                       name="password"
                       id="password"
                       type="password"

@@ -31,10 +31,45 @@ const SignUp = (props) => {
   const [invalidEmail, setInvalidEmail] = useState(null);
   const [validPassword, setValidPassword] = useState(null);
   const [invalidPassword, setInvalidPassword] = useState(null);
+  const [validConfirmPassword, setValidConfirmPassword] = useState(null);
 
   useEffect(() => {
-    console.log(userType);
+    console.log('This is the usertpye: ', userType);
   }, []);
+
+  const changeValue = (event) => {
+    switch (event.name) {
+      case 'email':
+        setEmail(event.value);
+        if (validateEmail(email)) {
+          setValidEmail(true);
+          setInvalidEmail(false);
+        } else {
+          setValidEmail(false);
+          setInvalidEmail(true);
+        }
+        break;
+      case 'password':
+        setPassword(event.value);
+        if (validatePassword(password)) {
+          setValidPassword(true);
+          setInvalidPassword(false);
+        } else {
+          setValidPassword(false);
+          setInvalidPassword(true);
+        }
+        break;
+      case 'confirmPassword':
+        setConfirmPassword(event.value);
+        if (confirmPassword !== password) {
+          setValidConfirmPassword(false);
+        } else {
+          setValidConfirmPassword(true);
+        }
+        break;
+      default:
+    }
+  };
 
   const renderByStep = () => {
     switch (step) {
@@ -56,7 +91,7 @@ const SignUp = (props) => {
             <Row>
               <Col>
                 <Button className="SignUpSocialButton">
-                  <Icon icon={googleIcon} />
+                  <Icon className="SignUpSocialButtonIcon" icon={googleIcon} />
                   Con Google
                 </Button>
               </Col>
@@ -64,7 +99,7 @@ const SignUp = (props) => {
             <Row>
               <Col>
                 <Button className="SignUpSocialButton">
-                  <Icon icon={facebookIcon} /> Con Facebook
+                  <Icon className="SignUpSocialButtonIcon" icon={facebookIcon} /> Con Facebook
                 </Button>
               </Col>
             </Row>
@@ -79,7 +114,7 @@ const SignUp = (props) => {
                   <Label className="SignUpLabel">Correo electrónico</Label>
                   <Input
                     className="SignUpInput"
-                    placeholder="juanperez@edurockets.com"
+                    placeholder="correo@edurockets.com"
                     name="email"
                     id="email"
                     value={email}
@@ -94,7 +129,7 @@ const SignUp = (props) => {
                   <Label className="SignUpLabel">Contraseña</Label>
                   <Input
                     className="SignUpInput"
-                    placeholder="Contraseña"
+                    placeholder="Debe contener al menos 8 carácteres"
                     name="password"
                     id="password"
                     type="password"
@@ -110,12 +145,10 @@ const SignUp = (props) => {
                   <Label className="SignUpLabel">Confirmar Contraseña</Label>
                   <Input
                     className="SignUpInput"
-                    name="password"
+                    name="confirmPassword"
                     id="password"
                     type="password"
-                    value={password}
-                    valid={validPassword}
-                    invalid={invalidPassword}
+                    value={confirmPassword}
                     onChange={(event) => changeValue(event.currentTarget)}
                   />
                 </Col>
@@ -128,7 +161,7 @@ const SignUp = (props) => {
                   onClick={() => {
                     setStep(0);
                   }}
-                  className="SignUpButton"
+                  className="SignUpBackButton"
                 >
                   Retroceder
                 </Button>
@@ -156,32 +189,6 @@ const SignUp = (props) => {
     }
   };
 
-  const changeValue = (event) => {
-    switch (event.name) {
-      case 'email':
-        setEmail(event.value);
-        if (validateEmail(email)) {
-          setValidEmail(true);
-          setInvalidEmail(false);
-        } else {
-          setValidEmail(false);
-          setInvalidEmail(true);
-        }
-        break;
-      case 'password':
-        setPassword(event.value);
-        if (validatePassword(password)) {
-          setValidPassword(true);
-          setInvalidPassword(false);
-        } else {
-          setValidPassword(false);
-          setInvalidPassword(true);
-        }
-        break;
-      default:
-    }
-  };
-
   return (
     <EmptyLayout>
       <NavBarSignUp />
@@ -191,12 +198,10 @@ const SignUp = (props) => {
             <Col lg="7" className="SignUpLeftContainer" />
             <Col lg="5" className="SignUpRightContainer">
               <Row>
-                <Col className="SignUpTitle">¡Hola!</Col>
+                <Col className="SignUpTitle">Crea tu cuenta ahora</Col>
               </Row>
               <Row>
-                <Col className="SignUpSubTitle">
-                  Crea tu cuenta y te ayudaremos a impulsar tus sueños
-                </Col>
+                <Col className="SignUpSubTitle">Estamos listos para impulsar tus sueños</Col>
               </Row>
               {renderByStep()}
             </Col>
