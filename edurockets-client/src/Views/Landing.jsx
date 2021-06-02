@@ -125,7 +125,12 @@ const Landing = () => {
                   <Button
                     className="LandingSecondButton"
                     onClick={() => {
-                      history.push('/signup/student');
+                      history.push({
+                        pathname: '/signup',
+                        userType: {
+                          name: 'student',
+                        },
+                      });
                     }}
                   >
                     Listo para alcanzar mis sueños
@@ -159,7 +164,12 @@ const Landing = () => {
                   <Button
                     className="LandingSecondButton"
                     onClick={() => {
-                      history.push('/signup/professional');
+                      history.push({
+                        pathname: '/signup',
+                        userType: {
+                          name: 'professional',
+                        },
+                      });
                     }}
                   >
                     Listo para alcanzar mis sueños

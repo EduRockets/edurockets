@@ -67,6 +67,12 @@
   font-size: 16px;
 }
 
+.LoginCheckboxContainer {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 10px;
+}
+
 .OlvidastePassword {
   font-size: 14px;
   text-decoration: none; 
@@ -92,7 +98,6 @@
   background-color: #FFFFFF;
   box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.2);
 
-  align-items: center;
   font-weight: bold;
   font-size: 16px;
 
@@ -111,6 +116,12 @@
 
 .LoginSocialButton:hover {
   background-color: #1F1646;
+}
+
+.LoginSocialButtonIcon { 
+  width: 1rem;
+  height: 1rem;
+  margin-right: 10px;
 }
 
 .CrearCuentaContainer {

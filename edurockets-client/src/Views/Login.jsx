@@ -4,8 +4,6 @@ import { Col, Row, Container, Button, Input, Alert, Label } from 'reactstrap';
 
 import { Icon } from '@iconify/react';
 
-import lockedIcon from '@iconify-icons/carbon/locked';
-import emailIcon from '@iconify-icons/carbon/email';
 import googleIcon from '@iconify-icons/logos/google-icon';
 import facebookIcon from '@iconify-icons/logos/facebook';
 
@@ -118,7 +116,10 @@ const Login = () => {
                 </Row>
               </div>
               <Row>
-                <Col>Recuérdame</Col>
+                <Col>
+                  <Input className="LoginCheckboxContainer" type="checkbox" />
+                  Recuérdame
+                </Col>
                 <Col>
                   <Link className="OlvidastePassword">¿Olvidaste tu contraseña?</Link>
                 </Col>
@@ -131,7 +132,7 @@ const Login = () => {
               <Row>
                 <Col>
                   <Button className="LoginSocialButton">
-                    <Icon icon={googleIcon} />
+                    <Icon className="LoginSocialButtonIcon" icon={googleIcon} />
                     Con Google
                   </Button>
                 </Col>
@@ -139,7 +140,8 @@ const Login = () => {
               <Row>
                 <Col>
                   <Button className="LoginSocialButton">
-                    <Icon icon={facebookIcon} /> Con Facebook
+                    <Icon className="LoginSocialButtonIcon" icon={facebookIcon} />
+                    Con Facebook
                   </Button>
                 </Col>
               </Row>
