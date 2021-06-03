@@ -8,7 +8,7 @@
 
   padding: 1.25rem;
 
-  z-index: 99999999;
+  z-index: 99999;
 
   transition: 0.4s;
 }
@@ -78,6 +78,7 @@
   background-size: cover;
 
   border-radius: 100%;
+
   width: 3rem;
   height: 3rem;
 
@@ -85,4 +86,24 @@
   margin: 0 auto;
   padding: 10px;
   position: relative;
+}
+
+.NavBarAvatar:focus {
+  border: 2px solid #969696;
+}
+
+.NavBarAvatarDialog {
+  z-index: 999999;
+  position: fixed;
+  
+  background-color: #F4F3F8;
+
+  width: 10rem;
+  height: 9rem;
+
+  font-size: 0.8rem;
+  color: #0000;
+
+  border-radius: 1rem;
+  border: 1px solid #999999;
 }

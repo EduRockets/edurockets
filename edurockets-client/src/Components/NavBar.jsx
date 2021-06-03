@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useHistory, useLocation, Link } from 'react-router-dom';
 import { Col, Row, Button } from 'reactstrap';
 
@@ -124,7 +124,27 @@ export const NavBarLogin = () => {
 };
 
 export const NavBarSignIn = () => {
-  const history = useHistory();
+  const [show, setShow] = useState(false);
+
+  const useOutsideAlerter = (ref) => {
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setShow(false);
+        }
+      };
+
+      // Bind the event listener
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [ref]);
+  };
+
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
 
   return (
     <>
@@ -169,7 +189,15 @@ export const NavBarSignIn = () => {
             </Row>
           </Col>
           <Col lg="3">
-            <DivButton className="NavBarAvatar" />
+            <div ref={wrapperRef}>
+              <DivButton
+                action={() => {
+                  setShow(!show);
+                }}
+                className="NavBarAvatar"
+              />
+            </div>
+            {show ? <div className="NavBarAvatarDialog"> EEEEE</div> : <></>}
           </Col>
         </Row>
       </div>

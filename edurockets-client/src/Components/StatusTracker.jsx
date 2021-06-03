@@ -1,26 +1,65 @@
 import React from 'react';
-
 import { Col, Row } from 'reactstrap';
-
-import DivButton from '../Components/DivButton';
 
 import './Styles/StatusTracker.css';
 
 const StatusTracker = ({ requirements }) => {
+  const infoRequirements = [
+    'Pasaporte | ID',
+    'Carta de Solicitud',
+    'Ensayo',
+    'Curriculum',
+    'Formulario Universitario',
+    'Referencias Personales',
+    'Formulario de Intereses',
+    'Actividades Extracurriculares',
+  ];
+
   return (
     <div className="StatusTracker">
       <Row>
-        <Col>
-          <div className="StatusTrackerTitle">Requisitos</div>
-        </Col>
+        <div className="StatusTrackerTitle">Requisitos</div>
       </Row>
+      {infoRequirements.map((name, index) => {
+        return (
+          <>
+            <Row>
+              <Col xs="3" lg="3">
+                <div className="StatusTrackerDivider" />
+              </Col>
+              <Col />
+            </Row>
+            <Row>
+              <Col xs="3" lg="3">
+                <div
+                  className={`StatusTrackerIndicator ${
+                    requirements[Object.keys(requirements)[index]].status !== 1
+                      ? ''
+                      : 'StatusTrackerIndicatorCheked'
+                  } `}
+                />
+              </Col>
+              <Col className="StatusTrackerText">{name}</Col>
+            </Row>
+          </>
+        );
+      })}
       <Row>
         <Col xs="3" lg="3">
           <div className="StatusTrackerDivider" />
         </Col>
         <Col />
       </Row>
-      <Row>
+    </div>
+  );
+};
+
+export default StatusTracker;
+
+{
+  /*
+
+  <Row>
         <Col xs="3" lg="3">
           <div className="StatusTrackerIndicator" />
         </Col>
@@ -104,8 +143,6 @@ const StatusTracker = ({ requirements }) => {
         </Col>
         <Col />
       </Row>
-    </div>
-  );
-};
 
-export default StatusTracker;
+*/
+}

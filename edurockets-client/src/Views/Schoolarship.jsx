@@ -40,7 +40,7 @@ const Schoolarship = () => {
     requirements: {
       passport: {
         url: '',
-        status: 0,
+        status: 1,
       },
       requestLetter: {
         url: '',
@@ -212,7 +212,7 @@ const Schoolarship = () => {
 
           {/* Derecha */}
           <Col>
-            <StatusTracker />
+            <StatusTracker requirements={schoolarship.requirements} />
           </Col>
         </Row>
 
