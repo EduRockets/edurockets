@@ -1,0 +1,79 @@
+.CardRequirement {
+  border-radius: 1rem;
+  border-width: 0px;
+
+  box-shadow: -5px -5px 10px 2px #E0E0E0; 
+  
+  text-align: left;
+  
+  padding: 1rem;
+  margin: 1rem;
+
+  width: 22%;
+  height: 100%;
+  
+  transition: 0.2s;
+}
+
+.CardRequirementChecked {
+  background-color: #41AD49;
+
+  color: #E0E0E0;
+}
+
+.CardRequirementImage {
+  height: 50%;
+}
+
+.CardRequirementTitle {
+  font-size:1rem;
+}
+
+.CardRequirementButton {
+  background-color: transparent;
+
+  border: 2px solid;
+  border-radius: 0.5rem;
+  border-color: #090446;
+
+  font-size: 0.8rem;
+  color: #090446;
+
+  margin-bottom: 0.5rem;
+
+  padding: 0.25rem 1rem;
+}
+
+.CardRequirementButton:hover {
+  background-color: #090446;
+  color: #fff;
+
+  border-color: #090446;
+}
+
+.CardRequirementButtonChecked {
+  background-color: transparent;
+
+  border: 2px solid;
+  border-radius: 0.5rem;
+  border-color: #FFFF;
+
+  font-size: 0.8rem;
+  color: #FFFF;
+
+  margin-bottom: 0.5rem;
+
+  padding: 0.25rem 1rem;
+}
+
+.CardRequirementButtonChecked:hover {
+  background-color: #FFFF;
+  color: #41AD49;
+
+  border-color: #FFFF;
+}
+
+
+.CardRequirementIcon {
+  width: 2rem;
+}

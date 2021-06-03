@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   Card,
   CardImg,
@@ -17,11 +18,15 @@ import markerIcon from '../Assets/Icons/marker.svg';
 import clockIcon from '../Assets/Icons/clock.svg';
 import bookIcon from '../Assets/Icons/book.svg';
 import corazonIcon from '../Assets/Icons/corazon.svg';
+import corazonWhiteIcon from '../Assets/Icons/corazonWhite.svg';
 import calendarIcon from '../Assets/Icons/calendar.svg';
+import instituteIcon from '../Assets/Icons/institute.svg';
 
 import './Styles/CardResult.css';
 
-const CardResult = ({ name, location, hedge, modality, date }) => {
+const CardResult = ({ name, institute, location, hedge, modality, date }) => {
+  const history = useHistory();
+
   const monthNames = [
     'Enero',
     'Febrero',
@@ -75,6 +80,12 @@ const CardResult = ({ name, location, hedge, modality, date }) => {
           </Row>
           <Row>
             <Col className="CardText">
+              <img className="CardIcon" alt="location" src={instituteIcon} />
+              {` Instituto: ${institute}`}
+            </Col>
+          </Row>
+          <Row>
+            <Col className="CardText">
               <img className="CardIcon" alt="price" src={priceIcon} />
               {` Cobertura Beca: ${hedge}%`}
             </Col>
@@ -100,7 +111,7 @@ const CardResult = ({ name, location, hedge, modality, date }) => {
             </Col>
             <Col>
               <Button className="CardButtonGuardar">
-                <img className="CardIcon" alt="price" src={corazonIcon} /> Guardar
+                <img className="CardIcon" src={corazonIcon} /> Guardar
               </Button>
             </Col>
           </Row>
@@ -115,18 +126,21 @@ const CardResult = ({ name, location, hedge, modality, date }) => {
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col className="CardDueTimeContainer">
               <img className="CardIcon" alt="time" src={calendarIcon} /> 2 años
             </Col>
           </Row>
           <Row>
-            <Col>00000 USD/año</Col>
+            <Col className="CardPriceContainer">00000 USD/año</Col>
           </Row>
           <Row>
             <Col>
               <Button
                 className="
          CardButtonGuardar"
+                onClick={() => {
+                  history.push('/schoolarship');
+                }}
               >
                 Más información
               </Button>

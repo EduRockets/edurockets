@@ -36,6 +36,8 @@
 
 .CardIcon {
   width: 1rem;
+
+  margin-right: 0.5rem;
 }
 
 .CardText {
@@ -77,6 +79,17 @@
   padding: 0.25rem;
 }
 
+
+/* == Due Time Container == */
+.CardDueTimeContainer {
+  margin: 0.6rem 0;
+}
+
+/* == Price Container == */
+.CardPriceContainer {
+  margin-bottom: 0.6rem;
+}
+
 /* == Buttons == */
 .CardButtonAplicar {
   background-color: #090446;
@@ -89,6 +102,7 @@
   padding: auto 1.25rem ;
 }
 
+
 .CardButtonGuardar {
   background-color: transparent;
 
@@ -99,5 +113,6 @@
   border: 2px solid;
   border-color: #090446;
   border-radius: 0.625rem;
-}
 
+  transition: 0.4s;
+}

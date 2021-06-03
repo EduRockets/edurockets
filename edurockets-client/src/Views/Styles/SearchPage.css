@@ -3,6 +3,11 @@
 }
 
 /* === First Button === */
+
+.SearchPageRobotIcon {
+  width: 2rem;
+}
+
 .SearchPageRobotContainer {
   text-align: right;
 }

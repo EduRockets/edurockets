@@ -56,6 +56,18 @@
   margin-top: 2rem;
 }
 
+.EditProfileDatePicker {
+  background-color:#EBEBED;
+
+  border-radius: 25px;
+  border-width: 0px;
+
+  color: #999999;
+  font-size: 1rem;
+
+  padding: 0.5rem;
+}
+
 .EditProfileInput{
   background-color:#EBEBED;
 

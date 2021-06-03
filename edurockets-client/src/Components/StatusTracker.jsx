@@ -22,7 +22,7 @@ const StatusTracker = ({ requirements }) => {
       </Row>
       <Row>
         <Col xs="3" lg="3">
-          <div className="StatusTrackerIndicator StatusTrackerIndicatorCheked" />
+          <div className="StatusTrackerIndicator" />
         </Col>
         <Col className="StatusTrackerText">Pasaporte | ID</Col>
       </Row>
@@ -61,6 +61,48 @@ const StatusTracker = ({ requirements }) => {
           <div className="StatusTrackerIndicator" />
         </Col>
         <Col className="StatusTrackerText">Curriculum</Col>
+      </Row>
+      <Row>
+        <Col xs="3" lg="3">
+          <div className="StatusTrackerDivider" />
+        </Col>
+        <Col />
+      </Row>
+      <Row>
+        <Col xs="3" lg="3">
+          <div className="StatusTrackerIndicator" />
+        </Col>
+        <Col className="StatusTrackerText">Formulario Universitario</Col>
+      </Row>
+      <Row>
+        <Col xs="3" lg="3">
+          <div className="StatusTrackerDivider" />
+        </Col>
+        <Col />
+      </Row>
+      <Row>
+        <Col xs="3" lg="3">
+          <div className="StatusTrackerIndicator" />
+        </Col>
+        <Col className="StatusTrackerText">Referencias Profesionales</Col>
+      </Row>
+      <Row>
+        <Col xs="3" lg="3">
+          <div className="StatusTrackerDivider" />
+        </Col>
+        <Col />
+      </Row>
+      <Row>
+        <Col xs="3" lg="3">
+          <div className="StatusTrackerIndicator" />
+        </Col>
+        <Col className="StatusTrackerText">Formulario de Intereses</Col>
+      </Row>
+      <Row>
+        <Col xs="3" lg="3">
+          <div className="StatusTrackerDivider" />
+        </Col>
+        <Col />
       </Row>
     </div>
   );

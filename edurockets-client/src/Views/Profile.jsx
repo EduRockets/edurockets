@@ -17,189 +17,74 @@ const Profile = () => {
   const history = useHistory();
 
   const [label, setLabel] = useState('Aplicaciones en curso');
-  const [section, setSection] = useState();
 
+  /*USUARIO PROVICIONAL.*/
   const user = {
     names: 'Jane',
     lastNames: 'Doe',
+    photo:
+      'https://icons-for-free.com/iconfiles/png/512/female+person+user+woman+young+icon-1320196266256009072.png' /*NO OBLIGATORIO*/,
     birthday: '',
-    language: 'Español',
+    language: '' /*NO OBLIGATORIO*/,
     country: 'Honduras',
-    residenceCountry: 'USA',
-    phone: '+504 95447780',
+    flag: '',
+    residenceCountry: '' /*NO OBLIGATORIO*/,
+    phone: '' /*NO OBLIGATORIO*/,
   };
 
+  /*APLICACIONES PROVISONALES*/
   const aplications = [
     {
       name: 'Digital Marketing Management',
       institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      status: 'En curso',
     },
     {
       name: 'Digital Marketing Management',
       institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      status: 'Aceptado',
     },
     {
       name: 'Digital Marketing Management',
       institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      status: 'En curso',
     },
     {
       name: 'Digital Marketing Management',
       institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      status: 'En curso',
     },
     {
       name: 'Digital Marketing Management',
       institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      status: 'En curso',
     },
     {
       name: 'Digital Marketing Management',
       institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      status: 'Aceptado',
     },
     {
       name: 'Digital Marketing Management',
       institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      status: 'Guardado',
     },
     {
       name: 'Digital Marketing Management',
       institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      status: 'Guardado',
     },
     {
       name: 'Digital Marketing Management',
       institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      status: 'Guardado',
     },
     {
       name: 'Digital Marketing Management',
       institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      status: 'En curso',
     },
   ];
-
-  const renderByState = () => {
-    switch (label) {
-      case 'Aplicaciones en curso':
-        return (
-          <Row>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-          </Row>
-        );
-
-      case 'Aplicaciones guardadas':
-        return (
-          <Row>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-          </Row>
-        );
-
-      case 'Aplicaciones aceptadas':
-        return (
-          <Row>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-          </Row>
-        );
-      default:
-        return (
-          <div>
-            <Spinner color="primary" />
-          </div>
-        );
-    }
-  };
 
   return (
     <EmptyLayout>
@@ -221,7 +106,7 @@ const Profile = () => {
               <Col className="ProfileIconContainer">
                 <DivButton
                   action={() => {
-                    console.log('olo');
+                    console.log('Click en notificación');
                   }}
                 >
                   <img className="ProfileIcon" alt="notification" src={notificationIcon} />
@@ -230,7 +115,7 @@ const Profile = () => {
             </Row>
             <Row>
               <Col>
-                <Avatar size={150} round="100%" />
+                <Avatar size={150} round="100%" src={user.photo} />
               </Col>
             </Row>
             <Row>
@@ -293,19 +178,45 @@ const Profile = () => {
               </DivButton>
             </div>
           </div>
-
-          {/* <Row>
-            {aplications.map((aplication) => {
-              <Col>
-                <CardSchoolarShip
-                  title={aplication.name}
-                  institute={aplication.institute}
-                  status={aplication.status}
-                />
-              </Col>;
-            })}
-          </Row> */}
-          {renderByState()}
+          <Row>
+            {label === 'Perfil de aptitudes e intereses' ? (
+              <>
+                <Row>
+                  <Col>
+                    <Button className="ProfileButtonTest">Completar Test de EduRockets</Button>
+                  </Col>
+                </Row>
+              </>
+            ) : (
+              aplications.map((aplication) => {
+                if (label === 'Aplicaciones en curso' && aplication.status === 'En curso') {
+                  return (
+                    <CardSchoolarShip
+                      title={aplication.name}
+                      institute={aplication.institute}
+                      status={aplication.status}
+                    />
+                  );
+                } else if (label === 'Aplicaciones guardadas' && aplication.status === 'Guardado') {
+                  return (
+                    <CardSchoolarShip
+                      title={aplication.name}
+                      institute={aplication.institute}
+                      status={aplication.status}
+                    />
+                  );
+                } else if (label === 'Aplicaciones aceptadas' && aplication.status === 'Aceptado') {
+                  return (
+                    <CardSchoolarShip
+                      title={aplication.name}
+                      institute={aplication.institute}
+                      status={aplication.status}
+                    />
+                  );
+                }
+              })
+            )}
+          </Row>
         </Container>
       </Container>
     </EmptyLayout>

@@ -28,6 +28,7 @@ const SearchPage = () => {
   const schoolarships = [
     {
       name: 'Nombre del Programa Para Títulos largos se usa esta distancia',
+      institute: 'Nombre de la universidad',
       location: {
         country: 'Canada',
         state: 'Ottawa',
@@ -40,6 +41,7 @@ const SearchPage = () => {
     },
     {
       name: 'Nombre del Programa Para Títulos largos se usa esta distancia',
+      institute: 'Nombre de la universidad',
       location: {
         country: 'Canada',
         state: 'Ottawa',
@@ -52,6 +54,7 @@ const SearchPage = () => {
     },
     {
       name: 'Nombre del Programa Para Títulos largos se usa esta distancia',
+      institute: 'Nombre de la universidad',
       location: {
         country: 'Canada',
         state: 'Ottawa',
@@ -64,6 +67,7 @@ const SearchPage = () => {
     },
     {
       name: 'Nombre del Programa Para Títulos largos se usa esta distancia',
+      institute: 'Nombre de la universidad',
       location: {
         country: 'Canada',
         state: 'Ottawa',
@@ -81,7 +85,7 @@ const SearchPage = () => {
       <Container className="SearchPage">
         <Row className="SearchPageRobotContainer">
           <Col>
-            <img className="ProfileIcon" alt="notification" src={robotCIcon} />
+            <img className="SearchPageRobotIcon" alt="notification" src={robotCIcon} />
             <Button className="SearchPageButton">Búsqueda Personalizada</Button>
           </Col>
         </Row>
@@ -225,10 +229,11 @@ const SearchPage = () => {
                 // eslint-disable-next-line react/jsx-key
                 <CardResult
                   name={schoolarship.name}
-                  location={schoolarships.location}
-                  hedge={schoolarships.hedge}
-                  modality={schoolarships.modality}
-                  date={schoolarships.date}
+                  location={schoolarship.location}
+                  institute={schoolarship.institute}
+                  hedge={schoolarship.hedge}
+                  modality={schoolarship.modality}
+                  date={schoolarship.date}
                 />
               );
             })}

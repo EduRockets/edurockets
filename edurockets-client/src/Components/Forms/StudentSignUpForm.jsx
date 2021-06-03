@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button, Row, Col, Input, Label, Spinner } from 'reactstrap';
 import DatePicker from 'react-datepicker';
 
@@ -8,6 +9,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './Styles/SignUpForm.css';
 
 const StudentSignUpForm = (props) => {
+  const history = useHistory();
+
   const { paso, setPaso } = props;
   const [loading, setLoading] = useState(true);
   const [step, setStep] = useState(0);
@@ -286,7 +289,12 @@ const StudentSignUpForm = (props) => {
                   Anterior
                 </Button>
                 <div className="SignUpButtonSpacer" />
-                <Button className="SignUpFormButtonCreateAccount" onClick={''}>
+                <Button
+                  className="SignUpFormButtonCreateAccount"
+                  onClick={() => {
+                    history.push('/profile');
+                  }}
+                >
                   Crear cuenta
                 </Button>
               </>
