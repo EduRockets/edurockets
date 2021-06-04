@@ -12,20 +12,21 @@
 }
 
 .CardSignUpImage {
-    text-align: center;
-    display: block;
+   text-align: center;
+   display: block;
     
-    justify-content: center;
-    align-items: center;
+   justify-content: center;
+   align-items: center;
 
-    margin: auto;
+   margin: auto;
 
-    width: 60%;
+   width: 60%;
 }
 
 .CardTitle {
   color: #090446;
   font-size: 1.17rem;
+
   font-weight: bold;
 
 }

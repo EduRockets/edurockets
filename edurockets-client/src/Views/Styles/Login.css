@@ -18,6 +18,7 @@
 
 .LoginLeftContainer {
   background-image: url('../../Assets/Images/Login-Background.svg');
+
   background-size: cover;
 }
 
@@ -33,6 +34,7 @@
 
 .LoginLabel {
   font-size: 1rem;
+
   font-weight: bold; 
 
   float: left ;
@@ -71,6 +73,7 @@
   width: 1rem;
   height: 1rem;
   margin-right: 10px;
+
 }
 
 .OlvidastePassword {

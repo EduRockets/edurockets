@@ -9,6 +9,7 @@ import MaskedInput from '../Components/MaskedInput';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
+
 import './Styles/EditProfile.css';
 
 const EditProfile = () => {

@@ -1,5 +1,6 @@
 .FormHolder {
   background-image: url('../../Assets/Images/CreateUser-Background1.svg');
+
   background-size: cover;
   background-position: bottom;
 
@@ -10,12 +11,14 @@
 
 .FormHolderStep2 {
   background-image: url('../../Assets/Images/CreateUser-Background2.svg');
+
   background-size: cover;
   background-position: bottom;
 }
 
 .FormHolderStep3 {
   background-image: url('../../Assets/Images/CreateUser-Background3.svg');
+
   background-size: cover;
   background-position: bottom;
 }

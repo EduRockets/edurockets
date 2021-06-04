@@ -2,6 +2,7 @@
   height: calc(100vh - 76px);
 
   background-image: url('../../Assets/Images/Header-Background.jpg');
+
   background-position: center;
   background-size: cover;
 
@@ -29,6 +30,7 @@
 
 #SeventhSectionLanding {
   background-image: url('../../Assets/Images/Rocket.png');
+
   background-size: cover;
   background-position: bottom;
   
@@ -55,6 +57,7 @@
 /*Waves*/
 .DivWave {
   background-image: url('../../Assets/Images/wave.svg');
+
   background-position: bottom;
   background-size: cover;
 
@@ -86,6 +89,7 @@
 
 .DivSixthWave{
   background-image: url('../../Assets/Images/sixth-wave.svg');
+
   background-size: cover;
   background-position: bottom;
 
@@ -94,6 +98,7 @@
 
 .DivSeventhWave {
   background-image: url('../../Assets/Images/seventh-wave.svg');
+
   background-size: cover;
   background-position: inherit;
 
@@ -299,6 +304,7 @@
 
 .SabiasQueTextBox {
   background-image: url('../../Assets/Images/TextBox.svg');
+
   background-position: center;
   background-size: cover;
 

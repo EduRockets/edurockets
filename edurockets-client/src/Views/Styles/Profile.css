@@ -9,6 +9,7 @@
 
 .ProfileBanner {
   background-image: url('../../Assets/Images/Profile-Banner.png');
+
   background-position: bottom;
   background-size: cover;
 }
@@ -121,4 +122,5 @@
 .ProfileButtonTest:hover {
   background-color: #1d1645;
   color: white;
+
 }
