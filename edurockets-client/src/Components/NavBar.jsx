@@ -7,6 +7,9 @@ import DivButton from '../Components/DivButton';
 import misAplicacionesIcon from '../Assets/Icons/misAplicaciones.svg';
 import heartIcon from '../Assets/Icons/corazonWhite.svg';
 
+import userIcon from '../Assets/Icons/user.svg';
+import signOutIcon from '../Assets/Icons/signOut.svg';
+
 import './Styles/NavBar.css';
 
 const NavBar = () => {
@@ -123,7 +126,11 @@ export const NavBarLogin = () => {
   );
 };
 
-export const NavBarSignIn = () => {
+/* === Navbar para el usuario ya logeado === */
+
+const NavBarAvatar = () => {
+  const history = useHistory();
+
   const [show, setShow] = useState(false);
 
   const useOutsideAlerter = (ref) => {
@@ -146,6 +153,44 @@ export const NavBarSignIn = () => {
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
 
+  return (
+    <div>
+      <div ref={wrapperRef}>
+        <DivButton
+          action={() => {
+            setShow(!show);
+          }}
+          className="NavBarAvatar"
+        />
+        {show ? (
+          <div className="NavBarAvatarDialog">
+            <DivButton
+              action={() => {
+                history.push('/profile');
+              }}
+              className="NavBarAvatarText"
+            >
+              Mi Perfil <img className="NavBarAvatarIcon" alt="signOut" src={userIcon} />
+            </DivButton>
+            <div className="NavBarAvatarDialogDivider" />
+            <DivButton
+              action={() => {
+                history.push('/');
+              }}
+              className="NavBarAvatarText"
+            >
+              Cerrar Sesión <img className="NavBarAvatarIcon" alt="signOut" src={signOutIcon} />
+            </DivButton>
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export const NavBarSignIn = () => {
   return (
     <>
       <div className="NavBar NavBarSolid">
@@ -189,15 +234,7 @@ export const NavBarSignIn = () => {
             </Row>
           </Col>
           <Col lg="3">
-            <div ref={wrapperRef}>
-              <DivButton
-                action={() => {
-                  setShow(!show);
-                }}
-                className="NavBarAvatar"
-              />
-            </div>
-            {show ? <div className="NavBarAvatarDialog"> EEEEE</div> : <></>}
+            <NavBarAvatar />
           </Col>
         </Row>
       </div>

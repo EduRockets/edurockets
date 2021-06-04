@@ -19,6 +19,95 @@ import { mapKey } from '../Config/credentials';
 import './Styles/Schoolarship.css';
 
 const Schoolarship = () => {
+  const user = {
+    names: 'Jane',
+    lastNames: 'Doe',
+    photo:
+      'https://icons-for-free.com/iconfiles/png/512/female+person+user+woman+young+icon-1320196266256009072.png' /*NO OBLIGATORIO*/,
+    birthday: new Date(1998, 6, 8),
+    language: '' /*NO OBLIGATORIO*/,
+    country: 'Honduras',
+    flag: '' /*NO OBLIGATORIO*/,
+    residenceCountry: '' /*NO OBLIGATORIO*/,
+    phone: '' /*NO OBLIGATORIO*/,
+    schoolarShips: [
+      {
+        uid: 'uid de la beca',
+        requirements: {
+          passport: {
+            url: '',
+            status: 1,
+          },
+          requestLetter: {
+            url: '',
+            status: 1,
+          },
+          test: {
+            url: '',
+            status: 0,
+          },
+          curriculum: {
+            url: '',
+            status: 0,
+          },
+          universityForm: {
+            url: '',
+            status: 0,
+          },
+          personalReferences: {
+            url: '',
+            status: 0,
+          },
+          interestForm: {
+            url: '',
+            status: 0,
+          },
+          extracurricularEvents: {
+            url: '',
+            status: 0,
+          },
+        },
+      },
+      {
+        uid: 'uid de la beca 2',
+        requirements: {
+          passport: {
+            url: '',
+            status: 1,
+          },
+          requestLetter: {
+            url: '',
+            status: 1,
+          },
+          test: {
+            url: '',
+            status: 0,
+          },
+          curriculum: {
+            url: '',
+            status: 0,
+          },
+          universityForm: {
+            url: '',
+            status: 0,
+          },
+          personalReferences: {
+            url: '',
+            status: 0,
+          },
+          interestForm: {
+            url: '',
+            status: 0,
+          },
+          extracurricularEvents: {
+            url: '',
+            status: 0,
+          },
+        },
+      },
+    ],
+  };
+
   const schoolarship = {
     uid: 'este es el uid',
     name: 'Digital Marketing Management',
@@ -36,40 +125,6 @@ const Schoolarship = () => {
       state: 'Ottawa',
       lng: '100000',
       lat: '9956',
-    },
-    requirements: {
-      passport: {
-        url: '',
-        status: 1,
-      },
-      requestLetter: {
-        url: '',
-        status: 0,
-      },
-      test: {
-        url: '',
-        status: 0,
-      },
-      curriculum: {
-        url: '',
-        status: 0,
-      },
-      universityForm: {
-        url: '',
-        status: 0,
-      },
-      personalReferences: {
-        url: '',
-        status: 0,
-      },
-      interestForm: {
-        url: '',
-        status: 0,
-      },
-      extracurricularEvents: {
-        url: '',
-        status: 0,
-      },
     },
   };
 
@@ -212,7 +267,7 @@ const Schoolarship = () => {
 
           {/* Derecha */}
           <Col>
-            <StatusTracker requirements={schoolarship.requirements} />
+            <StatusTracker requirements={user.schoolarShips[0].requirements} />
           </Col>
         </Row>
 
@@ -220,7 +275,7 @@ const Schoolarship = () => {
           <>
             <Row className="SchoolarshipTitle">Ruta de Aplicación</Row>
             <Row>
-              <CardsRequirements requirements={schoolarship.requirements} />
+              <CardsRequirements requirements={user.schoolarShips[0].requirements} />
             </Row>
             <Row>
               <Col className="SchoolarshipSendButtonContaier">

@@ -303,8 +303,10 @@ const StudentSignUpForm = (props) => {
         </>
       ) : (
         <Row>
-          <Col>
-            <Spinner />
+          <Col style={{ textAlign: 'center' }}>
+            <Spinner style={{ textAlign: 'center', width: '3rem', height: '3rem' }} color="primary">
+              {' '}
+            </Spinner>
           </Col>
         </Row>
       )}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Avatar from 'react-avatar';
 
-import { Container, Row, Col, Button, Spinner } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
 import EmptyLayout from '../Layouts/EmptyLayout';
 
 import SearchBar from '../Components/SearchBar';
@@ -24,12 +24,90 @@ const Profile = () => {
     lastNames: 'Doe',
     photo:
       'https://icons-for-free.com/iconfiles/png/512/female+person+user+woman+young+icon-1320196266256009072.png' /*NO OBLIGATORIO*/,
-    birthday: '',
+    birthday: new Date(1998, 6, 8),
     language: '' /*NO OBLIGATORIO*/,
     country: 'Honduras',
-    flag: '',
+    flag: '' /*NO OBLIGATORIO*/,
     residenceCountry: '' /*NO OBLIGATORIO*/,
     phone: '' /*NO OBLIGATORIO*/,
+    schoolarShips: [
+      {
+        uid: 'uid de la beca',
+        status: 'En Curso',
+        requirements: {
+          passport: {
+            url: '',
+            status: 1,
+          },
+          requestLetter: {
+            url: '',
+            status: 1,
+          },
+          test: {
+            url: '',
+            status: 0,
+          },
+          curriculum: {
+            url: '',
+            status: 0,
+          },
+          universityForm: {
+            url: '',
+            status: 0,
+          },
+          personalReferences: {
+            url: '',
+            status: 0,
+          },
+          interestForm: {
+            url: '',
+            status: 0,
+          },
+          extracurricularEvents: {
+            url: '',
+            status: 0,
+          },
+        },
+      },
+      {
+        uid: 'uid de la beca 2',
+        status: 'Aceptado',
+        requirements: {
+          passport: {
+            url: '',
+            status: 1,
+          },
+          requestLetter: {
+            url: '',
+            status: 1,
+          },
+          test: {
+            url: '',
+            status: 0,
+          },
+          curriculum: {
+            url: '',
+            status: 0,
+          },
+          universityForm: {
+            url: '',
+            status: 0,
+          },
+          personalReferences: {
+            url: '',
+            status: 0,
+          },
+          interestForm: {
+            url: '',
+            status: 0,
+          },
+          extracurricularEvents: {
+            url: '',
+            status: 0,
+          },
+        },
+      },
+    ],
   };
 
   /*APLICACIONES PROVISONALES*/

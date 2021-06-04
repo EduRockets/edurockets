@@ -82,9 +82,9 @@
   width: 3rem;
   height: 3rem;
 
-
   margin: 0 auto;
   padding: 10px;
+
   position: relative;
 }
 
@@ -92,18 +92,39 @@
   border: 2px solid #969696;
 }
 
+.NavBarAvatarDialogDivider {
+  background-color: #969696;
+  width: 85%;
+
+  margin: 0 auto;
+  height: 1px;
+}
+
 .NavBarAvatarDialog {
   z-index: 999999;
   position: fixed;
   
+  text-align: right;
+
+  border-radius: 0.5rem;
+
   background-color: #F4F3F8;
 
-  width: 10rem;
-  height: 9rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
 
-  font-size: 0.8rem;
-  color: #0000;
+  color: #100935;
 
-  border-radius: 1rem;
-  border: 1px solid #999999;
+  width: 15rem;
+}
+
+.NavBarAvatarIcon {
+  margin-left: 0.5rem;
+
+  width: 1rem;
+  color: #100935;
+}
+
+.NavBarAvatarText {
+  margin: 0.5rem;
 }
