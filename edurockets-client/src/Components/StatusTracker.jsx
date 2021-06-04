@@ -3,7 +3,7 @@ import { Col, Row } from 'reactstrap';
 
 import './Styles/StatusTracker.css';
 
-const StatusTracker = ({ requirements }) => {
+const StatusTracker = ({ requirements, show }) => {
   const infoRequirements = [
     'Pasaporte | ID',
     'Carta de Solicitud',
@@ -35,7 +35,9 @@ const StatusTracker = ({ requirements }) => {
                   className={`StatusTrackerIndicator ${
                     requirements[Object.keys(requirements)[index]].status !== 1
                       ? ''
-                      : 'StatusTrackerIndicatorCheked'
+                      : show
+                      ? 'StatusTrackerIndicatorCheked'
+                      : ''
                   } `}
                 />
               </Col>

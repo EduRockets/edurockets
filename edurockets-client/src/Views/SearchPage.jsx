@@ -27,56 +27,143 @@ const SearchPage = () => {
 
   const schoolarships = [
     {
-      name: 'Nombre del Programa Para Títulos largos se usa esta distancia',
-      institute: 'Nombre de la universidad',
+      uid: 'este es el uid',
+      name: 'Beca Presidencial Concordia - Contabilidad',
+      institute: 'Universidad de concordia',
+      description:
+        'Contadores destacados mantienen a las empresas a la vanguardia: resuelven problemas, desarrollan estrategias financieras sólidas y garantizan una buena salud fiscal. Si eres un gran triunfador con un apetito por el aprendizaje continuo, considéranos. Se unirá a un programa con reputación de graduados que logran excelentes resultados en los exámenes nacionales de contabilidad profesional.',
+      modality: 'Presencial',
+      studyArea: 'Negocios Administración y Economía',
+      degree: 'Pregrado',
+      dueDate: new Date(2021, 1, 10),
+      duration: 5,
+      banner: 'https://wallpaperaccess.com/full/1912152.jpg',
+      photo:
+        'https://d1bvpoagx8hqbg.cloudfront.net/originals/experiencia-en-la-universidad-concordia-canada-por-monika-024bc2c82e45deff1f1b0d344642d624.jpg',
+      price: 16500,
+      hedge: '100%',
       location: {
         country: 'Canada',
-        state: 'Ottawa',
-        lng: '0',
-        lat: '0',
+        state: 'Montreal',
+        lng: '100000',
+        lat: '9956',
       },
-      hedge: 30,
-      modality: 'Virtual',
-      date: new Date(2021, 5, 26),
+    },
+
+    {
+      uid: 'este es el uid',
+      name: 'Licenciatura en Música en Escritura y Producción Contemporánea',
+      institute: 'Berklee College of Music',
+      description:
+        'Los estudiantes que se especializan en escritura y producción contemporáneas estudian arreglos, composición, puntuación para medios, orquestación, técnicas de producción y prácticas de notación avanzada, y aprenden a aplicar estas habilidades y conceptos escribiendo y supervisando la producción de una amplia variedad de instrumentos, vocales, combinaciones acústicas y electrónicas, que van desde pequeños conjuntos hasta orquestas en situaciones de actuación en vivo y entornos de estudio de grabación. ',
+      modality: 'Presencial',
+      studyArea: 'Artes Diseño y Arquitectura',
+      degree: 'Pregrado',
+      dueDate: new Date(2021, 4, 10),
+      duration: 4,
+      banner: '',
+      photo:
+        'https://college.berklee.edu/sites/default/files/styles/scale_and_crop_16_9_large/public/d7/bcm/berklee-boston-campus-at-night.jpg?itok=ICRwn8Jm',
+      price: 5000,
+      hedge: '100%',
+      location: {
+        country: 'Estados Unidos',
+        state: 'Boston',
+        lng: '100000',
+        lat: '9956',
+      },
+    },
+
+    {
+      uid: 'este es el uid',
+      name: 'Gestion de riesgos y serguros',
+      institute: 'University of Central Arkansas',
+      description:
+        'La especialización en Seguros y Gestión de Riesgos de la Universidad de Central Arkansas es uno de los programas de más rápido crecimiento en el país. Como único título en Administración de Riesgos y Seguros de Arkansas, este programa sirve como un recurso valioso para los servicios financieros y de seguros de la región. El programa de la UCA integra la teoría económica y los principios financieros con los seguros y la gestión de riesgos para preparar a los estudiantes para una variedad de carreras en la industria de los seguros y los servicios financieros.',
+      modality: 'Presencial',
+      studyArea: 'Negocios Administración y Economía',
+      degree: 'Pregrado',
+      dueDate: new Date(2021, 3, 31),
+      duration: 1,
+      banner: '',
+      photo: 'https://talkbusiness.net/wp-content/uploads/2018/08/UCA-Image-WEB.jpg',
+      price: 3500,
+      hedge: '$7,000',
+      location: {
+        country: 'Estados Unidos',
+        state: 'Conway',
+        lng: '100000',
+        lat: '9956',
+      },
+    },
+
+    {
+      uid: 'este es el uid',
+      name: 'Producción cinematográfica (BFA)',
+      institute: 'Universidad de concordia',
+      description:
+        'Contadores destacados mantienen a las empresas a la vanguardia: resuelven problemas, desarrollan estrategias financieras sólidas y garantizan una buena salud fiscal. Si eres un gran triunfador con un apetito por el aprendizaje continuo, considéranos. Se unirá a un programa con reputación de graduados que logran excelentes resultados en los exámenes nacionales de contabilidad profesional.',
+      modality: 'Presencial',
+      studyArea: 'Artes Diseño y Arquitectura',
+      degree: 'Pregrado',
+      dueDate: new Date(2021, 2, 1),
+      duration: 3,
+      banner: '',
+      photo:
+        'https://d1bvpoagx8hqbg.cloudfront.net/originals/experiencia-en-la-universidad-concordia-canada-por-monika-024bc2c82e45deff1f1b0d344642d624.jpg',
+      price: 16500,
+      hedge: '100%',
+      location: {
+        country: 'Canada',
+        state: 'Montreal',
+        lng: '100000',
+        lat: '9956',
+      },
     },
     {
-      name: 'Nombre del Programa Para Títulos largos se usa esta distancia',
-      institute: 'Nombre de la universidad',
+      uid: 'este es el uid',
+      name: 'International Student Merit Scholarship - Innovación y Emprendimiento',
+      institute: 'University of Central Arkansas',
+      description:
+        'La especialización en Innovación y Emprendimiento de la Universidad de Central Arkansas le proporcionará el conocimiento y la experiencia creativos y prácticos que necesita para convertirse en un empresario exitoso o en un activo valioso en organizaciones corporativas, gubernamentales y sin fines de lucro en una variedad de campos.',
+      modality: 'Presencial',
+      studyArea: 'Negocios Administración y Economía',
+      degree: 'Pregrado',
+      dueDate: new Date(2021, 3, 31),
+      duration: 1,
+      banner: '',
+      photo: 'https://talkbusiness.net/wp-content/uploads/2018/08/UCA-Image-WEB.jpg',
+      price: 3500,
+      hedge: '$7,000',
       location: {
-        country: 'Canada',
-        state: 'Ottawa',
-        lng: '0',
-        lat: '0',
+        country: 'Estados Unidos',
+        state: 'Conway',
+        lng: '100000',
+        lat: '9956',
       },
-      hedge: 30,
-      modality: 'Virtual',
-      date: new Date(2021, 5, 26),
     },
     {
-      name: 'Nombre del Programa Para Títulos largos se usa esta distancia',
-      institute: 'Nombre de la universidad',
+      uid: 'este es el uid',
+      name: 'Agronegocios y Comercialización de Alimentos',
+      institute: 'Lincoln University',
+      description:
+        'El título de Licenciatura en Agronegocios y Comercialización de Alimentos de Lincoln lo equipará con un sólido conocimiento aplicado de los conceptos comerciales centrales y las consideraciones comerciales únicas de la industria de producción primaria de miles de millones de dólares. Una población mundial en rápido crecimiento y las limitaciones de recursos finitos requieren un enfoque más inteligente del negocio de la producción y comercialización de alimentos. Asimismo, la creciente sofisticación y poder adquisitivo de los consumidores en todo el mundo significa una demanda creciente de una amplia gama de productos de alta calidad. Obtendrá una comprensión contextual de los sectores de la comercialización de alimentos y la agroindustria global para satisfacer esta demanda.',
+      modality: 'Presencial',
+      studyArea: 'Agricultura y Alimentos',
+      degree: 'Pregrado',
+      dueDate: new Date(2021, 7, 1),
+      duration: 3,
+      banner: '',
+      photo:
+        'https://www.ellucian.com/sites/default/files/styles/max_width_1920/public/uploads/images/2020/01/news-image-lincoln-university.png?itok=U_GbUwDB',
+      price: 2381,
+      hedge: '$7,142',
       location: {
-        country: 'Canada',
-        state: 'Ottawa',
-        lng: '0',
-        lat: '0',
+        country: 'Nueva Zelanda',
+        state: 'Lincoln',
+        lng: '100000',
+        lat: '9956',
       },
-      hedge: 30,
-      modality: 'Virtual',
-      date: new Date(2021, 5, 26),
-    },
-    {
-      name: 'Nombre del Programa Para Títulos largos se usa esta distancia',
-      institute: 'Nombre de la universidad',
-      location: {
-        country: 'Canada',
-        state: 'Ottawa',
-        lng: '0',
-        lat: '0',
-      },
-      hedge: 30,
-      modality: 'Virtual',
-      date: new Date(2021, 5, 26),
     },
   ];
 
@@ -227,14 +314,7 @@ const SearchPage = () => {
             {schoolarships.map((schoolarship) => {
               return (
                 // eslint-disable-next-line react/jsx-key
-                <CardResult
-                  name={schoolarship.name}
-                  location={schoolarship.location}
-                  institute={schoolarship.institute}
-                  hedge={schoolarship.hedge}
-                  modality={schoolarship.modality}
-                  date={schoolarship.date}
-                />
+                <CardResult schoolarship={schoolarship} />
               );
             })}
           </Col>

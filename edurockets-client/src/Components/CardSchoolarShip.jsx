@@ -5,14 +5,10 @@ import DivButton from './DivButton';
 
 import './Styles/CardSchoolarShip.css';
 
-const CardSchoolarShip = ({ title, institute, status }) => {
+const CardSchoolarShip = ({ title, institute, status, src }) => {
   return (
     <DivButton className="CardSchoolarShip">
-      <CardImg
-        className="CardSchoolarShipImage"
-        src="https://images.theconversation.com/files/3911/original/princeton.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip"
-        alt="Image"
-      />
+      <CardImg className="CardSchoolarShipImage" src={src} alt="Image" />
       <CardBody>
         <CardTitle className="CardTitle">{title}</CardTitle>
         <CardSubtitle className="CardSubTitle">{institute}</CardSubtitle>

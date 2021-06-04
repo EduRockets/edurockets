@@ -110,19 +110,23 @@ const Schoolarship = () => {
 
   const schoolarship = {
     uid: 'este es el uid',
-    name: 'Digital Marketing Management',
-    institute: 'Universidad Equis',
+    name: 'Beca Presidencial Concordia - Contabilidad',
+    institute: 'Universidad de concordia',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore ',
-    modality: 'Virtual',
-    dueDate: new Date(2021, 6, 8),
-    duration: 2,
-    label: 'https://wallpaperaccess.com/full/1912152.jpg',
-    price: 0,
-    hedge: 30,
+      'Contadores destacados mantienen a las empresas a la vanguardia: resuelven problemas, desarrollan estrategias financieras sólidas y garantizan una buena salud fiscal. Si eres un gran triunfador con un apetito por el aprendizaje continuo, considéranos. Se unirá a un programa con reputación de graduados que logran excelentes resultados en los exámenes nacionales de contabilidad profesional.',
+    modality: 'Presencial',
+    studyArea: 'Negocios Administración y Economía',
+    degree: 'Pregrado',
+    dueDate: new Date(2021, 10, 1),
+    duration: 5,
+    banner: 'https://pbs.twimg.com/media/DKmMe6CWsAUvikp.jpg',
+    photo:
+      'https://d1bvpoagx8hqbg.cloudfront.net/originals/experiencia-en-la-universidad-concordia-canada-por-monika-024bc2c82e45deff1f1b0d344642d624.jpg',
+    price: 16500,
+    hedge: 100,
     location: {
       country: 'Canada',
-      state: 'Ottawa',
+      state: 'Montreal',
       lng: '100000',
       lat: '9956',
     },
@@ -152,7 +156,7 @@ const Schoolarship = () => {
     <SignInLayout>
       <Container
         className="SchoolarshipBanner"
-        style={{ backgroundImage: `url(${schoolarship.label})` }}
+        style={{ backgroundImage: `url(${schoolarship.banner})` }}
         fluid
       />
 
@@ -267,7 +271,7 @@ const Schoolarship = () => {
 
           {/* Derecha */}
           <Col>
-            <StatusTracker requirements={user.schoolarShips[0].requirements} />
+            <StatusTracker requirements={user.schoolarShips[0].requirements} show={show} />
           </Col>
         </Row>
 

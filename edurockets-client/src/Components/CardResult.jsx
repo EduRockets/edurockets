@@ -1,31 +1,22 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-  Col,
-  Row,
-  Container,
-} from 'reactstrap';
+import { Button, Col, Row } from 'reactstrap';
 
 import priceIcon from '../Assets/Icons/price.svg';
 import markerIcon from '../Assets/Icons/marker.svg';
 import clockIcon from '../Assets/Icons/clock.svg';
 import bookIcon from '../Assets/Icons/book.svg';
 import corazonIcon from '../Assets/Icons/corazon.svg';
-import corazonWhiteIcon from '../Assets/Icons/corazonWhite.svg';
 import calendarIcon from '../Assets/Icons/calendar.svg';
 import instituteIcon from '../Assets/Icons/institute.svg';
 
 import './Styles/CardResult.css';
 
-const CardResult = ({ name, institute, location, hedge, modality, date }) => {
+const CardResult = ({ schoolarship }) => {
   const history = useHistory();
+
+  const differenceDate = new Date();
+  differenceDate.setTime(schoolarship.dueDate.getTime() - new Date().getTime());
 
   const monthNames = [
     'Enero',
@@ -42,66 +33,47 @@ const CardResult = ({ name, institute, location, hedge, modality, date }) => {
     'Diciembre',
   ];
 
-  location = {
-    country: 'Canada',
-    state: 'Ottawa',
-    lng: '0',
-    lat: '0',
-  };
-
-  hedge = 30;
-
-  modality = 'Virtual';
-
-  date = new Date(2021, 5, 26);
-
   return (
     <div className="CardResult">
       <Row className="CardResultContainer">
         <Col>
-          <img
-            className="CardImage"
-            src={
-              'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Perimeter_Institute.jpg/1200px-Perimeter_Institute.jpg'
-            }
-            alt="Schoolarship image"
-          />
+          <img className="CardImage" src={schoolarship.photo} alt="Schoolarship image" />
         </Col>
 
         <Col lg="5">
           <Row>
-            <Col className="CardTitle">{name}</Col>
+            <Col className="CardTitle">{schoolarship.name}</Col>
           </Row>
           <Row>
             <Col className="CardText">
               <img className="CardIcon" alt="location" src={markerIcon} />
-              {` ${location.state}, ${location.country}`}
+              {` ${schoolarship.location.state}, ${schoolarship.location.country}`}
             </Col>
           </Row>
           <Row>
             <Col className="CardText">
               <img className="CardIcon" alt="location" src={instituteIcon} />
-              {` Instituto: ${institute}`}
+              {` Instituto: ${schoolarship.institute}`}
             </Col>
           </Row>
           <Row>
             <Col className="CardText">
               <img className="CardIcon" alt="price" src={priceIcon} />
-              {` Cobertura Beca: ${hedge}%`}
+              {` Cobertura Beca: ${schoolarship.hedge}`}
             </Col>
           </Row>
           <Row>
             <Col className="CardText">
               <img className="CardIcon" alt="modality" src={bookIcon} />
-              {` Modalidad: ${modality}`}
+              {` Modalidad: ${schoolarship.modality}`}
             </Col>
           </Row>
           <Row>
             <Col className="CardText">
               <img className="CardIcon" alt="modality" src={clockIcon} />
-              {` Fecha límite de aplicación: ${date.getDate()} de ${
-                monthNames[date.getMonth()]
-              }, ${date.getFullYear()}`}
+              {` Fecha límite de aplicación: ${schoolarship.dueDate.getDate()} de ${
+                monthNames[schoolarship.dueDate.getMonth()]
+              }, ${schoolarship.dueDate.getFullYear()}`}
             </Col>
           </Row>
 
@@ -122,16 +94,17 @@ const CardResult = ({ name, institute, location, hedge, modality, date }) => {
         <Col className="CardInformationContainer">
           <Row>
             <Col>
-              <div className="CardTime">Quedan 5 días</div>
+              <div className="CardTime">{`Quedan ${differenceDate.getDate()} días`}</div>
             </Col>
           </Row>
           <Row>
             <Col className="CardDueTimeContainer">
-              <img className="CardIcon" alt="time" src={calendarIcon} /> 2 años
+              <img className="CardIcon" alt="time" src={calendarIcon} />
+              {`${schoolarship.duration} ${schoolarship.duration > 1 ? 'años' : 'año'} `}
             </Col>
           </Row>
           <Row>
-            <Col className="CardPriceContainer">00000 USD/año</Col>
+            <Col className="CardPriceContainer">{`${schoolarship.price.toFixed(1)} USD/año`}</Col>
           </Row>
           <Row>
             <Col>
