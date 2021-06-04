@@ -114,7 +114,7 @@ const CardResult = ({ schoolarship }) => {
             <Col>
               <Button
                 className="
-         CardButtonGuardar"
+                CardButtonInfo"
                 onClick={() => {
                   history.push('/schoolarship');
                 }}

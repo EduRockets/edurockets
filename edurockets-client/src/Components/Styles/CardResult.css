@@ -97,7 +97,7 @@
   font-weight: bold;
   font-size: 0.8rem;
   
-  border: 1px solid #090446;
+  border: 2px solid #090446;
   border-radius: 0.625rem;
 
   padding: auto 1.25rem ;
@@ -117,7 +117,7 @@
   margin-right: 0.5rem;
 }
 
-.CardButtonGuardar {
+.CardButtonGuardar, .CardButtonInfo {
   background-color: transparent;
 
   font-weight: bold;
@@ -135,4 +135,10 @@
   background-color: #A535F9;
 
   border-color: #A535F9;
+}
+
+
+.CardButtonInfo:hover {
+  background-color: #090446;
+  border-color: #090446;
 }
