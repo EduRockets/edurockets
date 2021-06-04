@@ -4,8 +4,6 @@ import { Col, Row, Container, Button, Input, Alert, Label } from 'reactstrap';
 
 import { Icon } from '@iconify/react';
 
-import lockedIcon from '@iconify-icons/carbon/locked';
-import emailIcon from '@iconify-icons/carbon/email';
 import googleIcon from '@iconify-icons/logos/google-icon';
 import facebookIcon from '@iconify-icons/logos/facebook';
 
@@ -25,8 +23,6 @@ const Login = () => {
   // States para validación\
   const [validEmail, setValidEmail] = useState(null);
   const [invalidEmail, setInvalidEmail] = useState(null);
-  const [validPassword, setValidPassword] = useState(null);
-  const [invalidPassword, setInvalidPassword] = useState(null);
 
   useEffect(() => {
     if (localStorage.getItem('authToken')) {
@@ -58,13 +54,6 @@ const Login = () => {
         break;
       case 'password':
         setPassword(event.value);
-        if (validatePassword(password)) {
-          setValidPassword(true);
-          setInvalidPassword(false);
-        } else {
-          setValidPassword(false);
-          setInvalidPassword(true);
-        }
         break;
       default:
     }
@@ -90,7 +79,7 @@ const Login = () => {
                     <Label className="LoginLabel">Correo electrónico</Label>
                     <Input
                       className="LoginInput"
-                      placeholder="juanperez@edurockets.com"
+                      placeholder="correo@edurockets.com"
                       name="email"
                       id="email"
                       value={email}
@@ -105,20 +94,21 @@ const Login = () => {
                     <Label className="LoginLabel">Contraseña</Label>
                     <Input
                       className="LoginInput"
-                      placeholder="Contraseña"
+                      placeholder="Debe contener al menos 8 carácteres"
                       name="password"
                       id="password"
                       type="password"
                       value={password}
-                      valid={validPassword}
-                      invalid={invalidPassword}
                       onChange={(event) => changeValue(event.currentTarget)}
                     />
                   </Col>
                 </Row>
               </div>
               <Row>
-                <Col>Recuérdame</Col>
+                <Col>
+                  <Input className="LoginCheckboxContainer" type="checkbox" />
+                  Recuérdame
+                </Col>
                 <Col>
                   <Link className="OlvidastePassword">¿Olvidaste tu contraseña?</Link>
                 </Col>
@@ -131,7 +121,7 @@ const Login = () => {
               <Row>
                 <Col>
                   <Button className="LoginSocialButton">
-                    <Icon icon={googleIcon} />
+                    <Icon className="LoginSocialButtonIcon" icon={googleIcon} />
                     Con Google
                   </Button>
                 </Col>
@@ -139,7 +129,8 @@ const Login = () => {
               <Row>
                 <Col>
                   <Button className="LoginSocialButton">
-                    <Icon icon={facebookIcon} /> Con Facebook
+                    <Icon className="LoginSocialButtonIcon" icon={facebookIcon} />
+                    Con Facebook
                   </Button>
                 </Col>
               </Row>

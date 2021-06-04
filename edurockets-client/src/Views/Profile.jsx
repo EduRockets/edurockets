@@ -17,185 +17,156 @@ const Profile = () => {
   const history = useHistory();
 
   const [label, setLabel] = useState('Aplicaciones en curso');
-  const [section, setSection] = useState();
 
+  /*USUARIO PROVICIONAL.*/
   const user = {
     names: 'Jane',
     lastNames: 'Doe',
-    birthday: '',
-    language: 'Español',
+    photo:
+      'https://icons-for-free.com/iconfiles/png/512/female+person+user+woman+young+icon-1320196266256009072.png' /*NO OBLIGATORIO*/,
+    birthday: new Date(1998, 6, 8),
+    language: '' /*NO OBLIGATORIO*/,
     country: 'Honduras',
-    residenceCountry: 'USA',
-    phone: '+504 95447780',
+    flag: '' /*NO OBLIGATORIO*/,
+    residenceCountry: '' /*NO OBLIGATORIO*/,
+    phone: '' /*NO OBLIGATORIO*/,
+    schoolarShips: [
+      {
+        uid: 'uid de la beca',
+        status: 'En Curso',
+        requirements: {
+          passport: {
+            url: '',
+            status: 1,
+          },
+          requestLetter: {
+            url: '',
+            status: 1,
+          },
+          test: {
+            url: '',
+            status: 0,
+          },
+          curriculum: {
+            url: '',
+            status: 0,
+          },
+          universityForm: {
+            url: '',
+            status: 0,
+          },
+          personalReferences: {
+            url: '',
+            status: 0,
+          },
+          interestForm: {
+            url: '',
+            status: 0,
+          },
+          extracurricularEvents: {
+            url: '',
+            status: 0,
+          },
+        },
+      },
+      {
+        uid: 'uid de la beca 2',
+        status: 'Aceptado',
+        requirements: {
+          passport: {
+            url: '',
+            status: 1,
+          },
+          requestLetter: {
+            url: '',
+            status: 1,
+          },
+          test: {
+            url: '',
+            status: 0,
+          },
+          curriculum: {
+            url: '',
+            status: 0,
+          },
+          universityForm: {
+            url: '',
+            status: 0,
+          },
+          personalReferences: {
+            url: '',
+            status: 0,
+          },
+          interestForm: {
+            url: '',
+            status: 0,
+          },
+          extracurricularEvents: {
+            url: '',
+            status: 0,
+          },
+        },
+      },
+    ],
   };
 
+  /*APLICACIONES PROVISONALES*/
   const aplications = [
     {
-      name: 'Digital Marketing Management',
-      institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      name: 'Becas internacionales de maestría al mérito - Vino y la Viticultura',
+      institute: 'Lincoln University',
+      status: 'En curso',
+      photo:
+        'https://www.ellucian.com/sites/default/files/styles/max_width_1920/public/uploads/images/2020/01/news-image-lincoln-university.png?itok=U_GbUwDB',
     },
     {
-      name: 'Digital Marketing Management',
-      institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      name: 'Pregrado de educación especial K-12',
+      institute: 'University of Central Arkansas',
+      status: 'Aceptado',
+      photo: 'https://talkbusiness.net/wp-content/uploads/2018/08/UCA-Image-WEB.jpg',
     },
     {
-      name: 'Digital Marketing Management',
-      institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      name: 'Lingüística (BA)',
+      institute: 'Universidad de Concordia',
+      status: 'En curso',
+      photo:
+        'https://d1bvpoagx8hqbg.cloudfront.net/originals/experiencia-en-la-universidad-concordia-canada-por-monika-024bc2c82e45deff1f1b0d344642d624.jpg',
     },
     {
-      name: 'Digital Marketing Management',
-      institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      name: 'Licenciatura en Música en Composición de Canciones',
+      institute: 'Berklee College of Music',
+      status: 'En curso',
+      photo:
+        'https://college.berklee.edu/sites/default/files/styles/scale_and_crop_16_9_large/public/d7/bcm/berklee-boston-campus-at-night.jpg?itok=ICRwn8Jm',
     },
     {
-      name: 'Digital Marketing Management',
-      institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      name: 'Marketing',
+      institute: 'University of Central Arkansas',
+      status: 'En curso',
+      photo: 'https://talkbusiness.net/wp-content/uploads/2018/08/UCA-Image-WEB.jpg',
     },
     {
-      name: 'Digital Marketing Management',
-      institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      name: 'Ingeniería Aeroespacial',
+      institute: 'Universidad de Concordia',
+      status: 'Aceptado',
+      photo:
+        'https://d1bvpoagx8hqbg.cloudfront.net/originals/experiencia-en-la-universidad-concordia-canada-por-monika-024bc2c82e45deff1f1b0d344642d624.jpg',
     },
     {
-      name: 'Digital Marketing Management',
-      institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      name: 'Antropología',
+      institute: 'Universidad de Concordia',
+      status: 'Guardado',
+      photo:
+        'https://d1bvpoagx8hqbg.cloudfront.net/originals/experiencia-en-la-universidad-concordia-canada-por-monika-024bc2c82e45deff1f1b0d344642d624.jpg',
     },
     {
-      name: 'Digital Marketing Management',
-      institute: 'UC Berkeley Global',
-      status: 'Enviado',
-    },
-    {
-      name: 'Digital Marketing Management',
-      institute: 'UC Berkeley Global',
-      status: 'Enviado',
-    },
-    {
-      name: 'Digital Marketing Management',
-      institute: 'UC Berkeley Global',
-      status: 'Enviado',
+      name: 'Educación Artística, Artes Visuales',
+      institute: 'Universidad de Concordia',
+      status: 'Guardado',
+      photo:
+        'https://d1bvpoagx8hqbg.cloudfront.net/originals/experiencia-en-la-universidad-concordia-canada-por-monika-024bc2c82e45deff1f1b0d344642d624.jpg',
     },
   ];
-
-  const renderByState = () => {
-    switch (label) {
-      case 'Aplicaciones en curso':
-        return (
-          <Row>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-          </Row>
-        );
-
-      case 'Aplicaciones guardadas':
-        return (
-          <Row>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-          </Row>
-        );
-
-      case 'Aplicaciones aceptadas':
-        return (
-          <Row>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-            <Col lg="4">
-              <CardSchoolarShip
-                title="Digital Marketing Management"
-                institute="UC Berkeley Global"
-                status="En curso"
-              />
-            </Col>
-          </Row>
-        );
-      default:
-        break;
-    }
-  };
 
   return (
     <EmptyLayout>
@@ -217,7 +188,7 @@ const Profile = () => {
               <Col className="ProfileIconContainer">
                 <DivButton
                   action={() => {
-                    console.log('olo');
+                    console.log('Click en notificación');
                   }}
                 >
                   <img className="ProfileIcon" alt="notification" src={notificationIcon} />
@@ -226,7 +197,7 @@ const Profile = () => {
             </Row>
             <Row>
               <Col>
-                <Avatar size={150} round="100%" />
+                <Avatar size={150} round="100%" src={user.photo} />
               </Col>
             </Row>
             <Row>
@@ -289,19 +260,48 @@ const Profile = () => {
               </DivButton>
             </div>
           </div>
-
-          {/* <Row>
-            {aplications.map((aplication) => {
-              <Col>
-                <CardSchoolarShip
-                  title={aplication.name}
-                  institute={aplication.institute}
-                  status={aplication.status}
-                />
-              </Col>;
-            })}
-          </Row> */}
-          {renderByState()}
+          <Row>
+            {label === 'Perfil de aptitudes e intereses' ? (
+              <>
+                <Row>
+                  <Col>
+                    <Button className="ProfileButtonTest">Completar Test de EduRockets</Button>
+                  </Col>
+                </Row>
+              </>
+            ) : (
+              aplications.map((aplication) => {
+                if (label === 'Aplicaciones en curso' && aplication.status === 'En curso') {
+                  return (
+                    <CardSchoolarShip
+                      title={aplication.name}
+                      institute={aplication.institute}
+                      status={aplication.status}
+                      src={aplication.photo}
+                    />
+                  );
+                } else if (label === 'Aplicaciones guardadas' && aplication.status === 'Guardado') {
+                  return (
+                    <CardSchoolarShip
+                      title={aplication.name}
+                      institute={aplication.institute}
+                      status={aplication.status}
+                      src={aplication.photo}
+                    />
+                  );
+                } else if (label === 'Aplicaciones aceptadas' && aplication.status === 'Aceptado') {
+                  return (
+                    <CardSchoolarShip
+                      title={aplication.name}
+                      institute={aplication.institute}
+                      status={aplication.status}
+                      src={aplication.photo}
+                    />
+                  );
+                }
+              })
+            )}
+          </Row>
         </Container>
       </Container>
     </EmptyLayout>

@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Col, Row, Container, Button } from 'reactstrap';
+
+import studentImage from '../Assets/Images/student.png';
+import professionalImage from '../Assets/Images/professional.png';
+
 import StandardLayout from '../Layouts/StandardLayout';
 
 import './Styles/Landing.css';
@@ -34,7 +38,7 @@ const Landing = () => {
                   <Button
                     className="LandingFirstButton"
                     onClick={() => {
-                      history.push('/signup');
+                      history.push('/signupswitch');
                     }}
                   >
                     Listo para alcanzar mis sueños
@@ -93,11 +97,7 @@ const Landing = () => {
           </Row>
           <Row style={{ alignItems: 'center' }}>
             <Col sm="12" lg="6">
-              <img
-                className="LandingImageThirdSection"
-                src="/Images/Estudiante.png"
-                alt="estudiante"
-              />
+              <img className="LandingImageThirdSection" src={studentImage} alt="estudiante" />
             </Col>
             <Col sm="12" lg="6">
               <Row>
@@ -125,10 +125,15 @@ const Landing = () => {
                   <Button
                     className="LandingSecondButton"
                     onClick={() => {
-                      redirect();
+                      history.push({
+                        pathname: '/signup',
+                        userType: {
+                          name: 'student',
+                        },
+                      });
                     }}
                   >
-                    Listo para Alcanzar mis sueños
+                    Listo para alcanzar mis sueños
                   </Button>
                 </Col>
               </Row>
@@ -159,10 +164,15 @@ const Landing = () => {
                   <Button
                     className="LandingSecondButton"
                     onClick={() => {
-                      redirect();
+                      history.push({
+                        pathname: '/signup',
+                        userType: {
+                          name: 'professional',
+                        },
+                      });
                     }}
                   >
-                    Listo para Alcanzar mis sueños
+                    Listo para alcanzar mis sueños
                   </Button>
                 </Col>
               </Row>
@@ -170,7 +180,7 @@ const Landing = () => {
             <Col sm="12" lg="6">
               <img
                 className="LandingImageThirdSection LandingSecondImageThirdSection"
-                src="/Images/Profesional.png"
+                src={professionalImage}
                 alt="profesional"
               />
             </Col>
@@ -376,7 +386,7 @@ const Landing = () => {
         </Container>
       </Container>
 
-      <div className="DivSeventhWave" />
+      {/*<div className="DivSeventhWave" />*/}
     </StandardLayout>
   );
 };

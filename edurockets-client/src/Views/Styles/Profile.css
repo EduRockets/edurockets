@@ -8,7 +8,8 @@
 }
 
 .ProfileBanner {
-  background-image: url('../Assets/Images/Profile-Banner.png');
+  background-image: url('../../Assets/Images/Profile-Banner.png');
+
   background-position: bottom;
   background-size: cover;
 }
@@ -105,7 +106,21 @@
   border-color: #1d1645;
 }
 
-*:focus {
-  outline: none !important;
-  box-shadow: none !important;
+.ProfileButtonTest {
+  background-color: transparent;
+
+  border-radius: 0.75rem;
+  border-color: #1d1645;
+
+  font-size: 1rem;
+  color: #1d1645;
+
+  margin-top: 4rem;
+}
+
+
+.ProfileButtonTest:hover {
+  background-color: #1d1645;
+  color: white;
+
 }

@@ -5,21 +5,19 @@
 .SearchBarContainer {
   background-color: #fdfdfd;
 
-  width: 100%;
   height: 5rem;
 
-  border-radius: 20px;
+  border-radius: 1rem;
 
   display: flex;
-
   align-items: center;
-  justify-content: space-around;
-
-  text-align: start;
+  justify-content: center;
 
   margin: 1.25rem;
 
   font-size: 0.875rem;
+  color: #5E5E5E;
+
 }
 
 .SearchBarLabel {
@@ -27,19 +25,43 @@
   color: #1F1646;
 }
 
-.SearchBarButton, .Search {
-  border-radius: 2.25rem;
+/* === Buttons === */
+.SearchBarButton {
+  padding: 1rem;
+  
   transition: 0.2s;
 }
 
 .SearchBarButton:hover {
-  transform: scale(1.1);
+  padding: 1.2rem 1.4rem;
+  margin: 0 0.25rem;
+
+  border: 0px;
+  border-radius: 6rem;
+
+  background-color: #eeeeee;
+
 }
 
 .Divider {
   background-color: #e4e4e4;
   width: 2px;
   height: 60%;
+}
+
+.SearchIconContainer {
+  transition: 0.4s;
+}
+
+.SearchIconContainer:hover {
+  transform: scale(1.3);
+}
+
+.SearchIcon {
+  color: #1F1646;
+  
+  width: 2rem;
+  height: 2rem;
 }
 
 /* ++++++++++++++ */

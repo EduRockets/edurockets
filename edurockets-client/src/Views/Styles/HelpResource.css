@@ -1,0 +1,107 @@
+.HelpResource {
+  padding-top: 8rem;
+}
+
+.HelpResourceImage {
+  width: 100%;
+}
+
+.HelpResourceTitle {
+  margin: 2rem 0;
+
+  font-size: 2rem;
+  color: #090446;
+}
+
+.HelpResourceContainer {
+  margin: 2rem 0 4rem 0;
+}
+
+.HelpResourceButtonExample {
+  background-color: #090446;
+
+  border: 2px solid #090446;
+  border-radius: 1rem;
+
+  font-size: 0.875rem;
+  font-weight: bold;
+
+  padding: 0.5rem 3rem;
+
+  margin-right: 4rem;
+}
+
+.HelpResourceButtonExample:hover {
+  background-color: transparent;
+  color: #090446;
+}
+
+.HelpResourceButtonIcon {
+  width: 1rem;
+  height: 1rem;
+
+  font-weight: bold;
+
+  margin-right: 0.8rem;
+}
+
+.HelpResourceButtonUpload {
+  background-color: transparent;
+  
+  border: 2px solid #090446;
+  border-radius: 1rem;
+
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: #090446;
+
+  padding: 0.5rem 1rem;
+}
+
+.HelpResourceButtonUpload:hover {
+  background-color: #090446;
+  border: 2px solid #090446;
+}
+
+/*Modal*/
+.HelpResourceModal {
+  position: relative;
+  top: 10%;
+
+  border-radius: 100%;
+}
+
+.HelpResourceModalContainer {
+  text-align: center;
+}
+
+.HelpResourceModalImage {
+  width: 25%;
+
+  margin: 3rem;
+}
+
+.HelpResourceModalTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  color: #090446;
+}
+
+.HelpResourceModalButton {
+  background-color: #090446;
+
+  border: 2px solid #090446;
+  border-radius: 1rem;
+
+  font-size: 0.875rem;
+  font-weight: bold;
+
+  padding: 0.5rem 3rem;
+  margin: 2rem;
+}
+
+.HelpResourceModalButton:hover {
+  background-color: transparent;
+  color: #090446;
+}

@@ -1,7 +1,7 @@
 .Card { 
   border-width: 0px;
-  border-radius: 16px;
-  box-shadow: -10px 10px 20px 1px #E0E0E0;  
+  border-radius: 16px;  
+  box-shadow: -2px 2px 8px 4px rgba(0, 0, 0, 0.1);
 
   width: 80%;
   height: auto;
@@ -11,28 +11,31 @@
   text-align: center;
 }
 
-.CardImage {
-    text-align: center;
-    display: block;
+.CardSignUpImage {
+   text-align: center;
+   display: block;
     
-    justify-content: center;
-    align-items: center;
+   justify-content: center;
+   align-items: center;
 
-    margin: auto;
+   margin: auto;
 
-    width: 60%;
+   width: 60%;
 }
 
 .CardTitle {
   color: #090446;
-  font-size: 1.17em;
+  font-size: 1.17rem;
+
   font-weight: bold;
 
 }
 
-.CardText {
-  font-size: 1em;
+.CardSignUpText {
+  font-size: 1rem;
   font-weight: 600;
+
+  color: #090446;
 }
 
 .CardButton {

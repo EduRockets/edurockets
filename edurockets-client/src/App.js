@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import SignUpSwitch from './Views/SignUpSwitch';
 import SignUp from './Views/SignUp';
 import Login from './Views/Login';
 import Landing from './Views/Landing';
 import Profile from './Views/Profile';
 import EditProfile from './Views/EditProfile';
 import Construction from './Views/Construction';
-import HomePage from './Views/HomePage';
+import Schoolarship from './Views/Schoolarship';
+import SearchPage from './Views/SearchPage';
 import FormHolder from './Views/FormHolder';
+import HelpResource from './Views/HelpResource';
 import ProtectedRoute from './Components/ProtectedRoute';
 
 import UserContext from './Providers/UserContext';
@@ -39,7 +42,10 @@ const App = () => {
           <FormHolder Form={ProfessionalSignUpForm} />
         </Route>
 
-        <ProtectedRoute exact path="/homepage" user={user} component={HomePage} />
+        <Route exact path="/schoolarship/help" user={true} component={HelpResource} />
+        <ProtectedRoute exact path="/schoolarship" user={true} component={Schoolarship} />
+        <ProtectedRoute exact path="/search" user={true} component={SearchPage} />
+        <Route exact path="/signupswitch" component={SignUpSwitch} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/profile" component={Profile} />

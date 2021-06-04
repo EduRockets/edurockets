@@ -6,18 +6,18 @@
   box-shadow: -2px -2px 14px 8px rgba(0, 0, 0, 0.2);
 }
 
-.SignUpInputLabel {
+.SignUpFormInputLabel {
   font-weight: bold;
 }
 
-.SignUpInput {
+.SignUpFormInput {
   background-color: #EBEBED;
 
   border-radius: 25px;
   border: 0px solid;
 
   color: #999999;
-  font-size: 1rem;
+  font-size: 0.875rem;
 
   margin-bottom: 1.25rem;
 }
@@ -28,37 +28,37 @@
   border: 0px solid;
   border-radius: 25px;
 
+  color: gray;
+  font-size: 0.875rem;
+
   padding: 0.313rem 0.625rem;
   margin-bottom: 1.25rem;
-
-  color: gray;
 }
 
-/*Dropdown button*/
-.SignUpDropdown {
+/*SignUpSelect button*/
+.SignUpSelect {
   background-color: #EBEBED;
 
   border: 0px solid;
   border-radius: 25px;
 
-  color: #000;
-  
+  color: gray;
+  font-size: 0.875rem;
+
+  width: 100%;
+
+  padding: 0.438rem 0.625rem;
   margin-bottom: 1.25rem;
 }
 
-.SignUpDropdown:hover {
-  background-color: #dfdfdf;
-  color: #000;
-}
-
 /*Buttons*/
-.SignUpButtonContainer {
+.SignUpFormButtonContainer {
   display: flex;
   
   margin: 1.25rem;
 }
 
-.SignUpButton {
+.SignUpFormButton {
   flex: 2;
 
   background-color: #69488E;
@@ -69,20 +69,20 @@
   font-weight: bold;
 }
 
-.SignUpButton:focus {
+.SignUpFormButton:focus {
   background-color: #69488E;
 }
 
-.SignUpButton:hover {
+.SignUpFormButton:hover {
   background-color: #46305e;
 }
 
-.SignUpButton:hover, .SignUpButton:focus {
+.SignUpFormButton:hover, .SignUpButton:focus {
   border: none;
   box-shadow: none;
 }
 
-.SignUpButtonCreateAccount {
+.SignUpFormButtonCreateAccount {
   flex: 2;
 
   background-color: #240b41;
@@ -94,13 +94,13 @@
   color: #FDFDFD;
 }
 
-.SignUpButtonCreateAccount:hover {
+.SignUpFormButtonCreateAccount:hover {
   background-color: #F81735;
   
   border: 1px solid;
 }
 
-.SignUpButtonCreateAccount:focus {
+.SignUpFormButtonCreateAccount:focus {
   background-color: #240b41;
   
   border: 1px solid;

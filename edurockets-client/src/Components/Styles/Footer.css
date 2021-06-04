@@ -9,6 +9,15 @@
   justify-content: center;
 }
 
+.DivFooterWave {
+  background-image: url('../../Assets/Images/seventh-wave.svg');
+  background-size: cover;
+  background-position: inherit;
+
+  width: 100%;
+  height: 300px;
+}
+
 .Isotipo {
   width: 50%;
 }
@@ -17,7 +26,8 @@
   text-align: left;
 }
 
-.Divider {
+.FooterDivider {
+
   background-color: #F4F3F8;
   height: 2px;
 
@@ -45,3 +55,4 @@
   font-size: 20px;
   margin-right: 10px;
 }
+

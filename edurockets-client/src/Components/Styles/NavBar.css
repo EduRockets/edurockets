@@ -8,7 +8,7 @@
 
   padding: 1.25rem;
 
-  z-index: 99999999;
+  z-index: 99999;
 
   transition: 0.4s;
 }
@@ -62,3 +62,70 @@
 
   border: 1px solid;
 }
+
+.NavBarIcon {
+  width: 2rem;
+  margin: 0.25rem;
+}
+
+.NavBarIconText {
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.NavBarAvatar {
+  background-image: url('https://icons-for-free.com/iconfiles/png/512/female+person+user+woman+young+icon-1320196266256009072.png');
+  background-size: cover;
+
+  border-radius: 100%;
+
+  width: 3rem;
+  height: 3rem;
+
+  margin: 0 auto;
+  padding: 10px;
+
+  position: relative;
+}
+
+.NavBarAvatar:focus {
+  border: 2px solid #969696;
+}
+
+.NavBarAvatarDialogDivider {
+  background-color: #969696;
+  width: 85%;
+
+  margin: 0 auto;
+  height: 1px;
+}
+
+.NavBarAvatarDialog {
+  z-index: 999999;
+  position: fixed;
+  
+  text-align: right;
+
+  border-radius: 0.5rem;
+
+  background-color: #F4F3F8;
+
+  margin: 0.5rem;
+  padding: 0.5rem;
+
+  color: #100935;
+
+  width: 15rem;
+}
+
+.NavBarAvatarIcon {
+  margin-left: 0.5rem;
+
+  width: 1rem;
+  color: #100935;
+}
+
+.NavBarAvatarText {
+  margin: 0.5rem;
+}
+
