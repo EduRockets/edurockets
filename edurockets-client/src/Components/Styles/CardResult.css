@@ -97,11 +97,25 @@
   font-weight: bold;
   font-size: 0.8rem;
   
+  border: 1px solid #090446;
   border-radius: 0.625rem;
 
   padding: auto 1.25rem ;
 }
 
+.CardButtonAplicar:hover {
+  background-color: transparent;
+
+  color: #090446;
+
+  border-color: #090446;
+}
+
+.CardButtonGuardarIcon {
+  font-size: 1rem;
+  
+  margin-right: 0.5rem;
+}
 
 .CardButtonGuardar {
   background-color: transparent;
@@ -115,4 +129,10 @@
   border-radius: 0.625rem;
 
   transition: 0.4s;
+}
+
+.CardButtonGuardar:hover {
+  background-color: #A535F9;
+
+  border-color: #A535F9;
 }

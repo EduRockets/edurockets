@@ -7,7 +7,6 @@ import clockIcon from '../Assets/Icons/clock.svg';
 import bookIcon from '../Assets/Icons/book.svg';
 import calendarIcon from '../Assets/Icons/calendar.svg';
 import instituteIcon from '../Assets/Icons/institute.svg';
-import corazonIcon from '../Assets/Icons/corazon.svg';
 
 import StatusTracker from '../Components/StatusTracker';
 import SignInLayout from '../Layouts/SignInLayout';
@@ -15,6 +14,9 @@ import SignInLayout from '../Layouts/SignInLayout';
 import CardsRequirements from '../Components/CardsRequirements';
 import Map from '../Components/Map';
 import { mapKey } from '../Config/credentials';
+
+import { Icon } from '@iconify/react';
+import heartIcon from '@iconify-icons/bi/heart';
 
 import './Styles/Schoolarship.css';
 
@@ -170,7 +172,7 @@ const Schoolarship = () => {
               <Row>
                 <Col xs="12" lg="5">
                   <Button className="SchoolarshipButtonGuardar">
-                    <img className="SchoolarshipButtonIcon" src={corazonIcon} /> Guardar
+                    <Icon className="SchoolarshipButtonIcon" icon={heartIcon} /> Guardar
                   </Button>
                 </Col>
                 <Col>

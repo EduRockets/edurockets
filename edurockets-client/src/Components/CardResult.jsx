@@ -10,6 +10,9 @@ import corazonIcon from '../Assets/Icons/corazon.svg';
 import calendarIcon from '../Assets/Icons/calendar.svg';
 import instituteIcon from '../Assets/Icons/institute.svg';
 
+import { Icon } from '@iconify/react';
+import heartIcon from '@iconify-icons/bi/heart';
+
 import './Styles/CardResult.css';
 
 const CardResult = ({ schoolarship }) => {
@@ -83,7 +86,8 @@ const CardResult = ({ schoolarship }) => {
             </Col>
             <Col>
               <Button className="CardButtonGuardar">
-                <img className="CardIcon" src={corazonIcon} /> Guardar
+                <Icon className="CardButtonGuardarIcon" icon={heartIcon} />
+                Guardar
               </Button>
             </Col>
           </Row>
