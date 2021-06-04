@@ -132,6 +132,7 @@ const EditProfile = () => {
             setCountries(arr);
           });
           setLoading(false);
+          console.log(result);
         },
         (err) => {
           console.error(err);
@@ -172,65 +173,62 @@ const EditProfile = () => {
   return (
     <EmptyLayout>
       <Container className="EditProfile" fluid>
+        <div className="EditProfileBanner">
+          <Container>
+            <Row>
+              <Col className="ProfileAvatarContainer">
+                <Avatar size={150} round="100%" src={user.photo} />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Button className="EditPictureButton">Cambiar fotografía</Button>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+
         {!loading ? (
           <>
-            <div className="EditProfileBanner">
-              <Container>
-                <Row>
-                  <Col className="ProfileAvatarContainer">
-                    <Avatar size={150} round="100%" src={user.photo} />
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <Button className="EditPictureButton">Cambiar fotografía</Button>
-                  </Col>
-                </Row>
-              </Container>
-            </div>
-
             <Container>
               <Row>
-                <Col className="EditProfileTitle">Datos Personales</Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Label className="EditProfileLabel">Nombres</Label>
-                  <Input
-                    className="EditProfileInput"
-                    name="names"
-                    id="names"
-                    value={names}
-                    valid={validNames}
-                    invalid={invalidNames}
-                    onChange={(event) => changeValue(event.currentTarget)}
-                  />
-                </Col>
-              </Row>
-
-              <Row>
-                <Col>
-                  <Label className="EditProfileLabel">Apellidos</Label>
-                  <Input
-                    className="EditProfileInput"
-                    name="lastNames"
-                    id="lastNames"
-                    value={lastNames}
-                    valid={validLastNames}
-                    invalid={invalidLastNames}
-                    onChange={(event) => changeValue(event.currentTarget)}
-                  />
-                </Col>
-              </Row>
-              <Row>
+                <Col lg="3" />
                 <Col>
                   <Row>
+                    <Col className="EditProfileTitle">Datos Personales</Col>
+                  </Row>
+                  <Row>
                     <Col>
-                      <Label className="EditProfileLabel">Fecha de nacimiento</Label>
+                      <Label className="EditProfileLabel">Nombres</Label>
+                      <Input
+                        className="EditProfileInput"
+                        name="names"
+                        id="names"
+                        value={names}
+                        valid={validNames}
+                        invalid={invalidNames}
+                        onChange={(event) => changeValue(event.currentTarget)}
+                      />
                     </Col>
                   </Row>
                   <Row>
                     <Col>
+                      <Label className="EditProfileLabel">Apellidos</Label>
+                      <Input
+                        className="EditProfileInput"
+                        name="lastNames"
+                        id="lastNames"
+                        value={lastNames}
+                        valid={validLastNames}
+                        invalid={invalidLastNames}
+                        onChange={(event) => changeValue(event.currentTarget)}
+                      />
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    <Col>
+                      <Label className="EditProfileLabel">Fecha de nacimiento</Label>
                       <DatePicker
                         className="EditProfileDatePicker"
                         name="birthday"
@@ -239,101 +237,107 @@ const EditProfile = () => {
                         onChange={(date) => setBirthday(date)}
                       />
                     </Col>
+                    <Col>
+                      <Label className="EditProfileLabel">Lengua materna</Label>
+                      <select
+                        value={language}
+                        name="language"
+                        id="language"
+                        onChange={(event) => changeValue(event.currentTarget)}
+                        className="EditProfileSelect"
+                      >
+                        <option value="Español">Español</option>
+                        <option value="Ingles">Ingles</option>
+                        <option value="Portugués">Portugués</option>
+                      </select>
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    <Col>
+                      <Label className="EditProfileLabel">País de origen</Label>
+                      <select
+                        className="EditProfileSelect"
+                        name="country"
+                        id="country"
+                        value={country}
+                        onChange={(event) => changeValue(event.currentTarget)}
+                      >
+                        {countries.map((element) => {
+                          return (
+                            <option key={element.key} value={element}>
+                              {element}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </Col>
+                    <Col>
+                      <Label className="EditProfileLabel">País de residencia</Label>
+                      <select
+                        className="EditProfileSelect"
+                        name="residenceCountry"
+                        id="residenceCountry"
+                        value={residenceCountry}
+                        onChange={(event) => changeValue(event.currentTarget)}
+                      >
+                        {countries.map((element) => {
+                          return (
+                            <option key={element.key} value={element}>
+                              {element}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    <Col>
+                      <Label className="EditProfileLabel">Número de celular</Label>
+                      <MaskedInput
+                        className="EditProfileInput"
+                        mask={[
+                          '(',
+                          /\d/,
+                          /\d/,
+                          /\d/,
+                          ')',
+                          ' ',
+                          /\d/,
+                          /\d/,
+                          /\d/,
+                          /\d/,
+                          ' ',
+                          /\d/,
+                          /\d/,
+                          /\d/,
+                          /\d/,
+                        ]}
+                        name="phone"
+                        id="phone"
+                        value={phone}
+                        onChange={(event) => changeValue(event.currentTarget)}
+                      />
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    <Col className="EditProfileButtonContainer">
+                      <Button
+                        className="EditPictureCancelButton"
+                        onClick={() => {
+                          history.push('/profile');
+                        }}
+                      >
+                        Cancelar
+                      </Button>
+                      <Button className="EditProfileSaveButton">Guardar cambios</Button>
+                    </Col>
                   </Row>
                 </Col>
-                <Col>
-                  <Label className="EditProfileLabel">Lengua materna</Label>
-                  <select
-                    value={language}
-                    name="language"
-                    id="language"
-                    onChange={(event) => changeValue(event.currentTarget)}
-                    className="EditProfileSelect"
-                  >
-                    <option value="Español">Español</option>
-                    <option value="Ingles">Ingles</option>
-                    <option value="Portugués">Portugués</option>
-                  </select>
-                </Col>
+                <Col lg="3" />
               </Row>
-              <Row>
-                <Col>
-                  <Label className="EditProfileLabel">País de origen</Label>
-                  <select
-                    className="EditProfileSelect"
-                    name="country"
-                    id="country"
-                    value={country}
-                    onChange={(event) => changeValue(event.currentTarget)}
-                  >
-                    {countries.map((element) => {
-                      return (
-                        <option key={element.key} value={element}>
-                          {element}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </Col>
-                <Col>
-                  <Label className="EditProfileLabel">País de residencia</Label>
-                  <select
-                    className="EditProfileSelect"
-                    name="residenceCountry"
-                    id="residenceCountry"
-                    value={residenceCountry}
-                    onChange={(event) => changeValue(event.currentTarget)}
-                  >
-                    {countries.map((element) => {
-                      return (
-                        <option key={element.key} value={element}>
-                          {element}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Label className="EditProfileLabel">Número de celular</Label>
-                  <MaskedInput
-                    className="EditProfileInput"
-                    mask={[
-                      '(',
-                      /\d/,
-                      /\d/,
-                      /\d/,
-                      ')',
-                      ' ',
-                      /\d/,
-                      /\d/,
-                      /\d/,
-                      /\d/,
-                      ' ',
-                      /\d/,
-                      /\d/,
-                      /\d/,
-                      /\d/,
-                    ]}
-                    name="phone"
-                    id="phone"
-                    value={phone}
-                    onChange={(event) => changeValue(event.currentTarget)}
-                  />
-                </Col>
-              </Row>
-              <div className="EditProfileButtonContainer">
-                <Button
-                  className="EditPictureCancelButton"
-                  onClick={() => {
-                    history.push('/profile');
-                  }}
-                >
-                  Cancelar
-                </Button>
-                <Button className="EditProfileSaveButton">Guardar cambios</Button>
-              </div>
             </Container>
           </>
         ) : (

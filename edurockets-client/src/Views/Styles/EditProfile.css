@@ -63,7 +63,7 @@
   border-width: 0px;
 
   color: #999999;
-  font-size: 1rem;
+  font-size: 0.875rem;
 
   padding: 0.5rem;
 }
@@ -75,7 +75,7 @@
   border-width: 0px;
  
   color: #999999;
-  font-size: 1rem;
+  font-size: 0.875rem;
 }
 
 .EditProfileSelect {
@@ -86,13 +86,15 @@
   border-width: 0px;
  
   color: #999999;
-  font-size: 1rem;
+  font-size: 0.875rem;
 
   width: 100%;
   
   padding: 0.5rem
 }
 
+
+/* === Button Container === */
 .EditProfileButtonContainer {
   display: flex;
   justify-content: space-around;

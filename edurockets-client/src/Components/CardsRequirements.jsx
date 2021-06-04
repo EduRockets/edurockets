@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Row, Col, Button, CardImg, CardBody, CardTitle } from 'reactstrap';
 
 import PassportImage from '../Assets/Images/requirements/passport.svg';
@@ -16,6 +17,8 @@ import pendingIcon from '../Assets/Icons/pending.svg';
 import './Styles/CardsRequirements.css';
 
 const CardRequirement = ({ requirements }) => {
+  const history = useHistory();
+
   const infoRequirements = [
     {
       name: 'Pasaporte | ID',
@@ -76,6 +79,9 @@ const CardRequirement = ({ requirements }) => {
                     ? 'CardRequirementButton'
                     : 'CardRequirementButtonChecked'
                 }
+                onClick={() => {
+                  history.push('/schoolarship/help');
+                }}
               >
                 Recurso de ayuda
               </Button>

@@ -11,6 +11,7 @@ import Construction from './Views/Construction';
 import Schoolarship from './Views/Schoolarship';
 import SearchPage from './Views/SearchPage';
 import FormHolder from './Views/FormHolder';
+import HelpResource from './Views/HelpResource';
 import ProtectedRoute from './Components/ProtectedRoute';
 
 import UserContext from './Providers/UserContext';
@@ -41,6 +42,7 @@ const App = () => {
           <FormHolder Form={ProfessionalSignUpForm} />
         </Route>
 
+        <Route exact path="/schoolarship/help" user={true} component={HelpResource} />
         <ProtectedRoute exact path="/schoolarship" user={true} component={Schoolarship} />
         <ProtectedRoute exact path="/search" user={true} component={SearchPage} />
         <Route exact path="/signupswitch" component={SignUpSwitch} />
