@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Row, Col, Input, Label, Spinner } from 'reactstrap';
+
 import DatePicker from 'react-datepicker';
 import { WithContext as ReactTags } from 'react-tag-input';
 
@@ -60,16 +61,7 @@ const StudentSignUpForm = (props) => {
 
   // States and variables for tag-picker
   const [tags, setTags] = useState([]);
-
-  const [suggestions, setSuggestions] = useState([
-    { id: 'USA', text: 'USA' },
-    { id: 'Germany', text: 'Germany' },
-    { id: 'Austria', text: 'Austria' },
-    { id: 'Costa Rica', text: 'Costa Rica' },
-    { id: 'Sri Lanka', text: 'Sri Lanka' },
-    { id: 'Thailand', text: 'Thailand' },
-  ]);
-
+  const [suggestions, setSuggestions] = useState([]);
   const delimiters = [188, 13];
 
   const handleDelete = (i) => {
