@@ -271,6 +271,8 @@ const StudentSignUpForm = (props) => {
                     tags: 'TagsClass',
                     tagInput: 'tagInputClass',
                     tagInputField: 'tagInputFieldClass',
+                    selected: 'selectedClass',
+                    tag: 'tagClass',
                     remove: 'removeClass',
                     suggestions: 'suggestionsClass',
                     activeSuggestion: 'activeSuggestionClass',
