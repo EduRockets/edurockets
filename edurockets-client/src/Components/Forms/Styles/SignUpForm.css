@@ -111,3 +111,59 @@
 .SignUpButtonSpacer {
   flex: 1;
 }
+
+
+/* Tag Picker */
+.TagsClass {
+  font-size: 0.875rem;
+    
+  margin: 1rem 0;
+}
+
+.tagInputClass {
+  background-color: #EBEBED; 
+
+  border-radius: 2rem;
+
+  padding: 0.438rem 0.7rem;
+}
+
+.tagInputFieldClass {
+  background-color: #EBEBED;
+
+  border: 0px solid;
+  
+  color: #999999;
+  font-size: 0.875rem;
+
+  width: 100%;
+}
+
+.removeClass {
+  border-radius: 100%;
+  border: 1px solid #999999;
+
+  margin: 0.2rem 1rem 0.2rem 0.2rem;
+}
+
+.suggestionsClass {
+
+  color: #999999;
+  position: fixed;
+
+  border: 1px solid #aaaaaa;
+
+  background-color: #EBEBED;
+
+  box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.1);
+  
+  margin-top: 0.5rem;
+  padding: 0.5rem 1.5rem 0rem 0;
+}
+
+.activeSuggestionClass {
+  background-color: rgb(167, 167, 167);
+
+  cursor: pointer;
+  color: #000000;
+}
