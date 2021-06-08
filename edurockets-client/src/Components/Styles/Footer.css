@@ -51,6 +51,17 @@
   color: #F81735;
 }
 
+.FooterFlagIconContaier {
+
+}
+
+.FooterFlagIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+
+  margin: 0.5rem
+}
+
 .SocialIconFooter {
   font-size: 20px;
   margin-right: 10px;
