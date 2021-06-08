@@ -106,9 +106,12 @@
   
   text-align: right;
 
+  box-shadow: -2px -2px 14px 8px rgba(0, 0, 0, 0.2);
+  
+  border: 1px solid #100935;
   border-radius: 0.5rem;
 
-  background-color: #F4F3F8;
+  background-color: #ffffff;
 
   margin: 0.5rem;
   padding: 0.5rem;

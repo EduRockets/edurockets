@@ -191,8 +191,6 @@ const NavBarAvatar = () => {
 };
 
 export const NavBarSignIn = () => {
-  const history = useHistory();
-
   return (
     <>
       <div className="NavBar NavBarSolid">
