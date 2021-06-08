@@ -134,7 +134,6 @@ const ProfessionalSignUpForm = (props) => {
                 <Label className="SignUpFormInputLabel">Nombres</Label>
                 <Input
                   className="SignUpFormInput"
-                  placeholder="John"
                   name="names"
                   id="names"
                   value={names}
@@ -149,7 +148,6 @@ const ProfessionalSignUpForm = (props) => {
                 <Label className="SignUpFormInputLabel">Apellidos</Label>
                 <Input
                   className="SignUpFormInput"
-                  placeholder="Doe"
                   name="lastNames"
                   id="lastNames"
                   value={lastNames}
@@ -171,6 +169,7 @@ const ProfessionalSignUpForm = (props) => {
                       value={country}
                       onChange={(event) => changeValue(event.currentTarget)}
                     >
+                      <option style={{ display: 'none' }}></option>
                       {countries.map((element) => {
                         return (
                           <option key={element.key} value={element}>
@@ -226,6 +225,7 @@ const ProfessionalSignUpForm = (props) => {
                       value={collegeDegree}
                       onChange={(event) => changeValue(event.currentTarget)}
                     >
+                      <option style={{ display: 'none' }}></option>
                       <option value="Titulo o egresado de colegio">
                         Titulo o egresado de colegio
                       </option>
@@ -262,6 +262,7 @@ const ProfessionalSignUpForm = (props) => {
                       value={degree}
                       onChange={(event) => changeValue(event.currentTarget)}
                     >
+                      <option style={{ display: 'none' }}></option>
                       <option value="Técnico especializado">Técnico especializado</option>
                       <option value="Licenciatura o ingeniería">Licenciatura o ingeniería</option>
                       <option value="Maestría/Postgrado">Maestría/Postgrado</option>
@@ -290,6 +291,7 @@ const ProfessionalSignUpForm = (props) => {
                       value={modality}
                       onChange={(event) => changeValue(event.currentTarget)}
                     >
+                      <option style={{ display: 'none' }}></option>
                       <option value="Virtual">Virtual</option>
                       <option value="Presencial">Presencial</option>
                       <option value="Ambas">Ambas</option>

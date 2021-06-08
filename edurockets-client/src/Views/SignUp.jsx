@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, Link, useLocation } from 'react-router-dom';
-import { Col, Row, Container, Button, Input, Alert, Label } from 'reactstrap';
+import { useHistory, useParams } from 'react-router-dom';
+import { Col, Row, Container, Button, Input, Label } from 'reactstrap';
 
 import { Icon } from '@iconify/react';
 
@@ -19,7 +19,7 @@ import './Styles/SignUp.css';
 const SignUp = (props) => {
   const history = useHistory();
 
-  const userType = props.location.userType;
+  const { userType } = useParams();
 
   const [step, setStep] = useState(0);
   const [email, setEmail] = useState('');
@@ -169,10 +169,10 @@ const SignUp = (props) => {
               <Col>
                 <Button
                   onClick={() => {
-                    if (userType.name === 'student') {
-                      history.push('/signup/student');
+                    if (userType === 'student') {
+                      history.push('/studentform');
                     } else {
-                      history.push('/signup/professional');
+                      history.push('/professionalform');
                     }
                   }}
                   className="SignUpButton"

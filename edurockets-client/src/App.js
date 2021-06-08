@@ -34,19 +34,19 @@ const App = () => {
       <UserContext.Provider value={user}>
         {/*Fomrs*/}
 
-        <Route path="/signup/student">
+        <Route path="/studentform">
           <FormHolder Form={StudentSignUpForm} />
         </Route>
 
-        <Route path="/signup/professional">
+        <Route path="/professionalform">
           <FormHolder Form={ProfessionalSignUpForm} />
         </Route>
 
+        <Route exact path="/signupswitch" component={SignUpSwitch} />
+        <Route exact path="/signup/:userType" component={SignUp} />
         <Route exact path="/schoolarship/help" user={true} component={HelpResource} />
         <ProtectedRoute exact path="/schoolarship" user={true} component={Schoolarship} />
         <ProtectedRoute exact path="/search" user={true} component={SearchPage} />
-        <Route exact path="/signupswitch" component={SignUpSwitch} />
-        <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/editprofile" component={EditProfile} />

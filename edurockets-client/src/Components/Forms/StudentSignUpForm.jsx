@@ -136,7 +136,6 @@ const StudentSignUpForm = (props) => {
                 <Label className="SignUpFormInputLabel">Nombres</Label>
                 <Input
                   className="SignUpFormInput"
-                  placeholder="John"
                   name="names"
                   id="names"
                   value={names}
@@ -151,7 +150,6 @@ const StudentSignUpForm = (props) => {
                 <Label className="SignUpFormInputLabel">Apellidos</Label>
                 <Input
                   className="SignUpFormInput"
-                  placeholder="Doe"
                   name="lastNames"
                   id="lastNames"
                   value={lastNames}
@@ -173,6 +171,7 @@ const StudentSignUpForm = (props) => {
                       value={country}
                       onChange={(event) => changeValue(event.currentTarget)}
                     >
+                      <option style={{ display: 'none' }}></option>
                       {countries.map((element) => {
                         return (
                           <option key={element.key} value={element}>
@@ -214,7 +213,6 @@ const StudentSignUpForm = (props) => {
                 <Label className="SignUpFormInputLabel">Escuela donde estudias</Label>
                 <Input
                   className="SignUpFormInput"
-                  placeholder="Nombre del instituto académico"
                   name="school"
                   id="school"
                   value={school}
@@ -243,6 +241,7 @@ const StudentSignUpForm = (props) => {
                   value={degree}
                   onChange={(event) => changeValue(event.currentTarget)}
                 >
+                  <option style={{ display: 'none' }}></option>
                   <option value="Titulo o egresado de colegio">Titulo o egresado de colegio</option>
                   <option value="Técnico especializado">Técnico especializado</option>
                   <option value="Licenciatura o ingeniería">Licenciatura o ingeniería</option>
