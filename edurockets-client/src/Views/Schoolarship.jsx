@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Container, Button, Row, Col } from 'reactstrap';
 
 import priceIcon from '../Assets/Icons/price.svg';
@@ -11,7 +12,6 @@ import instituteIcon from '../Assets/Icons/institute.svg';
 import StatusTracker from '../Components/StatusTracker';
 import SignInLayout from '../Layouts/SignInLayout';
 
-import CardsRequirements from '../Components/CardsRequirements';
 import Map from '../Components/Map';
 import { mapKey } from '../Config/credentials';
 
@@ -21,6 +21,8 @@ import heartIcon from '@iconify-icons/bi/heart';
 import './Styles/Schoolarship.css';
 
 const Schoolarship = () => {
+  const history = useHistory();
+
   const user = {
     names: 'Jane',
     lastNames: 'Doe',
@@ -113,7 +115,7 @@ const Schoolarship = () => {
   const schoolarship = {
     uid: 'este es el uid',
     name: 'Beca Presidencial Concordia - Contabilidad',
-    institute: 'Universidad de concordia',
+    institute: 'Universidad de Concordia',
     description:
       'Contadores destacados mantienen a las empresas a la vanguardia: resuelven problemas, desarrollan estrategias financieras sólidas y garantizan una buena salud fiscal. Si eres un gran triunfador con un apetito por el aprendizaje continuo, considéranos. Se unirá a un programa con reputación de graduados que logran excelentes resultados en los exámenes nacionales de contabilidad profesional.',
     modality: 'Presencial',
@@ -164,37 +166,13 @@ const Schoolarship = () => {
 
       <Container className="SchoolarshipContainer">
         <Row>
-          <Col xs="12" lg="8" className="SchoolarshipTitle">
-            {schoolarship.name}
-          </Col>
-          <Col className="SchoolarshipTitle">
-            {!show ? (
-              <Row>
-                <Col xs="12" lg="5">
-                  <Button className="SchoolarshipButtonGuardar">
-                    <Icon className="SchoolarshipButtonIcon" icon={heartIcon} /> Guardar
-                  </Button>
-                </Col>
-                <Col>
-                  <Button
-                    className="SchoolarshipButtonAplicar"
-                    onClick={() => {
-                      setShow(true);
-                    }}
-                  >
-                    Aplicar
-                  </Button>
-                </Col>
-              </Row>
-            ) : (
-              <></>
-            )}
-          </Col>
-        </Row>
-
-        <Row>
           {/* Izquierda */}
           <Col xs="12" lg="8">
+            <Row>
+              <Col xs="12" lg="8" className="SchoolarshipTitle">
+                {schoolarship.name}
+              </Col>
+            </Row>
             <Row>
               <Col>
                 <Row>
@@ -273,25 +251,48 @@ const Schoolarship = () => {
 
           {/* Derecha */}
           <Col>
-            <StatusTracker requirements={user.schoolarShips[0].requirements} show={show} />
-          </Col>
-        </Row>
-
-        {show ? (
-          <>
-            <Row className="SchoolarshipTitle">Ruta de Aplicación</Row>
             <Row>
-              <CardsRequirements requirements={user.schoolarShips[0].requirements} />
-            </Row>
-            <Row>
-              <Col className="SchoolarshipSendButtonContaier">
-                <Button className="SchoolarshipSendButton">Enviar Aplicación</Button>
+              <Col className="SchoolarshipTitle">
+                {!show ? (
+                  <Row>
+                    <Col xs="12" lg="5">
+                      <Button className="SchoolarshipButtonGuardar">
+                        <Icon className="SchoolarshipButtonIcon" icon={heartIcon} /> Guardar
+                      </Button>
+                    </Col>
+                    <Col>
+                      <Button
+                        className="SchoolarshipButtonAplicar"
+                        onClick={() => {
+                          setShow(true);
+                        }}
+                      >
+                        Aplicar
+                      </Button>
+                    </Col>
+                  </Row>
+                ) : (
+                  <>
+                    <Row>
+                      <Button
+                        className="SchoolarshipButtonInProgress"
+                        onClick={() => {
+                          history.push('/requirements');
+                        }}
+                      >
+                        Ver estado de la aplicación
+                      </Button>
+                    </Row>
+                    <Row>
+                      <Col className="SchoolarshipText">Aplicación actualmente en curso</Col>
+                    </Row>
+                  </>
+                )}
               </Col>
             </Row>
-          </>
-        ) : (
-          <></>
-        )}
+            <StatusTracker requirements={user.schoolarShips[0].requirements} />
+          </Col>
+        </Row>
       </Container>
     </SignInLayout>
   );

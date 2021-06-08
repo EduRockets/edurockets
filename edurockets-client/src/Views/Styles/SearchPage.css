@@ -65,10 +65,16 @@
   text-align: center;
 }
 
-.SearchPageButton {
+.SearchPageButton, .SearchPageButtonBusquedaInteligente {
   background-color: #090446;
 
   border-radius: 8px;
 
   margin: 1rem;
+}
+
+.SearchPageButtonBusquedaInteligente:hover {
+  background-color: #F81735;
+
+  border-color: #F81735;
 }

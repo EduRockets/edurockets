@@ -29,7 +29,7 @@ const SearchPage = () => {
     {
       uid: 'este es el uid',
       name: 'Beca Presidencial Concordia - Contabilidad',
-      institute: 'Universidad de concordia',
+      institute: 'Universidad de Concordia',
       description:
         'Contadores destacados mantienen a las empresas a la vanguardia: resuelven problemas, desarrollan estrategias financieras sólidas y garantizan una buena salud fiscal. Si eres un gran triunfador con un apetito por el aprendizaje continuo, considéranos. Se unirá a un programa con reputación de graduados que logran excelentes resultados en los exámenes nacionales de contabilidad profesional.',
       modality: 'Presencial',
@@ -173,7 +173,7 @@ const SearchPage = () => {
         <Row className="SearchPageRobotContainer">
           <Col>
             <img className="SearchPageRobotIcon" alt="notification" src={robotCIcon} />
-            <Button className="SearchPageButton">Búsqueda Personalizada</Button>
+            <Button className="SearchPageButtonBusquedaInteligente">Búsqueda Personalizada</Button>
           </Col>
         </Row>
 
@@ -297,8 +297,9 @@ const SearchPage = () => {
                   </div>
                 </DivButton>
                 <Collapse isOpen={isOpenHedge}>
-                  <DivButton className="SearchPageFilterItem">30%</DivButton>
-                  <DivButton className="SearchPageFilterItem">50%</DivButton>
+                  <DivButton className="SearchPageFilterItem">Completa</DivButton>
+                  <DivButton className="SearchPageFilterItem">Parcial</DivButton>
+                  <DivButton className="SearchPageFilterItem">Todas</DivButton>
                 </Collapse>
               </Row>
             </div>

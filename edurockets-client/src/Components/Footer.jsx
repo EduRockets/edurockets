@@ -2,9 +2,15 @@ import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { Col, Row, Container, Button } from 'reactstrap';
 
+import DivButton from '../Components/DivButton';
+
 import facebookIcon from '@iconify-icons/bi/facebook';
 import instagramIcon from '@iconify-icons/bi/instagram';
 import whatsappIcon from '@iconify-icons/bi/whatsapp';
+
+import usaIcon from '../Assets/Icons/usa.svg';
+import mxIcon from '../Assets/Icons/mx.svg';
+import hnIcon from '../Assets/Icons/hn.svg';
 
 import { Icon } from '@iconify/react';
 
@@ -19,7 +25,7 @@ const Footer = () => (
           <Col lg="2">
             <img className="Isotipo" src="/Images/Isotipo.png" alt="edurockets" />
           </Col>
-          <Col lg="3" className="TextContainer">
+          <Col lg="2" className="TextContainer">
             <Row>
               <Col>
                 <Link className="TermFooter">Acerca de</Link>
@@ -85,8 +91,15 @@ const Footer = () => (
               </Col>
             </Row>
           </Col>
-          <Col lg="1" className="TextContainer">
-            ...
+          <Col lg="2" className="TextContainer">
+            <Row className="FooterFlagIconContaier">
+              <DivButton
+                className="FooterFlagIcon"
+                style={{ backgroundImage: `url(${usaIcon})` }}
+              />
+              <DivButton className="FooterFlagIcon" style={{ backgroundImage: `url(${mxIcon})` }} />
+              <DivButton className="FooterFlagIcon" style={{ backgroundImage: `url(${hnIcon})` }} />
+            </Row>
           </Col>
         </Row>
 

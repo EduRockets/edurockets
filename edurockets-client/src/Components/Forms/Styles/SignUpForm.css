@@ -111,3 +111,152 @@
 .SignUpButtonSpacer {
   flex: 1;
 }
+
+
+/* Tag Picker */
+
+.TagsClass {
+  position: relative;
+}
+
+/* For Input */
+.tagInputClass {
+  width: 15rem;
+  border-radius: 2rem;
+  display: inline-block;
+}
+
+.tagInputClass .tagInputFieldClass, .tagInputClass .tagInputFieldClass:focus {
+  background-color: #EBEBED;
+
+  color: gray;
+  font-size: 0.875rem;
+  
+  border: 1px solid #EBEBED;
+  border-radius: 2rem;
+
+  width: 100%;
+
+  padding: 0.438rem 0.8rem;
+
+  margin-bottom: 1rem;
+}
+
+/* Style for selected tags */
+.selectedClass .tagClass {
+  border: 0px solid #ddd;
+
+  background: #eee;
+  
+  font-size: 0.875rem;
+
+  display: inline-block;
+
+  padding: 6px;
+  margin: 0 5px 5px 5px;
+
+  cursor: default !important;
+  border-radius: 2px;
+}
+
+.selectedClass .removeClass {
+  color: #9c9c9c;
+  margin-left: 5px;
+  cursor: pointer;
+
+  border: 0px solid;
+}
+
+/* Styles for suggestions */
+.suggestionsClass {
+  position: absolute;
+
+  color: #000 !important;
+  font-weight: normal !important;
+  font-size: 0.875rem;
+}
+
+.suggestionsClass ul {
+  list-style-type: none;
+  box-shadow: .05em .01em .5em rgba(0,0,0,.2);
+  background: white;
+  width: 100%;
+  padding: 0;
+}
+
+.suggestionsClass li {
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  margin: 0;
+}
+
+.suggestionsClass li mark{
+  text-decoration: underline;
+
+  background: none;
+
+  font-weight: 600;
+} 
+
+.suggestionsClass ul .activeSuggestionClass {
+  background: #b7c2e0;
+  cursor: pointer;
+}
+/*
+
+.TagsClass {
+  font-size: 0.875rem;
+    
+  margin: 1rem 0;
+}
+
+.tagInputClass {
+  background-color: #EBEBED; 
+
+  border-radius: 2rem;
+
+  padding: 0.438rem 0.7rem;
+}
+
+.tagInputFieldClass {
+  background-color: #EBEBED;
+
+  border: 0px solid;
+  
+  color: #999999;
+  font-size: 0.875rem;
+
+  width: 100%;
+}
+
+.removeClass {
+  border-radius: 100%;
+  border: 1px solid #999999;
+
+  margin: 0.2rem 1rem 0.2rem 0.2rem;
+}
+
+.suggestionsClass {
+
+  color: #999999;
+  position: fixed;
+
+  border: 1px solid #aaaaaa;
+
+  background-color: #EBEBED;
+
+  box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.1);
+  
+  margin-top: 0.5rem;
+  padding: 0.5rem 1.5rem 0rem 0;
+}
+
+.activeSuggestionClass {
+  background-color: rgb(167, 167, 167);
+
+  cursor: pointer;
+  color: #000000;
+}
+
+
+*/

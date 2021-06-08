@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Row, Col, Input, Label, Spinner } from 'reactstrap';
+
 import DatePicker from 'react-datepicker';
+import { WithContext as ReactTags } from 'react-tag-input';
 
 import CheckBox from '../../Components/CheckBox';
 
@@ -9,6 +11,27 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './Styles/SignUpForm.css';
 
 const StudentSignUpForm = (props) => {
+  useEffect(() => {
+    fetch('https://restcountries.eu/rest/v2/all')
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          const arr = [];
+          const sugg = [];
+          result.map((element) => {
+            sugg.push({ id: element.name, text: element.name });
+            arr.push(element.name);
+            setCountries(arr);
+            setSuggestions(sugg);
+          });
+          setLoading(false);
+        },
+        (err) => {
+          console.error(err);
+        }
+      );
+  }, []);
+
   const history = useHistory();
 
   const { paso, setPaso } = props;
@@ -36,23 +59,26 @@ const StudentSignUpForm = (props) => {
   const [validState, setValidState] = useState(false);
   const [invalidState, setInvalidState] = useState(false);
 
-  useEffect(() => {
-    fetch('https://restcountries.eu/rest/v2/all')
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          const arr = [];
-          result.map((element) => {
-            arr.push(element.name);
-            setCountries(arr);
-          });
-          setLoading(false);
-        },
-        (err) => {
-          console.error(err);
-        }
-      );
-  }, []);
+  // States and variables for tag-picker
+  const [tags, setTags] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
+  const delimiters = [188, 13];
+
+  const handleDelete = (i) => {
+    setTags(tags.filter((tag, index) => index !== i));
+  };
+
+  const handleAddition = (tag) => {
+    setTags([...tags, tag]);
+  };
+
+  const handleDrag = (tag, currPos, newPos) => {
+    const newTags = tags.slice();
+    newTags.splice(currPos, 1);
+    newTags.splice(newPos, 0, tag);
+    // re-render
+    setTags(newTags);
+  };
 
   const nextStep = () => {
     setStep((oldStep) => (oldStep < 1 ? oldStep + 1 : oldStep));
@@ -110,7 +136,6 @@ const StudentSignUpForm = (props) => {
                 <Label className="SignUpFormInputLabel">Nombres</Label>
                 <Input
                   className="SignUpFormInput"
-                  placeholder="John"
                   name="names"
                   id="names"
                   value={names}
@@ -125,7 +150,6 @@ const StudentSignUpForm = (props) => {
                 <Label className="SignUpFormInputLabel">Apellidos</Label>
                 <Input
                   className="SignUpFormInput"
-                  placeholder="Doe"
                   name="lastNames"
                   id="lastNames"
                   value={lastNames}
@@ -147,6 +171,7 @@ const StudentSignUpForm = (props) => {
                       value={country}
                       onChange={(event) => changeValue(event.currentTarget)}
                     >
+                      <option style={{ display: 'none' }}></option>
                       {countries.map((element) => {
                         return (
                           <option key={element.key} value={element}>
@@ -188,7 +213,6 @@ const StudentSignUpForm = (props) => {
                 <Label className="SignUpFormInputLabel">Escuela donde estudias</Label>
                 <Input
                   className="SignUpFormInput"
-                  placeholder="Nombre del instituto académico"
                   name="school"
                   id="school"
                   value={school}
@@ -217,6 +241,7 @@ const StudentSignUpForm = (props) => {
                   value={degree}
                   onChange={(event) => changeValue(event.currentTarget)}
                 >
+                  <option style={{ display: 'none' }}></option>
                   <option value="Titulo o egresado de colegio">Titulo o egresado de colegio</option>
                   <option value="Técnico especializado">Técnico especializado</option>
                   <option value="Licenciatura o ingeniería">Licenciatura o ingeniería</option>
@@ -231,11 +256,25 @@ const StudentSignUpForm = (props) => {
                 <Label className="SignUpFormInputLabel">
                   Selecciona los países de tu interés para estudiar un programa universitario
                 </Label>
-                <Row>
-                  <Col>
-                    <Input className="SignUpFormInput" />
-                  </Col>
-                </Row>
+                <ReactTags
+                  placeholder=""
+                  classNames={{
+                    tags: 'TagsClass',
+                    tagInput: 'tagInputClass',
+                    tagInputField: 'tagInputFieldClass',
+                    selected: 'selectedClass',
+                    tag: 'tagClass',
+                    remove: 'removeClass',
+                    suggestions: 'suggestionsClass',
+                    activeSuggestion: 'activeSuggestionClass',
+                  }}
+                  tags={tags}
+                  suggestions={suggestions}
+                  handleDelete={handleDelete}
+                  handleAddition={handleAddition}
+                  handleDrag={handleDrag}
+                  delimiters={delimiters}
+                />
               </Col>
             </Row>
 

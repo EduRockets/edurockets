@@ -12,10 +12,6 @@ import './Styles/Landing.css';
 const Landing = () => {
   const history = useHistory();
 
-  const redirect = () => {
-    history.push('/underConstruction');
-  };
-
   return (
     <StandardLayout>
       <Container id="FirstSectionLanding" fluid>
@@ -374,7 +370,7 @@ const Landing = () => {
                   <Button
                     className="LandingRocketButton"
                     onClick={() => {
-                      redirect();
+                      history.push('/signupswitch');
                     }}
                   >
                     Listo para alcanzar mis sueños

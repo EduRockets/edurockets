@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Row, Col, Input, Label, Spinner } from 'reactstrap';
+
 import DatePicker from 'react-datepicker';
+import { WithContext as ReactTags } from 'react-tag-input';
 
 import CheckBox from '../../Components/CheckBox';
 
@@ -36,15 +38,39 @@ const ProfessionalSignUpForm = (props) => {
   const [validState, setValidState] = useState(false);
   const [invalidState, setInvalidState] = useState(false);
 
+  // States and variables for tag-picker
+  const [tags, setTags] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
+  const delimiters = [188, 13];
+
+  const handleDelete = (i) => {
+    setTags(tags.filter((tag, index) => index !== i));
+  };
+
+  const handleAddition = (tag) => {
+    setTags([...tags, tag]);
+  };
+
+  const handleDrag = (tag, currPos, newPos) => {
+    const newTags = tags.slice();
+    newTags.splice(currPos, 1);
+    newTags.splice(newPos, 0, tag);
+    // re-render
+    setTags(newTags);
+  };
+
   useEffect(() => {
     fetch('https://restcountries.eu/rest/v2/all')
       .then((res) => res.json())
       .then(
         (result) => {
           const arr = [];
+          const sugg = [];
           result.map((element) => {
+            sugg.push({ id: element.name, text: element.name });
             arr.push(element.name);
             setCountries(arr);
+            setSuggestions(sugg);
           });
           setLoading(false);
         },
@@ -108,7 +134,6 @@ const ProfessionalSignUpForm = (props) => {
                 <Label className="SignUpFormInputLabel">Nombres</Label>
                 <Input
                   className="SignUpFormInput"
-                  placeholder="John"
                   name="names"
                   id="names"
                   value={names}
@@ -123,7 +148,6 @@ const ProfessionalSignUpForm = (props) => {
                 <Label className="SignUpFormInputLabel">Apellidos</Label>
                 <Input
                   className="SignUpFormInput"
-                  placeholder="Doe"
                   name="lastNames"
                   id="lastNames"
                   value={lastNames}
@@ -145,6 +169,7 @@ const ProfessionalSignUpForm = (props) => {
                       value={country}
                       onChange={(event) => changeValue(event.currentTarget)}
                     >
+                      <option style={{ display: 'none' }}></option>
                       {countries.map((element) => {
                         return (
                           <option key={element.key} value={element}>
@@ -200,6 +225,7 @@ const ProfessionalSignUpForm = (props) => {
                       value={collegeDegree}
                       onChange={(event) => changeValue(event.currentTarget)}
                     >
+                      <option style={{ display: 'none' }}></option>
                       <option value="Titulo o egresado de colegio">
                         Titulo o egresado de colegio
                       </option>
@@ -236,6 +262,7 @@ const ProfessionalSignUpForm = (props) => {
                       value={degree}
                       onChange={(event) => changeValue(event.currentTarget)}
                     >
+                      <option style={{ display: 'none' }}></option>
                       <option value="Técnico especializado">Técnico especializado</option>
                       <option value="Licenciatura o ingeniería">Licenciatura o ingeniería</option>
                       <option value="Maestría/Postgrado">Maestría/Postgrado</option>
@@ -264,6 +291,7 @@ const ProfessionalSignUpForm = (props) => {
                       value={modality}
                       onChange={(event) => changeValue(event.currentTarget)}
                     >
+                      <option style={{ display: 'none' }}></option>
                       <option value="Virtual">Virtual</option>
                       <option value="Presencial">Presencial</option>
                       <option value="Ambas">Ambas</option>
@@ -278,11 +306,25 @@ const ProfessionalSignUpForm = (props) => {
                 <Label className="SignUpFormInputLabel">
                   Selecciona los países de tu interés para estudiar un programa universitario
                 </Label>
-                <Row>
-                  <Col>
-                    <Input className="SignUpFormInput" />
-                  </Col>
-                </Row>
+                <ReactTags
+                  placeholder=""
+                  classNames={{
+                    tags: 'TagsClass',
+                    tagInput: 'tagInputClass',
+                    tagInputField: 'tagInputFieldClass',
+                    selected: 'selectedClass',
+                    tag: 'tagClass',
+                    remove: 'removeClass',
+                    suggestions: 'suggestionsClass',
+                    activeSuggestion: 'activeSuggestionClass',
+                  }}
+                  tags={tags}
+                  suggestions={suggestions}
+                  handleDelete={handleDelete}
+                  handleAddition={handleAddition}
+                  handleDrag={handleDrag}
+                  delimiters={delimiters}
+                />
               </Col>
             </Row>
 
