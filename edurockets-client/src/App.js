@@ -10,6 +10,7 @@ import EditProfile from './Views/EditProfile';
 import Construction from './Views/Construction';
 import Schoolarship from './Views/Schoolarship';
 import SearchPage from './Views/SearchPage';
+import Requirements from './Views/Requirements';
 import FormHolder from './Views/FormHolder';
 import HelpResource from './Views/HelpResource';
 import ProtectedRoute from './Components/ProtectedRoute';
@@ -45,6 +46,7 @@ const App = () => {
         <Route exact path="/signupswitch" component={SignUpSwitch} />
         <Route exact path="/signup/:userType" component={SignUp} />
         <Route exact path="/schoolarship/help" user={true} component={HelpResource} />
+        <ProtectedRoute exact path="/requirements" user={true} component={Requirements} />
         <ProtectedRoute exact path="/schoolarship" user={true} component={Schoolarship} />
         <ProtectedRoute exact path="/search" user={true} component={SearchPage} />
         <Route exact path="/login" component={Login} />

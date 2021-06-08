@@ -21,6 +21,9 @@ const CardResult = ({ schoolarship }) => {
   const differenceDate = new Date();
   differenceDate.setTime(schoolarship.dueDate.getTime() - new Date().getTime());
 
+  const option = { style: 'currency', currency: 'USD' };
+  const numberFormat = new Intl.NumberFormat('en-US', option);
+
   const monthNames = [
     'Enero',
     'Febrero',
@@ -108,7 +111,9 @@ const CardResult = ({ schoolarship }) => {
             </Col>
           </Row>
           <Row>
-            <Col className="CardPriceContainer">{`${schoolarship.price.toFixed(1)} USD/año`}</Col>
+            <Col className="CardPriceContainer">{`${numberFormat.format(
+              schoolarship.price
+            )} USD/año`}</Col>
           </Row>
           <Row>
             <Col>

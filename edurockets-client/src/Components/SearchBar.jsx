@@ -67,7 +67,7 @@ const SearchBar = () => {
             setShow(true);
           }}
         >
-          <div className="SearchBarLabel">Grado académico</div>
+          <div className="SearchBarLabel">Grado Académico</div>
           <div>¿Qué grado deseas obtener?</div>
         </DivButton>
 
@@ -79,7 +79,7 @@ const SearchBar = () => {
             setShow(true);
           }}
         >
-          <div className="SearchBarLabel">Area de estudio</div>
+          <div className="SearchBarLabel">Area de Estudio</div>
           <div>¿Cuál es tu interés?</div>
         </DivButton>
 
@@ -91,7 +91,7 @@ const SearchBar = () => {
             setShow(true);
           }}
         >
-          <div className="SearchBarLabel">Tipo de cobertura</div>
+          <div className="SearchBarLabel">Tipo de Cobertura</div>
           <div>Programas y becas disponibles</div>
         </DivButton>
 
@@ -104,7 +104,7 @@ const SearchBar = () => {
           <Icon className="SearchIcon" icon={searchIcon} />
         </DivButton>
       </div>
-      <div className="SearchBarPanel">
+      {/* <div className="SearchBarPanel">
         <div className={show ? 'SearchBarPanelEnabled' : 'SearchBarPanelDiseabled'}>
           <Row> v </Row>
           <Row> A </Row>
@@ -119,7 +119,7 @@ const SearchBar = () => {
           <Row> v </Row>
           <Row> A </Row>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

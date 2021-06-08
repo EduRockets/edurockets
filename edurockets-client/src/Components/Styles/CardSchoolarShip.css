@@ -3,11 +3,11 @@
   border-radius: 1.5rem;
   border-width: 0px;
 
-  box-shadow: -5px -5px 10px 2px #E0E0E0; 
+  box-shadow: -2px 2px 8px 4px rgba(0, 0, 0, 0.2);
   
   text-align: left;
   
-  padding: 1rem;
+  padding: 2rem;
   margin: 2rem;
 
   width: 22rem;
@@ -18,16 +18,20 @@
 .CardSchoolarShip:hover{
 
   transform: scale(1.03);
-  box-shadow: 0px 0px 10px 2px #E0E0E0; 
+  box-shadow: -2px 2px 8px 4px rgba(0, 0, 0, 0.2);
   background-color: rgb(240, 240, 240);
 }
 
 .CardSchoolarShipImage {
-  height: 50%;
+  height: 10rem;
+  width: 100%;
+
+  border-radius: 1rem;
 }
 
 .CardTitle {
   font-size:1rem;
+  margin: 1rem 0;
 }
 
 .CardSubTitle {
@@ -37,4 +41,11 @@
 .CardStatus {
   margin-top: 1.25rem;
   font-size: 0.875rem;
+}
+
+.CardSchoolarShipIcon {
+  position: absolute;
+  width: 2rem;
+
+  right: 10px;
 }

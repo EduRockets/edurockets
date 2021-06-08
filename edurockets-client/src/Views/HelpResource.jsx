@@ -22,6 +22,22 @@ import DivButton from '../Components/DivButton';
 
 import './Styles/HelpResource.css';
 
+const YoutubeEmbed = ({ embedId }) => {
+  return (
+    <div>
+      <iframe
+        width="100%"
+        height="600"
+        src={`https://www.youtube.com/embed/${embedId}`}
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        title="Embedded youtube"
+      />
+    </div>
+  );
+};
+
 const HelpResource = () => {
   const [modal, setModal] = useState(false);
 
@@ -71,7 +87,8 @@ const HelpResource = () => {
         <Container className="HelpResource">
           <Row>
             <Col>
-              <img className="HelpResourceImage" src={videoImage} alt="video" />
+              {/* https://www.youtube.com/watch?v=94RAJ_jskzo&ab_channel=EduRockets */}
+              <YoutubeEmbed embedId="94RAJ_jskzo" />
             </Col>
           </Row>
 
