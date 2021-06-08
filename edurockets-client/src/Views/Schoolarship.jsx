@@ -115,7 +115,7 @@ const Schoolarship = () => {
   const schoolarship = {
     uid: 'este es el uid',
     name: 'Beca Presidencial Concordia - Contabilidad',
-    institute: 'Universidad de concordia',
+    institute: 'Universidad de Concordia',
     description:
       'Contadores destacados mantienen a las empresas a la vanguardia: resuelven problemas, desarrollan estrategias financieras sólidas y garantizan una buena salud fiscal. Si eres un gran triunfador con un apetito por el aprendizaje continuo, considéranos. Se unirá a un programa con reputación de graduados que logran excelentes resultados en los exámenes nacionales de contabilidad profesional.',
     modality: 'Presencial',

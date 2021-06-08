@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Row, Col, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
 import DivButton from './DivButton';
@@ -8,9 +9,11 @@ import pendingIcon from '../Assets/Icons/pending.svg';
 
 import './Styles/CardSchoolarShip.css';
 
-const CardSchoolarShip = ({ title, institute, status, src }) => {
+const CardSchoolarShip = ({ action, title, institute, status, src }) => {
+  const history = useHistory();
+
   return (
-    <DivButton className="CardSchoolarShip">
+    <DivButton className="CardSchoolarShip" action={action}>
       {/* <img className="CardSchoolarShipIcon" src={pendingIcon} /> */}
       <Row>
         <Col>

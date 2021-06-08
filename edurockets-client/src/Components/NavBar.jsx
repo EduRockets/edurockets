@@ -191,6 +191,8 @@ const NavBarAvatar = () => {
 };
 
 export const NavBarSignIn = () => {
+  const history = useHistory();
+
   return (
     <>
       <div className="NavBar NavBarSolid">
@@ -215,7 +217,15 @@ export const NavBarSignIn = () => {
             </Row>
             <Row>
               <Col>
-                <Link className="NavBarIconText NavBarItem">Mis aplicaciones</Link>
+                <Link
+                  className="NavBarIconText NavBarItem"
+                  to={{
+                    pathname: '/profile',
+                    aboutProps: true,
+                  }}
+                >
+                  Mis aplicaciones
+                </Link>
               </Col>
             </Row>
           </Col>
@@ -229,7 +239,15 @@ export const NavBarSignIn = () => {
             </Row>
             <Row>
               <Col>
-                <Link className="NavBarIconText NavBarItem">Guardadas</Link>
+                <Link
+                  className="NavBarIconText NavBarItem"
+                  to={{
+                    pathname: '/profile',
+                    showSaved: true,
+                  }}
+                >
+                  Guardadas
+                </Link>
               </Col>
             </Row>
           </Col>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import Avatar from 'react-avatar';
 
 import { Container, Row, Col, Button } from 'reactstrap';
@@ -15,8 +15,16 @@ import './Styles/Profile.css';
 
 const Profile = () => {
   const history = useHistory();
+  const location = useLocation();
+
+  const show = location.aboutProps;
+  const showSaved = location.showSaved;
 
   const [label, setLabel] = useState('Aplicaciones en curso');
+
+  useEffect(() => {
+    if (showSaved) setLabel('Aplicaciones guardadas');
+  }, []);
 
   /*USUARIO PROVICIONAL.*/
   const user = {
@@ -270,36 +278,59 @@ const Profile = () => {
                 </Row>
               </>
             ) : (
-              aplications.map((aplication) => {
-                if (label === 'Aplicaciones en curso' && aplication.status === 'En curso') {
-                  return (
-                    <CardSchoolarShip
-                      title={aplication.name}
-                      institute={aplication.institute}
-                      status={aplication.status}
-                      src={aplication.photo}
-                    />
-                  );
-                } else if (label === 'Aplicaciones guardadas' && aplication.status === 'Guardado') {
-                  return (
-                    <CardSchoolarShip
-                      title={aplication.name}
-                      institute={aplication.institute}
-                      status={aplication.status}
-                      src={aplication.photo}
-                    />
-                  );
-                } else if (label === 'Aplicaciones aceptadas' && aplication.status === 'Aceptado') {
-                  return (
-                    <CardSchoolarShip
-                      title={aplication.name}
-                      institute={aplication.institute}
-                      status={aplication.status}
-                      src={aplication.photo}
-                    />
-                  );
-                }
-              })
+              <>
+                {aplications.map((aplication) => {
+                  if (label === 'Aplicaciones en curso' && aplication.status === 'En curso') {
+                    return (
+                      <CardSchoolarShip
+                        title={aplication.name}
+                        institute={aplication.institute}
+                        status={aplication.status}
+                        src={aplication.photo}
+                      />
+                    );
+                  } else if (
+                    label === 'Aplicaciones guardadas' &&
+                    aplication.status === 'Guardado'
+                  ) {
+                    return (
+                      <CardSchoolarShip
+                        title={aplication.name}
+                        institute={aplication.institute}
+                        status={aplication.status}
+                        src={aplication.photo}
+                      />
+                    );
+                  } else if (
+                    label === 'Aplicaciones aceptadas' &&
+                    aplication.status === 'Aceptado'
+                  ) {
+                    return (
+                      <CardSchoolarShip
+                        title={aplication.name}
+                        institute={aplication.institute}
+                        status={aplication.status}
+                        src={aplication.photo}
+                      />
+                    );
+                  }
+                })}
+                {show ? (
+                  <CardSchoolarShip
+                    title={'Beca Presidencial Concordia - Contabilidad'}
+                    institute={'Universidad de Concordia'}
+                    status={'En Curso'}
+                    src={
+                      'https://d1bvpoagx8hqbg.cloudfront.net/originals/experiencia-en-la-universidad-concordia-canada-por-monika-024bc2c82e45deff1f1b0d344642d624.jpg'
+                    }
+                    action={() => {
+                      history.push('/requirements');
+                    }}
+                  />
+                ) : (
+                  <></>
+                )}
+              </>
             )}
           </Row>
         </Container>

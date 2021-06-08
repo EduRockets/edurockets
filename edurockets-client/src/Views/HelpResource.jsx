@@ -12,7 +12,6 @@ import {
 import Dropzone from 'react-dropzone';
 
 import SignInLayout from '../Layouts/SignInLayout';
-import videoImage from '../Assets/Images/Temporal/helperResourceVideoImage.svg';
 
 import { Icon, InlineIcon } from '@iconify/react';
 import uploadIcon from '@iconify-icons/bi/upload';
