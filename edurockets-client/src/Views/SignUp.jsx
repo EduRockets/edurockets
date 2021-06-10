@@ -4,8 +4,6 @@ import { Col, Row, Container, Button, Input, Label } from 'reactstrap';
 
 import { Icon } from '@iconify/react';
 
-import lockedIcon from '@iconify-icons/carbon/locked';
-import emailIcon from '@iconify-icons/carbon/email';
 import googleIcon from '@iconify-icons/logos/google-icon';
 import facebookIcon from '@iconify-icons/logos/facebook';
 
@@ -27,15 +25,13 @@ const SignUp = (props) => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   // States para validación\
-  const [validEmail, setValidEmail] = useState(null);
-  const [invalidEmail, setInvalidEmail] = useState(null);
-  const [validPassword, setValidPassword] = useState(null);
-  const [invalidPassword, setInvalidPassword] = useState(null);
-  const [validConfirmPassword, setValidConfirmPassword] = useState(null);
+  const [validEmail, setValidEmail] = useState(false);
+  const [invalidEmail, setInvalidEmail] = useState(false);
+  const [validPassword, setValidPassword] = useState(false);
+  const [invalidPassword, setInvalidPassword] = useState(false);
+  const [validConfirmPassword, setValidConfirmPassword] = useState(false);
 
-  useEffect(() => {
-    console.log('This is the usertpye: ', userType);
-  }, []);
+  useEffect(() => {}, []);
 
   const changeValue = (event) => {
     switch (event.name) {
@@ -61,13 +57,18 @@ const SignUp = (props) => {
         break;
       case 'confirmPassword':
         setConfirmPassword(event.value);
-        if (confirmPassword !== password) {
-          setValidConfirmPassword(false);
-        } else {
-          setValidConfirmPassword(true);
-        }
         break;
       default:
+    }
+  };
+
+  const handleCreate = () => {
+    if (validEmail && password === confirmPassword) {
+      if (userType === 'student') {
+        history.push('/studentform');
+      } else {
+        history.push('/professionalform');
+      }
     }
   };
 
@@ -114,7 +115,6 @@ const SignUp = (props) => {
                   <Label className="SignUpLabel">Correo electrónico</Label>
                   <Input
                     className="SignUpInput"
-                    placeholder="correo@edurockets.com"
                     name="email"
                     id="email"
                     value={email}
@@ -169,11 +169,7 @@ const SignUp = (props) => {
               <Col>
                 <Button
                   onClick={() => {
-                    if (userType === 'student') {
-                      history.push('/studentform');
-                    } else {
-                      history.push('/professionalform');
-                    }
+                    handleCreate();
                   }}
                   className="SignUpButton"
                 >

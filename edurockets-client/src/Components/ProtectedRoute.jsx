@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, useLocation } from 'react-router-dom';
 
-const ProtectedRoute = ({ component: Component, user, ...rest }) => {
+import useAuth from '../Providers/useAuth';
+
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const location = useLocation();
+
+  const { user } = useAuth();
+
   return (
     <Route
       {...rest}
@@ -12,7 +18,10 @@ const ProtectedRoute = ({ component: Component, user, ...rest }) => {
           return (
             <Redirect
               to={{
-                pathname: '/',
+                pathname: '/login',
+                state: {
+                  from: location,
+                },
               }}
             />
           );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory, useLocation, Link } from 'react-router-dom';
 import { Col, Row, Container, Button, Input, Alert, Label } from 'reactstrap';
 
 import { Icon } from '@iconify/react';
@@ -11,18 +11,27 @@ import { validateEmail, validatePassword } from '../Helpers/Tools';
 
 import EmptyLayout from '../Layouts/EmptyLayout';
 import { NavBarLogin } from '../Components/NavBar';
+import useAuth from '../Providers/useAuth';
 
 import './Styles/Login.css';
 
 const Login = () => {
+  const { testfunction, authLogin } = useAuth();
+
+  const location = useLocation();
   const history = useHistory();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const [visible, setVisible] = useState(false);
+
   // States para validación\
   const [validEmail, setValidEmail] = useState(null);
   const [invalidEmail, setInvalidEmail] = useState(null);
+
+  const [validPassword, setValidPassword] = useState(null);
+  const [invalidPassword, setInvalidPassowrd] = useState(null);
 
   useEffect(() => {
     if (localStorage.getItem('authToken')) {
@@ -30,32 +39,33 @@ const Login = () => {
     }
   }, [history]);
 
-  const formData = {
+  const credentials = {
     email: email,
     password: password,
-  };
-
-  const login = () => {
-    try {
-    } catch (error) {}
   };
 
   const changeValue = (event) => {
     switch (event.name) {
       case 'email':
         setEmail(event.value);
-        if (validateEmail(email)) {
-          setValidEmail(true);
-          setInvalidEmail(false);
-        } else {
-          setValidEmail(false);
-          setInvalidEmail(true);
-        }
         break;
       case 'password':
         setPassword(event.value);
         break;
       default:
+    }
+  };
+
+  const checkValues = () => {
+    if (!validateEmail(email)) {
+      setInvalidEmail(true);
+      if (password === '') {
+        setInvalidPassowrd(true);
+      } else {
+        setInvalidPassowrd(false);
+      }
+    } else {
+      setInvalidEmail(false);
     }
   };
 
@@ -79,11 +89,9 @@ const Login = () => {
                     <Label className="LoginLabel">Correo electrónico</Label>
                     <Input
                       className="LoginInput"
-                      placeholder="correo@edurockets.com"
                       name="email"
                       id="email"
                       value={email}
-                      valid={validEmail}
                       invalid={invalidEmail}
                       onChange={(event) => changeValue(event.currentTarget)}
                     />
@@ -94,11 +102,11 @@ const Login = () => {
                     <Label className="LoginLabel">Contraseña</Label>
                     <Input
                       className="LoginInput"
-                      placeholder="Debe contener al menos 8 carácteres"
                       name="password"
                       id="password"
                       type="password"
                       value={password}
+                      invalid={invalidPassword}
                       onChange={(event) => changeValue(event.currentTarget)}
                     />
                   </Col>
@@ -115,7 +123,14 @@ const Login = () => {
               </Row>
               <Row>
                 <Col>
-                  <Button className="LoginButton">Iniciar sesión</Button>
+                  <Button
+                    className="LoginButton"
+                    onClick={() => {
+                      authLogin(credentials, location.state?.from);
+                    }}
+                  >
+                    Iniciar sesión
+                  </Button>
                 </Col>
               </Row>
               <Row>
@@ -139,6 +154,11 @@ const Login = () => {
                   ¿No tienes una cuenta? Haz click{' '}
                   <Link className="CrearCuentaContainerLink">aquí</Link>
                 </Col>
+              </Row>
+              <Row>
+                <Alert color="danger" isOpen={visible}>
+                  I am an alert and I can be dismissed!
+                </Alert>
               </Row>
             </Col>
           </Row>
