@@ -9,6 +9,7 @@ import SearchBar from '../Components/SearchBar';
 import CardSchoolarShip from '../Components/CardSchoolarShip';
 import DivButton from '../Components/DivButton';
 
+import useAuth from '../Providers/useAuth';
 import notificationIcon from '../Assets/Icons/notification.svg';
 
 import './Styles/Profile.css';
@@ -22,16 +23,18 @@ const Profile = () => {
 
   const [label, setLabel] = useState('Aplicaciones en curso');
 
+  const { user, authLogout } = useAuth();
+
   useEffect(() => {
     if (showSaved) setLabel('Aplicaciones guardadas');
   }, []);
 
   /*USUARIO PROVICIONAL.*/
-  const user = {
+  const tempUser = {
     names: 'Jane',
     lastNames: 'Doe',
     photo:
-      'https://icons-for-free.com/iconfiles/png/512/female+person+user+woman+young+icon-1320196266256009072.png' /*NO OBLIGATORIO*/,
+      'https://icons-for-free.com/iconfiles/png/512/female+person+tempUser+woman+young+icon-1320196266256009072.png' /*NO OBLIGATORIO*/,
     birthday: new Date(1998, 6, 8),
     language: '' /*NO OBLIGATORIO*/,
     country: 'Honduras',
@@ -202,17 +205,27 @@ const Profile = () => {
                   <img className="ProfileIcon" alt="notification" src={notificationIcon} />
                 </DivButton>
               </Col>
-            </Row>
-            <Row>
+
               <Col>
-                <Avatar size={150} round="100%" src={user.photo} />
+                <Button
+                  onClick={() => {
+                    authLogout();
+                  }}
+                >
+                  Logout
+                </Button>
               </Col>
             </Row>
             <Row>
-              <Col className="ProfileName">{`${user.names}  ${user.lastNames}`}</Col>
+              <Col>
+                <Avatar size={150} round="100%" src={tempUser.photo} />
+              </Col>
             </Row>
             <Row>
-              <Col className="ProfileCountry">{user.country}</Col>
+              <Col className="ProfileName">{`${tempUser.names}  ${tempUser.lastNames}`}</Col>
+            </Row>
+            <Row>
+              <Col className="ProfileCountry">{user.email}</Col>
             </Row>
             <Row>
               <Col>

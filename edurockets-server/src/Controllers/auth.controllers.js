@@ -1,7 +1,7 @@
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-const user = require("../models/user");
-const { promisify } = require("util");
+const express = require('express');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const user = require('../models/user');
 
 const secret = process.env.JWT_SECRET;
 const expires = process.env.JWT_EXPIRES;
@@ -16,12 +16,16 @@ const signJwt = (id) => {
 };
 
 const encryptPassword = async (password) => {
-  return await bcrypt.hash(password, 12);
+  const salt = await bcrypt.genSalt(10);
+  return await bcrypt.hash(password, salt);
 };
 
-const sendJWTCookie = (user, req, res) => {
+const sendJWT = (user, req, res) => {
   const token = signJwt(user.id);
-  const options = {
+  user.password = undefined;
+  res.json({ token, user });
+  {
+    /* const options = {
     expires: new Date(Date.now() + expiresNum),
     secure: env === "production" ? true : false,
     httpOnly: env === "production" ? true : false,
@@ -32,12 +36,10 @@ const sendJWTCookie = (user, req, res) => {
     status: "success",
     token,
     user,
-  });
+  }); */
+  }
 };
 
-exports.temp = (req, res) => {
-  res.send("sssssupuiupppp");
-};
 // API Functions
 exports.signUp = async (req, res) => {
   const { email, password } = req.body;
@@ -47,7 +49,7 @@ exports.signUp = async (req, res) => {
       email,
       password: encryptPw,
     });
-    sendJWTCookie(currentUser, req, res);
+    sendJWT(currentUser, req, res);
   } catch (err) {
     res.status(401).json({ message: err });
   }
@@ -56,12 +58,16 @@ exports.signUp = async (req, res) => {
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const currentUser = await user.findOne({ email }).select("+password");
-    const compare = await bcrypt.compare(password, currentUser.password);
-    compare
-      ? sendJWTCookie(currentUser, req, res)
-      : res.status(400).json({ message: "something failed" });
-  } catch (error) {
+    const currentUser = await user.findOne({ email }).select('+password');
+    if (currentUser) {
+      const compare = await bcrypt.compare(password, currentUser.password);
+      compare
+        ? sendJWT(currentUser, req, res)
+        : res.status(400).json({ message: 'something failed' });
+    } else {
+      res.status(400).json({ message: 'something failed' });
+    }
+  } catch (err) {
     console.log(err);
     res.status(400).json({ message: err });
   }
@@ -70,22 +76,31 @@ exports.login = async (req, res) => {
 exports.logout = async (req, res) => {
   const options = {
     expires: new Date(Date.now() + 10000),
-    secure: env === "production" ? true : false,
-    httpOnly: env === "production" ? true : false,
+    secure: env === 'production' ? true : false,
+    httpOnly: env === 'production' ? true : false,
   };
-  res.cookie("jwt", "expiredtoken", options);
+  res.cookie('jwt', 'expiredtoken', options);
   res.status(200).json({
-    status: "success",
+    status: 'success',
   });
 };
 
-// Some Middlewares
-const decryptJWT = async (token) => {
-  const jwtVerify = promisify(jwt.verify);
-  return await jwtVerify(token, secret);
+exports.check = (req, res, next) => {
+  const token = req.header('x-auth-token');
+  if (token) {
+    try {
+      const decoded = jwt.verify(token, secret);
+      req.user = decoded.user;
+      next();
+    } catch (error) {
+      res.status(403).json({ message: 'Forbidden', msg: { error } });
+    }
+  } else {
+    res.status(403).json({ message: 'Forbidden', msg: 'Token not exists' });
+  }
 };
 
-exports.secure = async (req, res, next) => {
+/* exports.secure = async (req, res, next) => {
   let token;
   if (req.cookies) token = req.cookies.jwt;
 
@@ -105,4 +120,8 @@ exports.secure = async (req, res, next) => {
 
   req.user = currentUser;
   next();
+}; */
+
+exports.temp = (req, res) => {
+  res.send('sssssupuiupppp');
 };

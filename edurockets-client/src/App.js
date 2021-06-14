@@ -26,6 +26,8 @@ import ProfessionalSignUpForm from './Components/Forms/ProfessionalSignUpForm';
 const App = () => {
   const [user, setUser] = useState(true);
 
+  useEffect(() => {}, []);
+
   const handleLogin = (event) => {
     event.preventDefault();
     setUser(true);
@@ -54,7 +56,7 @@ const App = () => {
         <ProtectedRoute exact path="/schoolarship/:id" component={Schoolarship} />
         <ProtectedRoute exact path="/search" component={SearchPage} />
 
-        <ProtectedRoute exact path="/profile/:id" component={Profile} />
+        <ProtectedRoute exact path="/profile" component={Profile} />
         <ProtectedRoute exact path="/editprofile/:id" component={EditProfile} />
 
         <PublicRoute exact path="/" component={Landing} />

@@ -10,13 +10,13 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) => {
-        if (!user) {
+        if (user === null) {
           return <Component {...rest} {...props} />;
         } else {
           return (
             <Redirect
               to={{
-                pathname: '/profile/:id',
+                pathname: '/profile',
               }}
             />
           );

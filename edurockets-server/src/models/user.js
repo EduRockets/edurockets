@@ -1,6 +1,17 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
+  names: {
+    type: String,
+    required: true,
+  },
+  lastNames: {
+    type: String,
+    required: true,
+  },
+  photo: {
+    type: String,
+  },
   email: {
     type: String,
     required: true,
@@ -15,4 +26,4 @@ const userSchema = mongoose.Schema({
   resetPasswordExpire: Date,
 });
 
-module.exports = mongoose.model("users", userSchema);
+module.exports = mongoose.model('users', userSchema);
