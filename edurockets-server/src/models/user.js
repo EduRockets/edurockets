@@ -3,14 +3,39 @@ const mongoose = require('mongoose');
 const userSchema = mongoose.Schema({
   names: {
     type: String,
-    required: true,
+    default: '',
   },
   lastNames: {
     type: String,
-    required: true,
+    default: '',
   },
-  photo: {
+  country: {
     type: String,
+    default: '',
+  },
+  state: {
+    type: String,
+    default: '',
+  },
+  birthday: {
+    type: Date,
+    default: null,
+  },
+  highSchool: {
+    type: String,
+    default: '',
+  },
+  currentDegree: {
+    type: String,
+    default: '',
+  },
+  favoriteCountries: {
+    type: [String],
+    default: [],
+  },
+  favoriteStudyAreas: {
+    type: [String],
+    default: [],
   },
   email: {
     type: String,
@@ -22,6 +47,7 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  isActive: { type: Boolean, required: false, default: true },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
 });

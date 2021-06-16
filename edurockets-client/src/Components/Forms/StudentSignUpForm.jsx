@@ -6,12 +6,15 @@ import DatePicker from 'react-datepicker';
 import { WithContext as ReactTags } from 'react-tag-input';
 
 import CheckBox from '../../Components/CheckBox';
+import useAuth from '../../Providers/useAuth';
+import { updateUser } from '../../api/index.js';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './Styles/SignUpForm.css';
 
 const StudentSignUpForm = (props) => {
   const { paso, setPaso } = props;
+  const { user } = useAuth();
 
   const history = useHistory();
 
@@ -44,6 +47,18 @@ const StudentSignUpForm = (props) => {
   const [tags, setTags] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
   const delimiters = [188, 13];
+
+  const profile = {
+    names: names,
+    lastNames: names,
+    country: country,
+    state: state,
+    birthday: birthday,
+    highSchool: highSchool,
+    currentDegree: currentDegree,
+    favoriteCountries: favoriteCountries,
+    favoriteStudyAreas: favoriteStudyAreas,
+  };
 
   useEffect(() => {
     fetch('https://restcountries.eu/rest/v2/all')
@@ -80,6 +95,26 @@ const StudentSignUpForm = (props) => {
     newTags.splice(currPos, 1);
     newTags.splice(newPos, 0, tag);
     setTags(newTags);
+  };
+
+  const handleCreate = () => {
+    setFavoriteCountries(...tags);
+    if (
+      validNames &&
+      validLastNames &&
+      country !== '' &&
+      birthday !== null &&
+      validHighSchool &&
+      currentDegree !== '' &&
+      favoriteCountries.length > 0
+    ) {
+      // Modificar el usuario
+      updateUser({ user, profile })
+        .then((res) => {
+          history.push('/profile');
+        })
+        .catch((err) => {});
+    }
   };
 
   //

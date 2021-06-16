@@ -24,20 +24,6 @@ const sendJWT = (user, req, res) => {
   const token = signJwt(user.id);
   user.password = undefined;
   res.json({ token, user });
-  {
-    /* const options = {
-    expires: new Date(Date.now() + expiresNum),
-    secure: env === "production" ? true : false,
-    httpOnly: env === "production" ? true : false,
-  };
-  res.cookie("jwt", token, options);
-  user.password = undefined;
-  res.status(200).json({
-    status: "success",
-    token,
-    user,
-  }); */
-  }
 };
 
 // API Functions
@@ -85,42 +71,7 @@ exports.logout = async (req, res) => {
   });
 };
 
-exports.check = (req, res, next) => {
-  const token = req.header('x-auth-token');
-  if (token) {
-    try {
-      const decoded = jwt.verify(token, secret);
-      req.user = decoded.user;
-      next();
-    } catch (error) {
-      res.status(403).json({ message: 'Forbidden', msg: { error } });
-    }
-  } else {
-    res.status(403).json({ message: 'Forbidden', msg: 'Token not exists' });
-  }
-};
-
-/* exports.secure = async (req, res, next) => {
-  let token;
-  if (req.cookies) token = req.cookies.jwt;
-
-  if (!token || token === "expiredtoken") {
-    return res.status(401).json({
-      message: "You are not Authorize",
-    });
-  }
-
-  const jwtInfo = await decryptJWT(token);
-  const currentUser = await user.findById(jwtInfo.id);
-  if (!currentUser) {
-    return res.status(401).json({
-      message: "You are not Authorize",
-    });
-  }
-
-  req.user = currentUser;
-  next();
-}; */
+exports.checkJWT = (req, res) => {};
 
 exports.temp = (req, res) => {
   res.send('sssssupuiupppp');

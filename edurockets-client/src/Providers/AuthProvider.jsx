@@ -7,20 +7,23 @@ import * as api from '../api/index.js';
 export const UserContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const { signUp, login, logout, test } = api;
+  const { signUp, login, logout, check, test } = api;
   const [cookies, setCookie] = useCookies(['token']);
 
   const history = useHistory();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    {
-      /*
-    if (cookies.token) {
-      setUser(cookies.user);
-    }*/
+    console.log('AUTHPROVIDER ', cookies);
+    if (cookies) {
+      check(cookies)
+        .then((res) => {
+          console.log('Evaluando token', res);
+        })
+        .catch((err) => {
+          console.log('Evaluando token', err);
+        });
     }
-    console.log('este es el usuario: ', user);
   }, []);
 
   const testfunction = (credentials) => {
@@ -79,6 +82,8 @@ const AuthProvider = ({ children }) => {
     testfunction,
 
     user,
+    setUser,
+
     authSignUp,
     authLogin,
     authLogout,

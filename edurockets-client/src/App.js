@@ -36,19 +36,19 @@ const App = () => {
   return (
     <Router>
       <AuthProvider>
-        {/*Fomrs*/}
-        <PublicRoute path="/studentform">
-          <FormHolder Form={StudentSignUpForm} />
-        </PublicRoute>
-
-        <PublicRoute path="/professionalform">
-          <FormHolder Form={ProfessionalSignUpForm} />
-        </PublicRoute>
-
         <PublicRoute exact path="/signup/:userType" component={SignUp} />
         <PublicRoute exact path="/signupswitch" component={SignUpSwitch} />
 
         <PublicRoute exact path="/login" component={Login} />
+
+        {/*Fomrs*/}
+        <ProtectedRoute exact path="/studentform">
+          <FormHolder Form={StudentSignUpForm} />
+        </ProtectedRoute>
+
+        <ProtectedRoute exact path="/professionalform">
+          <FormHolder Form={ProfessionalSignUpForm} />
+        </ProtectedRoute>
 
         <ProtectedRoute exact path="/schoolarship/help" component={HelpResource} />
         <ProtectedRoute exact path="/requirements/id" component={Requirements} />

@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 import useAuth from '../Providers/useAuth';
 
-const ProtectedRoute = ({ component: Component, ...rest }) => {
+const PublicRoute = ({ component: Component, ...rest }) => {
   const { user } = useAuth();
 
   return (
@@ -26,7 +26,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-export default ProtectedRoute;
+export default PublicRoute;
 
 /*
 localStorage.getItem("äuthToken") ? (

@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Col, Row, Container, Button, Input, Label } from 'reactstrap';
+import { useCookies } from 'react-cookie';
 
 import { Icon } from '@iconify/react';
-
 import googleIcon from '@iconify-icons/logos/google-icon';
 import facebookIcon from '@iconify-icons/logos/facebook';
 
 import { validateEmail, validatePassword } from '../Helpers/Tools';
-
 import EmptyLayout from '../Layouts/EmptyLayout';
 import { NavBarSignUp } from '../Components/NavBar';
+
+import useAuth from '../Providers/useAuth';
+import { signUp } from '../api/index.js';
 
 import './Styles/SignUp.css';
 
 const SignUp = (props) => {
   const history = useHistory();
-
   const { userType } = useParams();
+  const { setUser } = useAuth();
+
+  const [cookies, setCookie] = useCookies(['token']);
 
   const [step, setStep] = useState(0);
   const [email, setEmail] = useState('');
@@ -33,27 +37,25 @@ const SignUp = (props) => {
 
   useEffect(() => {}, []);
 
+  const credentials = {
+    email: email,
+    password: password,
+  };
+
   const changeValue = (event) => {
+    const emptyVal = event.value === '';
     switch (event.name) {
       case 'email':
         setEmail(event.value);
-        if (validateEmail(email)) {
-          setValidEmail(true);
-          setInvalidEmail(false);
-        } else {
-          setValidEmail(false);
-          setInvalidEmail(true);
-        }
+        const checkEmail = validateEmail(email);
+        setValidEmail(checkEmail);
+        setInvalidEmail(!checkEmail);
         break;
       case 'password':
         setPassword(event.value);
-        if (validatePassword(password)) {
-          setValidPassword(true);
-          setInvalidPassword(false);
-        } else {
-          setValidPassword(false);
-          setInvalidPassword(true);
-        }
+        const checkPassword = validatePassword(password);
+        setValidPassword(checkPassword);
+        setInvalidPassword(!checkPassword);
         break;
       case 'confirmPassword':
         setConfirmPassword(event.value);
@@ -64,11 +66,20 @@ const SignUp = (props) => {
 
   const handleCreate = () => {
     if (validEmail && password === confirmPassword) {
-      if (userType === 'student') {
-        history.push('/studentform');
-      } else {
-        history.push('/professionalform');
-      }
+      const config = { headers: { 'Content-Type': 'application/json' } };
+      signUp(credentials, config)
+        .then((res) => {
+          setCookie('token', res.data.token, { path: '/' });
+          setUser(res.data.user);
+          if (userType === 'student') {
+            history.push('/studentform');
+          } else {
+            history.push('/professionalform');
+          }
+        })
+        .catch((err) => {
+          console.log('Error creación de usuario', err);
+        });
     }
   };
 
