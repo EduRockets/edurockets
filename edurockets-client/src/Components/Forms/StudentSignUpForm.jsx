@@ -7,7 +7,7 @@ import { WithContext as ReactTags } from 'react-tag-input';
 
 import CheckBox from '../../Components/CheckBox';
 import useAuth from '../../Providers/useAuth';
-import { updateUser } from '../../api/index.js';
+import { updateSignInUser } from '../../Api/index.js';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './Styles/SignUpForm.css';
@@ -109,7 +109,7 @@ const StudentSignUpForm = (props) => {
       favoriteCountries.length > 0
     ) {
       // Modificar el usuario
-      updateUser({ user, profile })
+      updateSignInUser({ user, profile })
         .then((res) => {
           history.push('/profile');
         })

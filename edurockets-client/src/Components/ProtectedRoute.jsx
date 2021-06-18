@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Redirect, useLocation } from 'react-router-dom';
 
 import useAuth from '../Providers/useAuth';
@@ -32,9 +32,3 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
 };
 
 export default ProtectedRoute;
-
-/*
-localStorage.getItem("äuthToken") ? (
-  <Component >
-)
-*/

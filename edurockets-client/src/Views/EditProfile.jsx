@@ -6,102 +6,14 @@ import Avatar from 'react-avatar';
 
 import EmptyLayout from '../Layouts/EmptyLayout';
 import MaskedInput from '../Components/MaskedInput';
+import useAuth from '../Providers/useAuth';
+import { updateEditProfileUser } from '../Api/index';
 
 import 'react-datepicker/dist/react-datepicker.css';
-
-
 import './Styles/EditProfile.css';
 
 const EditProfile = () => {
-  /*USUARIO PROVICIONAL.*/
-  const user = {
-    names: 'Jane',
-    lastNames: 'Doe',
-    photo:
-      'https://icons-for-free.com/iconfiles/png/512/female+person+user+woman+young+icon-1320196266256009072.png' /*NO OBLIGATORIO*/,
-    birthday: new Date(1998, 6, 8),
-    language: 'Español' /*NO OBLIGATORIO*/,
-    country: 'Honduras',
-    flag: '' /*NO OBLIGATORIO*/,
-    residenceCountry: 'Honduras' /*NO OBLIGATORIO*/,
-    phone: '(504) 9538 7819' /*NO OBLIGATORIO*/,
-    schoolarShips: [
-      {
-        uid: 'uid de la beca',
-        requirements: {
-          passport: {
-            url: '',
-            status: 1,
-          },
-          requestLetter: {
-            url: '',
-            status: 1,
-          },
-          test: {
-            url: '',
-            status: 0,
-          },
-          curriculum: {
-            url: '',
-            status: 0,
-          },
-          universityForm: {
-            url: '',
-            status: 0,
-          },
-          personalReferences: {
-            url: '',
-            status: 0,
-          },
-          interestForm: {
-            url: '',
-            status: 0,
-          },
-          extracurricularEvents: {
-            url: '',
-            status: 0,
-          },
-        },
-      },
-      {
-        uid: 'uid de la beca 2',
-        requirements: {
-          passport: {
-            url: '',
-            status: 1,
-          },
-          requestLetter: {
-            url: '',
-            status: 1,
-          },
-          test: {
-            url: '',
-            status: 0,
-          },
-          curriculum: {
-            url: '',
-            status: 0,
-          },
-          universityForm: {
-            url: '',
-            status: 0,
-          },
-          personalReferences: {
-            url: '',
-            status: 0,
-          },
-          interestForm: {
-            url: '',
-            status: 0,
-          },
-          extracurricularEvents: {
-            url: '',
-            status: 0,
-          },
-        },
-      },
-    ],
-  };
+  const { user, setUser } = useAuth();
 
   const history = useHistory();
 
@@ -110,17 +22,26 @@ const EditProfile = () => {
 
   const [names, setNames] = useState(user.names);
   const [lastNames, setLastNames] = useState(user.lastNames);
-  const [birthday, setBirthday] = useState(user.birthday);
-  const [language, setLanguage] = useState(user.language);
+  const [birthday, setBirthday] = useState(new Date(user.birthday));
+  const [language, setLanguage] = useState('');
   const [country, setCountry] = useState(user.country);
-  const [residenceCountry, setResidenceCountry] = useState(user.residenceCountry);
-  const [phone, setPhone] = useState(user.phone);
+  const [state, setState] = useState(user.state);
+  const [phone, setPhone] = useState('');
 
   // States for validation
   const [validNames, setValidNames] = useState();
   const [invalidNames, setInvalidNames] = useState();
   const [validLastNames, setValidLastNames] = useState();
   const [invalidLastNames, setInvalidLastNames] = useState();
+
+  const profile = {
+    names: names,
+    lastNames: lastNames,
+    country: country,
+    state: state,
+    birthday: birthday,
+    phone: phone,
+  };
 
   useEffect(() => {
     fetch('https://restcountries.eu/rest/v2/all')
@@ -160,8 +81,8 @@ const EditProfile = () => {
       case 'country':
         setCountry(event.value);
         break;
-      case 'residenceCountry':
-        setResidenceCountry(event.value);
+      case 'state':
+        setState(event.value);
         break;
       case 'phone':
         setPhone(event.value);
@@ -169,6 +90,18 @@ const EditProfile = () => {
       default:
         break;
     }
+  };
+
+  const handleUpdate = () => {
+    updateEditProfileUser({ user, profile })
+      .then((updatedUser) => {
+        setUser(updatedUser.data.user);
+        setValidNames(false);
+        setInvalidLastNames(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -274,22 +207,14 @@ const EditProfile = () => {
                       </select>
                     </Col>
                     <Col>
-                      <Label className="EditProfileLabel">País de residencia</Label>
-                      <select
-                        className="EditProfileSelect"
-                        name="residenceCountry"
-                        id="residenceCountry"
-                        value={residenceCountry}
+                      <Label className="EditProfileLabel">Estado/Provincia</Label>
+                      <Input
+                        className="EditProfileInput"
+                        name="state"
+                        id="state"
+                        value={state}
                         onChange={(event) => changeValue(event.currentTarget)}
-                      >
-                        {countries.map((element) => {
-                          return (
-                            <option key={element.key} value={element}>
-                              {element}
-                            </option>
-                          );
-                        })}
-                      </select>
+                      />
                     </Col>
                   </Row>
 
@@ -333,7 +258,14 @@ const EditProfile = () => {
                       >
                         Cancelar
                       </Button>
-                      <Button className="EditProfileSaveButton">Guardar cambios</Button>
+                      <Button
+                        className="EditProfileSaveButton"
+                        onClick={() => {
+                          handleUpdate();
+                        }}
+                      >
+                        Guardar cambios
+                      </Button>
                     </Col>
                   </Row>
                 </Col>

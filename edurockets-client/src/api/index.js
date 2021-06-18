@@ -10,5 +10,8 @@ export const login = (credentials) => API.post('/auth/login', credentials);
 export const signUp = (credentials) => API.post('/auth/signup', credentials);
 export const logout = () => API.get('/auth/logout');
 
-// Funciones para cruds del usuario
-export const updateUser = (body) => API.put('/user/updateuser', body);
+// Funciones para CRUD del usuario
+export const updateSignInUser = (body) => API.put('/user/updateSignUpUser', body);
+export const updateEditProfileUser = (body) => API.put('/user/updateEditProfileUser', body);
+
+export const getUser = () => API.get('/user/');

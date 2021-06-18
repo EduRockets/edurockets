@@ -9,6 +9,7 @@ router.route('/login').post(authController.login);
 router.route('/logout').get(authController.logout);
 router.route('/check').get(authController.checkJWT);
 
+// Rutas protegidas por el middleware
 router.use(middleware.check);
 
 router.route('/temp').get(authController.temp);

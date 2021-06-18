@@ -24,14 +24,7 @@ import StudentSignUpForm from './Components/Forms/StudentSignUpForm';
 import ProfessionalSignUpForm from './Components/Forms/ProfessionalSignUpForm';
 
 const App = () => {
-  const [user, setUser] = useState(true);
-
   useEffect(() => {}, []);
-
-  const handleLogin = (event) => {
-    event.preventDefault();
-    setUser(true);
-  };
 
   return (
     <Router>
@@ -57,7 +50,7 @@ const App = () => {
         <ProtectedRoute exact path="/search" component={SearchPage} />
 
         <ProtectedRoute exact path="/profile" component={Profile} />
-        <ProtectedRoute exact path="/editprofile/:id" component={EditProfile} />
+        <ProtectedRoute exact path="/editprofile" component={EditProfile} />
 
         <PublicRoute exact path="/" component={Landing} />
 

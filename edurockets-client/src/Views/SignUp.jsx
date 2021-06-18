@@ -12,7 +12,7 @@ import EmptyLayout from '../Layouts/EmptyLayout';
 import { NavBarSignUp } from '../Components/NavBar';
 
 import useAuth from '../Providers/useAuth';
-import { signUp } from '../api/index.js';
+import { signUp } from '../Api/index.js';
 
 import './Styles/SignUp.css';
 

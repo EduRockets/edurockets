@@ -1,6 +1,16 @@
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    match: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
   names: {
     type: String,
     default: '',
@@ -8,6 +18,10 @@ const userSchema = mongoose.Schema({
   lastNames: {
     type: String,
     default: '',
+  },
+  birthday: {
+    type: Date,
+    default: null,
   },
   country: {
     type: String,
@@ -17,9 +31,13 @@ const userSchema = mongoose.Schema({
     type: String,
     default: '',
   },
-  birthday: {
-    type: Date,
-    default: null,
+  phone: {
+    type: String,
+    default: '',
+  },
+  photo: {
+    type: String,
+    default: '',
   },
   highSchool: {
     type: String,
@@ -37,15 +55,9 @@ const userSchema = mongoose.Schema({
     type: [String],
     default: [],
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    match: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
-  },
-  password: {
-    type: String,
-    required: true,
+  schoolarships: {
+    type: [{}],
+    default: [],
   },
   isActive: { type: Boolean, required: false, default: true },
   resetPasswordToken: String,

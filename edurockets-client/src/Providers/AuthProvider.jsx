@@ -2,28 +2,21 @@ import React, { createContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
-import * as api from '../api/index.js';
+import * as api from '../Api/index';
 
 export const UserContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const { signUp, login, logout, check, test } = api;
+  const { getUser, signUp, login, logout, check, test } = api;
   const [cookies, setCookie] = useCookies(['token']);
 
   const history = useHistory();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    console.log('AUTHPROVIDER ', cookies);
-    if (cookies) {
-      check(cookies)
-        .then((res) => {
-          console.log('Evaluando token', res);
-        })
-        .catch((err) => {
-          console.log('Evaluando token', err);
-        });
-    }
+    getUser().then((res) => {
+      setUser(res.data.user);
+    });
   }, []);
 
   const testfunction = (credentials) => {
@@ -48,10 +41,9 @@ const AuthProvider = ({ children }) => {
   };
 
   const authLogin = (credentials, location) => {
-    const config = { headers: { 'Content-Type': 'application/json' } };
     try {
-      login(credentials, config).then((res) => {
-        setCookie('token', res.data.token, { path: '/' });
+      login(credentials).then((res) => {
+        setCookie('token', res.data.token, { httpOnly: true, path: '/' });
         {
           /*setCookie('user', res.data.user, { path: '/' });*/
         }
