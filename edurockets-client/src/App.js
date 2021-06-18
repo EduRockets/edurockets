@@ -13,47 +13,49 @@ import SearchPage from './Views/SearchPage';
 import Requirements from './Views/Requirements';
 import FormHolder from './Views/FormHolder';
 import HelpResource from './Views/HelpResource';
-import ProtectedRoute from './Components/ProtectedRoute';
 
-import UserContext from './Providers/UserContext';
+import ProtectedRoute from './Components/ProtectedRoute';
+import PublicRoute from './Components/PublicRoute';
+
+import AuthProvider from './Providers/AuthProvider';
 
 // Forms
 import StudentSignUpForm from './Components/Forms/StudentSignUpForm';
 import ProfessionalSignUpForm from './Components/Forms/ProfessionalSignUpForm';
 
 const App = () => {
-  const [user, setUser] = useState(null);
-
-  const handleLogin = (event) => {
-    event.preventDefault();
-    setUser(true);
-  };
+  useEffect(() => {}, []);
 
   return (
     <Router>
-      <Route exact path="/underConstruction" component={Construction} />
-      <UserContext.Provider value={user}>
+      <AuthProvider>
+        <PublicRoute exact path="/signup/:userType" component={SignUp} />
+        <PublicRoute exact path="/signupswitch" component={SignUpSwitch} />
+
+        <PublicRoute exact path="/login" component={Login} />
+
         {/*Fomrs*/}
-
-        <Route path="/studentform">
+        <ProtectedRoute exact path="/studentform">
           <FormHolder Form={StudentSignUpForm} />
-        </Route>
+        </ProtectedRoute>
 
-        <Route path="/professionalform">
+        <ProtectedRoute exact path="/professionalform">
           <FormHolder Form={ProfessionalSignUpForm} />
-        </Route>
+        </ProtectedRoute>
 
-        <Route exact path="/signupswitch" component={SignUpSwitch} />
-        <Route exact path="/signup/:userType" component={SignUp} />
-        <Route exact path="/schoolarship/help" user={true} component={HelpResource} />
-        <ProtectedRoute exact path="/requirements" user={true} component={Requirements} />
-        <ProtectedRoute exact path="/schoolarship" user={true} component={Schoolarship} />
-        <ProtectedRoute exact path="/search" user={true} component={SearchPage} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/editprofile" component={EditProfile} />
-        <Route exact path="/" component={Landing} />
-      </UserContext.Provider>
+        <ProtectedRoute exact path="/schoolarship/help" component={HelpResource} />
+        <ProtectedRoute exact path="/requirements/id" component={Requirements} />
+
+        <ProtectedRoute exact path="/schoolarship/:id" component={Schoolarship} />
+        <ProtectedRoute exact path="/search" component={SearchPage} />
+
+        <ProtectedRoute exact path="/profile" component={Profile} />
+        <ProtectedRoute exact path="/editprofile" component={EditProfile} />
+
+        <PublicRoute exact path="/" component={Landing} />
+
+        <Route exact path="/underConstruction" component={Construction} />
+      </AuthProvider>
     </Router>
   );
 };

@@ -3,11 +3,12 @@ import { useHistory, useLocation } from 'react-router-dom';
 import Avatar from 'react-avatar';
 
 import { Container, Row, Col, Button } from 'reactstrap';
-import EmptyLayout from '../Layouts/EmptyLayout';
 
+import EmptyLayout from '../Layouts/EmptyLayout';
 import SearchBar from '../Components/SearchBar';
 import CardSchoolarShip from '../Components/CardSchoolarShip';
 import DivButton from '../Components/DivButton';
+import useAuth from '../Providers/useAuth';
 
 import notificationIcon from '../Assets/Icons/notification.svg';
 
@@ -22,103 +23,12 @@ const Profile = () => {
 
   const [label, setLabel] = useState('Aplicaciones en curso');
 
+  const { user, authLogout } = useAuth();
+
   useEffect(() => {
     if (showSaved) setLabel('Aplicaciones guardadas');
   }, []);
 
-  /*USUARIO PROVICIONAL.*/
-  const user = {
-    names: 'Jane',
-    lastNames: 'Doe',
-    photo:
-      'https://icons-for-free.com/iconfiles/png/512/female+person+user+woman+young+icon-1320196266256009072.png' /*NO OBLIGATORIO*/,
-    birthday: new Date(1998, 6, 8),
-    language: '' /*NO OBLIGATORIO*/,
-    country: 'Honduras',
-    flag: '' /*NO OBLIGATORIO*/,
-    residenceCountry: '' /*NO OBLIGATORIO*/,
-    phone: '' /*NO OBLIGATORIO*/,
-    schoolarShips: [
-      {
-        uid: 'uid de la beca',
-        status: 'En Curso',
-        requirements: {
-          passport: {
-            url: '',
-            status: 1,
-          },
-          requestLetter: {
-            url: '',
-            status: 1,
-          },
-          test: {
-            url: '',
-            status: 0,
-          },
-          curriculum: {
-            url: '',
-            status: 0,
-          },
-          universityForm: {
-            url: '',
-            status: 0,
-          },
-          personalReferences: {
-            url: '',
-            status: 0,
-          },
-          interestForm: {
-            url: '',
-            status: 0,
-          },
-          extracurricularEvents: {
-            url: '',
-            status: 0,
-          },
-        },
-      },
-      {
-        uid: 'uid de la beca 2',
-        status: 'Aceptado',
-        requirements: {
-          passport: {
-            url: '',
-            status: 1,
-          },
-          requestLetter: {
-            url: '',
-            status: 1,
-          },
-          test: {
-            url: '',
-            status: 0,
-          },
-          curriculum: {
-            url: '',
-            status: 0,
-          },
-          universityForm: {
-            url: '',
-            status: 0,
-          },
-          personalReferences: {
-            url: '',
-            status: 0,
-          },
-          interestForm: {
-            url: '',
-            status: 0,
-          },
-          extracurricularEvents: {
-            url: '',
-            status: 0,
-          },
-        },
-      },
-    ],
-  };
-
-  /*APLICACIONES PROVISONALES*/
   const aplications = [
     {
       name: 'Becas internacionales de maestría al mérito - Vino y la Viticultura',
@@ -202,17 +112,27 @@ const Profile = () => {
                   <img className="ProfileIcon" alt="notification" src={notificationIcon} />
                 </DivButton>
               </Col>
+
+              <Col>
+                <Button
+                  onClick={() => {
+                    authLogout();
+                  }}
+                >
+                  Logout
+                </Button>
+              </Col>
             </Row>
             <Row>
               <Col>
-                <Avatar size={150} round="100%" src={user.photo} />
+                <Avatar size={150} round="100%" />
               </Col>
             </Row>
             <Row>
               <Col className="ProfileName">{`${user.names}  ${user.lastNames}`}</Col>
             </Row>
             <Row>
-              <Col className="ProfileCountry">{user.country}</Col>
+              <Col className="ProfileCountry">{user.email}</Col>
             </Row>
             <Row>
               <Col>
@@ -279,7 +199,7 @@ const Profile = () => {
               </>
             ) : (
               <>
-                {aplications.map((aplication) => {
+                {user.schoolarships.map((aplication) => {
                   if (label === 'Aplicaciones en curso' && aplication.status === 'En curso') {
                     return (
                       <CardSchoolarShip

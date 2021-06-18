@@ -9,10 +9,46 @@ const schoolarShipSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  Price: Number,
-  career: String,
-  educationDegree: String,
-  uidInstitute: String,
+  institute: {
+    type: String,
+    required: true,
+  },
+  studyArea: {
+    type: String,
+    required: true,
+  },
+  degree: {
+    type: String,
+    required: true,
+  },
+  modality: {
+    type: String,
+    required: true,
+  },
+  dueDate: {
+    type: Date,
+    required: true,
+  },
+  duration: {
+    type: Number,
+    required: true,
+  },
+  banner: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  hedge: {
+    type: String,
+    required: true,
+  },
+  isActive: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 exports.model = mongoose.model('ScholarShips', schoolarShipSchema);

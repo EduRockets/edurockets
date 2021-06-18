@@ -6,11 +6,60 @@ import DatePicker from 'react-datepicker';
 import { WithContext as ReactTags } from 'react-tag-input';
 
 import CheckBox from '../../Components/CheckBox';
+import useAuth from '../../Providers/useAuth';
+import { updateSignInUser } from '../../Api/index.js';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './Styles/SignUpForm.css';
 
 const StudentSignUpForm = (props) => {
+  const { paso, setPaso } = props;
+  const { user } = useAuth();
+
+  const history = useHistory();
+
+  const [step, setStep] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [countries, setCountries] = useState([]);
+
+  // Form States
+  const [names, setNames] = useState('');
+  const [lastNames, setLastNames] = useState('');
+  const [country, setCountry] = useState('');
+  const [state, setState] = useState('');
+  const [birthday, setBirthday] = useState(null);
+  const [highSchool, setHighSchool] = useState('');
+  const [currentDegree, setCurrentDegree] = useState(null);
+  const [favoriteCountries, setFavoriteCountries] = useState([]);
+  const [favoriteStudyAreas, setFavoriteStudyAreas] = useState([]);
+
+  // Form States Validation
+  const [validNames, setValidNames] = useState(false);
+  const [invalidNames, setInvalidNames] = useState(false);
+  const [validLastNames, setValidLastNames] = useState(false);
+  const [invalidLastNames, setInvalidLastNames] = useState(false);
+  const [validHighSchool, setValidHighSchool] = useState(false);
+  const [invalidHighSchool, setInvalidHighSchool] = useState(false);
+  const [validState, setValidState] = useState(false);
+  const [invalidState, setInvalidState] = useState(false);
+
+  // States and variables for tag-picker
+  const [tags, setTags] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
+  const delimiters = [188, 13];
+
+  const profile = {
+    names: names,
+    lastNames: names,
+    country: country,
+    state: state,
+    birthday: birthday,
+    highSchool: highSchool,
+    currentDegree: currentDegree,
+    favoriteCountries: favoriteCountries,
+    favoriteStudyAreas: favoriteStudyAreas,
+  };
+
   useEffect(() => {
     fetch('https://restcountries.eu/rest/v2/all')
       .then((res) => res.json())
@@ -32,38 +81,7 @@ const StudentSignUpForm = (props) => {
       );
   }, []);
 
-  const history = useHistory();
-
-  const { paso, setPaso } = props;
-  const [loading, setLoading] = useState(true);
-  const [step, setStep] = useState(0);
-  const [countries, setCountries] = useState([]);
-
-  // Form States
-  const [names, setNames] = useState('');
-  const [lastNames, setLastNames] = useState('');
-  const [country, setCountry] = useState('');
-  const [state, setState] = useState('');
-  const [birthday, setBirthday] = useState(null);
-  const [school, setSchool] = useState('');
-  const [degree, setDegree] = useState(null);
-  const [favorites, setFavorites] = useState([]);
-
-  // Form States Validation
-  const [validNames, setValidNames] = useState(false);
-  const [invalidNames, setInvalidNames] = useState(false);
-  const [validLastNames, setValidLastNames] = useState(false);
-  const [invalidLastNames, setInvalidLastNames] = useState(false);
-  const [validSchool, setValidSchool] = useState(false);
-  const [invalidSchool, setInvalidSchool] = useState(false);
-  const [validState, setValidState] = useState(false);
-  const [invalidState, setInvalidState] = useState(false);
-
-  // States and variables for tag-picker
-  const [tags, setTags] = useState([]);
-  const [suggestions, setSuggestions] = useState([]);
-  const delimiters = [188, 13];
-
+  // Country Tag Picker functions
   const handleDelete = (i) => {
     setTags(tags.filter((tag, index) => index !== i));
   };
@@ -76,10 +94,30 @@ const StudentSignUpForm = (props) => {
     const newTags = tags.slice();
     newTags.splice(currPos, 1);
     newTags.splice(newPos, 0, tag);
-    // re-render
     setTags(newTags);
   };
 
+  const handleCreate = () => {
+    setFavoriteCountries(...tags);
+    if (
+      validNames &&
+      validLastNames &&
+      country !== '' &&
+      birthday !== null &&
+      validHighSchool &&
+      currentDegree !== '' &&
+      favoriteCountries.length > 0
+    ) {
+      // Modificar el usuario
+      updateSignInUser({ user, profile })
+        .then((res) => {
+          history.push('/profile');
+        })
+        .catch((err) => {});
+    }
+  };
+
+  //
   const nextStep = () => {
     setStep((oldStep) => (oldStep < 1 ? oldStep + 1 : oldStep));
     setPaso((oldStep) => (oldStep < 1 ? oldStep + 1 : oldStep));
@@ -108,13 +146,13 @@ const StudentSignUpForm = (props) => {
       case 'state':
         setState(event.value);
         break;
-      case 'school':
-        setSchool(event.value);
-        setValidSchool(!emptyVal);
-        setInvalidSchool(emptyVal);
+      case 'highSchool':
+        setHighSchool(event.value);
+        setValidHighSchool(!emptyVal);
+        setInvalidHighSchool(emptyVal);
         break;
-      case 'degree':
-        setDegree(event.value);
+      case 'currentDegree':
+        setCurrentDegree(event.value);
         break;
       case 'state':
         setState(event.value);
@@ -213,11 +251,11 @@ const StudentSignUpForm = (props) => {
                 <Label className="SignUpFormInputLabel">Escuela donde estudias</Label>
                 <Input
                   className="SignUpFormInput"
-                  name="school"
-                  id="school"
-                  value={school}
-                  valid={validSchool}
-                  invalid={invalidSchool}
+                  name="highSchool"
+                  id="highSchool"
+                  value={highSchool}
+                  valid={validHighSchool}
+                  invalid={invalidHighSchool}
                   onChange={(event) => changeValue(event.currentTarget)}
                 />
               </Col>
@@ -236,9 +274,9 @@ const StudentSignUpForm = (props) => {
                 </Row>
                 <select
                   className="SignUpSelect"
-                  name="degree"
-                  id="degree"
-                  value={degree}
+                  name="currentDegree"
+                  id="currentDegree"
+                  value={currentDegree}
                   onChange={(event) => changeValue(event.currentTarget)}
                 >
                   <option style={{ display: 'none' }}></option>
@@ -331,7 +369,7 @@ const StudentSignUpForm = (props) => {
                 <Button
                   className="SignUpFormButtonCreateAccount"
                   onClick={() => {
-                    history.push('/profile');
+                    handleCreate();
                   }}
                 >
                   Crear cuenta

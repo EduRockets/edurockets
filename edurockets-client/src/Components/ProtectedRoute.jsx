@@ -1,18 +1,27 @@
-import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React from 'react';
+import { Route, Redirect, useLocation } from 'react-router-dom';
 
-const ProtectedRoute = ({ component: Component, user, ...rest }) => {
+import useAuth from '../Providers/useAuth';
+
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const location = useLocation();
+
+  const { user } = useAuth();
+
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (user) {
+        if (user !== null) {
           return <Component {...rest} {...props} />;
         } else {
           return (
             <Redirect
               to={{
-                pathname: '/',
+                pathname: '/login',
+                state: {
+                  from: location,
+                },
               }}
             />
           );
@@ -23,9 +32,3 @@ const ProtectedRoute = ({ component: Component, user, ...rest }) => {
 };
 
 export default ProtectedRoute;
-
-/*
-localStorage.getItem("äuthToken") ? (
-  <Component >
-)
-*/
