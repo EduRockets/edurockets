@@ -27,7 +27,7 @@ const schoolarShipSchema = mongoose.Schema({
   },
   dueDate: {
     type: Date,
-    required: true,
+    required: false,
   },
   duration: {
     type: Number,
@@ -51,4 +51,4 @@ const schoolarShipSchema = mongoose.Schema({
   },
 });
 
-exports.model = mongoose.model('ScholarShips', schoolarShipSchema);
+module.exports = mongoose.model('schoolarships', schoolarShipSchema);

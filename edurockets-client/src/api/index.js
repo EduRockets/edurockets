@@ -14,4 +14,4 @@ export const logout = () => API.get('/auth/logout');
 export const updateSignInUser = (body) => API.put('/user/updateSignUpUser', body);
 export const updateEditProfileUser = (body) => API.put('/user/updateEditProfileUser', body);
 
-export const getUser = () => API.get('/user/');
+export const getUser = (data) => API.get('/user/getUser', data);

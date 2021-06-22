@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import { Container, Button, Row, Col } from 'reactstrap';
 
 import priceIcon from '../Assets/Icons/price.svg';
@@ -22,6 +22,11 @@ import './Styles/Schoolarship.css';
 
 const Schoolarship = () => {
   const history = useHistory();
+  const { id } = useParams();
+
+  useEffect(() => {
+    console.log('Este es el id: ', id);
+  }, []);
 
   const user = {
     names: 'Jane',

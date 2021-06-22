@@ -42,13 +42,19 @@ const NavBar = () => {
           <Col lg="5">
             <Row>
               <Col>
-                <Link className="NavBarItem">Inversión</Link>
+                <Link to={{}} className="NavBarItem">
+                  Inversión
+                </Link>
               </Col>
               <Col>
-                <Link className="NavBarItem">Información de paises</Link>
+                <Link to={{}} className="NavBarItem">
+                  Información de paises
+                </Link>
               </Col>
               <Col>
-                <Link className="NavBarItem">Preguntas frecuentes</Link>
+                <Link to={{}} className="NavBarItem">
+                  Preguntas frecuentes
+                </Link>
               </Col>
             </Row>
           </Col>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import Avatar from 'react-avatar';
 
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Col, Button, Alert } from 'reactstrap';
 
 import EmptyLayout from '../Layouts/EmptyLayout';
 import SearchBar from '../Components/SearchBar';
@@ -23,7 +23,7 @@ const Profile = () => {
 
   const [label, setLabel] = useState('Aplicaciones en curso');
 
-  const { user, authLogout } = useAuth();
+  const { user, setUser } = useAuth();
 
   useEffect(() => {
     if (showSaved) setLabel('Aplicaciones guardadas');
@@ -116,7 +116,7 @@ const Profile = () => {
               <Col>
                 <Button
                   onClick={() => {
-                    authLogout();
+                    setUser(null);
                   }}
                 >
                   Logout

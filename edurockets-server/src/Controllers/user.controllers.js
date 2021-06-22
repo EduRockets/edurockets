@@ -90,11 +90,13 @@ exports.getUser = async (req, res) => {
   const token = req.header('x-auth-token');
   const decoded = jwt.verify(token, secret);
   try {
-    const currentUser = users.findOne({ _id: decoded.id, isActive: true }).select('+password');
-    if (currentUser) {
-      currentUser.password = undefined;
-      res.status(200).json({ message: 'Success', currentUser });
-    }
+    users
+      .findOne({ _id: decoded.id, isActive: true })
+      .select('+password')
+      .then((user) => {
+        user.password = undefined;
+        res.status(200).json({ message: 'Success', user });
+      });
   } catch (error) {
     res.status(400).json({ message: 'Bad Request' });
   }

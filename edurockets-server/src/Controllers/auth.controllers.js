@@ -74,5 +74,5 @@ exports.logout = async (req, res) => {
 exports.checkJWT = (req, res) => {};
 
 exports.temp = (req, res) => {
-  res.send('sssssupuiupppp');
+  res.send('sssiiiuuuuuuuuu');
 };

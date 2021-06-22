@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Row, Card, CardImg, CardText, CardBody, CardTitle, Button } from 'reactstrap';
 
 import studentImage from '../Assets/Images/student.png';

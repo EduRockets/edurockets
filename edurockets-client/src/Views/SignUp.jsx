@@ -157,7 +157,7 @@ const SignUp = (props) => {
                   <Input
                     className="SignUpInput"
                     name="confirmPassword"
-                    id="password"
+                    id="confirmPassword"
                     type="password"
                     value={confirmPassword}
                     onChange={(event) => changeValue(event.currentTarget)}
