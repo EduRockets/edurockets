@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { Container, Button, Row, Col } from 'reactstrap';
+import { Container, Button, Row, Col, Spinner } from 'reactstrap';
 
 import priceIcon from '../Assets/Icons/price.svg';
 import markerIcon from '../Assets/Icons/marker.svg';
@@ -18,106 +18,30 @@ import { mapKey } from '../Config/credentials';
 import { Icon } from '@iconify/react';
 import heartIcon from '@iconify-icons/bi/heart';
 
+import { getSchoolarship } from '../Api/index';
+
 import './Styles/Schoolarship.css';
 
 const Schoolarship = () => {
   const history = useHistory();
   const { id } = useParams();
 
+  const [schoolarship, setSchoolarship] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    console.log('Este es el id: ', id);
+    getSchoolarship(id)
+      .then((result) => {
+        setSchoolarship({ ...result.data.schoolarship });
+        console.log(schoolarship);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
-  const user = {
-    names: 'Jane',
-    lastNames: 'Doe',
-    photo:
-      'https://icons-for-free.com/iconfiles/png/512/female+person+user+woman+young+icon-1320196266256009072.png' /*NO OBLIGATORIO*/,
-    birthday: new Date(1998, 6, 8),
-    language: '' /*NO OBLIGATORIO*/,
-    country: 'Honduras',
-    flag: '' /*NO OBLIGATORIO*/,
-    residenceCountry: '' /*NO OBLIGATORIO*/,
-    phone: '' /*NO OBLIGATORIO*/,
-    schoolarShips: [
-      {
-        uid: 'uid de la beca',
-        requirements: {
-          passport: {
-            url: '',
-            status: 1,
-          },
-          requestLetter: {
-            url: '',
-            status: 1,
-          },
-          test: {
-            url: '',
-            status: 0,
-          },
-          curriculum: {
-            url: '',
-            status: 0,
-          },
-          universityForm: {
-            url: '',
-            status: 0,
-          },
-          personalReferences: {
-            url: '',
-            status: 0,
-          },
-          interestForm: {
-            url: '',
-            status: 0,
-          },
-          extracurricularEvents: {
-            url: '',
-            status: 0,
-          },
-        },
-      },
-      {
-        uid: 'uid de la beca 2',
-        requirements: {
-          passport: {
-            url: '',
-            status: 1,
-          },
-          requestLetter: {
-            url: '',
-            status: 1,
-          },
-          test: {
-            url: '',
-            status: 0,
-          },
-          curriculum: {
-            url: '',
-            status: 0,
-          },
-          universityForm: {
-            url: '',
-            status: 0,
-          },
-          personalReferences: {
-            url: '',
-            status: 0,
-          },
-          interestForm: {
-            url: '',
-            status: 0,
-          },
-          extracurricularEvents: {
-            url: '',
-            status: 0,
-          },
-        },
-      },
-    ],
-  };
-
-  const schoolarship = {
+  const tempSchoolarship = {
     uid: 'este es el uid',
     name: 'Beca Presidencial Concordia - Contabilidad',
     institute: 'Universidad de Concordia',
@@ -157,148 +81,154 @@ const Schoolarship = () => {
   ];
 
   const differenceDate = new Date();
-  differenceDate.setTime(schoolarship.dueDate.getTime() - new Date().getTime());
+  differenceDate.setTime(tempSchoolarship.dueDate.getTime() - new Date().getTime());
 
   const [show, setShow] = useState(false);
 
   return (
     <SignInLayout>
-      <Container
-        className="SchoolarshipBanner"
-        style={{ backgroundImage: `url(${schoolarship.banner})` }}
-        fluid
-      />
+      {loading ? (
+        <Spinner color="primary" />
+      ) : (
+        <>
+          <Container
+            className="SchoolarshipBanner"
+            style={{ backgroundImage: `url(${tempSchoolarship.banner})` }}
+            fluid
+          />
 
-      <Container className="SchoolarshipContainer">
-        <Row>
-          {/* Izquierda */}
-          <Col xs="12" lg="8">
+          <Container className="SchoolarshipContainer">
             <Row>
-              <Col xs="12" lg="8" className="SchoolarshipTitle">
-                {schoolarship.name}
-              </Col>
-            </Row>
-            <Row>
-              <Col>
+              {/* Izquierda */}
+              <Col xs="12" lg="8">
                 <Row>
-                  <Col className="SchoolarshipInfoContainer">
-                    <img className="SchoolarshipIcon" alt="location" src={markerIcon} />
-                    <div />
-                    {` ${schoolarship.location.state}, ${schoolarship.location.country}`}
+                  <Col xs="12" lg="8" className="SchoolarshipTitle">
+                    {schoolarship.name}
                   </Col>
                 </Row>
-                <Row>
-                  <Col className="SchoolarshipInfoContainer">
-                    <img className="SchoolarshipIcon" alt="institute" src={instituteIcon} />
-                    {` Instituto: ${schoolarship.institute}`}
-                  </Col>
-                </Row>
-                <Row>
-                  <Col className="SchoolarshipInfoContainer">
-                    <img className="SchoolarshipIcon" alt="price" src={priceIcon} />
-                    {` Cobertura Beca: ${schoolarship.hedge}%`}
-                  </Col>
-                </Row>
-                <Row>
-                  <Col className="SchoolarshipInfoContainer">
-                    <img className="SchoolarshipIcon" alt="modality" src={bookIcon} />
-                    {` Modalidad: ${schoolarship.modality}`}
-                  </Col>
-                </Row>
-                <Row>
-                  <Col className="SchoolarshipInfoContainer">
-                    <img className="SchoolarshipIcon" alt="modality" src={clockIcon} />
-                    {` Fecha límite de aplicación: ${schoolarship.dueDate.getDate()} de ${
-                      monthNames[schoolarship.dueDate.getMonth() - 1]
-                    }, ${schoolarship.dueDate.getFullYear()}`}
-                  </Col>
-                </Row>
-              </Col>
-
-              <Col className="SchoolarshipPriceContainer">
                 <Row>
                   <Col>
-                    <div className="SchoolarshipDueDate">{`Quedan ${differenceDate.getDate()} días`}</div>
+                    <Row>
+                      <Col className="SchoolarshipInfoContainer">
+                        <img className="SchoolarshipIcon" alt="location" src={markerIcon} />
+                        <div />
+                        {` ${schoolarship.location.state}, ${schoolarship.location.country}`}
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className="SchoolarshipInfoContainer">
+                        <img className="SchoolarshipIcon" alt="institute" src={instituteIcon} />
+                        {` Instituto: ${schoolarship.institute}`}
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className="SchoolarshipInfoContainer">
+                        <img className="SchoolarshipIcon" alt="price" src={priceIcon} />
+                        {` Cobertura Beca: ${schoolarship.hedge}%`}
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className="SchoolarshipInfoContainer">
+                        <img className="SchoolarshipIcon" alt="modality" src={bookIcon} />
+                        {` Modalidad: ${schoolarship.modality}`}
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className="SchoolarshipInfoContainer">
+                        <img className="SchoolarshipIcon" alt="modality" src={clockIcon} />
+                        {` Fecha límite de aplicación: ${tempSchoolarship.dueDate.getDate()} de ${
+                          monthNames[tempSchoolarship.dueDate.getMonth() - 1]
+                        }, ${tempSchoolarship.dueDate.getFullYear()}`}
+                      </Col>
+                    </Row>
+                  </Col>
+
+                  <Col className="SchoolarshipPriceContainer">
+                    <Row>
+                      <Col>
+                        <div className="SchoolarshipDueDate">{`Quedan ${differenceDate.getDate()} días`}</div>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col style={{ margin: '1rem' }}>
+                        <img className="SchoolarshipIcon" alt="time" src={calendarIcon} />
+                        {`${schoolarship.duration} años`}
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>{`${schoolarship.price} USD/año`}</Col>
+                    </Row>
                   </Col>
                 </Row>
+
                 <Row>
-                  <Col style={{ margin: '1rem' }}>
-                    <img className="SchoolarshipIcon" alt="time" src={calendarIcon} />
-                    {`${schoolarship.duration} años`}
+                  <Col>
+                    <p className="SchoolarshipDescription">{schoolarship.description}</p>
                   </Col>
                 </Row>
+
                 <Row>
-                  <Col>{`${schoolarship.price} USD/año`}</Col>
-                </Row>
-              </Col>
-            </Row>
-
-            <Row>
-              <Col>
-                <p className="SchoolarshipDescription">{schoolarship.description}</p>
-              </Col>
-            </Row>
-
-            <Row>
-              <div className="SchoolarshipMapContainer">
-                {/*<Map
+                  <div className="SchoolarshipMapContainer">
+                    {/*<Map
                   googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${mapKey}&callback=initMap`}
                   loadingElement={<div style={{ height: `100%` }} />}
                   containerElement={<div style={{ height: `100%` }} />}
                   mapElement={<div style={{ height: `100%` }} />}
-                  nuevaDireccion={schoolarship.location}
-                  center={schoolarship.location}
+                  nuevaDireccion={tempSchoolarship.location}
+                  center={tempSchoolarship.location}
                   zoom={15}
                 />*/}
-              </div>
-            </Row>
-          </Col>
+                  </div>
+                </Row>
+              </Col>
 
-          {/* Derecha */}
-          <Col>
-            <Row>
-              <Col className="SchoolarshipTitle">
-                {!show ? (
-                  <Row>
-                    <Col xs="12" lg="5">
-                      <Button className="SchoolarshipButtonGuardar">
-                        <Icon className="SchoolarshipButtonIcon" icon={heartIcon} /> Guardar
-                      </Button>
-                    </Col>
-                    <Col>
-                      <Button
-                        className="SchoolarshipButtonAplicar"
-                        onClick={() => {
-                          setShow(true);
-                        }}
-                      >
-                        Aplicar
-                      </Button>
-                    </Col>
-                  </Row>
-                ) : (
-                  <>
-                    <Row>
-                      <Button
-                        className="SchoolarshipButtonInProgress"
-                        onClick={() => {
-                          history.push('/requirements');
-                        }}
-                      >
-                        Ver estado de la aplicación
-                      </Button>
-                    </Row>
-                    <Row>
-                      <Col className="SchoolarshipText">Aplicación actualmente en curso</Col>
-                    </Row>
-                  </>
-                )}
+              {/* Derecha */}
+              <Col>
+                <Row>
+                  <Col className="SchoolarshipTitle">
+                    {!show ? (
+                      <Row>
+                        <Col xs="12" lg="5">
+                          <Button className="SchoolarshipButtonGuardar">
+                            <Icon className="SchoolarshipButtonIcon" icon={heartIcon} /> Guardar
+                          </Button>
+                        </Col>
+                        <Col>
+                          <Button
+                            className="SchoolarshipButtonAplicar"
+                            onClick={() => {
+                              setShow(true);
+                            }}
+                          >
+                            Aplicar
+                          </Button>
+                        </Col>
+                      </Row>
+                    ) : (
+                      <>
+                        <Row>
+                          <Button
+                            className="SchoolarshipButtonInProgress"
+                            onClick={() => {
+                              history.push('/requirements');
+                            }}
+                          >
+                            Ver estado de la aplicación
+                          </Button>
+                        </Row>
+                        <Row>
+                          <Col className="SchoolarshipText">Aplicación actualmente en curso</Col>
+                        </Row>
+                      </>
+                    )}
+                  </Col>
+                </Row>
+                {/* <StatusTracker requirements={user.schoolarShips[0].requirements} /> */}
               </Col>
             </Row>
-            <StatusTracker requirements={user.schoolarShips[0].requirements} />
-          </Col>
-        </Row>
-      </Container>
+          </Container>
+        </>
+      )}
     </SignInLayout>
   );
 };

@@ -45,6 +45,10 @@ const schoolarShipSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  location: {
+    type: {},
+    required: true,
+  },
   isActive: {
     type: Boolean,
     default: true,

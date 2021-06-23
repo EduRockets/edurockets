@@ -8,6 +8,7 @@ router.route('/updateSignUpUser').put(userController.updateSignUpUser);
 router.route('/updateEditProfileUser').put(userController.updateEditProfileUser);
 
 // Rutas protegidas por el middleware
+
 router.use(middleware.check);
 
 router.route('/getUser').get(userController.getUser);

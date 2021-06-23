@@ -6,7 +6,7 @@ const schoolarshipController = require('../Controllers/schoolarship.controllers'
 
 // Para obtener el usuario de manera temporal
 router.route('/createSchoolarship').post(schoolarshipController.createSchoolarship);
-router.route('/getSchoolarship').get(schoolarshipController.getSchoolarship);
+router.route('/getSchoolarship/:id').get(schoolarshipController.getSchoolarship);
 
 // Rutas protegidas por el middleware
 router.use(middleware.check);

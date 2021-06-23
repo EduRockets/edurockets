@@ -7,7 +7,6 @@ const check = (req, res, next) => {
     try {
       const decoded = jwt.verify(token, secret);
       req.user = decoded.user;
-      console.log('MIDDLEWARE', decoded)
       next();
     } catch (error) {
       console.log(error);

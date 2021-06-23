@@ -1,6 +1,4 @@
-const express = require('express');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const Mongoose = require('mongoose');
 const schoolarship = require('../models/schoolarShip');
 
 const secret = process.env.JWT_SECRET;
@@ -31,11 +29,12 @@ exports.createSchoolarship = async (req, res) => {
 
 exports.getSchoolarship = async (req, res) => {
   try {
-    const { _id } = req.body;
+    const { id } = req.params;
+    const idObject = Mongoose.Types.ObjectId(id);
     schoolarship
-      .findOne({ _id, isActive: true })
+      .findOne({ _id: idObject, isActive: true })
       .then((result) => {
-        res.status(200).json({ result });
+        res.status(200).json({ schoolarship: result });
       })
       .catch((error) => {
         res.status(400).json({ message: 'Bad Request', error });
