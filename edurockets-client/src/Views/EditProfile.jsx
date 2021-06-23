@@ -7,7 +7,7 @@ import Avatar from 'react-avatar';
 import EmptyLayout from '../Layouts/EmptyLayout';
 import MaskedInput from '../Components/MaskedInput';
 import useAuth from '../Providers/useAuth';
-import { updateEditProfileUser } from '../Api/index';
+import { updateUser } from '../Api/index';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './Styles/EditProfile.css';
@@ -93,7 +93,7 @@ const EditProfile = () => {
   };
 
   const handleUpdate = () => {
-    updateEditProfileUser({ user, profile })
+    updateUser({ user, profile })
       .then((updatedUser) => {
         setUser(updatedUser.data.user);
         setValidNames(false);

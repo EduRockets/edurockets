@@ -29,63 +29,6 @@ const Profile = () => {
     if (showSaved) setLabel('Aplicaciones guardadas');
   }, []);
 
-  const aplications = [
-    {
-      name: 'Becas internacionales de maestría al mérito - Vino y la Viticultura',
-      institute: 'Lincoln University',
-      status: 'En curso',
-      photo:
-        'https://www.ellucian.com/sites/default/files/styles/max_width_1920/public/uploads/images/2020/01/news-image-lincoln-university.png?itok=U_GbUwDB',
-    },
-    {
-      name: 'Pregrado de educación especial K-12',
-      institute: 'University of Central Arkansas',
-      status: 'Aceptado',
-      photo: 'https://talkbusiness.net/wp-content/uploads/2018/08/UCA-Image-WEB.jpg',
-    },
-    {
-      name: 'Lingüística (BA)',
-      institute: 'Universidad de Concordia',
-      status: 'En curso',
-      photo:
-        'https://d1bvpoagx8hqbg.cloudfront.net/originals/experiencia-en-la-universidad-concordia-canada-por-monika-024bc2c82e45deff1f1b0d344642d624.jpg',
-    },
-    {
-      name: 'Licenciatura en Música en Composición de Canciones',
-      institute: 'Berklee College of Music',
-      status: 'En curso',
-      photo:
-        'https://college.berklee.edu/sites/default/files/styles/scale_and_crop_16_9_large/public/d7/bcm/berklee-boston-campus-at-night.jpg?itok=ICRwn8Jm',
-    },
-    {
-      name: 'Marketing',
-      institute: 'University of Central Arkansas',
-      status: 'En curso',
-      photo: 'https://talkbusiness.net/wp-content/uploads/2018/08/UCA-Image-WEB.jpg',
-    },
-    {
-      name: 'Ingeniería Aeroespacial',
-      institute: 'Universidad de Concordia',
-      status: 'Aceptado',
-      photo:
-        'https://d1bvpoagx8hqbg.cloudfront.net/originals/experiencia-en-la-universidad-concordia-canada-por-monika-024bc2c82e45deff1f1b0d344642d624.jpg',
-    },
-    {
-      name: 'Antropología',
-      institute: 'Universidad de Concordia',
-      status: 'Guardado',
-      photo:
-        'https://d1bvpoagx8hqbg.cloudfront.net/originals/experiencia-en-la-universidad-concordia-canada-por-monika-024bc2c82e45deff1f1b0d344642d624.jpg',
-    },
-    {
-      name: 'Educación Artística, Artes Visuales',
-      institute: 'Universidad de Concordia',
-      status: 'Guardado',
-      photo:
-        'https://d1bvpoagx8hqbg.cloudfront.net/originals/experiencia-en-la-universidad-concordia-canada-por-monika-024bc2c82e45deff1f1b0d344642d624.jpg',
-    },
-  ];
-
   return (
     <EmptyLayout>
       <Container className="Profile" fluid>

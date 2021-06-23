@@ -50,7 +50,7 @@ exports.updateSignUpUser = async (req, res) => {
   }
 };
 
-exports.updateEditProfileUser = async (req, res) => {
+exports.updateUser = async (req, res) => {
   const { _id } = req.body.user;
 
   const { names, lastNames, country, state, birthday, phone } = req.body.profile;
@@ -96,22 +96,6 @@ exports.getUser = async (req, res) => {
       .then((user) => {
         user.password = undefined;
         res.status(200).json({ message: 'Success', user });
-      });
-  } catch (error) {
-    res.status(400).json({ message: 'Bad Request' });
-  }
-};
-
-// TEMPORAL ENDPOINT
-exports.getTempUser = async (req, res) => {
-  const uid = '60ca5b28dc62bb2e7cdde118';
-  try {
-    users
-      .findOne({ _id: uid, isActive: true })
-      .select('+password')
-      .then((user) => {
-        user.password = undefined;
-        res.json({ user });
       });
   } catch (error) {
     res.status(400).json({ message: 'Bad Request' });

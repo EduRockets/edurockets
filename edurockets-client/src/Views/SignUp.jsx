@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { Col, Row, Container, Button, Input, Label } from 'reactstrap';
+import { Col, Row, Container, Button, Input, Label, Fade } from 'reactstrap';
 import { useCookies } from 'react-cookie';
 
 import { Icon } from '@iconify/react';
@@ -29,11 +29,9 @@ const SignUp = (props) => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   // States para validación\
-  const [validEmail, setValidEmail] = useState(false);
   const [invalidEmail, setInvalidEmail] = useState(false);
-  const [validPassword, setValidPassword] = useState(false);
   const [invalidPassword, setInvalidPassword] = useState(false);
-  const [validConfirmPassword, setValidConfirmPassword] = useState(false);
+  const [invalidConfirmPassword, setInvalidConfirmPassword] = useState(false);
 
   useEffect(() => {}, []);
 
@@ -43,29 +41,29 @@ const SignUp = (props) => {
   };
 
   const changeValue = (event) => {
-    const emptyVal = event.value === '';
     switch (event.name) {
       case 'email':
         setEmail(event.value);
-        const checkEmail = validateEmail(email);
-        setValidEmail(checkEmail);
-        setInvalidEmail(!checkEmail);
+        setInvalidEmail(false);
         break;
       case 'password':
         setPassword(event.value);
-        const checkPassword = validatePassword(password);
-        setValidPassword(checkPassword);
-        setInvalidPassword(!checkPassword);
+        setInvalidPassword(false);
         break;
       case 'confirmPassword':
         setConfirmPassword(event.value);
+        setInvalidConfirmPassword(false);
         break;
       default:
     }
   };
 
   const handleCreate = () => {
-    if (validEmail && password === confirmPassword) {
+    setInvalidEmail(!validateEmail(email));
+    setInvalidPassword(!validatePassword(password));
+    setInvalidConfirmPassword(confirmPassword !== password ? true : false);
+
+    if (!invalidEmail && !invalidPassword && !invalidConfirmPassword) {
       const config = { headers: { 'Content-Type': 'application/json' } };
       signUp(credentials, config)
         .then((res) => {
@@ -129,7 +127,6 @@ const SignUp = (props) => {
                     name="email"
                     id="email"
                     value={email}
-                    valid={validEmail}
                     invalid={invalidEmail}
                     onChange={(event) => changeValue(event.currentTarget)}
                   />
@@ -145,7 +142,6 @@ const SignUp = (props) => {
                     id="password"
                     type="password"
                     value={password}
-                    valid={validPassword}
                     invalid={invalidPassword}
                     onChange={(event) => changeValue(event.currentTarget)}
                   />
@@ -160,6 +156,7 @@ const SignUp = (props) => {
                     id="confirmPassword"
                     type="password"
                     value={confirmPassword}
+                    invalid={invalidConfirmPassword}
                     onChange={(event) => changeValue(event.currentTarget)}
                   />
                 </Col>

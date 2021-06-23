@@ -8,8 +8,8 @@ export const signUp = (credentials) => API.post('/auth/signup', credentials);
 export const logout = () => API.get('/auth/logout');
 
 // Funciones para CRUD del usuario
-export const updateSignInUser = (body) => API.put('/user/updateSignUpUser', body);
-export const updateEditProfileUser = (body) => API.put('/user/updateEditProfileUser', body);
+export const updateSignUpUser = (body) => API.put('/user/updateSignUpUser', body);
+export const updateUser = (body) => API.put('/user/updateUser', body);
 export const getUser = (data) => API.get('/user/getUser', data);
 
 // Funciones CRUD para las becas

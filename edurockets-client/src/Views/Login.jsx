@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation, Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-import { Col, Row, Container, Button, Input, Alert, Label } from 'reactstrap';
+import { Col, Row, Container, Button, Input, Label } from 'reactstrap';
 
 import { Icon } from '@iconify/react';
 
@@ -25,16 +25,9 @@ const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const [visible, setVisible] = useState(false);
-
-  // States para validación\
+  // States para validación
   const [invalidEmail, setInvalidEmail] = useState(null);
   const [invalidPassword, setInvalidPassowrd] = useState(null);
-
-  useEffect(() => {
-    
-  }, []);
 
   const credentials = {
     email: email,
@@ -42,6 +35,8 @@ const Login = () => {
   };
 
   const changeValue = (event) => {
+    setInvalidEmail(false);
+    setInvalidPassowrd(false);
     switch (event.name) {
       case 'email':
         setEmail(event.value);
@@ -54,15 +49,20 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    if (!validateEmail(email)) {
-      setInvalidEmail(true);
-      if (password === '') {
-        setInvalidPassowrd(true);
-      } else {
-        setInvalidPassowrd(false);
-      }
-    } else {
-      setInvalidEmail(false);
+    if (!validateEmail(email)) setInvalidEmail(true);
+
+    if (password === '') setInvalidPassowrd(true);
+
+    if (!invalidEmail && !invalidPassword) {
+      login(credentials)
+        .then((result) => {
+          /* setCookie('token', result.data.token, { path: '/' }); */
+          localStorage.setItem('token', result.data.token);
+          setUser({ ...result.data.user, redirectTo: location.state });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
   };
 
@@ -125,15 +125,7 @@ const Login = () => {
                   <Button
                     className="LoginButton"
                     onClick={() => {
-                      login(credentials)
-                        .then((result) => {
-                          /* setCookie('token', result.data.token, { path: '/' }); */
-                          localStorage.setItem('token', result.data.token);
-                          setUser({ ...result.data.user, redirectTo : location.state } );
-                        })
-                        .catch((err) => {
-                          console.error(err);
-                        });
+                      handleLogin();
                     }}
                   >
                     Iniciar sesión
@@ -163,11 +155,6 @@ const Login = () => {
                     aquí
                   </Link>
                 </Col>
-              </Row>
-              <Row>
-                <Alert color="danger" isOpen={visible}>
-                  I am an alert and I can be dismissed!
-                </Alert>
               </Row>
             </Col>
           </Row>
