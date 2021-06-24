@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Container, Row, Col, Button, Label, Input, Spinner } from 'reactstrap';
 import DatePicker from 'react-datepicker';
 import Avatar from 'react-avatar';
 
 import EmptyLayout from '../Layouts/EmptyLayout';
-import MaskedInput from '../Components/MaskedInput';
 import useAuth from '../Providers/useAuth';
 import { updateUser } from '../Api/index';
+
+import MaskedInput from '../Components/MaskedInput';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './Styles/EditProfile.css';
 
 const EditProfile = () => {
-  const { user, setUser } = useAuth();
-
   const history = useHistory();
+  const input = useRef(null);
+
+  const { user, setUser } = useAuth();
 
   const [countries, setCountries] = useState();
   const [loading, setLoading] = useState(true);
@@ -91,6 +93,8 @@ const EditProfile = () => {
         break;
     }
   };
+
+  const chooseFile = () => {};
 
   const handleUpdate = () => {
     updateUser({ user, profile })

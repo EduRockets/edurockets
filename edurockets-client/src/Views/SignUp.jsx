@@ -67,7 +67,8 @@ const SignUp = (props) => {
       const config = { headers: { 'Content-Type': 'application/json' } };
       signUp(credentials, config)
         .then((res) => {
-          setCookie('token', res.data.token, { path: '/' });
+          /* setCookie('token', res.data.token, { path: '/' }); */
+          localStorage.setItem('token', res.data.token);
           setUser(res.data.user);
           if (userType === 'student') {
             history.push('/studentform');

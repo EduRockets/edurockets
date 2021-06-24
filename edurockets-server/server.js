@@ -26,3 +26,4 @@ app.use(cors());
 app.use('/auth', require('./src/routes/auth.route.js'));
 app.use('/user', require('./src/routes/user.route.js'));
 app.use('/schoolarship', require('./src/routes/schoolarship.route.js'));
+app.use('/file', require('./src/routes/file.route.js'));

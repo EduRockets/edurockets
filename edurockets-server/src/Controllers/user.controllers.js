@@ -4,9 +4,8 @@ const users = require('../models/user');
 
 const secret = process.env.JWT_SECRET;
 
-exports.updateSignUpUser = async (req, res) => {
+exports.updateStudentUser = async (req, res) => {
   const { _id } = req.body.user;
-
   const {
     names,
     lastNames,
@@ -18,24 +17,65 @@ exports.updateSignUpUser = async (req, res) => {
     favoriteCountries,
     favoriteStudyAreas,
   } = req.body.profile;
-
   const idObject = Mongoose.Types.ObjectId(_id);
-
   try {
     users
       .updateOne(
         { _id: idObject, isActive: true },
         {
           $set: {
-            names: names,
-            lastNames: lastNames,
-            country: country,
-            state: state,
-            birthday: birthday,
-            highSchool: highSchool,
-            currentDegree: currentDegree,
-            favoriteCountries: favoriteCountries,
-            favoriteStudyAreas: favoriteStudyAreas,
+            names,
+            lastNames,
+            country,
+            state,
+            birthday,
+            highSchool,
+            currentDegree,
+            favoriteCountries,
+            favoriteStudyAreas,
+          },
+        }
+      )
+      .then(() => {
+        res.status(200).json({ success: true });
+      })
+      .catch((err) => {
+        res.status(400).json({ msg: err });
+      });
+  } catch (err) {
+    res.status(400).json({ msg: err });
+  }
+};
+
+exports.updateProfessionalUser = async (req, res) => {
+  const { _id } = req.body.user;
+  const {
+    names,
+    lastNames,
+    country,
+    state,
+    birthday,
+    highSchool,
+    currentDegree,
+    favoriteCountries,
+    favoriteStudyAreas,
+  } = req.body.profile;
+  const idObject = Mongoose.Types.ObjectId(_id);
+  try {
+    users
+      .updateOne(
+        { _id: idObject, isActive: true },
+        {
+          $set: {
+            names,
+            lastNames,
+            country,
+            state,
+            birthday,
+            highSchool,
+            currentDegree,
+            favoriteCountries,
+            favoriteStudyAreas,
           },
         }
       )

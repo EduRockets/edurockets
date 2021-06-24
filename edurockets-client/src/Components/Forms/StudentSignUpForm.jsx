@@ -7,7 +7,7 @@ import { WithContext as ReactTags } from 'react-tag-input';
 
 import CheckBox from '../../Components/CheckBox';
 import useAuth from '../../Providers/useAuth';
-import { updateSignUpUser } from '../../Api/index.js';
+import { updateStudentUser } from '../../Api/index.js';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './Styles/SignUpForm.css';
@@ -29,7 +29,7 @@ const StudentSignUpForm = (props) => {
   const [state, setState] = useState('');
   const [birthday, setBirthday] = useState(null);
   const [highSchool, setHighSchool] = useState('');
-  const [currentDegree, setCurrentDegree] = useState(null);
+  const [currentDegree, setCurrentDegree] = useState('');
   const [favoriteCountries, setFavoriteCountries] = useState([]);
   const [favoriteStudyAreas, setFavoriteStudyAreas] = useState([]);
 
@@ -46,7 +46,7 @@ const StudentSignUpForm = (props) => {
 
   const profile = {
     names: names,
-    lastNames: names,
+    lastNames: lastNames,
     country: country,
     state: state,
     birthday: birthday,
@@ -94,7 +94,11 @@ const StudentSignUpForm = (props) => {
   };
 
   const handleCreate = () => {
-    setFavoriteCountries([...tags.text]);
+    let arr = [];
+    tags.forEach((element) => {
+      arr.push(element.text);
+    });
+    setFavoriteCountries([...arr]);
 
     setInvalidNames(names === '' ? true : false);
     setInvalidLastNames(lastNames === '' ? true : false);
@@ -111,21 +115,16 @@ const StudentSignUpForm = (props) => {
       currentDegree !== '' &&
       favoriteCountries.length > 0
     ) {
-      console.log(profile);
-      /*
-
-      updateSignUpUser({ user, profile })
+      updateStudentUser({ user, profile })
         .then((res) => {
-          setUser(res.data.user); 
-          console.log(res.data.user);
-          history.push('/profile'); 
+          setUser(res.data.user);
+          history.push('/profile');
         })
         .catch((err) => {
           console.log(err);
         });
-
-       */
-      console.log('AAAAA');
+    } else {
+      console.log('Hacen falta campos que llenar');
     }
   };
 
