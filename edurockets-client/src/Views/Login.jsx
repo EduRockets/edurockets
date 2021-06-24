@@ -1,43 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory, useLocation, Link } from 'react-router-dom';
-import { Col, Row, Container, Button, Input, Alert, Label } from 'reactstrap';
+import React, { useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
+import { Col, Row, Container, Button, Input, Label } from 'reactstrap';
 
 import { Icon } from '@iconify/react';
 
 import googleIcon from '@iconify-icons/logos/google-icon';
 import facebookIcon from '@iconify-icons/logos/facebook';
 
-import { validateEmail, validatePassword } from '../Helpers/Tools';
+import { validateEmail } from '../Helpers/Tools';
 
 import EmptyLayout from '../Layouts/EmptyLayout';
 import { NavBarLogin } from '../Components/NavBar';
+import { login } from '../Api/index';
 import useAuth from '../Providers/useAuth';
 
 import './Styles/Login.css';
 
 const Login = () => {
-  const { testfunction, authLogin } = useAuth();
-
   const location = useLocation();
-  const history = useHistory();
+  const { setUser } = useAuth();
+
+  const [cookies, setCookie] = useCookies(['token']);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const [visible, setVisible] = useState(false);
-
-  // States para validación\
-  const [validEmail, setValidEmail] = useState(null);
+  // States para validación
   const [invalidEmail, setInvalidEmail] = useState(null);
-
-  const [validPassword, setValidPassword] = useState(null);
   const [invalidPassword, setInvalidPassowrd] = useState(null);
-
-  useEffect(() => {
-    if (localStorage.getItem('authToken')) {
-      history.push('/');
-    }
-  }, [history]);
 
   const credentials = {
     email: email,
@@ -45,6 +35,8 @@ const Login = () => {
   };
 
   const changeValue = (event) => {
+    setInvalidEmail(false);
+    setInvalidPassowrd(false);
     switch (event.name) {
       case 'email':
         setEmail(event.value);
@@ -56,16 +48,21 @@ const Login = () => {
     }
   };
 
-  const checkValues = () => {
-    if (!validateEmail(email)) {
-      setInvalidEmail(true);
-      if (password === '') {
-        setInvalidPassowrd(true);
-      } else {
-        setInvalidPassowrd(false);
-      }
-    } else {
-      setInvalidEmail(false);
+  const handleLogin = () => {
+    if (!validateEmail(email)) setInvalidEmail(true);
+
+    if (password === '') setInvalidPassowrd(true);
+
+    if (!invalidEmail && !invalidPassword) {
+      login(credentials)
+        .then((result) => {
+          /* setCookie('token', result.data.token, { path: '/' }); */
+          localStorage.setItem('token', result.data.token);
+          setUser({ ...result.data.user, redirectTo: location.state });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
   };
 
@@ -118,7 +115,9 @@ const Login = () => {
                   Recuérdame
                 </Col>
                 <Col>
-                  <Link className="OlvidastePassword">¿Olvidaste tu contraseña?</Link>
+                  <Link to={{}} className="OlvidastePassword">
+                    ¿Olvidaste tu contraseña?
+                  </Link>
                 </Col>
               </Row>
               <Row>
@@ -126,7 +125,7 @@ const Login = () => {
                   <Button
                     className="LoginButton"
                     onClick={() => {
-                      authLogin(credentials, location.state?.from);
+                      handleLogin();
                     }}
                   >
                     Iniciar sesión
@@ -152,13 +151,10 @@ const Login = () => {
               <Row>
                 <Col className="CrearCuentaContainer">
                   ¿No tienes una cuenta? Haz click{' '}
-                  <Link className="CrearCuentaContainerLink">aquí</Link>
+                  <Link to={{}} className="CrearCuentaContainerLink">
+                    aquí
+                  </Link>
                 </Col>
-              </Row>
-              <Row>
-                <Alert color="danger" isOpen={visible}>
-                  I am an alert and I can be dismissed!
-                </Alert>
               </Row>
             </Col>
           </Row>

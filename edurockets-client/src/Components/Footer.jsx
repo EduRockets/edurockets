@@ -1,6 +1,6 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import { Col, Row, Container, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { Col, Row, Container } from 'reactstrap';
 
 import DivButton from '../Components/DivButton';
 
@@ -28,66 +28,90 @@ const Footer = () => (
           <Col lg="2" className="TextContainer">
             <Row>
               <Col>
-                <Link className="TermFooter">Acerca de</Link>
+                <Link to={{}} className="TermFooter">
+                  Acerca de
+                </Link>
               </Col>
             </Row>
             <Row>
               <Col>
-                <Link className="TermFooter">Noticias</Link>
+                <Link to={{}} className="TermFooter">
+                  Noticias
+                </Link>
               </Col>
             </Row>
             <Row>
               <Col>
-                <Link className="TermFooter">Contacto</Link>
+                <Link to={{}} className="TermFooter">
+                  Contacto
+                </Link>
               </Col>
             </Row>
             <Row>
               <Col>
-                <Link className="TermFooter">Centro de ayuda</Link>
-              </Col>
-            </Row>
-          </Col>
-          <Col lg="3" className="TextContainer">
-            <Row>
-              <Col>
-                <Link className="TermFooter">Impacto</Link>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Link className="TermFooter">Nuestro equipo</Link>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Link className="TermFooter">Nuestros pasantes</Link>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Link className="TermFooter">Nuestros especialistas</Link>
+                <Link to={{}} className="TermFooter">
+                  Centro de ayuda
+                </Link>
               </Col>
             </Row>
           </Col>
           <Col lg="3" className="TextContainer">
             <Row>
               <Col>
-                <Link className="TermFooter">Comunidad de apoyo</Link>
+                <Link to={{}} className="TermFooter">
+                  Impacto
+                </Link>
               </Col>
             </Row>
             <Row>
               <Col>
-                <Link className="TermFooter">Comparte tu historia</Link>
+                <Link to={{}} className="TermFooter">
+                  Nuestro equipo
+                </Link>
               </Col>
             </Row>
             <Row>
               <Col>
-                <Link className="TermFooter">Pasantías</Link>
+                <Link to={{}} className="TermFooter">
+                  Nuestros pasantes
+                </Link>
               </Col>
             </Row>
             <Row>
               <Col>
-                <Link className="TermFooter">Bolsa de trabajo</Link>
+                <Link to={{}} className="TermFooter">
+                  Nuestros especialistas
+                </Link>
+              </Col>
+            </Row>
+          </Col>
+          <Col lg="3" className="TextContainer">
+            <Row>
+              <Col>
+                <Link to={{}} className="TermFooter">
+                  Comunidad de apoyo
+                </Link>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Link to={{}} className="TermFooter">
+                  Comparte tu historia
+                </Link>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Link to={{}} className="TermFooter">
+                  Pasantías
+                </Link>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Link to={{}} className="TermFooter">
+                  Bolsa de trabajo
+                </Link>
               </Col>
             </Row>
           </Col>
@@ -111,9 +135,15 @@ const Footer = () => (
 
         <Row className="DownSectionContainer">
           <Col lg="6">
-            <Link className="TermFooter">©2021 EduRockets</Link>
-            <Link className="TermFooter">Términos de uso</Link>
-            <Link className="TermFooter">Política de Seguridad</Link>
+            <Link to={{}} className="TermFooter">
+              ©2021 EduRockets
+            </Link>
+            <Link to={{}} className="TermFooter">
+              Términos de uso
+            </Link>
+            <Link to={{}} className="TermFooter">
+              Política de Seguridad
+            </Link>
           </Col>
           <Col lg="3" />
           <Col lg="3">

@@ -7,14 +7,14 @@ import { WithContext as ReactTags } from 'react-tag-input';
 
 import CheckBox from '../../Components/CheckBox';
 import useAuth from '../../Providers/useAuth';
-import { updateSignInUser } from '../../Api/index.js';
+import { updateStudentUser } from '../../Api/index.js';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './Styles/SignUpForm.css';
 
 const StudentSignUpForm = (props) => {
   const { paso, setPaso } = props;
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
 
   const history = useHistory();
 
@@ -29,18 +29,14 @@ const StudentSignUpForm = (props) => {
   const [state, setState] = useState('');
   const [birthday, setBirthday] = useState(null);
   const [highSchool, setHighSchool] = useState('');
-  const [currentDegree, setCurrentDegree] = useState(null);
+  const [currentDegree, setCurrentDegree] = useState('');
   const [favoriteCountries, setFavoriteCountries] = useState([]);
   const [favoriteStudyAreas, setFavoriteStudyAreas] = useState([]);
 
   // Form States Validation
-  const [validNames, setValidNames] = useState(false);
   const [invalidNames, setInvalidNames] = useState(false);
-  const [validLastNames, setValidLastNames] = useState(false);
   const [invalidLastNames, setInvalidLastNames] = useState(false);
-  const [validHighSchool, setValidHighSchool] = useState(false);
   const [invalidHighSchool, setInvalidHighSchool] = useState(false);
-  const [validState, setValidState] = useState(false);
   const [invalidState, setInvalidState] = useState(false);
 
   // States and variables for tag-picker
@@ -50,7 +46,7 @@ const StudentSignUpForm = (props) => {
 
   const profile = {
     names: names,
-    lastNames: names,
+    lastNames: lastNames,
     country: country,
     state: state,
     birthday: birthday,
@@ -98,22 +94,37 @@ const StudentSignUpForm = (props) => {
   };
 
   const handleCreate = () => {
-    setFavoriteCountries(...tags);
+    let arr = [];
+    tags.forEach((element) => {
+      arr.push(element.text);
+    });
+    setFavoriteCountries([...arr]);
+
+    setInvalidNames(names === '' ? true : false);
+    setInvalidLastNames(lastNames === '' ? true : false);
+    setInvalidState(state === '' ? true : false);
+    setInvalidHighSchool(highSchool === '' ? true : false);
+
     if (
-      validNames &&
-      validLastNames &&
+      !invalidNames &&
+      !invalidLastNames &&
       country !== '' &&
+      !invalidState &&
       birthday !== null &&
-      validHighSchool &&
+      !invalidHighSchool &&
       currentDegree !== '' &&
       favoriteCountries.length > 0
     ) {
-      // Modificar el usuario
-      updateSignInUser({ user, profile })
+      updateStudentUser({ user, profile })
         .then((res) => {
+          setUser(res.data.user);
           history.push('/profile');
         })
-        .catch((err) => {});
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log('Hacen falta campos que llenar');
     }
   };
 
@@ -132,12 +143,10 @@ const StudentSignUpForm = (props) => {
     switch (event.name) {
       case 'names':
         setNames(event.value);
-        setValidNames(!emptyVal);
         setInvalidNames(emptyVal);
         break;
       case 'lastNames':
         setLastNames(event.value);
-        setValidLastNames(!emptyVal);
         setInvalidLastNames(emptyVal);
         break;
       case 'country':
@@ -145,10 +154,10 @@ const StudentSignUpForm = (props) => {
         break;
       case 'state':
         setState(event.value);
+        setInvalidState(emptyVal);
         break;
       case 'highSchool':
         setHighSchool(event.value);
-        setValidHighSchool(!emptyVal);
         setInvalidHighSchool(emptyVal);
         break;
       case 'currentDegree':
@@ -156,7 +165,6 @@ const StudentSignUpForm = (props) => {
         break;
       case 'state':
         setState(event.value);
-        setValidState(!emptyVal);
         setInvalidState(emptyVal);
         break;
       default:
@@ -177,7 +185,6 @@ const StudentSignUpForm = (props) => {
                   name="names"
                   id="names"
                   value={names}
-                  valid={validNames}
                   invalid={invalidNames}
                   onChange={(event) => changeValue(event.currentTarget)}
                 />
@@ -191,7 +198,6 @@ const StudentSignUpForm = (props) => {
                   name="lastNames"
                   id="lastNames"
                   value={lastNames}
-                  valid={validLastNames}
                   invalid={invalidLastNames}
                   onChange={(event) => changeValue(event.currentTarget)}
                 />
@@ -228,7 +234,6 @@ const StudentSignUpForm = (props) => {
                   name="state"
                   id="state"
                   value={state}
-                  valid={validState}
                   invalid={invalidState}
                   onChange={(event) => changeValue(event.currentTarget)}
                 />
@@ -254,7 +259,6 @@ const StudentSignUpForm = (props) => {
                   name="highSchool"
                   id="highSchool"
                   value={highSchool}
-                  valid={validHighSchool}
                   invalid={invalidHighSchool}
                   onChange={(event) => changeValue(event.currentTarget)}
                 />

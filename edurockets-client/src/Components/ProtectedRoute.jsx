@@ -20,7 +20,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
               to={{
                 pathname: '/login',
                 state: {
-                  from: location,
+                  referrer: location,
                 },
               }}
             />

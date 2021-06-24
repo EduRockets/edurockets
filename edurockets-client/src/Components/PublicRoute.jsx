@@ -11,8 +11,13 @@ const PublicRoute = ({ component: Component, ...rest }) => {
       {...rest}
       render={(props) => {
         if (user === null) {
-          return <Component {...rest} {...props} />;
+          return <Component {...props} />;
         } else {
+          const { location } = props;
+          if (location){
+            const { state } = location;
+            if (state) return(< Redirect to={ state.referrer ? (state.referrer.pathname) : ("/profile") }/>  ) 
+          }
           return (
             <Redirect
               to={{

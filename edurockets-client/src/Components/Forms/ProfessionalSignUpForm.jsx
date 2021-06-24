@@ -25,39 +25,23 @@ const ProfessionalSignUpForm = (props) => {
   const [country, setCountry] = useState('');
   const [state, setState] = useState('');
   const [birthday, setBirthday] = useState(null);
-  const [collegeDegree, setCollegeDegree] = useState(null);
-  const [degree, setDegree] = useState(null);
+  const [collegeDegree, setCollegeDegree] = useState('');
+  const [degree, setDegree] = useState('');
   const [modality, setModality] = useState(null);
   const [favorites, setFavorites] = useState([]);
 
+  const [favoriteCountries, setFavoriteCountries] = useState([]);
+  const [favoriteStudyAreas, setFavoriteStudyAreas] = useState([]);
+
   // Form States Validation
-  const [validNames, setValidNames] = useState(false);
   const [invalidNames, setInvalidNames] = useState(false);
-  const [validLastNames, setValidLastNames] = useState(false);
   const [invalidLastNames, setInvalidLastNames] = useState(false);
-  const [validState, setValidState] = useState(false);
   const [invalidState, setInvalidState] = useState(false);
 
   // States and variables for tag-picker
   const [tags, setTags] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
   const delimiters = [188, 13];
-
-  const handleDelete = (i) => {
-    setTags(tags.filter((tag, index) => index !== i));
-  };
-
-  const handleAddition = (tag) => {
-    setTags([...tags, tag]);
-  };
-
-  const handleDrag = (tag, currPos, newPos) => {
-    const newTags = tags.slice();
-    newTags.splice(currPos, 1);
-    newTags.splice(newPos, 0, tag);
-    // re-render
-    setTags(newTags);
-  };
 
   useEffect(() => {
     fetch('https://restcountries.eu/rest/v2/all')
@@ -80,6 +64,22 @@ const ProfessionalSignUpForm = (props) => {
       );
   }, []);
 
+  const handleDelete = (i) => {
+    setTags(tags.filter((tag, index) => index !== i));
+  };
+
+  const handleAddition = (tag) => {
+    setTags([...tags, tag]);
+  };
+
+  const handleDrag = (tag, currPos, newPos) => {
+    const newTags = tags.slice();
+    newTags.splice(currPos, 1);
+    newTags.splice(newPos, 0, tag);
+    // re-render
+    setTags(newTags);
+  };
+
   const nextStep = () => {
     setStep((oldStep) => (oldStep < 2 ? oldStep + 1 : oldStep));
     setPaso((oldStep) => (oldStep < 2 ? oldStep + 1 : oldStep));
@@ -94,12 +94,10 @@ const ProfessionalSignUpForm = (props) => {
     switch (event.name) {
       case 'names':
         setNames(event.value);
-        setValidNames(!emptyVal);
         setInvalidNames(emptyVal);
         break;
       case 'lastNames':
         setLastNames(event.value);
-        setValidLastNames(!emptyVal);
         setInvalidLastNames(emptyVal);
         break;
       case 'country':
@@ -107,7 +105,6 @@ const ProfessionalSignUpForm = (props) => {
         break;
       case 'state':
         setState(event.value);
-        setValidState(!emptyVal);
         setInvalidState(emptyVal);
         break;
       case 'collegeDegree':
@@ -124,6 +121,34 @@ const ProfessionalSignUpForm = (props) => {
     }
   };
 
+  const handleCreate = () => {
+    let arr = [];
+    tags.forEach((element) => {
+      arr.push(element.text);
+    });
+    setFavoriteCountries([...arr]);
+
+    setInvalidNames(names === '' ? true : false);
+    setInvalidLastNames(lastNames === '' ? true : false);
+    setInvalidState(state === '' ? true : false);
+
+    if (
+      !invalidNames &&
+      !invalidLastNames &&
+      country !== '' &&
+      !invalidState &&
+      birthday !== null &&
+      collegeDegree !== '' &&
+      degree !== '' &&
+      modality !== '' &&
+      favoriteCountries.length > 0
+    ) {
+      console.log('AAA');
+    } else {
+      console.log('Hacen falta campos que llenar');
+    }
+  };
+
   const renderByStep = () => {
     switch (step) {
       case 0:
@@ -137,7 +162,6 @@ const ProfessionalSignUpForm = (props) => {
                   name="names"
                   id="names"
                   value={names}
-                  valid={validNames}
                   invalid={invalidNames}
                   onChange={(event) => changeValue(event.currentTarget)}
                 />
@@ -151,7 +175,6 @@ const ProfessionalSignUpForm = (props) => {
                   name="lastNames"
                   id="lastNames"
                   value={lastNames}
-                  valid={validLastNames}
                   invalid={invalidLastNames}
                   onChange={(event) => changeValue(event.currentTarget)}
                 />
@@ -188,7 +211,6 @@ const ProfessionalSignUpForm = (props) => {
                   name="state"
                   id="state"
                   value={state}
-                  valid={validState}
                   invalid={invalidState}
                   onChange={(event) => changeValue(event.currentTarget)}
                 />
@@ -391,7 +413,7 @@ const ProfessionalSignUpForm = (props) => {
                 <Button
                   className="SignUpFormButtonCreateAccount"
                   onClick={() => {
-                    history.push('/profile');
+                    handleCreate();
                   }}
                 >
                   Crear cuenta

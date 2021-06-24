@@ -70,9 +70,3 @@ exports.logout = async (req, res) => {
     status: 'success',
   });
 };
-
-exports.checkJWT = (req, res) => {};
-
-exports.temp = (req, res) => {
-  res.send('sssssupuiupppp');
-};
