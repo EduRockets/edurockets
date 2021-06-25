@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const file = require('../models/file');
-const upload = require('../Tools/Storage');
+const { uploadFile } = require('../Tools/FileHelper');
 
-router.post('Public/Images', upload.single('image'), (req, res) => {
-  console.log(req.file);
-  res.send('sadsadasdasd');
-});
+const fileController = require('../Controllers/file.controllers');
+
+router.post('/uploadFiles', uploadFile.single('files'), fileController.uploadFiles);
 
 module.exports = router;
