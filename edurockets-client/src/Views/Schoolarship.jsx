@@ -91,9 +91,17 @@ const Schoolarship = () => {
         <Spinner color="primary" />
       ) : (
         <>
+          {console.log(
+            'ESTO',
+            `url(${process.env.REACT_APP_SERVER_URL + '/' + schoolarship.banner})`
+          )}
           <Container
             className="SchoolarshipBanner"
-            style={{ backgroundImage: `url(${tempSchoolarship.banner})` }}
+            style={{
+              backgroundImage: `url(${
+                process.env.REACT_APP_SERVER_URL + '/' + schoolarship.banner
+              })`,
+            }}
             fluid
           />
 

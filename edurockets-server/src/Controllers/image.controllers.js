@@ -1,4 +1,3 @@
-const express = require('express');
 const image = require('../models/image');
 
 exports.uploadImage = async (req, res, next) => {
