@@ -33,8 +33,8 @@ const Schoolarship = () => {
     getSchoolarship(id)
       .then((result) => {
         setSchoolarship({ ...result.data.schoolarship });
-        console.log(schoolarship);
         setLoading(false);
+        console.log('Schoolarship: ', schoolarship);
       })
       .catch((err) => {
         console.error(err);

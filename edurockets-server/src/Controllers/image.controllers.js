@@ -16,6 +16,33 @@ exports.uploadImage = async (req, res, next) => {
   }
 };
 
+exports.updateImage = async (req, res, next) => {
+  try {
+    const { _id } = req.body;
+    image
+      .findOneAndUpdate(
+        { _id, isActive: true },
+        {
+          $set: {
+            name: req.file.originalname,
+            path: req.file.path,
+            type: req.file.mimetype,
+            size: fileSizeFormatter(req.file.size, 2),
+          },
+        },
+        { new: true }
+      )
+      .then((image) => {
+        res.status(200).json({ message: 'Success', image });
+      })
+      .catch((err) => {
+        res.status(400).json({ message: 'Bad Request', error: err });
+      });
+  } catch (error) {
+    res.status(400).json({ message: 'Bad Request', error: err });
+  }
+};
+
 const fileSizeFormatter = (bytes, decimal) => {
   if (bytes === 0) return '0 Bytes';
   const dm = decimal || 2;

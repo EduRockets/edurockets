@@ -24,10 +24,12 @@ const AuthProvider = ({ children }) => {
           setUser(res.data.user);
         })
         .catch((err) => {
-          setUser(null)
+          setUser(null);
           console.error(err);
         });
     }
+
+    console.log('Este es el usuario: ', user);
   }, []);
 
   const authSignUp = (credentials) => {

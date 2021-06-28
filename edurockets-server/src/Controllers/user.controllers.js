@@ -93,7 +93,7 @@ exports.updateProfessionalUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
   const { _id } = req.body.user;
 
-  const { names, lastNames, country, state, birthday, phone } = req.body.profile;
+  const { names, lastNames, country, state, birthday, phone, photo } = req.body.profile;
 
   const idObject = Mongoose.Types.ObjectId(_id);
   console.log(idObject, names);
@@ -109,6 +109,7 @@ exports.updateUser = async (req, res) => {
             state: state,
             birthday: birthday,
             phone: phone,
+            photo: photo,
           },
         },
         { new: true }
@@ -119,10 +120,10 @@ exports.updateUser = async (req, res) => {
         res.status(200).json({ message: 'Success', user });
       })
       .catch((err) => {
-        res.status(400).json({ msg: err });
+        res.status(400).json({ message: 'Bad Request', error: err });
       });
-  } catch (error) {
-    res.status(400).json({ msg: err });
+  } catch (err) {
+    res.status(400).json({ message: 'Bad Request', error: err });
   }
 };
 

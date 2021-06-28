@@ -24,10 +24,15 @@
   border: 2px solid;
   border-color: #1d1645;
 
+  color: #EBEBED;
   font-weight: bold;
 
   margin: 1.25rem;
   padding: 0.625rem 1.125rem;
+
+  cursor: pointer;
+  
+  transition: 0.3s;
 }
 
 .EditPictureButton:hover {

@@ -6,7 +6,7 @@ import Avatar from 'react-avatar';
 
 import EmptyLayout from '../Layouts/EmptyLayout';
 import useAuth from '../Providers/useAuth';
-import { updateUser } from '../Api/index';
+import { updateUser, updateImage } from '../Api/index';
 
 import MaskedInput from '../Components/MaskedInput';
 
@@ -30,19 +30,23 @@ const EditProfile = () => {
   const [state, setState] = useState(user.state);
   const [phone, setPhone] = useState('');
 
+  const [photo, setPhoto] = useState(user.photo);
+  const [newPhoto, setNewPhoto] = useState('');
+
   // States for validation
   const [validNames, setValidNames] = useState();
   const [invalidNames, setInvalidNames] = useState();
   const [validLastNames, setValidLastNames] = useState();
   const [invalidLastNames, setInvalidLastNames] = useState();
 
-  const profile = {
+  let profile = {
     names: names,
     lastNames: lastNames,
     country: country,
     state: state,
     birthday: birthday,
     phone: phone,
+    photo: photo,
   };
 
   useEffect(() => {
@@ -56,7 +60,6 @@ const EditProfile = () => {
             setCountries(arr);
           });
           setLoading(false);
-          console.log(result);
         },
         (err) => {
           console.error(err);
@@ -94,18 +97,45 @@ const EditProfile = () => {
     }
   };
 
-  const chooseFile = () => {};
-
   const handleUpdate = () => {
-    updateUser({ user, profile })
-      .then((updatedUser) => {
-        setUser(updatedUser.data.user);
-        setValidNames(false);
-        setInvalidLastNames(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (newPhoto !== '') {
+      const formData = new FormData();
+      formData.append('file', newPhoto);
+      formData.append('_id', user.photo.id);
+
+      updateImage(formData)
+        .then((res) => {
+          console.log('Se actualizó la imagen: ', res);
+          profile.photo.src = res.data.image.path;
+          updateUser({ user, profile })
+            .then((updatedUser) => {
+              setUser(updatedUser.data.user);
+              setValidNames(false);
+              setInvalidLastNames(false);
+
+              console.log('updeteo el usuario: ', updatedUser);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log('No hay fotografía');
+      updateUser({ user, profile })
+        .then((updatedUser) => {
+          setUser(updatedUser.data.user);
+          setValidNames(false);
+          setInvalidLastNames(false);
+
+          console.log('updeteo el usuario: ', updatedUser);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return (
@@ -115,12 +145,32 @@ const EditProfile = () => {
           <Container>
             <Row>
               <Col className="ProfileAvatarContainer">
-                <Avatar size={150} round="100%" src={user.photo} />
+                <Avatar
+                  size={150}
+                  round="100%"
+                  src={process.env.REACT_APP_SERVER_URL + '/' + user.photo.src}
+                />
               </Col>
             </Row>
             <Row>
               <Col>
-                <Button className="EditPictureButton">Cambiar fotografía</Button>
+                <input
+                  type="file"
+                  name="file"
+                  ref={input}
+                  onChange={(event) => {
+                    setNewPhoto(event.target.files[0]);
+                  }}
+                  hidden
+                />
+                <Button
+                  className="EditPictureButton"
+                  onClick={() => {
+                    input.current.click();
+                  }}
+                >
+                  Cambiar fotografía
+                </Button>
               </Col>
             </Row>
           </Container>

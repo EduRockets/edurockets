@@ -36,8 +36,11 @@ const userSchema = mongoose.Schema({
     default: '',
   },
   photo: {
-    type: String,
-    default: '',
+    type: {},
+    default: {
+      id: '',
+      src: '',
+    },
   },
   highSchool: {
     type: String,
