@@ -2,6 +2,8 @@ require('dotenv/config');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
+const multer = require('multer');
 
 const PORT = process.env.PORT || 5000;
 
@@ -22,8 +24,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ extended: false }));
 app.use(cors());
 
+app.use('/public/uploads', express.static(path.join(__dirname, 'public/uploads')));
+
 // Using Routes
 app.use('/auth', require('./src/routes/auth.route.js'));
 app.use('/user', require('./src/routes/user.route.js'));
 app.use('/schoolarship', require('./src/routes/schoolarship.route.js'));
+
+// For Images and other files
+app.use('/image', require('./src/routes/image.route.js'));
 app.use('/file', require('./src/routes/file.route.js'));

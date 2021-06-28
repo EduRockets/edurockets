@@ -27,6 +27,8 @@ const Profile = () => {
 
   useEffect(() => {
     if (showSaved) setLabel('Aplicaciones guardadas');
+
+    console.log();
   }, []);
 
   return (
@@ -55,20 +57,14 @@ const Profile = () => {
                   <img className="ProfileIcon" alt="notification" src={notificationIcon} />
                 </DivButton>
               </Col>
-
-              <Col>
-                <Button
-                  onClick={() => {
-                    setUser(null);
-                  }}
-                >
-                  Logout
-                </Button>
-              </Col>
             </Row>
             <Row>
               <Col>
-                <Avatar size={150} round="100%" />
+                <Avatar
+                  size={150}
+                  round="100%"
+                  src={process.env.REACT_APP_SERVER_URL + '/' + user.photo.src}
+                />
               </Col>
             </Row>
             <Row>

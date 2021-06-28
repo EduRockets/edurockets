@@ -1,14 +1,10 @@
 const express = require('express');
-const fs = require('fs');
 const router = express.Router();
 
-const file = require('../models/file');
-const upload = require('../Tools/Storage');
+const { uploadFile } = require('../Tools/FileHelper');
 
-router.post('/uploadImage', upload.single('image'), (req, res) => {
-  const { _id } = req.body;
-  const img = fs.readFileSync(req.file.path);
-  const encodedImage = img.toString('base64');
-});
+const fileController = require('../Controllers/file.controllers');
+
+router.post('/uploadFiles', uploadFile.single('files'), fileController.uploadFiles);
 
 module.exports = router;

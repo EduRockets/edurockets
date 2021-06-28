@@ -12,5 +12,8 @@ export const updateStudentUser = (body) => API.put('/user/updateStudentUser', bo
 export const updateUser = (body) => API.put('/user/updateUser', body);
 export const getUser = (data) => API.get('/user/getUser', data);
 
+// Funciones para CRUD de las imágenes
+export const uploadImage = (body) => API.put('/image/uploadImage', body);
+export const updateImage = (body) => API.put('/image/updateImage', body);
 // Funciones CRUD para las becas
 export const getSchoolarship = (id) => API.get(`/schoolarship/getSchoolarship/${id}`);
