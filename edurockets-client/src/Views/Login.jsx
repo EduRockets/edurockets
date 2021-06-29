@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-import { Col, Row, Container, Button, Input, Label } from 'reactstrap';
+import { Col, Row, Container, Button, Input, Label, Alert } from 'reactstrap';
 
 import { Icon } from '@iconify/react';
 
@@ -27,7 +27,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   // States para validación
   const [invalidEmail, setInvalidEmail] = useState(null);
-  const [invalidPassword, setInvalidPassowrd] = useState(null);
+  const [invalidPassword, setInvalidPassword] = useState(null);
 
   const credentials = {
     email: email,
@@ -36,7 +36,7 @@ const Login = () => {
 
   const changeValue = (event) => {
     setInvalidEmail(false);
-    setInvalidPassowrd(false);
+    setInvalidPassword(false);
     switch (event.name) {
       case 'email':
         setEmail(event.value);
@@ -51,7 +51,7 @@ const Login = () => {
   const handleLogin = () => {
     if (!validateEmail(email)) setInvalidEmail(true);
 
-    if (password === '') setInvalidPassowrd(true);
+    if (password === '') setInvalidPassword(true);
 
     if (!invalidEmail && !invalidPassword) {
       login(credentials)
@@ -62,6 +62,8 @@ const Login = () => {
         })
         .catch((err) => {
           console.error(err);
+          setInvalidPassword(true);
+          setInvalidEmail(true);
         });
     }
   };
@@ -146,14 +148,6 @@ const Login = () => {
                     <Icon className="LoginSocialButtonIcon" icon={facebookIcon} />
                     Con Facebook
                   </Button>
-                </Col>
-              </Row>
-              <Row>
-                <Col className="CrearCuentaContainer">
-                  ¿No tienes una cuenta? Haz click{' '}
-                  <Link to={{}} className="CrearCuentaContainerLink">
-                    aquí
-                  </Link>
                 </Col>
               </Row>
             </Col>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Col, Row, Container, Button } from 'reactstrap';
 
@@ -121,12 +121,7 @@ const Landing = () => {
                   <Button
                     className="LandingSecondButton"
                     onClick={() => {
-                      history.push({
-                        pathname: '/signup',
-                        userType: {
-                          name: 'student',
-                        },
-                      });
+                      history.push('/signup/student');
                     }}
                   >
                     Listo para alcanzar mis sueños
@@ -160,12 +155,7 @@ const Landing = () => {
                   <Button
                     className="LandingSecondButton"
                     onClick={() => {
-                      history.push({
-                        pathname: '/signup',
-                        userType: {
-                          name: 'professional',
-                        },
-                      });
+                      history.push('/signup/professional');
                     }}
                   >
                     Listo para alcanzar mis sueños

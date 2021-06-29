@@ -1,4 +1,3 @@
-const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const user = require('../models/user');
@@ -23,7 +22,7 @@ const encryptPassword = async (password) => {
 const sendJWT = (user, req, res) => {
   const token = signJwt(user.id);
   user.password = undefined;
-  res.json({ token, user });
+  res.send({ token, user });
 };
 
 // API Functions
@@ -47,15 +46,13 @@ exports.login = async (req, res) => {
     const currentUser = await user.findOne({ email }).select('+password');
     if (currentUser) {
       const compare = await bcrypt.compare(password, currentUser.password);
-      compare
-        ? sendJWT(currentUser, req, res)
-        : res.status(400).json({ message: 'something failed' });
+      compare ? sendJWT(currentUser, req, res) : res.status(400).json({ message: 'Bad Request' });
     } else {
-      res.status(400).json({ message: 'something failed' });
+      res.status(400).json({ message: 'Bad Request' });
     }
   } catch (err) {
     console.log(err);
-    res.status(400).json({ message: err });
+    res.status(400).json({ message: 'Bad Request', error: err });
   }
 };
 

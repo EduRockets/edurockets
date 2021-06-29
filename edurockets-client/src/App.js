@@ -30,7 +30,7 @@ const App = () => {
     <Router>
       <AuthProvider>
         {/*Fomrs*/}
-        
+
         <ProtectedRoute exact path="/studentform">
           <FormHolder Form={StudentSignUpForm} />
         </ProtectedRoute>
@@ -45,11 +45,10 @@ const App = () => {
         <ProtectedRoute exact path="/editprofile" component={EditProfile} />
 
         <PublicRoute exact path="/" component={Landing} />
-        <PublicRoute exact path="/signup/:userType" component={SignUp} />
+        <PublicRoute exact path="/signup" component={SignUp} />
         <PublicRoute exact path="/signupswitch" component={SignUpSwitch} />
         <PublicRoute exact path="/login" component={Login} />
         <Route exact path="/underConstruction" component={Construction} />
-
       </AuthProvider>
     </Router>
   );

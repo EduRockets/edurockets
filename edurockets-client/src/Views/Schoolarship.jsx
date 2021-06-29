@@ -42,27 +42,7 @@ const Schoolarship = () => {
   }, []);
 
   const tempSchoolarship = {
-    uid: 'este es el uid',
-    name: 'Beca Presidencial Concordia - Contabilidad',
-    institute: 'Universidad de Concordia',
-    description:
-      'Contadores destacados mantienen a las empresas a la vanguardia: resuelven problemas, desarrollan estrategias financieras sólidas y garantizan una buena salud fiscal. Si eres un gran triunfador con un apetito por el aprendizaje continuo, considéranos. Se unirá a un programa con reputación de graduados que logran excelentes resultados en los exámenes nacionales de contabilidad profesional.',
-    modality: 'Presencial',
-    studyArea: 'Negocios Administración y Economía',
-    degree: 'Pregrado',
     dueDate: new Date(2021, 10, 1),
-    duration: 5,
-    banner: 'https://pbs.twimg.com/media/DKmMe6CWsAUvikp.jpg',
-    photo:
-      'https://d1bvpoagx8hqbg.cloudfront.net/originals/experiencia-en-la-universidad-concordia-canada-por-monika-024bc2c82e45deff1f1b0d344642d624.jpg',
-    price: 16500,
-    hedge: 100,
-    location: {
-      country: 'Canada',
-      state: 'Montreal',
-      lng: '100000',
-      lat: '9956',
-    },
   };
 
   const monthNames = [
@@ -93,7 +73,11 @@ const Schoolarship = () => {
         <>
           <Container
             className="SchoolarshipBanner"
-            style={{ backgroundImage: `url(${tempSchoolarship.banner})` }}
+            style={{
+              backgroundImage: `url(${
+                process.env.REACT_APP_SERVER_URL + '/' + schoolarship.banner
+              })`,
+            }}
             fluid
           />
 

@@ -12,8 +12,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './Styles/SignUpForm.css';
 
 const ProfessionalSignUpForm = (props) => {
-  const history = useHistory();
-
   const { paso, setPaso } = props;
   const [loading, setLoading] = useState(true);
   const [step, setStep] = useState(0);

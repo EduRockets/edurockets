@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import { Col, Row, Container, Button, Input, Label, Fade } from 'reactstrap';
+import { useHistory, useLocation } from 'react-router-dom';
+import { Col, Row, Container, Button, Input, Label } from 'reactstrap';
 import { useCookies } from 'react-cookie';
 
 import { Icon } from '@iconify/react';
@@ -16,14 +16,16 @@ import { signUp } from '../Api/index.js';
 
 import './Styles/SignUp.css';
 
-const SignUp = (props) => {
+const SignUp = () => {
   const history = useHistory();
-  const { userType } = useParams();
+  const location = useLocation();
   const { setUser } = useAuth();
 
   const [cookies, setCookie] = useCookies(['token']);
 
+  const [isAllowed, setIsAllowed] = useState(false);
   const [step, setStep] = useState(0);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -33,12 +35,16 @@ const SignUp = (props) => {
   const [invalidPassword, setInvalidPassword] = useState(false);
   const [invalidConfirmPassword, setInvalidConfirmPassword] = useState(false);
 
-  useEffect(() => {}, []);
-
   const credentials = {
     email: email,
     password: password,
   };
+
+  useEffect(() => {
+    if (location.state === 'student' || location.state === 'professional') {
+      setIsAllowed(true);
+    }
+  }, []);
 
   const changeValue = (event) => {
     switch (event.name) {
@@ -61,25 +67,30 @@ const SignUp = (props) => {
   const handleCreate = () => {
     setInvalidEmail(!validateEmail(email));
     setInvalidPassword(!validatePassword(password));
-    setInvalidConfirmPassword(confirmPassword !== password ? true : false);
 
-    if (!invalidEmail && !invalidPassword && !invalidConfirmPassword) {
-      const config = { headers: { 'Content-Type': 'application/json' } };
-      signUp(credentials, config)
-        .then((res) => {
-          /* setCookie('token', res.data.token, { path: '/' }); */
-          localStorage.setItem('token', res.data.token);
-          setUser(res.data.user);
-          if (userType === 'student') {
-            history.push('/studentform');
-          } else {
-            history.push('/professionalform');
-          }
-        })
-        .catch((err) => {
-          console.log('Error creación de usuario', err);
-        });
+    if (validateEmail(email) && validatePassword(password)) {
+      if (confirmPassword === password) {
+        const config = { headers: { 'Content-Type': 'application/json' } };
+        signUp(credentials, config)
+          .then((res) => {
+            localStorage.setItem('token', res.data.token);
+            setUser(res.data.user);
+            if (location.state === 'student') {
+              history.push('/studentform');
+            } else {
+              history.push('/professionalform');
+            }
+          })
+          .catch((err) => {
+            console.log('Error creación de usuario', err);
+          });
+      } else {
+        setInvalidConfirmPassword(true);
+      }
+    } else {
+      console.log('Invalido');
     }
+    /* setCookie('token', res.data.token, { path: '/' }); */
   };
 
   const renderByStep = () => {
@@ -202,13 +213,38 @@ const SignUp = (props) => {
           <Row>
             <Col lg="7" className="SignUpLeftContainer" />
             <Col lg="5" className="SignUpRightContainer">
-              <Row>
-                <Col className="SignUpTitle">Crea tu cuenta ahora</Col>
-              </Row>
-              <Row>
-                <Col className="SignUpSubTitle">Estamos listos para impulsar tus sueños</Col>
-              </Row>
-              {renderByStep()}
+              {isAllowed ? (
+                <>
+                  <Row>
+                    <Col className="SignUpTitle">Crea tu cuenta ahora</Col>
+                  </Row>
+                  <Row>
+                    <Col className="SignUpSubTitle">Estamos listos para impulsar tus sueños</Col>
+                  </Row>
+                  {renderByStep()}
+                </>
+              ) : (
+                <div style={{ height: '400px' }}>
+                  <Row>
+                    <Col className="SignUpTitle">Hubo un error</Col>
+                  </Row>
+                  <Row>
+                    <Col className="SignUpSubTitle">Vuelve a seleccionar el tipo de usuario</Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <Button
+                        className="SignUpButton"
+                        onClick={() => {
+                          history.push('/signupswitch');
+                        }}
+                      >
+                        Volver a la selección de usuario
+                      </Button>
+                    </Col>
+                  </Row>
+                </div>
+              )}
             </Col>
           </Row>
         </Container>

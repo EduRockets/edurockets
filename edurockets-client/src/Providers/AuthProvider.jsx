@@ -28,8 +28,6 @@ const AuthProvider = ({ children }) => {
           console.error(err);
         });
     }
-
-    console.log('Este es el usuario: ', user);
   }, []);
 
   const authSignUp = (credentials) => {

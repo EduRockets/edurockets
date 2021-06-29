@@ -160,6 +160,7 @@ const EditProfile = () => {
                   ref={input}
                   onChange={(event) => {
                     setNewPhoto(event.target.files[0]);
+                    console.log(newPhoto);
                   }}
                   hidden
                 />

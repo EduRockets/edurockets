@@ -136,7 +136,7 @@ exports.getUser = async (req, res) => {
       .select('+password')
       .then((user) => {
         user.password = undefined;
-        res.status(200).json({ message: 'Success', user });
+        res.status(200).send(user);
       });
   } catch (error) {
     res.status(400).json({ message: 'Bad Request' });

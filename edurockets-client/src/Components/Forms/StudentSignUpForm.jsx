@@ -13,10 +13,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './Styles/SignUpForm.css';
 
 const StudentSignUpForm = (props) => {
+  const history = useHistory();
   const { paso, setPaso } = props;
   const { user, setUser } = useAuth();
-
-  const history = useHistory();
 
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -75,6 +74,7 @@ const StudentSignUpForm = (props) => {
           console.error(err);
         }
       );
+    console.log('Este es el usuario: ', user);
   }, []);
 
   // Country Tag Picker functions

@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
+  userType: {
+    type: String,
+    default: 'student',
+  },
   email: {
     type: String,
     required: true,

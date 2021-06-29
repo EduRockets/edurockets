@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import Avatar from 'react-avatar';
 
-import { Container, Row, Col, Button, Alert } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
 
 import EmptyLayout from '../Layouts/EmptyLayout';
 import SearchBar from '../Components/SearchBar';
@@ -23,12 +23,10 @@ const Profile = () => {
 
   const [label, setLabel] = useState('Aplicaciones en curso');
 
-  const { user, setUser } = useAuth();
+  const { user } = useAuth();
 
   useEffect(() => {
     if (showSaved) setLabel('Aplicaciones guardadas');
-
-    console.log();
   }, []);
 
   return (
