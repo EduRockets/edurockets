@@ -10,8 +10,6 @@ import './Styles/CardSignUp.css';
 export const CardSignUpStudent = () => {
   const history = useHistory();
 
-  const userType = 'student';
-
   return (
     <div>
       <Card className="Card">
@@ -31,7 +29,10 @@ export const CardSignUpStudent = () => {
           <Button
             className="CardButton"
             onClick={() => {
-              history.push('/signup/' + userType);
+              history.push({
+                pathname: '/signup',
+                state: 'student',
+              });
             }}
           >
             Entrar
@@ -45,7 +46,6 @@ export const CardSignUpStudent = () => {
 export const CardSignUpProfessional = () => {
   const history = useHistory();
 
-  const userType = 'professional';
   return (
     <div>
       <Card className="Card">
@@ -66,7 +66,10 @@ export const CardSignUpProfessional = () => {
           <Button
             className="CardButton"
             onClick={() => {
-              history.push('/signup/' + userType);
+              history.push({
+                pathname: '/signup',
+                state: 'professional',
+              });
             }}
           >
             Entrar

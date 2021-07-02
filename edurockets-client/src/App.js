@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import SignUpSwitch from './Views/SignUpSwitch';
@@ -24,13 +24,11 @@ import StudentSignUpForm from './Components/Forms/StudentSignUpForm';
 import ProfessionalSignUpForm from './Components/Forms/ProfessionalSignUpForm';
 
 const App = () => {
-  useEffect(() => {}, []);
-
   return (
     <Router>
       <AuthProvider>
         {/*Fomrs*/}
-        
+
         <ProtectedRoute exact path="/studentform">
           <FormHolder Form={StudentSignUpForm} />
         </ProtectedRoute>
@@ -45,11 +43,10 @@ const App = () => {
         <ProtectedRoute exact path="/editprofile" component={EditProfile} />
 
         <PublicRoute exact path="/" component={Landing} />
-        <PublicRoute exact path="/signup/:userType" component={SignUp} />
+        <PublicRoute exact path="/signup" component={SignUp} />
         <PublicRoute exact path="/signupswitch" component={SignUpSwitch} />
         <PublicRoute exact path="/login" component={Login} />
         <Route exact path="/underConstruction" component={Construction} />
-
       </AuthProvider>
     </Router>
   );

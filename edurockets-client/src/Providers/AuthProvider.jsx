@@ -6,7 +6,7 @@ import * as api from '../Api/index';
 export const UserContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const { signUp, getUser } = api;
+  const { getUser, getProfile } = api;
   const [cookies, setCookie] = useCookies(['token']);
 
   const [user, setUser] = useState(null);
@@ -20,38 +20,31 @@ const AuthProvider = ({ children }) => {
           'Content-Type': 'application/json',
         },
       })
-        .then((res) => {
-          setUser(res.data.user);
+        .then((result) => {
+          if (result.data.profileId) {
+            const userType = result.data.userType;
+            const id = result.data.profileId;
+            getProfile(userType, id)
+              .then((res) => {
+                setUser({ ...result.data, ...res.data });
+              })
+              .catch((err) => {
+                console.error(err);
+              });
+          } else {
+            setUser(res.data);
+          }
         })
         .catch((err) => {
           setUser(null);
           console.error(err);
         });
     }
-
-    console.log('Este es el usuario: ', user);
   }, []);
-
-  const authSignUp = (credentials) => {
-    const config = { headers: { 'Content-Type': 'application/json' } };
-    try {
-      signUp(credentials, config).then((res) => {
-        setCookie('token', res.data.token, { path: '/' });
-        {
-          /*setCookie('user', res.data.user, { path: '/' });*/
-        }
-        setUser(res.data.user);
-      });
-    } catch (err) {
-      console.error('ERROR en función del frontend SIGNUP: ', err);
-    }
-  };
 
   const contextValue = {
     user,
     setUser,
-
-    authSignUp,
   };
 
   return <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>;

@@ -1,17 +1,15 @@
-const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const user = require('../models/user');
 
 const secret = process.env.JWT_SECRET;
-const expires = process.env.JWT_EXPIRES;
-const expiresNum = process.env.JWT_EXPIRATION_NUM;
+
 const env = process.env.NODE_ENV;
 
 // Some helpers
 const signJwt = (id) => {
   return jwt.sign({ id }, secret, {
-    expiresIn: 3600,
+    expiresIn: process.env.JWT_ACCESS_TIME,
   });
 };
 
@@ -23,17 +21,18 @@ const encryptPassword = async (password) => {
 const sendJWT = (user, req, res) => {
   const token = signJwt(user.id);
   user.password = undefined;
-  res.json({ token, user });
+  res.status(200).send({ token, user });
 };
 
 // API Functions
 exports.signUp = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, userType } = req.body;
   const encryptPw = await encryptPassword(password);
   try {
     const currentUser = await user.create({
       email,
       password: encryptPw,
+      userType,
     });
     sendJWT(currentUser, req, res);
   } catch (err) {
@@ -47,15 +46,13 @@ exports.login = async (req, res) => {
     const currentUser = await user.findOne({ email }).select('+password');
     if (currentUser) {
       const compare = await bcrypt.compare(password, currentUser.password);
-      compare
-        ? sendJWT(currentUser, req, res)
-        : res.status(400).json({ message: 'something failed' });
+      compare ? sendJWT(currentUser, req, res) : res.status(400).json({ message: 'Bad Request' });
     } else {
-      res.status(400).json({ message: 'something failed' });
+      res.status(400).json({ message: 'Bad Request' });
     }
   } catch (err) {
     console.log(err);
-    res.status(400).json({ message: err });
+    res.status(400).json({ message: 'Bad Request', error: err });
   }
 };
 

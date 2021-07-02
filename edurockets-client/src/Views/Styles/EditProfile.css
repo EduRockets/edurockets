@@ -7,6 +7,10 @@
   padding: 0;
 }
 
+.EditProfileIcon {
+  width: 1.5rem
+}
+
 .EditProfileBanner {
   background-image: url('../../Assets/Images/Profile-Banner.png');
   background-position: bottom;

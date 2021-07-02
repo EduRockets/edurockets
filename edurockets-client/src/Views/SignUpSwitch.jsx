@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios';
-
+import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
 import StandardLayout from '../Layouts/StandardLayout';
@@ -10,34 +7,6 @@ import { CardSignUpStudent, CardSignUpProfessional } from '../Components/CardSig
 import './Styles/SignUpSwitch.css';
 
 const SignUpSwitch = () => {
-  const history = useHistory();
-
-  const signup = async () => {
-    try {
-      const config = {
-        headers: {
-          'content-type': 'application/json',
-        },
-      };
-      if (password !== confirmPassword) {
-        setPassword('');
-        setConfirmPassword('');
-      } else {
-        const newUser = {
-          name,
-          email,
-          password,
-        };
-        const res = await axios.post('/auth/signup', JSON.stringify(newUser), config);
-        localStorage.setItem('authToken', res.data.token);
-
-        history.push('/');
-      }
-    } catch (err) {
-      console.log(err.response.data);
-    }
-  };
-
   return (
     <StandardLayout>
       <Container className="SignUpSwtich" fluid>

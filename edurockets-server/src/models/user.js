@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
+  userType: {
+    type: String,
+    default: '',
+  },
   email: {
     type: String,
     required: true,
@@ -11,60 +15,15 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  names: {
+  profileId: {
     type: String,
-    default: '',
-  },
-  lastNames: {
-    type: String,
-    default: '',
-  },
-  birthday: {
-    type: Date,
     default: null,
   },
-  country: {
-    type: String,
-    default: '',
+  isActive: {
+    type: Boolean,
+    required: false,
+    default: true,
   },
-  state: {
-    type: String,
-    default: '',
-  },
-  phone: {
-    type: String,
-    default: '',
-  },
-  photo: {
-    type: {},
-    default: {
-      id: '',
-      src: '',
-    },
-  },
-  highSchool: {
-    type: String,
-    default: '',
-  },
-  currentDegree: {
-    type: String,
-    default: '',
-  },
-  favoriteCountries: {
-    type: [String],
-    default: [],
-  },
-  favoriteStudyAreas: {
-    type: [String],
-    default: [],
-  },
-  schoolarships: {
-    type: [{}],
-    default: [],
-  },
-  isActive: { type: Boolean, required: false, default: true },
-  resetPasswordToken: String,
-  resetPasswordExpire: Date,
 });
 
 module.exports = mongoose.model('users', userSchema);

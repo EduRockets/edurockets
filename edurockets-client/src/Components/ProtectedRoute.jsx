@@ -13,7 +13,20 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
       {...rest}
       render={(props) => {
         if (user !== null) {
-          return <Component {...rest} {...props} />;
+          if (user.profileId !== null) {
+            return <Component {...rest} {...props} />;
+          } else {
+            return (
+              <Redirect
+                to={{
+                  pathname: user.userType === 'student' ? '/studentform' : '/professionalform',
+                  state: {
+                    referrer: location,
+                  },
+                }}
+              />
+            );
+          }
         } else {
           return (
             <Redirect

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import Avatar from 'react-avatar';
 
-import { Container, Row, Col, Button, Alert } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
 
 import EmptyLayout from '../Layouts/EmptyLayout';
 import SearchBar from '../Components/SearchBar';
@@ -11,6 +11,7 @@ import DivButton from '../Components/DivButton';
 import useAuth from '../Providers/useAuth';
 
 import notificationIcon from '../Assets/Icons/notification.svg';
+import signOutIcon from '../Assets/Icons/signOut.svg';
 
 import './Styles/Profile.css';
 
@@ -23,12 +24,10 @@ const Profile = () => {
 
   const [label, setLabel] = useState('Aplicaciones en curso');
 
-  const { user, setUser } = useAuth();
+  const { user } = useAuth();
 
   useEffect(() => {
     if (showSaved) setLabel('Aplicaciones guardadas');
-
-    console.log();
   }, []);
 
   return (
@@ -37,7 +36,7 @@ const Profile = () => {
         <div className="ProfileBanner">
           <Container>
             <Row className="ProfileContainer">
-              <Col lg="10" />
+              <Col lg="9" />
               <Col>
                 <Button
                   className="ProfileButton"
@@ -55,6 +54,15 @@ const Profile = () => {
                   }}
                 >
                   <img className="ProfileIcon" alt="notification" src={notificationIcon} />
+                </DivButton>
+              </Col>
+              <Col className="ProfileIconContainer">
+                <DivButton
+                  action={() => {
+                    localStorage.removeItem('token');
+                  }}
+                >
+                  <img className="ProfileIcon" alt="notification" src={signOutIcon} />
                 </DivButton>
               </Col>
             </Row>

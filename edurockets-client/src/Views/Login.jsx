@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-import { Col, Row, Container, Button, Input, Label } from 'reactstrap';
+import { Col, Row, Container, Button, Input, Label, Alert } from 'reactstrap';
 
 import { Icon } from '@iconify/react';
 
@@ -12,14 +12,14 @@ import { validateEmail } from '../Helpers/Tools';
 
 import EmptyLayout from '../Layouts/EmptyLayout';
 import { NavBarLogin } from '../Components/NavBar';
-import { login } from '../Api/index';
+import { login, getProfile } from '../Api/index';
 import useAuth from '../Providers/useAuth';
 
 import './Styles/Login.css';
 
 const Login = () => {
   const location = useLocation();
-  const { setUser } = useAuth();
+  const { user, setUser } = useAuth();
 
   const [cookies, setCookie] = useCookies(['token']);
 
@@ -27,7 +27,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   // States para validación
   const [invalidEmail, setInvalidEmail] = useState(null);
-  const [invalidPassword, setInvalidPassowrd] = useState(null);
+  const [invalidPassword, setInvalidPassword] = useState(null);
 
   const credentials = {
     email: email,
@@ -36,7 +36,7 @@ const Login = () => {
 
   const changeValue = (event) => {
     setInvalidEmail(false);
-    setInvalidPassowrd(false);
+    setInvalidPassword(false);
     switch (event.name) {
       case 'email':
         setEmail(event.value);
@@ -51,17 +51,27 @@ const Login = () => {
   const handleLogin = () => {
     if (!validateEmail(email)) setInvalidEmail(true);
 
-    if (password === '') setInvalidPassowrd(true);
+    if (password === '') setInvalidPassword(true);
 
     if (!invalidEmail && !invalidPassword) {
       login(credentials)
         .then((result) => {
           /* setCookie('token', result.data.token, { path: '/' }); */
-          localStorage.setItem('token', result.data.token);
-          setUser({ ...result.data.user, redirectTo: location.state });
+          const userType = result.data.user.userType;
+          const id = result.data.user.profileId;
+          getProfile(userType, id)
+            .then((res) => {
+              localStorage.setItem('token', result.data.token);
+              setUser({ ...result.data.user, ...res.data });
+            })
+            .catch((err) => {
+              console.error(err);
+            });
         })
         .catch((err) => {
           console.error(err);
+          setInvalidPassword(true);
+          setInvalidEmail(true);
         });
     }
   };
@@ -146,14 +156,6 @@ const Login = () => {
                     <Icon className="LoginSocialButtonIcon" icon={facebookIcon} />
                     Con Facebook
                   </Button>
-                </Col>
-              </Row>
-              <Row>
-                <Col className="CrearCuentaContainer">
-                  ¿No tienes una cuenta? Haz click{' '}
-                  <Link to={{}} className="CrearCuentaContainerLink">
-                    aquí
-                  </Link>
                 </Col>
               </Row>
             </Col>
