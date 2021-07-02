@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import SignUpSwitch from './Views/SignUpSwitch';
@@ -24,8 +24,6 @@ import StudentSignUpForm from './Components/Forms/StudentSignUpForm';
 import ProfessionalSignUpForm from './Components/Forms/ProfessionalSignUpForm';
 
 const App = () => {
-  useEffect(() => {}, []);
-
   return (
     <Router>
       <AuthProvider>

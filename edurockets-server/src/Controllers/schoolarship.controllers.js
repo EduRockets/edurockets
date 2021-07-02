@@ -1,11 +1,6 @@
 const Mongoose = require('mongoose');
 const schoolarship = require('../models/schoolarShip');
 
-const secret = process.env.JWT_SECRET;
-const expires = process.env.JWT_EXPIRES;
-const expiresNum = process.env.JWT_EXPIRATION_NUM;
-const env = process.env.NODE_ENV;
-
 exports.createSchoolarship = async (req, res) => {
   try {
     const foundedSchoolarship = await schoolarship.findOne({ ...req.body });

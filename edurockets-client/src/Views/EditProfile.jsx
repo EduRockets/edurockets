@@ -6,9 +6,12 @@ import Avatar from 'react-avatar';
 
 import EmptyLayout from '../Layouts/EmptyLayout';
 import useAuth from '../Providers/useAuth';
-import { updateUser, updateImage } from '../Api/index';
+import { uploadImage, updateImage, updateProfile } from '../Api/index';
 
 import MaskedInput from '../Components/MaskedInput';
+import DivButton from '../Components/DivButton';
+
+import notificationIcon from '../Assets/Icons/notification.svg';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './Styles/EditProfile.css';
@@ -39,7 +42,7 @@ const EditProfile = () => {
   const [validLastNames, setValidLastNames] = useState();
   const [invalidLastNames, setInvalidLastNames] = useState();
 
-  let profile = {
+  let data = {
     names: names,
     lastNames: lastNames,
     country: country,
@@ -101,39 +104,58 @@ const EditProfile = () => {
     if (newPhoto !== '') {
       const formData = new FormData();
       formData.append('file', newPhoto);
-      formData.append('_id', user.photo.id);
-
-      updateImage(formData)
-        .then((res) => {
-          console.log('Se actualizó la imagen: ', res);
-          profile.photo.src = res.data.image.path;
-          updateUser({ user, profile })
-            .then((updatedUser) => {
-              setUser(updatedUser.data.user);
-              setValidNames(false);
-              setInvalidLastNames(false);
-
-              console.log('updeteo el usuario: ', updatedUser);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      if (user.photo.id !== '') {
+        formData.append('_id', user.photo.id);
+        updateImage(formData)
+          .then((res) => {
+            data.photo.src = res.data.image.path;
+            const userType = user.userType;
+            const id = user.profileId;
+            updateProfile({ userType, id, data })
+              .then((res) => {
+                setUser({ ...user, ...res.data });
+                setValidNames(false);
+                setInvalidLastNames(false);
+              })
+              .catch((err) => {
+                console.error(err);
+              });
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      } else {
+        uploadImage(formData)
+          .then((res) => {
+            data.photo.src = res.data.path;
+            data.photo.id = res.data._id;
+            const userType = user.userType;
+            const id = user.profileId;
+            updateProfile({ userType, id, data })
+              .then((res) => {
+                setUser({ ...user, ...res.data });
+                setValidNames(false);
+                setInvalidLastNames(false);
+              })
+              .catch((err) => {
+                console.error(err);
+              });
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
     } else {
-      console.log('No hay fotografía');
-      updateUser({ user, profile })
-        .then((updatedUser) => {
-          setUser(updatedUser.data.user);
+      const userType = user.userType;
+      const id = user.profileId;
+      updateProfile({ userType, id, data })
+        .then((res) => {
+          setUser({ ...user, ...res.data });
           setValidNames(false);
           setInvalidLastNames(false);
-
-          console.log('updeteo el usuario: ', updatedUser);
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
         });
     }
   };
@@ -143,6 +165,27 @@ const EditProfile = () => {
       <Container className="EditProfile" fluid>
         <div className="EditProfileBanner">
           <Container>
+            <Row>
+              <Col lg="10" />
+              <Col>
+                <DivButton
+                  action={() => {
+                    console.log('Click en notificación');
+                  }}
+                >
+                  <img className="EditProfileIcon" alt="notification" src={notificationIcon} />
+                </DivButton>
+              </Col>
+              <Col>
+                <DivButton
+                  action={() => {
+                    console.log('Click en notificación');
+                  }}
+                >
+                  <img className="ProfileIcon" alt="notification" src={notificationIcon} />
+                </DivButton>
+              </Col>
+            </Row>
             <Row>
               <Col className="ProfileAvatarContainer">
                 <Avatar

@@ -38,6 +38,7 @@ const SignUp = () => {
   const credentials = {
     email: email,
     password: password,
+    userType: location.state,
   };
 
   useEffect(() => {
@@ -75,14 +76,9 @@ const SignUp = () => {
           .then((res) => {
             localStorage.setItem('token', res.data.token);
             setUser(res.data.user);
-            if (location.state === 'student') {
-              history.push('/studentform');
-            } else {
-              history.push('/professionalform');
-            }
           })
           .catch((err) => {
-            console.log('Error creación de usuario', err);
+            console.error(err);
           });
       } else {
         setInvalidConfirmPassword(true);

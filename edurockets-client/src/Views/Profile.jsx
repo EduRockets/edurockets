@@ -11,6 +11,7 @@ import DivButton from '../Components/DivButton';
 import useAuth from '../Providers/useAuth';
 
 import notificationIcon from '../Assets/Icons/notification.svg';
+import signOutIcon from '../Assets/Icons/signOut.svg';
 
 import './Styles/Profile.css';
 
@@ -35,7 +36,7 @@ const Profile = () => {
         <div className="ProfileBanner">
           <Container>
             <Row className="ProfileContainer">
-              <Col lg="10" />
+              <Col lg="9" />
               <Col>
                 <Button
                   className="ProfileButton"
@@ -53,6 +54,15 @@ const Profile = () => {
                   }}
                 >
                   <img className="ProfileIcon" alt="notification" src={notificationIcon} />
+                </DivButton>
+              </Col>
+              <Col className="ProfileIconContainer">
+                <DivButton
+                  action={() => {
+                    localStorage.removeItem('token');
+                  }}
+                >
+                  <img className="ProfileIcon" alt="notification" src={signOutIcon} />
                 </DivButton>
               </Col>
             </Row>

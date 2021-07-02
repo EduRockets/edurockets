@@ -12,14 +12,14 @@ import { validateEmail } from '../Helpers/Tools';
 
 import EmptyLayout from '../Layouts/EmptyLayout';
 import { NavBarLogin } from '../Components/NavBar';
-import { login } from '../Api/index';
+import { login, getProfile } from '../Api/index';
 import useAuth from '../Providers/useAuth';
 
 import './Styles/Login.css';
 
 const Login = () => {
   const location = useLocation();
-  const { setUser } = useAuth();
+  const { user, setUser } = useAuth();
 
   const [cookies, setCookie] = useCookies(['token']);
 
@@ -57,8 +57,16 @@ const Login = () => {
       login(credentials)
         .then((result) => {
           /* setCookie('token', result.data.token, { path: '/' }); */
-          localStorage.setItem('token', result.data.token);
-          setUser({ ...result.data.user, redirectTo: location.state });
+          const userType = result.data.user.userType;
+          const id = result.data.user.profileId;
+          getProfile(userType, id)
+            .then((res) => {
+              localStorage.setItem('token', result.data.token);
+              setUser({ ...result.data.user, ...res.data });
+            })
+            .catch((err) => {
+              console.error(err);
+            });
         })
         .catch((err) => {
           console.error(err);

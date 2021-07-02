@@ -27,6 +27,7 @@ app.use(cors());
 // Using Routes
 app.use('/auth', require('./src/routes/auth.route.js'));
 app.use('/user', require('./src/routes/user.route.js'));
+app.use('/profile', require('./src/routes/profile.route.js'));
 app.use('/schoolarship', require('./src/routes/schoolarship.route.js'));
 
 // For Images and other files

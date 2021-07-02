@@ -141,7 +141,20 @@ const ProfessionalSignUpForm = (props) => {
       modality !== '' &&
       favoriteCountries.length > 0
     ) {
-      console.log('AAA');
+      createProfile({ userType: user.userType, profile })
+        .then((res) => {
+          updateUser({ user, data: { profileId: res.data._id } })
+            .then((res) => {
+              setUser(res.data);
+              history.push('/profile');
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     } else {
       console.log('Hacen falta campos que llenar');
     }

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Row, Col, Input, Label, Spinner } from 'reactstrap';
-
 import DatePicker from 'react-datepicker';
 import { WithContext as ReactTags } from 'react-tag-input';
 
 import CheckBox from '../../Components/CheckBox';
+
 import useAuth from '../../Providers/useAuth';
-import { updateStudentUser } from '../../Api/index.js';
+import { createProfile, updateUser } from '../../Api/index.js';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './Styles/SignUpForm.css';
@@ -15,7 +15,7 @@ import './Styles/SignUpForm.css';
 const StudentSignUpForm = (props) => {
   const history = useHistory();
   const { paso, setPaso } = props;
-  const { user, setUser } = useAuth();
+  const { user, token, setUser } = useAuth();
 
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -74,7 +74,6 @@ const StudentSignUpForm = (props) => {
           console.error(err);
         }
       );
-    console.log('Este es el usuario: ', user);
   }, []);
 
   // Country Tag Picker functions
@@ -115,13 +114,19 @@ const StudentSignUpForm = (props) => {
       currentDegree !== '' &&
       favoriteCountries.length > 0
     ) {
-      updateStudentUser({ user, profile })
+      createProfile({ userType: user.userType, profile })
         .then((res) => {
-          setUser(res.data.user);
-          history.push('/profile');
+          updateUser({ user, data: { profileId: res.data._id } })
+            .then((res) => {
+              setUser(res.data);
+              history.push('/profile');
+            })
+            .catch((err) => {
+              console.error(err);
+            });
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
         });
     } else {
       console.log('Hacen falta campos que llenar');

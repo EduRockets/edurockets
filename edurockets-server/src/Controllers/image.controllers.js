@@ -2,16 +2,21 @@ const image = require('../models/image');
 
 exports.uploadImage = async (req, res, next) => {
   try {
-    const newImage = new image({
-      name: req.file.originalname,
-      path: req.file.path,
-      type: req.file.mimetype,
-      size: fileSizeFormatter(req.file.size, 2),
-    });
-    await newImage.save();
-    res.status(200).send('I got the image');
-  } catch (error) {
-    res.status(400).send(error.message);
+    image
+      .create({
+        name: req.file.originalname,
+        path: req.file.path,
+        type: req.file.mimetype,
+        size: fileSizeFormatter(req.file.size, 2),
+      })
+      .then((result) => {
+        res.status(200).send(result);
+      })
+      .catch((err) => {
+        res.status(400).json({ message: 'Bad Request', error: err });
+      });
+  } catch (err) {
+    res.status(400).json({ message: 'Bad Request', error: err });
   }
 };
 
